@@ -5,10 +5,26 @@
   "projects": {
     "web": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "skipTests": true,
+          "displayBlock": true,
+          "skipImport": true,
+          "changeDetection": "OnPush"
+        },
+        "@schematics/angular:directive": {
+          "skipTests": true
+        },
+        "@schematics/angular:pipe": {
+          "skipTests": true
+        },
+        "@schematics/angular:application": {
+          "skipTests": true
+        }
+      },
       "root": "projects/web",
       "sourceRoot": "projects/web/src",
-      "prefix": "app",
+      "prefix": "knw",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:application",
@@ -100,7 +116,7 @@
       "projectType": "library",
       "root": "projects/common",
       "sourceRoot": "projects/common/src",
-      "prefix": "lib",
+      "prefix": "knc",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
