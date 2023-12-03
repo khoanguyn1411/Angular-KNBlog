@@ -2,6 +2,15 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@knb/core/*": [
+        "projects/common/src/lib/core/*"
+      ],
+      "@knb/shared/*": [
+        "projects/common/src/lib/shared/*"
+      ],
+    },
     "outDir": "./dist/out-tsc",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
