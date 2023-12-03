@@ -207,6 +207,15 @@
         "hash": "sha512-32RHWhTgFLMonI3kRdstACay/nvetfxXjdwcTtABjcvBoND7nD9GMhkISQdgS+hcR/IhgXxaPidq8f2UAY5DBw=="
       }
     },
+    "npm:@angular/cdk": {
+      "type": "npm",
+      "name": "npm:@angular/cdk",
+      "data": {
+        "version": "17.0.2",
+        "packageName": "@angular/cdk",
+        "hash": "sha512-5d2LmlpvsrfLubfzWxzWa+pLW93m/GXVuFITETozPbwEeqOTDNZPbS4v89VF1SWUCxefb1tx5m4zaGpsTep7gQ=="
+      }
+    },
     "npm:@angular/cli": {
       "type": "npm",
       "name": "npm:@angular/cli",
@@ -259,6 +268,15 @@
         "version": "17.0.2",
         "packageName": "@angular/forms",
         "hash": "sha512-w1QKifaVG4daxUktcBNZqBtOH1vn8t0YiwDR3woEdUYt0XYKMipfDzQfyIK+6fIVPOJUd42pRns1nbWJQHOInA=="
+      }
+    },
+    "npm:@angular/material": {
+      "type": "npm",
+      "name": "npm:@angular/material",
+      "data": {
+        "version": "17.0.2",
+        "packageName": "@angular/material",
+        "hash": "sha512-GKWUGHk7PZY6/hPA1nqRXOdofBX58mDGgSGltvtDIojb+GmKdYKUIR183hENHeCOHuFjcaF13gbLSl12WiH1cQ=="
       }
     },
     "npm:@angular/platform-browser": {
@@ -2158,6 +2176,456 @@
         "version": "2.3.11",
         "packageName": "@ljharb/through",
         "hash": "sha512-ccfcIDlogiXNq5KcbAwbaO7lMh3Tm1i3khMPYpxlK8hH/W53zN81KM9coerRLOnTGu3nfXIniAmQbRI9OxbC0w=="
+      }
+    },
+    "npm:@material/animation": {
+      "type": "npm",
+      "name": "npm:@material/animation",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/animation",
+        "hash": "sha512-0eV06UGYeuFwC/4t+yjg3LCRGRLq72ybBtJYzcBDpP4ASTjie0WmpAOFJYXRq2U5X/yxLviDMhpRemoSUjgZ0Q=="
+      }
+    },
+    "npm:@material/auto-init": {
+      "type": "npm",
+      "name": "npm:@material/auto-init",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/auto-init",
+        "hash": "sha512-0QfmjT5elQ10hCxToVgq/WaC3301tVH1sJaO3O2yocVzr7s6iWm8/zch16V5hcHzQHbtcT3Rf4y1ZzmdNys2Iw=="
+      }
+    },
+    "npm:@material/banner": {
+      "type": "npm",
+      "name": "npm:@material/banner",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/banner",
+        "hash": "sha512-PBLgH7JEbEpTkLy33oyWXUhIFmSsdOrR6Gn6qIgQRo1qrnk5RSBGW2gEq4Z6793vjxM107gKudDb23E4Fcu4vg=="
+      }
+    },
+    "npm:@material/base": {
+      "type": "npm",
+      "name": "npm:@material/base",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/base",
+        "hash": "sha512-/ob3v3IFU8q2gGdVNWw5kNPjW2mRTeBIz1YdhGWUmRxKn2Kl8bdLOvrAmZtQMmPn/4cGXvinxpec/zVBWQKDkA=="
+      }
+    },
+    "npm:@material/button": {
+      "type": "npm",
+      "name": "npm:@material/button",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/button",
+        "hash": "sha512-rGpVRde0Aqhv2t9QvT8Zl3HvG89BeUNPOpgfpaLBZ4SGGAO4rIrckl/eCENibKgmmdCKcYZlG9gc5abQVPfUvw=="
+      }
+    },
+    "npm:@material/card": {
+      "type": "npm",
+      "name": "npm:@material/card",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/card",
+        "hash": "sha512-+rYUnBPgv5QVF6BeUs3toIRdSwFVohGmjk2ptTXMZkKxqAJt7Nr9Znbm3Ym2hD8GUHJeh3pyGFvEs6rG6JMYAw=="
+      }
+    },
+    "npm:@material/checkbox": {
+      "type": "npm",
+      "name": "npm:@material/checkbox",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/checkbox",
+        "hash": "sha512-sQwHzm1TSxHUoPrqplWTk/BhyzdDhzcwlbucwJK9W0o9WXMDk+d9PvcCxpP/9sAnVqZk42BfE89Y0T1DHglZ9A=="
+      }
+    },
+    "npm:@material/chips": {
+      "type": "npm",
+      "name": "npm:@material/chips",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/chips",
+        "hash": "sha512-TiV9WJ5taEHPGWPhXbxJvUJhLzThg+VpK7aAlvL4RurtmJ7pURuEdRS4Z6o0OEqi3wKQ4z/+K44kZUn/+9HALg=="
+      }
+    },
+    "npm:@material/circular-progress": {
+      "type": "npm",
+      "name": "npm:@material/circular-progress",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/circular-progress",
+        "hash": "sha512-+QTfyExPWzgm2tqMInd32qQOftsC1b8MUhAhZSfuecYBfqAc7KZkQEKa2nm4y8EHKMFWe8/DcxLV6IxMBLgHwA=="
+      }
+    },
+    "npm:@material/data-table": {
+      "type": "npm",
+      "name": "npm:@material/data-table",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/data-table",
+        "hash": "sha512-89qVOjR7gqby6fsmh7tKj29SjQ2sGLXu2IzCeX3Vni4mz+xxo5dv11jxYNADvdgJDfhyDJFPh1FlqAH7O09nFA=="
+      }
+    },
+    "npm:@material/density": {
+      "type": "npm",
+      "name": "npm:@material/density",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/density",
+        "hash": "sha512-h8BJVCWkPR97WeWCN6/atVbSOP8J4+ZbbssidcwsnX7b3+3IaWdtBxGii25dsILX8pUVwwqxVis24y211b+8rg=="
+      }
+    },
+    "npm:@material/dialog": {
+      "type": "npm",
+      "name": "npm:@material/dialog",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/dialog",
+        "hash": "sha512-4lyxd+5ccOEMUGKzZcssaYyzkCsYTpYCSQSANR0toQPLv3voDwKMfA709uZI6+nL7Re6Xdf7jx8qe+QpTTjVcw=="
+      }
+    },
+    "npm:@material/dom": {
+      "type": "npm",
+      "name": "npm:@material/dom",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/dom",
+        "hash": "sha512-AftSOGQoQg/Ys2kOVjZzvqWmsnhg3Kam/2UC4Gj0DMMCu36J4MAoD+3PpnOd1aG3wiJKtUXR2vPIwE8I/PM9yg=="
+      }
+    },
+    "npm:@material/drawer": {
+      "type": "npm",
+      "name": "npm:@material/drawer",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/drawer",
+        "hash": "sha512-/JUmbzRBaikdbZ250yA9ZTPqp2W5nGvvuHYoNVAAmtOmxuwGvvNNpWiVZy2lIYeYcf1hA7hJ5mEQxs0aSD7iWQ=="
+      }
+    },
+    "npm:@material/elevation": {
+      "type": "npm",
+      "name": "npm:@material/elevation",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/elevation",
+        "hash": "sha512-lwPIOb8fHyOljIWYcVLPT73dPIEOKat/CXu6gqYIVMQgZQIksQNUA7z1O3l7apkRSuYUOYSXqrgU7AnWP4KcJg=="
+      }
+    },
+    "npm:@material/fab": {
+      "type": "npm",
+      "name": "npm:@material/fab",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/fab",
+        "hash": "sha512-XUex3FNqxPD1i/4jITucB/RWTNkkdv52mbNmwrvbuThZlhuhyH9GzOQYTDop/b2783TPcv++xr8UUbuh8GWYzA=="
+      }
+    },
+    "npm:@material/feature-targeting": {
+      "type": "npm",
+      "name": "npm:@material/feature-targeting",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/feature-targeting",
+        "hash": "sha512-/SU9X5y8CRp6RS9qnjnM/N5qfsJ8bYILpR841eZmN6DLqMupaM9Yy7Mx8+v/QvpBLLhk+jmu79nFzwkwW54d6Q=="
+      }
+    },
+    "npm:@material/floating-label": {
+      "type": "npm",
+      "name": "npm:@material/floating-label",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/floating-label",
+        "hash": "sha512-832qZ/qxKx0KUatoeVY3Q2NmboVgiWBG0/1VsbJyodHrgQWfnBOHgLE+M322o6uM3OhvO+kWm4iYbvwhmLZGsw=="
+      }
+    },
+    "npm:@material/focus-ring": {
+      "type": "npm",
+      "name": "npm:@material/focus-ring",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/focus-ring",
+        "hash": "sha512-ar0BtACFS3K14k/enAg0ePeEA/f/RJY4Ji4L/00Dw/B3XVpNRbqLH49jkcbtcQjdTS0FEyk2sWSNMZl6wVi0/A=="
+      }
+    },
+    "npm:@material/form-field": {
+      "type": "npm",
+      "name": "npm:@material/form-field",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/form-field",
+        "hash": "sha512-Q/+ErgtAUFUPPUmWA1m5IP5voiN8XjPRwyoAlFxSTa/4t+EA5B18Z8Bsn9b6I0AC8RHke06H7UWrKz8XUDIFpw=="
+      }
+    },
+    "npm:@material/icon-button": {
+      "type": "npm",
+      "name": "npm:@material/icon-button",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/icon-button",
+        "hash": "sha512-Igyo94rkIlqC91BR1Tv+WLTz1ZWcZZjl1xU7Vsx8mbWA1PnaRDUTNVV5LFi4e0ORp6GSblFTImpHngEy4agMEg=="
+      }
+    },
+    "npm:@material/image-list": {
+      "type": "npm",
+      "name": "npm:@material/image-list",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/image-list",
+        "hash": "sha512-Rcj3q7Tp7Nwbe5ht6ptTc3zqK8TSDJHaPDBf+kzi0kkh6MAB4qoHPgn+HnA+zIZ79CScU56bN7zjA6XYaZvsLw=="
+      }
+    },
+    "npm:@material/layout-grid": {
+      "type": "npm",
+      "name": "npm:@material/layout-grid",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/layout-grid",
+        "hash": "sha512-bkfxZuVzgtjEJgR3n8pvDQbe88ffULDJ5d2DF34IR8SOiRmQcj7UzqAt95XwIUcWlfisLCoIryP4U8XSpFb1EQ=="
+      }
+    },
+    "npm:@material/line-ripple": {
+      "type": "npm",
+      "name": "npm:@material/line-ripple",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/line-ripple",
+        "hash": "sha512-20WmwRrejmtOdI37+959UqEVIjbMtAXlkDOkfCIA3OUhp+oZSjVkCqKxI16jxxVlnzJ353fy8xeSKzOHe4sExQ=="
+      }
+    },
+    "npm:@material/linear-progress": {
+      "type": "npm",
+      "name": "npm:@material/linear-progress",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/linear-progress",
+        "hash": "sha512-IcCd4476pXHloTYadHDJ+2c2lntoVigeNnQEiD/ASQTKqKrJqkIdvvczFm9Ryu+V2+TKhp7vvQGFLUMaLPcmhw=="
+      }
+    },
+    "npm:@material/list": {
+      "type": "npm",
+      "name": "npm:@material/list",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/list",
+        "hash": "sha512-4H5dKIjCUGIPmKjfcegV0SBybD5NNdHp26OU6sovvWIvxSGQtDJr6z9I7i+0vF/HIS5ScbHD2+9/txtL80iqCA=="
+      }
+    },
+    "npm:@material/menu": {
+      "type": "npm",
+      "name": "npm:@material/menu",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/menu",
+        "hash": "sha512-2HOHQAIdWQtXjSvEIrW3lnbcIwFf5XaQhFzCEZ04FcSGApc4iLwsmRFVW3PzWx+mVrUrEfO/K42DVULIX9J1Pg=="
+      }
+    },
+    "npm:@material/menu-surface": {
+      "type": "npm",
+      "name": "npm:@material/menu-surface",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/menu-surface",
+        "hash": "sha512-4h4wZ0Rs7qBg1Otldw8ljp+LCULNL42pqbqcTXhKAkJM7pHcSw4k7IfoThSRLU3+V8T3/+qiAXyeQix2OGHzwg=="
+      }
+    },
+    "npm:@material/notched-outline": {
+      "type": "npm",
+      "name": "npm:@material/notched-outline",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/notched-outline",
+        "hash": "sha512-zmRZHJ+5cOWsBatRyK50wuht78olXySyKOJIIEmy8lxSMZefI1764u0mr8tS1KYF8vSAl5cUlwCC3/2Njz1FPg=="
+      }
+    },
+    "npm:@material/progress-indicator": {
+      "type": "npm",
+      "name": "npm:@material/progress-indicator",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/progress-indicator",
+        "hash": "sha512-92HM5niUnqG5Y3M/xkscBD+2lkaWPDcIRPo0RHPYcyldL+EhWRv/sdQpfdiXw/h3uvKSowKxBMCHm8krAyf+sQ=="
+      }
+    },
+    "npm:@material/radio": {
+      "type": "npm",
+      "name": "npm:@material/radio",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/radio",
+        "hash": "sha512-on8EVztWXc/ajcaowFZ31ClGADYxQrhj4ulMne0NxdHHWQ44ttf5aXOVqtv5mxeOzrRACOkQyTUXBG07yTWCEQ=="
+      }
+    },
+    "npm:@material/ripple": {
+      "type": "npm",
+      "name": "npm:@material/ripple",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/ripple",
+        "hash": "sha512-Vl615/PIBpBD+IOI9Xypz0SV3RsmYJYSNx890Rih7irhUOaPsOUBmTYOWF5AsGBynqLcXoTNVhK92drYLKtJwQ=="
+      }
+    },
+    "npm:@material/rtl": {
+      "type": "npm",
+      "name": "npm:@material/rtl",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/rtl",
+        "hash": "sha512-pgJFw8ZRpWGpwv7ZuBTJ+WdNmFBKoLVoMbbxKQWTHXVwhAqn3aoIq95o62T5QeEG/+sguNShdquG45CpAMmSRw=="
+      }
+    },
+    "npm:@material/segmented-button": {
+      "type": "npm",
+      "name": "npm:@material/segmented-button",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/segmented-button",
+        "hash": "sha512-oqGHs2C7C+yJW/xZf/wP8jBGLs6HcerhM3CsorLAEMH3MGuIlVC17WcisBewEWucsILYEWbySXy/7T4h6/psZA=="
+      }
+    },
+    "npm:@material/select": {
+      "type": "npm",
+      "name": "npm:@material/select",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/select",
+        "hash": "sha512-odoNLiVOgdwbEeePkjHtlr43pjskDwyO8hi4z3jcud1Rg1czk5zoJ2mUI0+olOJjBQ26PGocwrSLqf3qaThbIA=="
+      }
+    },
+    "npm:@material/shape": {
+      "type": "npm",
+      "name": "npm:@material/shape",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/shape",
+        "hash": "sha512-rcWPlCoHyP79ozeEKk73KWt9WTWdh6R68+n75l08TSTvnWZB5RRTmsI9BMkz55O9OJD/8H8ZsOxBe4x2QXUT7w=="
+      }
+    },
+    "npm:@material/slider": {
+      "type": "npm",
+      "name": "npm:@material/slider",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/slider",
+        "hash": "sha512-is1BSBpxaXBBv+wSVpe9WGWmWl59yJEeDNubTES2UFD0er3BmA+PdKkL09vvytDnBcbKf77TbxaRiUSGVaKUQA=="
+      }
+    },
+    "npm:@material/snackbar": {
+      "type": "npm",
+      "name": "npm:@material/snackbar",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/snackbar",
+        "hash": "sha512-2NAtC1qozR/uajszZnPy08Ej8HNnpgvCjNCBerDN4SLH2Q0/aWrVrUjqRCp2ayAvsX+szoroGbCboMhaWRzDuQ=="
+      }
+    },
+    "npm:@material/switch": {
+      "type": "npm",
+      "name": "npm:@material/switch",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/switch",
+        "hash": "sha512-o0wcbYgm2yRs4een5uxT4RJnJ003DxXe33rk8vTBG2o7cdiSR3X7GJQxeIK3D9wPgWCAwBLhNYSzXrlTL5pkMw=="
+      }
+    },
+    "npm:@material/tab": {
+      "type": "npm",
+      "name": "npm:@material/tab",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/tab",
+        "hash": "sha512-HGLK774uMeLnhbjDJBOjft7S6SurZnKb+6Und88OMDUVUEG6MkFBAKQQr09iBIeLE2sUAiGQhBVQtb7LJKwolQ=="
+      }
+    },
+    "npm:@material/tab-bar": {
+      "type": "npm",
+      "name": "npm:@material/tab-bar",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/tab-bar",
+        "hash": "sha512-dMQb1vXsBchQXcjbwgJZIGqTZHngm+3QGSOSb4LWjqHIgC5+w2RRrHsIAjNTyRhKssJ9nKKrbpM/Yz5vTPWH6w=="
+      }
+    },
+    "npm:@material/tab-indicator": {
+      "type": "npm",
+      "name": "npm:@material/tab-indicator",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/tab-indicator",
+        "hash": "sha512-gG2BgHT+ggKnUOaT8LjmH/+9nknRLh8v9qemrhUkDuCtZ8inlaC33OVbbxfrpQW3J+UzBh5YCUSC+2KrN39uUA=="
+      }
+    },
+    "npm:@material/tab-scroller": {
+      "type": "npm",
+      "name": "npm:@material/tab-scroller",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/tab-scroller",
+        "hash": "sha512-6KvBpalc4SwLbHFm0rnuIE64VffUj7AKhnPc+mqM6VmxOvDzQ/ZSYga0rWlUfM4mCDFX3ZkSxim+iNzVF+Ejaw=="
+      }
+    },
+    "npm:@material/textfield": {
+      "type": "npm",
+      "name": "npm:@material/textfield",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/textfield",
+        "hash": "sha512-4BW5bUERPlIeiPnLSby21h1/xDmySuAG9Ucn1LM801a0+5mK3IwWb8031AP3filKZZqTx5JJvOJYZd6/OWBJVA=="
+      }
+    },
+    "npm:@material/theme": {
+      "type": "npm",
+      "name": "npm:@material/theme",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/theme",
+        "hash": "sha512-HWxC5Nhz8JZKTLTVmAsNxIGB3Kzr53+YFMg327S8/XuEDmI0RFHFvtwM9rADmyrHFBmUaVhV4iELyxFdi67c9w=="
+      }
+    },
+    "npm:@material/tokens": {
+      "type": "npm",
+      "name": "npm:@material/tokens",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/tokens",
+        "hash": "sha512-+5iGfQ51YSb0Qau8uC6/jHXCSC3enKaQKDf/iPHfuXAe04UznW3tmm1/Ju227aZXNISTJcnQYa2rpm1M14MeUg=="
+      }
+    },
+    "npm:@material/tooltip": {
+      "type": "npm",
+      "name": "npm:@material/tooltip",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/tooltip",
+        "hash": "sha512-Ja2Z4aZQkYWD6InXA+MG4M9zdKR6dYsXXlYzQppYpfcQzXylZqh5Y7WBLulG5fA2o83pHVwILfwFZM7j7ht08Q=="
+      }
+    },
+    "npm:@material/top-app-bar": {
+      "type": "npm",
+      "name": "npm:@material/top-app-bar",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/top-app-bar",
+        "hash": "sha512-twQchmCa1In/FFrALPYojgeM8vmV7KH96wRY9NmPSJ046ANgPCicLBgLuSzrLETCFqAwbztqzxSG4xMBL81rYg=="
+      }
+    },
+    "npm:@material/touch-target": {
+      "type": "npm",
+      "name": "npm:@material/touch-target",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/touch-target",
+        "hash": "sha512-ubyD1TUjZnRPEdDnk6Lrcm2ZsjnU7CV5y7IX8pj9IPawiM6bx4FkjZBxUvclbv3WiTGk5UOnwPOySYAJYAMQ1w=="
+      }
+    },
+    "npm:@material/typography": {
+      "type": "npm",
+      "name": "npm:@material/typography",
+      "data": {
+        "version": "15.0.0-canary.a246a4439.0",
+        "packageName": "@material/typography",
+        "hash": "sha512-eXzBl9ROzWZ+41nan5pCrn1C/Zq3o/VsrLFaGv8fdRmhRR6/wHMeuvCCwGf5VtEmWdAE9FpJzRU/4ZPiJCJUyg=="
       }
     },
     "npm:@ngtools/webpack": {
@@ -8703,6 +9171,15 @@
         "hash": "sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg=="
       }
     },
+    "npm:safevalues": {
+      "type": "npm",
+      "name": "npm:safevalues",
+      "data": {
+        "version": "0.3.4",
+        "packageName": "safevalues",
+        "hash": "sha512-LRneZZRXNgjzwG4bDQdOTSbze3fHm1EAKN/8bePxnlEZiBmkYEDggaHbuvHI9/hoqHbGfsEA7tWS9GhYHZBBsw=="
+      }
+    },
     "npm:sass": {
       "type": "npm",
       "name": "npm:sass",
@@ -10401,6 +10878,31 @@
       "type": "static"
     },
     {
+      "source": "npm:@angular/cdk",
+      "target": "npm:@angular/common",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/cdk",
+      "target": "npm:@angular/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/cdk",
+      "target": "npm:rxjs",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/cdk",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/cdk",
+      "target": "npm:parse5",
+      "type": "static"
+    },
+    {
       "source": "npm:@angular/cli",
       "target": "npm:@angular-devkit/architect",
       "type": "static"
@@ -10602,6 +11104,281 @@
     },
     {
       "source": "npm:@angular/forms",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@angular/animations",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@angular/cdk",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@angular/common",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@angular/core",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@angular/forms",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@angular/platform-browser",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:rxjs",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/auto-init",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/banner",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/card",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/checkbox",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/chips",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/circular-progress",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/data-table",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/dialog",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/drawer",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/fab",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/floating-label",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/form-field",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/icon-button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/image-list",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/layout-grid",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/line-ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/linear-progress",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/list",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/menu",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/menu-surface",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/notched-outline",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/radio",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/segmented-button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/select",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/slider",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/snackbar",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/switch",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/tab",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/tab-bar",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/tab-indicator",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/tab-scroller",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/textfield",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/tooltip",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/top-app-bar",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@angular/material",
       "target": "npm:tslib",
       "type": "static"
     },
@@ -12853,6 +13630,2016 @@
     {
       "source": "npm:@ljharb/through",
       "target": "npm:call-bind",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/animation",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/auto-init",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/auto-init",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/banner",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/base",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/button",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/card",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/checkbox",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/checkbox",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:safevalues",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/chips",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:@material/progress-indicator",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/circular-progress",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/checkbox",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/icon-button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/linear-progress",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/list",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/menu",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/select",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/data-table",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/density",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/icon-button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dialog",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dom",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dom",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/dom",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/list",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/drawer",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/elevation",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/elevation",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/elevation",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/elevation",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/elevation",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/elevation",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/fab",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/feature-targeting",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/floating-label",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/focus-ring",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/focus-ring",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/focus-ring",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/form-field",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/form-field",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/form-field",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/form-field",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/form-field",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/form-field",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/form-field",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/icon-button",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/image-list",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/image-list",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/image-list",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/image-list",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/image-list",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/layout-grid",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/line-ripple",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/line-ripple",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/line-ripple",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/line-ripple",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/line-ripple",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:@material/progress-indicator",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/linear-progress",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/list",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/list",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/menu-surface",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/menu-surface",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/notched-outline",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/notched-outline",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/notched-outline",
+      "target": "npm:@material/floating-label",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/notched-outline",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/notched-outline",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/notched-outline",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/notched-outline",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/progress-indicator",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/radio",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/ripple",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/ripple",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/ripple",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/ripple",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/ripple",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/ripple",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/ripple",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/rtl",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/rtl",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:@material/touch-target",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/segmented-button",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/floating-label",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/line-ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/list",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/menu",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/menu-surface",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/notched-outline",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/select",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/shape",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/shape",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/shape",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/shape",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/slider",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/icon-button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/snackbar",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:safevalues",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/switch",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/focus-ring",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/tab-indicator",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/tab",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/tab-indicator",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/tab-scroller",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-bar",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-indicator",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-indicator",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-indicator",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-indicator",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-indicator",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-scroller",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-scroller",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-scroller",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-scroller",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-scroller",
+      "target": "npm:@material/tab",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tab-scroller",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/density",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/floating-label",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/line-ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/notched-outline",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/textfield",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/theme",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/theme",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tokens",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/button",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/dom",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/tokens",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:safevalues",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/tooltip",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/animation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/elevation",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/ripple",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/shape",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:@material/typography",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/top-app-bar",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/touch-target",
+      "target": "npm:@material/base",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/touch-target",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/touch-target",
+      "target": "npm:@material/rtl",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/touch-target",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/touch-target",
+      "target": "npm:tslib",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/typography",
+      "target": "npm:@material/feature-targeting",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/typography",
+      "target": "npm:@material/theme",
+      "type": "static"
+    },
+    {
+      "source": "npm:@material/typography",
+      "target": "npm:tslib",
       "type": "static"
     },
     {
