@@ -1,0 +1,58 @@
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="search"],
+input:not([type]),
+textarea,
+.sa-input {
+  --input-sides-padding: 10px;
+  --input-prefix-suffix-padding: calc(var(--input-sides-padding) + 35px);
+
+  width: 100%;
+  padding: var(--input-sides-padding) 15px;
+  font-size: var(--font-size-400);
+  line-height: inherit;
+  color: inherit;
+  border: 1px solid var(--input-border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--ink-primary-contrast-color);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border: 1px solid var(--brand-primary-color-500);
+}
+
+input:disabled,
+textarea:disabled,
+select:disabled {
+  border: 1px solid var(--input-disabled-border-color);
+  background-color: var(--input-disabled-background-color);
+}
+
+input.has-prefix {
+  padding-left: var(--input-prefix-suffix-padding);
+}
+
+input.has-suffix {
+  padding-right: var(--input-prefix-suffix-padding);
+}
+
+input[type="search"] {
+  padding: 10px;
+  background-image: url(/assets/icons/search-icon.svg);
+  background-size: 1.3rem;
+  background-position: 10px center;
+  background-repeat: no-repeat;
+  padding-left: calc(20px + 1rem);
+  border-color: var(--ink-secondary-light-color);
+  font-size: var(--font-size-400);
+  min-width: 250px;
+}
+
+textarea {
+  resize: none;
+  min-height: 150px;
+}

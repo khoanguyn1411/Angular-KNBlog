@@ -1,0 +1,34 @@
+.sa-skeleton {
+  border-radius: 3px;
+  background: linear-gradient(-45deg, #e7e7e7, #dddddd, #c9c7c7, #c9c7c7);
+  background-size: 400% 400%;
+  animation: skeleton-gradient-move 3s ease-in-out infinite;
+}
+
+@keyframes skeleton-gradient-move {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+h1.sa-skeleton::before,
+h2.sa-skeleton::before,
+h3.sa-skeleton::before,
+h4.sa-skeleton::before,
+h5.sa-skeleton::before,
+h6.sa-skeleton::before,
+p.sa-skeleton::before,
+span.sa-skeleton::before,
+time.sa-skeleton::before,
+a.sa-skeleton::before {
+  /* To emulate height of text. */
+  content: ".";
+  display: inline-block;
+  color: transparent;
+}

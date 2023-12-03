@@ -41,7 +41,8 @@
               "projects/web/src/assets"
             ],
             "styles": [
-              "projects/web/src/custom-theme.scss",
+              "projects/common/src/lib/shared/theme/custom-theme.scss",
+              "projects/common/src/lib/shared/theme/custom-components/index.css",
               "projects/web/src/styles.css"
             ],
             "scripts": [],

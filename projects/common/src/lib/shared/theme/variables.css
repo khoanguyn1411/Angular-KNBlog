@@ -1,0 +1,64 @@
+:root {
+  --brand-primary-color-50: #FFF7ED;
+  --brand-primary-color-100: #FFEDD5;
+  --brand-primary-color-200: #FED7AA;
+  --brand-primary-color-300: #FDBA74;
+  --brand-primary-color-400: #FB923C;
+  --brand-primary-color-500: #F97316;
+  --brand-primary-color-600: #EA580C;
+  --brand-primary-color-700: #C2410C;
+  --brand-primary-color-800: #9A3412;
+  --brand-primary-color-900: #7C2D12;
+  --brand-primary-color-950: #431407;
+
+  --brand-gray-color-50:#FFF7ED;
+  --brand-gray-color-100:#F5F5F4;
+  --brand-gray-color-200:#E7E5E4;
+  --brand-gray-color-300:#D6D3D1;
+  --brand-gray-color-400:#A8A29E;
+  --brand-gray-color-500:#78716C;
+  --brand-gray-color-600:#57534E;
+  --brand-gray-color-700:#44403C;
+  --brand-gray-color-800:#292524;
+  --brand-gray-color-900:#1C1917;
+  --brand-gray-color-950:#0C0A09;
+
+  --brand-black-color: #000000;
+  --brand-white-color: #ffffff;
+  --brand-black-five-percent-color: rgba(0, 0, 0, 0.05);
+
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-28: 1.75rem;
+  --font-size-32: 2rem;
+  --font-size-36: 2.25rem;
+  --font-size-48: 3rem;
+  --font-size-56: 3.5rem;
+
+  --ink-primary-color: #2a2929;
+  --ink-primary-light-color: #5f5e5e;
+  --ink-primary-dark-color: #000000;
+
+  --ink-primary-contrast-light-color: #ffffff;
+
+  --ink-secondary-color: #b1afaf;
+  --ink-secondary-light-color: #dcdbdb;
+  --ink-secondary-dark-color: #8b8a8a;
+
+  --ink-hover-primary-color: #f8f0e9;
+  --ink-hover-secondary-color: rgba(0, 0, 0, 0.05);
+
+  --overlay-color: rgba(0, 0, 0, 1);
+
+  --header-height: 78px;
+  --header-logo-width: 158px;
+  --aside-width: 240px;
+  --app-max-width: 1600px;
+
+  --input-border-color: hsla(0, 0%, 0%, 0.2);
+  --input-disabled-border-color: hsla(0, 0%, 0%, 0.12);
+  --input-disabled-background-color: hsla(0, 0%, 93%, 1);
+}

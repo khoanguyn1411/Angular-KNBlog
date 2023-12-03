@@ -1,0 +1,34 @@
+.custom-mat-select.mat-mdc-select {
+  border: 1px solid var(--ink-secondary-light-color);
+  border-radius: var(--border-radius);
+  height: 50px;
+}
+
+.custom-mat-select.mat-mdc-select-disabled {
+  border: 1px solid var(--input-disabled-border-color);
+  background-color: var(--input-disabled-background-color);
+}
+
+.custom-mat-select .mat-mdc-select-value {
+  padding-left: 15px;
+}
+
+.custom-mat-select .mat-mdc-select-arrow-wrapper {
+  padding-right: 15px;
+}
+
+.mat-mdc-select-trigger {
+  height: 100%;
+}
+
+.mat-mdc-option.option_with-content .mdc-list-item__primary-text {
+  width: 100%;
+}
+
+.mat-mdc-option.mdc-list-item.mdc-list-item--disabled {
+  opacity: 1;
+}
+
+.mdc-list-item__primary-text {
+  width: 100%;
+}
