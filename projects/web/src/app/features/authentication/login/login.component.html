@@ -1,4 +1,13 @@
 <div>
   <!-- We cannot custom the UI of google login button. Ref: https://github.com/abacritt/angularx-social-login/issues/744#issuecomment-1873387930 -->
-  <asl-google-signin-button shape="circle" type='standard' size='large' text="signin_with"/>
+  <asl-google-signin-button
+    shape="circle"
+    type="standard"
+    size="large"
+    text="signin_with"
+  />
+  <ng-container *ngIf="result$ | async as result">
+    <p>{{ result.title }}</p>
+    <p>{{ result.userId }}</p>
+  </ng-container>
 </div>

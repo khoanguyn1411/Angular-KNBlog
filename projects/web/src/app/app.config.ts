@@ -8,11 +8,13 @@ import { provideSocialOauth } from '../shared/social-oath.config';
 import { WebAppConfig } from '../shared/web-app.config';
 import { provideWebAppRoutes } from '../shared/web-route-paths';
 import { routes } from './app.routes';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideRouter(routes),
     provideClientHydration(),
+    provideHttpClient(),
     provideAnimations(),
     provideWebAppRoutes(),
     provideSocialOauth(),
