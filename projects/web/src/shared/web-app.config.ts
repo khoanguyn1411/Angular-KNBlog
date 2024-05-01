@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Injectable } from "@angular/core";
 import { AppConfig } from "@knb/core/services/app.config";
 
@@ -6,12 +7,8 @@ import { AppConfig } from "@knb/core/services/app.config";
 @Injectable()
 export class WebAppConfig extends AppConfig {
 
-	// /** @inheritdoc */
-	// public readonly apiUrl: string = import.meta.env.NG_APP_API_URL;
-
-
 	/** @inheritdoc */
-	public readonly apiUrl: string = "asdad";
+	public readonly apiUrl: string = import.meta.env.NG_APP_API_URL as string;
 
 	/** @inheritdoc */
 	public readonly version: string = this.getAppVersion();
@@ -20,13 +17,9 @@ export class WebAppConfig extends AppConfig {
 	 * Provides app version with optional suffix.
 	 */
 	private getAppVersion(): string {
-		// return this.applySuffixIfPresent(
-		// 	this.applySuffixIfPresent(import.meta.env.NG_APP_VERSION, import.meta.env.NG_APP_COMMIT),
-		// 	import.meta.env.NG_APP_ENV,
-		// );
-    return this.applySuffixIfPresent(
-			this.applySuffixIfPresent("Adsad", "asddsa"),
-			"asdasdas",
+		return this.applySuffixIfPresent(
+			this.applySuffixIfPresent(import.meta.env.NG_APP_VERSION as string, import.meta.env.NG_APP_COMMIT as string),
+			import.meta.env.NG_APP_ENV as string,
 		);
 	}
 
