@@ -1,0 +1,35 @@
+{
+  "extends": "../../.eslintrc.json",
+  "ignorePatterns": ["!**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["projects/web/tsconfig.(app|spec).json"],
+        "createDefaultProgram": true,
+        "extraFileExtensions": [".html"]
+      },
+      "rules": {
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "type": "attribute",
+            "prefix": "knw",
+            "style": "camelCase"
+          }
+        ],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "type": "element",
+            "prefix": "knw",
+            "style": "kebab-case"
+          }
+        ],
+        "@angular-eslint/no-lifecycle-call": ["error"],
+        "@angular-eslint/prefer-on-push-component-change-detection": ["error"],
+        "@angular-eslint/prefer-output-readonly": ["error"]
+      }
+    }
+  ]
+}
