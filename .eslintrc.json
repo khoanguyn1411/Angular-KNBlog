@@ -3,13 +3,9 @@
   "ignorePatterns": ["projects/*/src/index.html"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.json"
-        ],
+        "project": ["tsconfig.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -36,69 +32,53 @@
             "style": "kebab-case"
           }
         ],
-        "rxjs/no-exposed-subjects": [
+        "rxjs/no-exposed-subjects": ["error", { "allowProtected": true }],
+        "rxjs/finnish": [
           "error",
-          { "allowProtected": true }
+          {
+            "functions": false,
+            "methods": false,
+            "names": {
+              "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate)$": false
+            },
+            "parameters": true,
+            "properties": true,
+            "strict": true,
+            "types": {
+              "^EventEmitter$": false
+            },
+            "variables": true
+          }
         ],
         "rxjs/no-ignored-replay-buffer": "error",
         "rxjs/no-internal": "error",
         "rxjs/no-nested-subscribe": "error",
-        "rules": {
-          "rxjs/no-exposed-subjects": [
-            "error",
-            { "allowProtected": true }
-          ],
-          "rxjs/finnish": [
-            "error",
-            {
-              "functions": false,
-              "methods": false,
-              "names": {
-                "^(canActivate|canActivateChild|canDeactivate|canLoad|intercept|resolve|validate)$": false
-              },
-              "parameters": true,
-              "properties": true,
-              "strict": true,
-              "types": {
-                "^EventEmitter$": false
-              },
-              "variables": true
-            }
-          ],
-          "rxjs/no-ignored-replay-buffer": "error",
-          "rxjs/no-internal": "error",
-          "rxjs/no-nested-subscribe": "error",
-          "rxjs/no-unbound-methods": "error",
-          "rxjs/throw-error": "error",
-          "rxjs/no-async-subscribe": "error",
-          "rxjs/no-create": "error",
-          "rxjs/no-ignored-observable": "error",
-          "rxjs/no-implicit-any-catch": "error",
-          "rxjs/no-index": "error",
-          "rxjs/no-sharereplay": [
-            "error",
-            {
-              "allowConfig": true
-            }
-          ],
-          "rxjs/no-subclass": "error",
-          "rxjs/no-subject-value": "error",
-          "rxjs/no-unsafe-takeuntil": [
-            "error",
-            {
-                "alias": ["takeUntilDestroy"]
-            }
-          ]
-        }
+        "rxjs/no-unbound-methods": "error",
+        "rxjs/throw-error": "error",
+        "rxjs/no-async-subscribe": "error",
+        "rxjs/no-create": "error",
+        "rxjs/no-ignored-observable": "error",
+        "rxjs/no-implicit-any-catch": "error",
+        "rxjs/no-index": "error",
+        "rxjs/no-sharereplay": [
+          "error",
+          {
+            "allowConfig": true
+          }
+        ],
+        "rxjs/no-subclass": "error",
+        "rxjs/no-subject-value": "error",
+        "rxjs/no-unsafe-takeuntil": [
+          "error",
+          {
+            "alias": ["takeUntilDestroy"]
+          }
+        ]
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ],
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
     }
   ]
