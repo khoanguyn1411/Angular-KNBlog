@@ -68,12 +68,6 @@
         ],
         "rxjs/no-subclass": "error",
         "rxjs/no-subject-value": "error",
-        "rxjs/no-unsafe-takeuntil": [
-          "error",
-          {
-            "alias": ["takeUntilDestroy"]
-          }
-        ]
       }
     },
     {
