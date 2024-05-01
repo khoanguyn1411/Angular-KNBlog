@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import { Injectable } from "@angular/core";
 import { AppConfig } from "@knb/core/services/app.config";
 
