@@ -1,6 +1,6 @@
 import { inject, InjectionToken, Provider } from '@angular/core';
-import { buildRoutePaths } from '@knb/shared/utils/route-paths/build-route-paths';
-import { baseRoutePaths } from '@knb/shared/utils/route-paths/route-paths';
+import { buildRoutePaths } from '@knb/core/utils/route-paths/build-route-paths';
+import { baseRoutePaths } from '@knb/core/utils/route-paths/route-paths';
 
 /** Job id param. */
 export const JOB_ID_PARAM = 'jobId';
