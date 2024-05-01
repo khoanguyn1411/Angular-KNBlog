@@ -16,6 +16,7 @@
       ],
       "plugins": ["rxjs", "@typescript-eslint"],
       "rules": {
+        "@typescript-eslint/explicit-member-accessibility": "error",
         "@angular-eslint/directive-selector": [
           "error",
           {
@@ -67,13 +68,49 @@
           }
         ],
         "rxjs/no-subclass": "error",
-        "rxjs/no-subject-value": "error",
+        "rxjs/no-subject-value": "error"
       }
     },
     {
       "files": ["*.html"],
       "extends": ["plugin:@angular-eslint/template/recommended"],
       "rules": {}
+    },
+    {
+      "files": ["*.dto.ts", "*.mapper.ts"],
+      "rules": {
+        "no-restricted-syntax": [
+          "error",
+          {
+            "selector": "TSPropertySignature[readonly=undefined]",
+            "message": "Missing 'readonly' modifier for the DTO property."
+          },
+          {
+            "selector": "TSPropertySignature TSTypeAnnotation[typeAnnotation.type='TSArrayType']",
+            "message": "Missing 'readonly' type modifier for array."
+          }
+        ],
+        "@typescript-eslint/naming-convention": "off"
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {
+        "@angular-eslint/template/alt-text": "error",
+        "@angular-eslint/template/button-has-type": "error",
+        "@angular-eslint/template/no-duplicate-attributes": "error",
+        "@angular-eslint/template/no-inline-styles": [
+          "error",
+          {
+            "allowNgStyle": true,
+            "allowBindToStyle": true
+          }
+        ],
+        "@angular-eslint/template/no-interpolation-in-attributes": "error",
+        "@angular-eslint/template/no-positive-tabindex": "error",
+        "@angular-eslint/template/use-track-by-function": "error"
+      }
     }
   ]
 }

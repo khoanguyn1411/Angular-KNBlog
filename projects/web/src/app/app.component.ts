@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'web';
+  protected title = 'web';
 
-  title$ = new Observable()
+  protected title$ = new Observable()
 }
