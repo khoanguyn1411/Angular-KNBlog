@@ -1,4 +1,4 @@
-import { Injectable } from "@angular/core";
+import { Injectable, Provider } from "@angular/core";
 import { AppConfig } from "@knb/core/services/app.config";
 
 
@@ -34,4 +34,8 @@ export class WebAppConfig extends AppConfig {
 		}
 		return str.concat(suffix ? `-${suffix}` : '');
 	}
+}
+
+export function provideWebAppConfig(): Provider {
+  return { provide: AppConfig, useClass: WebAppConfig };
 }
