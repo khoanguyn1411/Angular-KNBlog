@@ -9,6 +9,10 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+// Disable duplication warnings when compile.
+// Not sure why VS Code yell the error, but this is expected.
+mat.$theme-ignore-duplication-warnings: true;
+
 $white-palette: (
   50: white,
   100: white,
@@ -79,6 +83,8 @@ $app-theme-orange: mat.define-light-theme((
     accent: $app-accent,
   ),
 ));
+
+@include mat.all-component-themes($app-theme-blue);
 
 /* Blue Theme */
 .blue-theme {

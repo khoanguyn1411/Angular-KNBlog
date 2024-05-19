@@ -8,6 +8,7 @@ import { provideSocialOauth } from '../shared/social-oath.config';
 import { provideWebAppConfig } from '../shared/web-app.config';
 import { provideWebAppRoutes } from '../shared/web-route-paths';
 import { routes } from './app.routes';
+import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -18,5 +19,6 @@ export const appConfig: ApplicationConfig = {
     provideWebAppRoutes(),
     provideSocialOauth(),
     provideWebAppConfig(),
+		{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', subscriptSizing: 'fixed' } },
   ],
 };
