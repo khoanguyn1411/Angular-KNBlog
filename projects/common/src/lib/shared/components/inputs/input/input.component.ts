@@ -8,7 +8,7 @@ import { InputBase } from '../input-base';
 
 /** Input component. */
 @Component({
-	selector: 'elconc-input',
+	selector: 'knc-input',
 	templateUrl: './input.component.html',
 	styleUrl: './input.component.css',
 	standalone: true,
@@ -16,6 +16,7 @@ import { InputBase } from '../input-base';
 	imports: [MatInputModule, MatFormFieldModule, ReactiveFormsModule, FormControlValidationMessageComponent],
 })
 export class InputComponent extends InputBase {
+
 	/** Input type. */
 	public readonly type = input('text');
 

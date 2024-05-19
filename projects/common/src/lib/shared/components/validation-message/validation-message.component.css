@@ -1,0 +1,18 @@
+:host {
+	display: block;
+	min-height: 0.8rem;
+	margin: 2px 0 4px 0;
+	line-height: 1;
+	color: var(--error-color);
+	font-size: 0.8rem;
+	font-weight: bold;
+}
+
+span {
+	color: inherit;
+	font-size: inherit;
+	font-style: inherit;
+	font-weight: inherit;
+	animation: fadein 300ms ease-in-out;
+	line-height: 1;
+}

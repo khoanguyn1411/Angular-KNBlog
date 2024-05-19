@@ -1,0 +1,7 @@
+@if (formControl$ | async; as formControl) {
+	@if (shouldDisplayErrorMessage(formControl)) {
+		<knc-validation-message [errors]="formControl.errors" />
+	} @else {
+		<knc-validation-message />
+	}
+}

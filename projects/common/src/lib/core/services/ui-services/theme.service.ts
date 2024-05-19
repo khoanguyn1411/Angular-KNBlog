@@ -1,19 +1,31 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { ThemeValue } from '@knb/core/models/theme';
+import { Observable, defer, merge, of } from 'rxjs';
+import { ThemeStorageService } from './theme-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
 
+  private readonly themeStorage = inject(ThemeStorageService)
+
   private themeClass = 'blue-theme';
 
-  public setTheme(theme: string) {
-    this.themeClass = theme;
-    document.body.className = '';
-    document.body.classList.add(this.themeClass);
+  private currentThemeFromStorage$ = this.themeStorage.getTheme()
+
+  public setTheme(theme: ThemeValue): Observable<void> {
+    const setThemeToClassEffect$ = defer(() => {
+      this.themeClass = theme;
+      document.body.className = '';
+      document.body.classList.add(this.themeClass);
+      return of(undefined)
+    })
+    const setThemeToLocalStorageEffect$ = this.setTheme(theme)
+    return merge(setThemeToClassEffect$, setThemeToLocalStorageEffect$)
   }
 
-  public getTheme() {
-    return this.themeClass;
+  public getCurrentTheme() {
+    return this.currentThemeFromStorage$;
   }
 }

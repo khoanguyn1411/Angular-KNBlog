@@ -19,6 +19,9 @@ export const appConfig: ApplicationConfig = {
     provideWebAppRoutes(),
     provideSocialOauth(),
     provideWebAppConfig(),
-		{ provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: { appearance: 'outline', subscriptSizing: 'fixed' } },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: { appearance: 'outline', subscriptSizing: 'fixed' },
+    },
   ],
 };

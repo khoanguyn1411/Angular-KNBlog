@@ -1,14 +1,16 @@
-<mat-form-field class="form-field">
-	<mat-label>{{ label() }}</mat-label>
-	<input
-		matInput
-		[type]="type()"
-		[formControl]="formControl"
-		[placeholder]="placeholder()"
-		[autocomplete]="autocomplete()"
-		(change)="onChange($event)"
-	/>
-	<mat-error>
-		<elconc-form-control-validation-message [control]="formControl" />
-	</mat-error>
-</mat-form-field>
+<div class="wrapper">
+  <mat-form-field class="form-field">
+    <mat-label>{{ label() }}</mat-label>
+    <input
+      matInput
+      [type]="type()"
+      [formControl]="formControl"
+      [placeholder]="placeholder()"
+      [autocomplete]="autocomplete()"
+      (change)="onChange($event)"
+    />
+    <mat-error>
+      <knc-form-control-validation-message [control]="formControl" />
+    </mat-error>
+  </mat-form-field>
+</div>
