@@ -10,8 +10,6 @@ import { MainComponent } from './main/main.component';
   templateUrl: './layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./layout.component.css'],
-  imports: [FooterComponent, HeaderComponent, MainComponent]
+  imports: [FooterComponent, HeaderComponent, MainComponent],
 })
-export class LayoutComponent {
-
-}
+export class LayoutComponent {}
