@@ -6,7 +6,7 @@ import { assertNonNull } from './assert-non-null';
 /**
  * Injection token to use instead of global window object.
  */
-export const WINDOW_TOKEN = new InjectionToken<Window>(
+export const WINDOW_TOKEN = new InjectionToken<Window | null>(
 	'An abstraction over global window object',
 	{
 		factory() {

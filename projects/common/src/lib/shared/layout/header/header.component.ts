@@ -1,7 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { MatButtonModule } from "@angular/material/button";
-import { ThemeValue } from '@knb/core/models/theme';
-import { ThemeService } from '@knb/core/services/ui-services/theme.service';
 
 /** Header component. */
 @Component({
@@ -13,8 +11,5 @@ import { ThemeService } from '@knb/core/services/ui-services/theme.service';
   imports: [MatButtonModule]
 })
 export class HeaderComponent {
-  private themeService = inject(ThemeService)
 
-  protected switchTheme(theme: ThemeValue) {
-  }
 }
