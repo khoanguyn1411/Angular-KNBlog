@@ -43,7 +43,8 @@
             "styles": [
               "projects/common/src/lib/shared/theme/custom-theme.scss",
               "projects/common/src/lib/shared/theme/custom-components/index.css",
-              "projects/web/src/styles.css"
+              "projects/web/src/styles.css",
+              "projects/common/src/lib/shared/theme/styles.css"
             ],
             "scripts": [],
             "server": "projects/web/src/main.server.ts",

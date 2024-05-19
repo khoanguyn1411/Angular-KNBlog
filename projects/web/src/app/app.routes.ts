@@ -7,9 +7,4 @@ export const routes: Routes = [
     pathMatch: 'full',
     redirectTo: webRoutePaths.root.path
   },
-  {
-    path: webRoutePaths.auth.path,
-    loadChildren: () =>
-      import('./features/authentication/auth.routes').then(r => r.AUTH_ROUTES),
-  },
 ];

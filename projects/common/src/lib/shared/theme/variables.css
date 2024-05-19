@@ -1,31 +1,67 @@
 :root {
-  --brand-primary-color-50: #FFF7ED;
-  --brand-primary-color-100: #FFEDD5;
-  --brand-primary-color-200: #FED7AA;
-  --brand-primary-color-300: #FDBA74;
-  --brand-primary-color-400: #FB923C;
-  --brand-primary-color-500: #F97316;
-  --brand-primary-color-600: #EA580C;
-  --brand-primary-color-700: #C2410C;
-  --brand-primary-color-800: #9A3412;
-  --brand-primary-color-900: #7C2D12;
-  --brand-primary-color-950: #431407;
+  --primary-color-blue-50: #ebf8ff;
+  --primary-color-blue-100: #bee3f8;
+  --primary-color-blue-200: #90cdf4;
+  --primary-color-blue-300: #63b3ed;
+  --primary-color-blue-400: #4299e1;
+  --primary-color-blue-500: #3182ce;
+  --primary-color-blue-600: #2b6cb0;
+  --primary-color-blue-700: #2c5282;
+  --primary-color-blue-800: #2a4365;
+  --primary-color-blue-900: #1a365d;
 
-  --brand-gray-color-50:#FFF7ED;
-  --brand-gray-color-100:#F5F5F4;
-  --brand-gray-color-200:#E7E5E4;
-  --brand-gray-color-300:#D6D3D1;
-  --brand-gray-color-400:#A8A29E;
-  --brand-gray-color-500:#78716C;
-  --brand-gray-color-600:#57534E;
-  --brand-gray-color-700:#44403C;
-  --brand-gray-color-800:#292524;
-  --brand-gray-color-900:#1C1917;
-  --brand-gray-color-950:#0C0A09;
+  --primary-color-purple-50: #f3e8ff;
+  --primary-color-purple-100: #e9d5ff;
+  --primary-color-purple-200: #d8b4fe;
+  --primary-color-purple-300: #c084fc;
+  --primary-color-purple-400: #a855f7;
+  --primary-color-purple-500: #9333ea;
+  --primary-color-purple-600: #7e22ce;
+  --primary-color-purple-700: #6b21a8;
+  --primary-color-purple-800: #581c87;
+  --primary-color-purple-900: #3b0764;
 
-  --brand-black-color: #000000;
-  --brand-white-color: #ffffff;
-  --brand-black-five-percent-color: rgba(0, 0, 0, 0.05);
+  --primary-color-green-50: #ecfdf5;
+  --primary-color-green-100: #d1fae5;
+  --primary-color-green-200: #a7f3d0;
+  --primary-color-green-300: #6ee7b7;
+  --primary-color-green-400: #34d399;
+  --primary-color-green-500: #10b981;
+  --primary-color-green-600: #059669;
+  --primary-color-green-700: #047857;
+  --primary-color-green-800: #065f46;
+  --primary-color-green-900: #064e3b;
+
+  --primary-color-orange-50: #fff7ed;
+  --primary-color-orange-100: #ffedd5;
+  --primary-color-orange-200: #fed7aa;
+  --primary-color-orange-300: #fdba74;
+  --primary-color-orange-400: #fb923c;
+  --primary-color-orange-500: #f97316;
+  --primary-color-orange-600: #ea580c;
+  --primary-color-orange-700: #c2410c;
+  --primary-color-orange-800: #9a3412;
+  --primary-color-orange-900: #7c2d12;
+
+  --gray-color-50:#FFF7ED;
+  --gray-color-100:#F5F5F4;
+  --gray-color-200:#E7E5E4;
+  --gray-color-300:#D6D3D1;
+  --gray-color-400:#A8A29E;
+  --gray-color-500:#78716C;
+  --gray-color-600:#57534E;
+  --gray-color-700:#44403C;
+  --gray-color-800:#292524;
+  --gray-color-900:#1C1917;
+  --gray-color-950:#0C0A09;
+
+  --primary-color-blue: var(--primary-color-blue-500);
+  --primary-color-purple: var(--primary-color-purple-500);
+  --primary-color-green: var(--primary-color-green-500);
+  --primary-color-orange: var(--primary-color-orange-500);
+
+  --text-primary-dark-color: #000000;
+  --text-primary-light-color: #ffffff;
 
   --font-size-14: 0.875rem;
   --font-size-16: 1rem;
@@ -38,27 +74,9 @@
   --font-size-48: 3rem;
   --font-size-56: 3.5rem;
 
-  --ink-primary-color: #2a2929;
-  --ink-primary-light-color: #5f5e5e;
-  --ink-primary-dark-color: #000000;
-
-  --ink-primary-contrast-light-color: #ffffff;
-
-  --ink-secondary-color: #b1afaf;
-  --ink-secondary-light-color: #dcdbdb;
-  --ink-secondary-dark-color: #8b8a8a;
-
-  --ink-hover-primary-color: #f8f0e9;
-  --ink-hover-secondary-color: rgba(0, 0, 0, 0.05);
-
   --overlay-color: rgba(0, 0, 0, 1);
 
-  --header-height: 78px;
-  --header-logo-width: 158px;
-  --aside-width: 240px;
   --app-max-width: 1600px;
 
-  --input-border-color: hsla(0, 0%, 0%, 0.2);
-  --input-disabled-border-color: hsla(0, 0%, 0%, 0.12);
-  --input-disabled-background-color: hsla(0, 0%, 93%, 1);
+  --border-radius: 4px;
 }

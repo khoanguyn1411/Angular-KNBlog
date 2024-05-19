@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+}
+
+.first-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.second-section {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
