@@ -1,8 +1,8 @@
 import { Injectable, inject } from '@angular/core';
 import {
+  BehaviorSubject,
   EMPTY,
   Observable,
-  Subject,
   defer,
   filter,
   fromEvent,
@@ -10,7 +10,7 @@ import {
   merge,
   of,
   shareReplay,
-  startWith,
+  startWith
 } from 'rxjs';
 import { z } from 'zod';
 
@@ -22,7 +22,7 @@ import { WINDOW_TOKEN } from '@knb/core/utils/rxjs/window-token';
 })
 export class StorageService {
   /** Emits the key of the changed value. */
-  private readonly valueChangedSubject$ = new Subject<string>();
+  private readonly valueChangedSubject$ = new BehaviorSubject<string>("");
 
   private readonly localStorage: Storage | null;
 
