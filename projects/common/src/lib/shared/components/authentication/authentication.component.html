@@ -1,7 +1,5 @@
-<section>
-  @if (dialogData.state === "signIn") {
-    <knc-login></knc-login>
-  } @else {
-    <knc-register></knc-register>
-  }
-</section>
+@if (dialogData.state === "signIn") {
+<knc-login></knc-login>
+} @else {
+<knc-register></knc-register>
+}

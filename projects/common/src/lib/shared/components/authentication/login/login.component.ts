@@ -13,6 +13,7 @@ import { catchValidationData } from '@knb/core/utils/rxjs/catch-validation-error
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
+import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
 import { BehaviorSubject } from 'rxjs';
 
 type LoginFormData = FlatControlsOf<LoginData>;
@@ -22,7 +23,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
   selector: 'knc-login',
   standalone: true,
   templateUrl: './login.component.html',
-  imports: [InputComponent, ReactiveFormsModule, MatButtonModule],
+  imports: [InputComponent, ReactiveFormsModule, MatButtonModule, DialogLayoutComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./login.component.css'],
 })

@@ -1,14 +1,14 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { LayoutComponent } from '@knb/shared/layout/layout.component';
+import { AppLayoutComponent } from '@knb/shared/layouts/app-layout/app-layout.component';
 import { ThemeProviderComponent } from '@knb/shared/providers/theme-provider/theme-provider.component';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'knw-root',
   standalone: true,
-  imports: [RouterOutlet, LayoutComponent, ThemeProviderComponent],
+  imports: [RouterOutlet, AppLayoutComponent, ThemeProviderComponent],
   templateUrl: './app.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./app.component.css'],

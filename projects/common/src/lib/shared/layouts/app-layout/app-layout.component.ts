@@ -3,13 +3,13 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { MainComponent } from './main/main.component';
 
-/** Layout component. */
+/** App layout component. */
 @Component({
-  selector: 'knc-layout',
+  selector: 'knc-app-layout',
   standalone: true,
-  templateUrl: './layout.component.html',
+  templateUrl: './app-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./layout.component.css'],
+  styleUrls: ['./app-layout.component.css'],
   imports: [FooterComponent, HeaderComponent, MainComponent],
 })
-export class LayoutComponent {}
+export class AppLayoutComponent {}
