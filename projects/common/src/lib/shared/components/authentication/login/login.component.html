@@ -1,3 +1,8 @@
-<section>
-  <h1>Login</h1>
-</section>
+<form [formGroup]="loginForm">
+  <knc-input placeholder="abc@gmail.com" formControlName="email"></knc-input>
+  <knc-input
+    placeholder="yourSecretPassword123"
+    formControlName="password"
+  ></knc-input>
+  <button mat-button type="submit">Sign In</button>
+</form>

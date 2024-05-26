@@ -17,6 +17,12 @@
       "plugins": ["rxjs", "@typescript-eslint"],
       "rules": {
         "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/unbound-method": "off",
+        "@typescript-eslint/no-namespace": "off",
+        "@typescript-eslint/no-unsafe-argument": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/no-unsafe-enum-comparison": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
         "@angular-eslint/directive-selector": [
           "error",
           {

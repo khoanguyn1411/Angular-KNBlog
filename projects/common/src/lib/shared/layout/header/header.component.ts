@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialog } from '@angular/material/dialog';
+import { DialogService } from '@knb/core/services/ui-services/dialog.service';
 import {
   AuthenticationComponent,
   AuthenticationDialogData,
@@ -16,12 +16,12 @@ import {
   imports: [MatButtonModule],
 })
 export class HeaderComponent {
-  private readonly dialogRef = inject(MatDialog);
+  private readonly dialogService = inject(DialogService);
 
   private openAuthenticationDialog(data: AuthenticationDialogData) {
-    this.dialogRef.open<AuthenticationComponent, AuthenticationDialogData>(
+    this.dialogService.open<AuthenticationComponent, AuthenticationDialogData>(
       AuthenticationComponent,
-      { data, minWidth: "500px" }
+      data
     );
   }
 
