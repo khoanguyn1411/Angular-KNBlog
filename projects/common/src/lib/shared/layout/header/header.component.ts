@@ -1,5 +1,10 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
-import { MatButtonModule } from "@angular/material/button";
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import {
+  AuthenticationComponent,
+  AuthenticationDialogData,
+} from '@knb/shared/components/authentication/authentication.component';
 
 /** Header component. */
 @Component({
@@ -8,8 +13,19 @@ import { MatButtonModule } from "@angular/material/button";
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./header.component.css'],
-  imports: [MatButtonModule]
+  imports: [MatButtonModule],
 })
 export class HeaderComponent {
+  private readonly dialogRef = inject(MatDialog);
 
+  private openAuthenticationDialog(data: AuthenticationDialogData) {
+    this.dialogRef.open<AuthenticationComponent, AuthenticationDialogData>(
+      AuthenticationComponent,
+      { data, minWidth: "500px" }
+    );
+  }
+
+  protected onSignIn() {
+    this.openAuthenticationDialog({ state: 'signIn' });
+  }
 }
