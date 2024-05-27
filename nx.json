@@ -21,6 +21,10 @@
   "affected": {
     "defaultBase": "develop"
   },
+  "workspaceLayout": {
+    "appsDir": "projects",
+    "libsDir": "libraries"
+  },
   "namedInputs": {
     "sharedGlobals": [],
     "default": [
