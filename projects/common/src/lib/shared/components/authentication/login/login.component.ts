@@ -15,6 +15,7 @@ import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
 import { BehaviorSubject } from 'rxjs';
+import { LabelComponent } from '../../label/label.component';
 
 type LoginFormData = FlatControlsOf<LoginData>;
 
@@ -23,7 +24,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
   selector: 'knc-login',
   standalone: true,
   templateUrl: './login.component.html',
-  imports: [InputComponent, ReactiveFormsModule, MatButtonModule, DialogLayoutComponent],
+  imports: [InputComponent, ReactiveFormsModule, MatButtonModule, DialogLayoutComponent, LabelComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./login.component.css'],
 })

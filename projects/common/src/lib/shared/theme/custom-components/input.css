@@ -1,0 +1,5 @@
+.mat-mdc-form-field-error-wrapper {
+
+  /* Overwrite default padding of error. */
+  padding: 0 !important;
+}

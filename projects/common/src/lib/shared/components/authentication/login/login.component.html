@@ -1,18 +1,26 @@
 <form [formGroup]="loginForm" (submit)="onSubmit()">
   <knc-dialog-layout>
-    <ng-container slot="header"> Sign In </ng-container>
+    <ng-container slot="header">
+      <h2 class="login-header">Sign In</h2>
+    </ng-container>
     <ng-container slot="body">
-      <knc-input
-        placeholder="abc@gmail.com"
-        formControlName="email"
-      ></knc-input>
-      <knc-input
-        placeholder="yourSecretPassword123"
-        formControlName="password"
-      ></knc-input>
+      <section class="content">
+        <knc-label label="Email" [isRequired]="true">
+          <knc-input
+            placeholder="abc@gmail.com"
+            formControlName="email"
+          ></knc-input>
+        </knc-label>
+        <knc-label label="Password" [isRequired]="true">
+          <knc-input
+            placeholder="yourSecretPassword123"
+            formControlName="password"
+          ></knc-input>
+        </knc-label>
+      </section>
     </ng-container>
     <ng-container slot="footer">
-      <button mat-button type="submit">Sign In</button>
+      <button color="primary" mat-raised-button class="submit-button" mat-button type="submit">Sign In</button>
     </ng-container>
   </knc-dialog-layout>
 </form>

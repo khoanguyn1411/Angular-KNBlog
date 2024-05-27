@@ -6,8 +6,6 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   standalone: true,
   templateUrl: './dialog-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./dialog-layout.component.css']
+  styleUrls: ['./dialog-layout.component.css'],
 })
-export class DialogLayoutComponent {
-
-}
+export class DialogLayoutComponent {}

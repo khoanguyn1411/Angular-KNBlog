@@ -1,4 +1,4 @@
 @import "../variables.css";
-/* @import "./input.css"; */
+@import "./input.css";
 @import "./skeleton.css";
 @import "./mat-select.css";

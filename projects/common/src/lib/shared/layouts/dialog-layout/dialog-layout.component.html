@@ -1,11 +1,7 @@
-<div>
-  <section>
-    <ng-content select="[slot=header]"></ng-content>
-  </section>
-  <section>
-    <ng-content select="[slot=body]"></ng-content>
-  </section>
-  <section>
+<div class="wrapper">
+  <ng-content select="[slot=header]"></ng-content>
+  <ng-content select="[slot=body]"></ng-content>
+  <div>
     <ng-content select="[slot=footer]"></ng-content>
-  </section>
+  </div>
 </div>

@@ -1,0 +1,6 @@
+<label class="wrapper">
+  <p class="label" [class.is-error]="(errors$ | async) !== null">
+    {{ label() }} @if (isRequired()) {<span class="required-marker">*</span>}
+  </p>
+  <ng-content></ng-content>
+</label>
