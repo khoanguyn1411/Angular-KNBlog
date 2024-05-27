@@ -30,7 +30,7 @@ import {
   templateUrl: './label.component.html',
   imports: [AsyncPipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./label.component.css'],
+  styleUrls: ['./label.component.scss'],
 })
 export class LabelComponent implements OnInit {
   public label = input.required<string>();

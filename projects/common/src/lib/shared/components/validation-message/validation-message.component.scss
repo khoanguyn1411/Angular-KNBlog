@@ -1,7 +1,7 @@
 :host {
 	display: block;
 	min-height: 0.8rem;
-	margin: 2px 0 4px 0;
+	margin: 2px 2px 4px 0;
 	line-height: 1;
 	color: var(--error-color);
 	font-size: 0.8rem;
@@ -12,7 +12,7 @@ span {
 	color: inherit;
 	font-size: inherit;
 	font-style: inherit;
-	font-weight: inherit;
+	font-weight: normal;
 	animation: fadein 300ms ease-in-out;
 	line-height: 1;
 }

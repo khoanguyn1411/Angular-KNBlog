@@ -1,3 +1,5 @@
+@use "variables.scss" as *;
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,8 @@
 }
 
 .label {
-  font-size: 14px;
+  font-size: $font-size-14;
+  font-weight: 500;
 }
 
 .required-marker {
@@ -13,5 +16,5 @@
 }
 
 .is-error {
-  color: red;
+  color: var(--error-color);
 }

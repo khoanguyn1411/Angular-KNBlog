@@ -9,7 +9,7 @@ import { MainComponent } from './main/main.component';
   standalone: true,
   templateUrl: './app-layout.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./app-layout.component.css'],
+  styleUrls: ['./app-layout.component.scss'],
   imports: [FooterComponent, HeaderComponent, MainComponent],
 })
 export class AppLayoutComponent {}

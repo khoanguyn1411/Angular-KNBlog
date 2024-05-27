@@ -7,16 +7,16 @@ import { AppErrorData, LengthErrorData, MatchErrorData, MaxValueErrorData, MinVa
 const DEFAULT_ERROR_MESSAGE = 'Value is not valid';
 
 const VALIDATION_ERROR_MESSAGE_FACTORIES = {
-	[ValidationErrorCode.Email]: () => 'Email is not valid',
-	[ValidationErrorCode.Required]: () => 'This field is required',
-	[ValidationErrorCode.Match]: ({ controlTitle }: MatchErrorData) => `Value does not match with "${controlTitle}"`,
-	[ValidationErrorCode.MinLength]: ({ requiredLength }: LengthErrorData) => `Minimal length is ${requiredLength}`,
-	[ValidationErrorCode.MaxLength]: ({ requiredLength }: LengthErrorData) => `Maximum length is ${requiredLength} characters`,
-	[ValidationErrorCode.Pattern]: () => 'Value does not satisfy the pattern',
+	[ValidationErrorCode.Email]: () => 'Email is not valid.',
+	[ValidationErrorCode.Required]: () => 'This field is required.',
+	[ValidationErrorCode.Match]: ({ controlTitle }: MatchErrorData) => `Value does not match with "${controlTitle}."`,
+	[ValidationErrorCode.MinLength]: ({ requiredLength }: LengthErrorData) => `Minimal length is ${requiredLength}.`,
+	[ValidationErrorCode.MaxLength]: ({ requiredLength }: LengthErrorData) => `Maximum length is ${requiredLength} characters.`,
+	[ValidationErrorCode.Pattern]: () => 'Value does not satisfy the pattern.',
 	[ValidationErrorCode.AppError]: ({ message }: AppErrorData) => message,
-	[ValidationErrorCode.Min]: ({ min }: MinValueErrorData) => `Minimum value is ${min}`,
-	[ValidationErrorCode.Max]: ({ max }: MaxValueErrorData) => `Maximum value is ${max}`,
-	[ValidationErrorCode.Greater]: ({ controlTitle }: any) => `The value should be greater than ${controlTitle}`,
+	[ValidationErrorCode.Min]: ({ min }: MinValueErrorData) => `Minimum value is ${min}.`,
+	[ValidationErrorCode.Max]: ({ max }: MaxValueErrorData) => `Maximum value is ${max}.`,
+	[ValidationErrorCode.Greater]: ({ controlTitle }: any) => `The value should be greater than ${controlTitle}.`,
 };
 
 /**
@@ -26,7 +26,7 @@ const VALIDATION_ERROR_MESSAGE_FACTORIES = {
 @Component({
 	selector: 'knc-validation-message',
 	templateUrl: './validation-message.component.html',
-	styleUrls: ['./validation-message.component.css'],
+	styleUrls: ['./validation-message.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
 })

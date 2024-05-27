@@ -14,7 +14,7 @@ export type AuthenticationDialogData = {
   templateUrl: './authentication.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [LoginComponent, RegisterComponent],
-  styleUrls: ['./authentication.component.css'],
+  styleUrls: ['./authentication.component.scss'],
 })
 export class AuthenticationComponent {
   protected readonly dialogData = inject<AuthenticationDialogData>(MAT_DIALOG_DATA)

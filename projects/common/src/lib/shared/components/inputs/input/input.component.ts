@@ -3,14 +3,14 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { FormControlValidationMessageComponent } from '../../form-control-validation-message/form-control-validation-message.component';
 import { InputBase } from '../input-base';
+import { FormControlValidationMessageComponent } from '../../form-control-validation-message/form-control-validation-message.component';
 
 /** Input component. */
 @Component({
 	selector: 'knc-input',
 	templateUrl: './input.component.html',
-	styleUrl: './input.component.css',
+	styleUrl: './input.component.scss',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.Default,
 	imports: [MatInputModule, MatFormFieldModule, ReactiveFormsModule, FormControlValidationMessageComponent],

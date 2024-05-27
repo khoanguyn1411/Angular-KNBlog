@@ -1,3 +1,5 @@
+@use "variables.scss" as *;
+
 .login-header {
   text-align: center;
 }
@@ -5,7 +7,7 @@
 .content {
   display: flex;
   flex-direction: column;
-  gap: var(--default-fields-gap);
+  gap: $default-fields-gap;
 }
 
 .submit-button {

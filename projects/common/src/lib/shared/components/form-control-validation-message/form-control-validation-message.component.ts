@@ -14,7 +14,7 @@ import { ValidationMessageComponent } from '../validation-message/validation-mes
 @Component({
 	selector: 'knc-form-control-validation-message',
 	templateUrl: './form-control-validation-message.component.html',
-	styleUrls: ['./form-control-validation-message.component.css'],
+	styleUrls: ['./form-control-validation-message.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
 	imports: [ValidationMessageComponent, AsyncPipe],

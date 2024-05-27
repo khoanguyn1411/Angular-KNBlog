@@ -12,7 +12,7 @@ import {
   standalone: true,
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['./header.component.scss'],
   imports: [MatButtonModule],
 })
 export class HeaderComponent {

@@ -10,7 +10,8 @@
           "skipTests": true,
           "displayBlock": true,
           "skipImport": true,
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "style": "scss"
         },
         "@schematics/angular:directive": {
           "skipTests": true
@@ -41,11 +42,14 @@
               "projects/web/src/assets"
             ],
             "styles": [
-              "projects/common/src/lib/shared/theme/custom-theme.scss",
-              "projects/common/src/lib/shared/theme/custom-components/index.css",
-              "projects/web/src/styles.css",
-              "projects/common/src/lib/shared/theme/styles.css"
+              "projects/common/src/lib/shared/theme/styles.scss",
+              "projects/web/src/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/common/src/lib/shared/theme/"
+              ]
+            },
             "scripts": [],
             "server": "projects/web/src/main.server.ts",
             "prerender": true,
@@ -109,7 +113,7 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "projects/web/src/styles.css"
+              "projects/web/src/styles.scss"
             ],
             "scripts": []
           }
