@@ -8,7 +8,7 @@ import { InputComponent } from '@knb/shared/components/inputs/input/input.compon
   templateUrl: './register.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [InputComponent],
-  styleUrls: ['./register.component.css']
+  styleUrls: ['./register.component.scss']
 })
 export class RegisterComponent {
 

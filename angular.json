@@ -43,7 +43,7 @@
             "styles": [
               "projects/common/src/lib/shared/theme/custom-theme.scss",
               "projects/common/src/lib/shared/theme/custom-components/index.scss",
-              "projects/web/src/styles.css",
+              "projects/web/src/styles.scss",
               "projects/common/src/lib/shared/theme/styles.scss"
             ],
             "stylePreprocessorOptions": {
@@ -114,7 +114,7 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "projects/web/src/styles.css"
+              "projects/web/src/styles.scss"
             ],
             "scripts": []
           }

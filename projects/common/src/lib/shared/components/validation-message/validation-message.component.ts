@@ -26,7 +26,7 @@ const VALIDATION_ERROR_MESSAGE_FACTORIES = {
 @Component({
 	selector: 'knc-validation-message',
 	templateUrl: './validation-message.component.html',
-	styleUrls: ['./validation-message.component.css'],
+	styleUrls: ['./validation-message.component.scss'],
 	changeDetection: ChangeDetectionStrategy.OnPush,
 	standalone: true,
 })
