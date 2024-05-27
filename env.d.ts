@@ -19,7 +19,3 @@ declare interface ImportMeta {
   readonly env: Env;
 }
 
-// 3. Use process.env.YOUR_ENV_VAR in your code. (deprecated)
-declare namespace NodeJS {
-  export interface ProcessEnv extends Env {}
-}
