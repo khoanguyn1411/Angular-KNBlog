@@ -13,7 +13,7 @@ export class DialogService {
   ) {
     this.dialogRef.open<TComponent, TData, TReturn>(component, {
       data,
-      width: "400px",
+      width: "450px",
       ...config,
     });
   }

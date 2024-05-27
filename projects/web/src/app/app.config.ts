@@ -21,7 +21,7 @@ export const appConfig: ApplicationConfig = {
     provideWebAppConfig(),
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: 'outline', subscriptSizing: 'fixed' },
+      useValue: { appearance: 'outline', subscriptSizing: 'dynamic' },
     },
   ],
 };

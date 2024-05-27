@@ -1,4 +1,3 @@
-
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @use '@angular/material' as mat;
@@ -28,8 +27,7 @@ $white-palette: (
   A200: white,
   A400: white,
   A700: white,
-  contrast: (
-    50: rgba(black, 0.87),
+  contrast: (50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
     300: rgba(black, 0.87),
@@ -56,53 +54,152 @@ $app-primary-green: mat.define-palette(mat.$green-palette);
 $app-primary-orange: mat.define-palette(mat.$orange-palette);
 $app-accent: mat.define-palette($white-palette);
 
-$app-theme-blue: mat.define-light-theme((
-  color: (
-    primary: $app-primary-blue,
-    accent: $app-accent,
-  ),
-));
+$app-theme-blue: mat.define-light-theme((color: (primary: $app-primary-blue,
+        accent: $app-accent,
+      ),
+    ));
 
-$app-theme-purple: mat.define-light-theme((
-  color: (
-    primary: $app-primary-purple,
-    accent: $app-accent,
-  ),
-));
+$app-theme-purple: mat.define-light-theme((color: (primary: $app-primary-purple,
+        accent: $app-accent,
+      ),
+    ));
 
-$app-theme-green: mat.define-light-theme((
-  color: (
-    primary: $app-primary-green,
-    accent: $app-accent,
-  ),
-));
+$app-theme-green: mat.define-light-theme((color: (primary: $app-primary-green,
+        accent: $app-accent,
+      ),
+    ));
 
-$app-theme-orange: mat.define-light-theme((
-  color: (
-    primary: $app-primary-orange,
-    accent: $app-accent,
-  ),
-));
+$app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
+        accent: $app-accent,
+      ),
+    ));
+
 
 @include mat.all-component-themes($app-theme-blue);
+
+:root {
+  --blue-color-50: #{map-get(mat.$blue-palette, 50)};
+  --blue-color-100: #{map-get(mat.$blue-palette, 100)};
+  --blue-color-200: #{map-get(mat.$blue-palette, 200)};
+  --blue-color-300: #{map-get(mat.$blue-palette, 300)};
+  --blue-color-400: #{map-get(mat.$blue-palette, 400)};
+  --blue-color-500: #{map-get(mat.$blue-palette, 500)};
+  --blue-color-600: #{map-get(mat.$blue-palette, 600)};
+  --blue-color-700: #{map-get(mat.$blue-palette, 700)};
+  --blue-color-800: #{map-get(mat.$blue-palette, 800)};
+  --blue-color-900: #{map-get(mat.$blue-palette, 900)};
+
+  --purple-color-50: #{map-get(mat.$purple-palette, 50)};
+  --purple-color-100: #{map-get(mat.$purple-palette, 100)};
+  --purple-color-200: #{map-get(mat.$purple-palette, 200)};
+  --purple-color-300: #{map-get(mat.$purple-palette, 300)};
+  --purple-color-400: #{map-get(mat.$purple-palette, 400)};
+  --purple-color-500: #{map-get(mat.$purple-palette, 500)};
+  --purple-color-600: #{map-get(mat.$purple-palette, 600)};
+  --purple-color-700: #{map-get(mat.$purple-palette, 700)};
+  --purple-color-800: #{map-get(mat.$purple-palette, 800)};
+  --purple-color-900: #{map-get(mat.$purple-palette, 900)};
+
+  --green-color-50: #{map-get(mat.$green-palette, 50)};
+  --green-color-100: #{map-get(mat.$green-palette, 100)};
+  --green-color-200: #{map-get(mat.$green-palette, 200)};
+  --green-color-300: #{map-get(mat.$green-palette, 300)};
+  --green-color-400: #{map-get(mat.$green-palette, 400)};
+  --green-color-500: #{map-get(mat.$green-palette, 500)};
+  --green-color-600: #{map-get(mat.$green-palette, 600)};
+  --green-color-700: #{map-get(mat.$green-palette, 700)};
+  --green-color-800: #{map-get(mat.$green-palette, 800)};
+  --green-color-900: #{map-get(mat.$green-palette, 900)};
+
+  --orange-color-50: #{map-get(mat.$orange-palette, 50)};
+  --orange-color-100: #{map-get(mat.$orange-palette, 100)};
+  --orange-color-200: #{map-get(mat.$orange-palette, 200)};
+  --orange-color-300: #{map-get(mat.$orange-palette, 300)};
+  --orange-color-400: #{map-get(mat.$orange-palette, 400)};
+  --orange-color-500: #{map-get(mat.$orange-palette, 500)};
+  --orange-color-600: #{map-get(mat.$orange-palette, 600)};
+  --orange-color-700: #{map-get(mat.$orange-palette, 700)};
+  --orange-color-800: #{map-get(mat.$orange-palette, 800)};
+  --orange-color-900: #{map-get(mat.$orange-palette, 900)};
+
+  --error-color: #{map-get(mat.$red-palette, 500)};
+
+  --gray-color-50: #fff7ed;
+  --gray-color-100: #f5f5f4;
+  --gray-color-200: #e7e5e4;
+  --gray-color-300: #d6d3d1;
+  --gray-color-400: #a8a29e;
+  --gray-color-500: #78716c;
+  --gray-color-600: #57534e;
+  --gray-color-700: #44403c;
+  --gray-color-800: #292524;
+  --gray-color-900: #1c1917;
+  --gray-color-950: #0c0a09;
+
+  --text-primary-dark-color: #000000;
+  --text-primary-light-color: #ffffff;
+}
 
 /* Blue Theme */
 .blue-theme {
   @include mat.all-component-colors($app-theme-blue);
+
+  --primary-color-50: var(--color-blue-50);
+  --primary-color-100: var(--color-blue-100);
+  --primary-color-200: var(--color-blue-200);
+  --primary-color-300: var(--color-blue-300);
+  --primary-color-400: var(--color-blue-400);
+  --primary-color-500: var(--color-blue-500);
+  --primary-color-600: var(--color-blue-600);
+  --primary-color-700: var(--color-blue-700);
+  --primary-color-800: var(--color-blue-800);
+  --primary-color-900: var(--color-blue-900);
 }
 
 /* Purple Theme */
 .purple-theme {
   @include mat.all-component-colors($app-theme-purple);
+
+  --primary-color-50: var(--color-purple-50);
+  --primary-color-100: var(--color-purple-100);
+  --primary-color-200: var(--color-purple-200);
+  --primary-color-300: var(--color-purple-300);
+  --primary-color-400: var(--color-purple-400);
+  --primary-color-500: var(--color-purple-500);
+  --primary-color-600: var(--color-purple-600);
+  --primary-color-700: var(--color-purple-700);
+  --primary-color-800: var(--color-purple-800);
+  --primary-color-900: var(--color-purple-900);
 }
 
 /* Green Theme */
 .green-theme {
   @include mat.all-component-colors($app-theme-green);
+
+  --primary-color-50: var(--color-green-50);
+  --primary-color-100: var(--color-green-100);
+  --primary-color-200: var(--color-green-200);
+  --primary-color-300: var(--color-green-300);
+  --primary-color-400: var(--color-green-400);
+  --primary-color-500: var(--color-green-500);
+  --primary-color-600: var(--color-green-600);
+  --primary-color-700: var(--color-green-700);
+  --primary-color-800: var(--color-green-800);
+  --primary-color-900: var(--color-green-900);
 }
 
 /* Orange Theme */
 .orange-theme {
   @include mat.all-component-colors($app-theme-orange);
-}
 
+  --primary-color-50: var(--color-orange-100);
+  --primary-color-100: var(--color-orange-100);
+  --primary-color-200: var(--color-orange-200);
+  --primary-color-300: var(--color-orange-300);
+  --primary-color-400: var(--color-orange-400);
+  --primary-color-500: var(--color-orange-500);
+  --primary-color-600: var(--color-orange-600);
+  --primary-color-700: var(--color-orange-700);
+  --primary-color-800: var(--color-orange-800);
+  --primary-color-900: var(--color-orange-900);
+}
