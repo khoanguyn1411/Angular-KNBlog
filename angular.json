@@ -10,7 +10,8 @@
           "skipTests": true,
           "displayBlock": true,
           "skipImport": true,
-          "changeDetection": "OnPush"
+          "changeDetection": "OnPush",
+          "style": "scss"
         },
         "@schematics/angular:directive": {
           "skipTests": true
