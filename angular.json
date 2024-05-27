@@ -42,10 +42,8 @@
               "projects/web/src/assets"
             ],
             "styles": [
-              "projects/common/src/lib/shared/theme/custom-theme.scss",
-              "projects/common/src/lib/shared/theme/custom-components/index.scss",
-              "projects/web/src/styles.scss",
-              "projects/common/src/lib/shared/theme/styles.scss"
+              "projects/common/src/lib/shared/theme/styles.scss",
+              "projects/web/src/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
