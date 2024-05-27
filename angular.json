@@ -42,10 +42,15 @@
             ],
             "styles": [
               "projects/common/src/lib/shared/theme/custom-theme.scss",
-              "projects/common/src/lib/shared/theme/custom-components/index.css",
+              "projects/common/src/lib/shared/theme/custom-components/index.scss",
               "projects/web/src/styles.css",
-              "projects/common/src/lib/shared/theme/styles.css"
+              "projects/common/src/lib/shared/theme/styles.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/common/src/lib/shared/theme/"
+              ]
+            },
             "scripts": [],
             "server": "projects/web/src/main.server.ts",
             "prerender": true,

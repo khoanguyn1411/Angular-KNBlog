@@ -26,7 +26,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
   templateUrl: './login.component.html',
   imports: [InputComponent, ReactiveFormsModule, MatButtonModule, DialogLayoutComponent, LabelComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
   private readonly fb = inject(NonNullableFormBuilder);
