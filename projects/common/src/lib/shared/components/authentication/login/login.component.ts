@@ -1,9 +1,11 @@
+import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
   inject,
   output,
+  signal
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -13,18 +15,17 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDividerModule } from '@angular/material/divider';
 import { LoginData } from '@knb/core/models/login-data';
 import { AuthApiService } from '@knb/core/services/api-services/auth-api.service';
 import { catchValidationData } from '@knb/core/utils/rxjs/catch-validation-error';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
+import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
-import { BehaviorSubject } from 'rxjs';
-import { LabelComponent } from '../../label/label.component';
-import { MatDividerModule } from '@angular/material/divider';
-import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { PasswordComponent } from '../../inputs/password/password.component';
+import { LabelComponent } from '../../label/label.component';
 
 type LoginFormData = FlatControlsOf<LoginData>;
 
@@ -41,6 +42,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
     DialogLayoutComponent,
     LabelComponent,
     PasswordComponent,
+    LoadingDirective,
     GoogleSigninButtonModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -53,8 +55,8 @@ export class LoginComponent {
   private readonly authApiService = inject(AuthApiService);
   private readonly destroyRef = inject(DestroyRef);
 
-  /** Is app loading. */
-  protected readonly isLoading$ = new BehaviorSubject(false);
+  /** Whether form is loading. */
+  protected readonly isLoading = signal(false);
 
   /** Login form. */
   protected readonly loginForm: FormGroup<LoginFormData>;
@@ -73,7 +75,9 @@ export class LoginComponent {
     this.authApiService
       .login(this.loginForm.getRawValue())
       .pipe(
-        toggleExecutionState(this.isLoading$),
+        // Need to bind the context into set function to avoid unbound issue of class.
+        // See: https://github.com/cartant/eslint-plugin-rxjs/blob/main/docs/rules/no-unbound-methods.md
+        toggleExecutionState(this.isLoading.set.bind(this)),
         catchValidationData(this.loginForm),
         takeUntilDestroyed(this.destroyRef)
       )

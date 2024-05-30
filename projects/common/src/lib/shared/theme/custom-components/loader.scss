@@ -1,0 +1,45 @@
+$spinner-color: white;
+$spinner-size: 12px;
+
+.knc-loading {
+	cursor: progress;
+	position: relative;
+	overflow: hidden;
+}
+
+.knc-loading::after {
+	position: absolute;
+	top: calc(50% - $spinner-size);
+	left: calc(50% - $spinner-size);
+	content: " ";
+	display: block;
+	width: $spinner-size;
+	height: $spinner-size;
+	margin: 5px;
+	border-radius: 50%;
+	border: 2px solid $spinner-color;
+	border-color: $spinner-color transparent $spinner-color transparent;
+	animation: knc-loading-spin 1.2s ease-in-out infinite;
+	z-index: 1;
+}
+
+.knc-loading::before {
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.2);
+	animation: fadein 200ms ease-in;
+	/* To balance loader positioning on flexbox */
+	content: "";
+}
+
+@keyframes knc-loading-spin {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
+}

@@ -1,15 +1,16 @@
-import { defer, EMPTY, merge, MonoTypeOperatorFunction, Subject } from 'rxjs';
+import { WritableSignal } from '@angular/core';
+import { EMPTY, MonoTypeOperatorFunction, defer, merge } from 'rxjs';
 import { finalize, ignoreElements, shareReplay } from 'rxjs/operators';
 
 /**
  * Toggles loading subject when observable execution starts and ends.
- * @param subject$ Execution state subject. Will accept `true` when execution started and `false` when it's finalized.
+ * @param setSignalCallback Set signal callback.
  */
 export function toggleExecutionState<T>(
-  subject$: Subject<boolean>,
+  setSignalCallback: WritableSignal<boolean>["set"],
 ): MonoTypeOperatorFunction<T> {
   const startLoadingSideEffect$ = defer(() => {
-    subject$.next(true);
+    setSignalCallback(true)
     return EMPTY;
   });
 
@@ -19,7 +20,7 @@ export function toggleExecutionState<T>(
     );
     const finishLoadingSideEffect$ = sharedSource$.pipe(
       ignoreElements(),
-      finalize(() => subject$.next(false)),
+      finalize(() => setSignalCallback(false)),
     );
 
     return merge(
