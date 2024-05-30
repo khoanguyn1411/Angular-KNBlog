@@ -89,7 +89,6 @@ function catchValidationError<T, R>(
 ): OperatorFunction<T, T | R> {
   return catchError((error: unknown) => {
     if (error instanceof AppValidationError) {
-      // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
       return selector(error);
     }
     return throwError(() => error);
