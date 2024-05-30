@@ -1,5 +1,5 @@
-@if (dialogData.state === "signIn") {
-  <knc-login></knc-login>
+@if (authState().state === "signIn") {
+  <knc-login (signup)="onSignup()"/>
 } @else {
-  <knc-register></knc-register>
+  <knc-register (signIn)="onSignIn()"/>
 }

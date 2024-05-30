@@ -12,10 +12,10 @@
           ></knc-input>
         </knc-label>
         <knc-label label="Password" [isRequired]="true">
-          <knc-input
+          <knc-password
             placeholder="yourSecretPassword123"
             formControlName="password"
-          ></knc-input>
+          ></knc-password>
         </knc-label>
       </section>
     </ng-container>
@@ -31,16 +31,19 @@
           Sign In
         </button>
         <div class="footer-divider">
-          <mat-divider class="footer-divider-item"/>
-          <p>OR</p>
-          <mat-divider class="footer-divider-item"/>
+          <mat-divider class="footer-divider-item" />
+          <p>or</p>
+          <mat-divider class="footer-divider-item" />
         </div>
         <asl-google-signin-button
           type="standard"
           text="signin_with"
           size="large"
-          [width]='400'
+          [width]="400"
         />
+        <p class="footer-sign-up">
+          Don't have an account? <b class="sign-up-text" role="button" (click)="onNavigateToSignup()">Signup</b>
+        </p>
       </section>
     </ng-container>
   </knc-dialog-layout>

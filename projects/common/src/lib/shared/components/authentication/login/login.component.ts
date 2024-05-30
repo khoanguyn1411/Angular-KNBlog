@@ -3,6 +3,7 @@ import {
   Component,
   DestroyRef,
   inject,
+  output,
 } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
@@ -21,8 +22,9 @@ import { InputComponent } from '@knb/shared/components/inputs/input/input.compon
 import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
 import { BehaviorSubject } from 'rxjs';
 import { LabelComponent } from '../../label/label.component';
-import {MatDividerModule} from '@angular/material/divider';
+import { MatDividerModule } from '@angular/material/divider';
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { PasswordComponent } from '../../inputs/password/password.component';
 
 type LoginFormData = FlatControlsOf<LoginData>;
 
@@ -38,12 +40,15 @@ type LoginFormData = FlatControlsOf<LoginData>;
     MatDividerModule,
     DialogLayoutComponent,
     LabelComponent,
-    GoogleSigninButtonModule
+    PasswordComponent,
+    GoogleSigninButtonModule,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent {
+  public readonly signup = output();
+
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly authApiService = inject(AuthApiService);
   private readonly destroyRef = inject(DestroyRef);
@@ -73,6 +78,10 @@ export class LoginComponent {
         takeUntilDestroyed(this.destroyRef)
       )
       .subscribe();
+  }
+
+  protected onNavigateToSignup(): void {
+    this.signup.emit();
   }
 
   private initLoginForm(): FormGroup<LoginFormData> {

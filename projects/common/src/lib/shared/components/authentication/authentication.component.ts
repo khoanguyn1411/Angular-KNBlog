@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -17,5 +22,17 @@ export type AuthenticationDialogData = {
   styleUrls: ['./authentication.component.scss'],
 })
 export class AuthenticationComponent {
-  protected readonly dialogData = inject<AuthenticationDialogData>(MAT_DIALOG_DATA)
+  protected readonly dialogData = inject<AuthenticationDialogData>(MAT_DIALOG_DATA);
+
+  protected readonly authState = signal<AuthenticationDialogData>(
+    this.dialogData
+  );
+
+  protected onSignup() {
+    this.authState.set({ state: 'signUp' });
+  }
+
+  protected onSignIn() {
+    this.authState.set({ state: 'signIn' });
+  }
 }

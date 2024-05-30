@@ -14,6 +14,7 @@ export class DialogService {
     this.dialogRef.open<TComponent, TData, TReturn>(component, {
       data,
       width: "450px",
+      autoFocus: false,
       ...config,
     });
   }

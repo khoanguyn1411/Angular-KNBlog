@@ -24,7 +24,7 @@ implements
       email: extractErrorMessage(errorDto?.email),
       password:
         extractErrorMessage(errorDto?.password) ??
-        extractErrorMessage(errorDto?.non_field_errors),
+        extractErrorMessage(errorDto?.nonFieldErrors),
     };
   }
 

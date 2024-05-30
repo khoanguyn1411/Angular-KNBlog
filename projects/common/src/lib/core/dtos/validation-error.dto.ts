@@ -31,14 +31,14 @@ export type ValidationErrorDto<T> = {
    * Non field errors.
    */
   // eslint-disable-next-line no-restricted-syntax
-  readonly non_field_errors?: string[];
+  readonly nonFieldErrors?: string[];
 };
 
 /**
  * Extract errors message from error data.
  * @param errorData Error data.
  * @returns The first item if error data is a array of error messages.
- * Error message from non_field_errors if it presented.
+ * Error message from nonFieldErrors if it presented.
  * Error message of the first key if error data is error for composite object like City: { id, name }.
  */
 export function extractErrorMessage<T>(
@@ -52,8 +52,8 @@ export function extractErrorMessage<T>(
   }
   if (typeof errorData === 'object') {
     // Just get non field error as a result.
-    if (errorData.non_field_errors != null) {
-      return extractErrorMessageFromArray(errorData.non_field_errors);
+    if (errorData.nonFieldErrors != null) {
+      return extractErrorMessageFromArray(errorData.nonFieldErrors);
     }
 
     // Otherwise extract an error from first property.
