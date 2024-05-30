@@ -14,3 +14,25 @@
   width: 100%;
   background-color: var(--primary-color-400);
 }
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+}
+
+.footer-divider {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-divider-item {
+  flex: 1
+}
+
+.or-text {
+  text-align: center;
+}

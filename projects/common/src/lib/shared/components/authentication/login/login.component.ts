@@ -1,4 +1,9 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  DestroyRef,
+  inject,
+} from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import {
   FormGroup,
@@ -16,6 +21,8 @@ import { InputComponent } from '@knb/shared/components/inputs/input/input.compon
 import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
 import { BehaviorSubject } from 'rxjs';
 import { LabelComponent } from '../../label/label.component';
+import {MatDividerModule} from '@angular/material/divider';
+import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
 type LoginFormData = FlatControlsOf<LoginData>;
 
@@ -24,7 +31,15 @@ type LoginFormData = FlatControlsOf<LoginData>;
   selector: 'knc-login',
   standalone: true,
   templateUrl: './login.component.html',
-  imports: [InputComponent, ReactiveFormsModule, MatButtonModule, DialogLayoutComponent, LabelComponent],
+  imports: [
+    InputComponent,
+    ReactiveFormsModule,
+    MatButtonModule,
+    MatDividerModule,
+    DialogLayoutComponent,
+    LabelComponent,
+    GoogleSigninButtonModule
+  ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./login.component.scss'],
 })
