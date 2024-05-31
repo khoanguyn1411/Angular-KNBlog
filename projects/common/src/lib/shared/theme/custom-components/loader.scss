@@ -18,6 +18,7 @@ $spinner-size: 12px;
 	margin: 5px;
 	border-radius: 50%;
 	border: 2px solid $spinner-color;
+  transition: 0.3s ease;
 	border-color: $spinner-color transparent $spinner-color transparent;
 	animation: knc-loading-spin 1.2s ease-in-out infinite;
 	z-index: 1;

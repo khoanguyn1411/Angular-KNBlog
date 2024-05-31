@@ -4,7 +4,11 @@
       <p>KNBLOG</p>
     </section>
     <section class="second-section">
-      <button (click)="onSignIn()" mat-button color="primary" type="button">Sign in</button>
+      @if (isAuthorized()) {
+        <button (click)="onSignOut()" mat-button color="primary" type="button">Sign out</button>
+      }@else {
+        <button (click)="onSignIn()" mat-button color="primary" type="button">Sign in</button>
+      }
     </section>
   </div>
 </header>
