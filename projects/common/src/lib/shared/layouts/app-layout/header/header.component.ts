@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
-import { UserService } from '@knb/core/services/api-services/user.service';
+import { UserService } from '@knb/core/services/ui-services/user.service';
 import { DialogService } from '@knb/core/services/ui-services/dialog.service';
 import { AuthenticationDialogComponent, AuthenticationDialogData } from '@knb/shared/components/authentication/authentication-dialog.component';
 

@@ -1,7 +1,7 @@
 import { Injectable, inject } from "@angular/core";
 import { UserSecret, userSecretSchema } from "@knb/core/models/user-secret";
 import { Observable, map } from "rxjs";
-import { StorageService } from "../ui-services/storage.service";
+import { StorageService } from "./storage.service";
 
 const USER_SECRET_STORAGE_KEY = 'token';
 

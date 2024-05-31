@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
 import { UserSecret } from '../models/user-secret';
-import { UserSecretStorageService } from '../services/api-services/user-secret-storage.service';
+import { UserSecretStorageService } from '../services/ui-services/user-secret-storage.service';
 import { AppConfig } from '../services/app.config';
 
 const AUTH_HEADER_KEY = 'Authorization';

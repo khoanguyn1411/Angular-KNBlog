@@ -18,8 +18,8 @@ import {
   switchMap,
   throwError,
 } from 'rxjs';
-import { AuthApiService } from './auth-api.service';
-import { UserApiService } from './user-api.service';
+import { AuthApiService } from '../api-services/auth-api.service';
+import { UserApiService } from '../api-services/user-api.service';
 import { UserSecretStorageService } from './user-secret-storage.service';
 
 /**

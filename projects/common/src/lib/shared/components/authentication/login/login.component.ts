@@ -18,7 +18,7 @@ import {
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { LoginData, loginDataSchema } from '@knb/core/models/login-data';
-import { UserService } from '@knb/core/services/api-services/user.service';
+import { UserService } from '@knb/core/services/ui-services/user.service';
 import {
   catchValidationData,
   catchValidationError,

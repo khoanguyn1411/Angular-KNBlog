@@ -5,7 +5,7 @@ import { shareReplay, switchMap, tap } from 'rxjs/operators';
 
 import { catchHttpErrorResponse } from '../utils/rxjs/catch-http-error-response';
 import { AppUrlsConfig } from '../services/api-services/app-urls.config';
-import { UserService } from '../services/api-services/user.service';
+import { UserService } from '../services/ui-services/user.service';
 
 /** Catches requests with outdated tokens and attempts to refresh it and then retry the request. */
 @Injectable()

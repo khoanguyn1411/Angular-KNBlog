@@ -11,6 +11,6 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent {
-  public readonly text = input<string | null>(null)
-  public readonly type = input<"error" | "warning" | "info">("error")
+  public text = input<string | null>(null)
+  public type = input<"error" | "warning" | "info">("error")
 }
