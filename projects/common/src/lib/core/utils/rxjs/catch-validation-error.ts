@@ -84,7 +84,7 @@ function fillFormArrayWithError<T>(
  * Catches only AppValidationError<T> errors.
  * @param selector Selector.
  */
-function catchValidationError<T, R>(
+export function catchValidationError<T, R>(
   selector: (error: AppValidationError<Record<string, unknown>>) => Observable<R>,
 ): OperatorFunction<T, T | R> {
   return catchError((error: unknown) => {

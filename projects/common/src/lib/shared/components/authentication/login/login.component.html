@@ -4,6 +4,11 @@
       <h2 class="login-header">Sign in</h2>
     </ng-container>
     <ng-container slot="body">
+      <section>
+        @if ( authenticationError() ) {
+          <p>{{ authenticationError() }}</p>
+        }
+      </section>
       <section class="content">
         <knc-label label="Email" [isRequired]="true">
           <knc-input
@@ -43,7 +48,10 @@
           [width]="400"
         />
         <p class="footer-sign-up">
-          Don't have an account? <b class="sign-up-text" role="button" (click)="onNavigateToSignup()">Signup</b>
+          Don't have an account?
+          <b class="sign-up-text" role="button" (click)="onNavigateToSignup()"
+            >Signup</b
+          >
         </p>
       </section>
     </ng-container>

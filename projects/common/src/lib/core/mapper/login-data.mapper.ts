@@ -22,7 +22,8 @@ implements
   ): EntityValidationErrors<LoginData> {
     return {
       email: extractErrorMessage(errorDto?.email),
-      password: extractErrorMessage(errorDto?.password)
+      password: extractErrorMessage(errorDto?.password),
+      nonFieldErrors: extractErrorMessage(errorDto?.nonFieldErrors)
     };
   }
 

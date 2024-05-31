@@ -21,7 +21,7 @@ import { MatButtonModule } from '@angular/material/button';
 		ReactiveFormsModule,
 		FormControlValidationMessageComponent,
 		MatIconModule,
-    MatButtonModule,
+    	MatButtonModule,
 	],
 })
 export class PasswordComponent extends InputBase {
