@@ -122,7 +122,16 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --orange-color-800: #{mat.get-theme-color($app-theme-orange, primary, 800)};
   --orange-color-900: #{mat.get-theme-color($app-theme-orange, primary, 900)};
 
-  --error-color: #{map-get(mat.$red-palette, 500)};
+  --error-color-50: #{map-get(mat.$red-palette, 50)};
+  --error-color-100: #{map-get(mat.$red-palette, 100)};
+  --error-color-200: #{map-get(mat.$red-palette, 200)};
+  --error-color-300: #{map-get(mat.$red-palette, 300)};
+  --error-color-400: #{map-get(mat.$red-palette, 400)};
+  --error-color-500: #{map-get(mat.$red-palette, 500)};
+  --error-color-600: #{map-get(mat.$red-palette, 600)};
+  --error-color-700: #{map-get(mat.$red-palette, 700)};
+  --error-color-800: #{map-get(mat.$red-palette, 800)};
+  --error-color-900: #{map-get(mat.$red-palette, 900)};
 
   --gray-color-50: #fff7ed;
   --gray-color-100: #f5f5f4;

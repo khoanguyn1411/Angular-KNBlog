@@ -1,0 +1,32 @@
+@use '@angular/material' as mat;
+
+:root {
+  --text-color: var(--error-color-500);
+  --background-color: var(--error-color-100);
+}
+
+.wrapper {
+  display: flex;
+  padding: 18px;
+  align-items: center;
+  gap: 12px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  border: 1px solid var(--text-color);
+  border-radius: 4px;
+}
+
+.error {
+  --text-color: var(--error-color-500);
+  --background-color: var(--error-color-100);
+}
+
+.warning {
+  --text-color: #{map-get(mat.$amber-palette, 700)};
+  --background-color: #{map-get(mat.$amber-palette, 100)};
+}
+
+.info {
+  --text-color: #{map-get(mat.$light-blue-palette, 700)};
+  --background-color: #{map-get(mat.$light-blue-palette, 100)};
+}

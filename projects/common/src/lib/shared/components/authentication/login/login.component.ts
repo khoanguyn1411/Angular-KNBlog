@@ -29,6 +29,7 @@ import { InputComponent } from '@knb/shared/components/inputs/input/input.compon
 import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
 import { EMPTY, Observable, map, tap } from 'rxjs';
+import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
 
@@ -47,6 +48,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
     DialogLayoutComponent,
     LabelComponent,
     PasswordComponent,
+    AlertComponent,
     LoadingDirective,
     GoogleSigninButtonModule,
   ],
@@ -79,7 +81,6 @@ export class LoginComponent implements OnInit {
       .subscribe();
   }
 
-  /** Handle 'submit' of the login form. */
   protected onSubmit(): void {
     this.loginForm.markAllAsTouched();
     if (this.loginForm.invalid) {

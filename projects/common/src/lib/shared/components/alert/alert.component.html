@@ -1,0 +1,19 @@
+<div
+  class="wrapper"
+  [class.error]="type() === 'error'"
+  [class.warning]="type() === 'warning'"
+  [class.info]="type() === 'info'"
+>
+  @switch (type()) {
+    @case ("error") {
+      <mat-icon>error_outline</mat-icon>
+    }@case ("info") {
+      <mat-icon>info</mat-icon>
+    }@case ("warning") {
+      <mat-icon>warning</mat-icon>
+    }@default {
+      <mat-icon>error_outline</mat-icon>
+    }
+  }
+  <p>{{ text() }}</p>
+</div>
