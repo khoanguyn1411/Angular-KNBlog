@@ -58,46 +58,48 @@ export class UserService {
    * Register a user.
    * @param registerData Register data.
    */
-    public register(registerData: RegisterData): Observable<void> {
-      return this.authService
-        .register(registerData)
-        .pipe(this.saveSecretAndWaitForAuthorized());
-    }
+  public register(registerData: RegisterData): Observable<void> {
+    return this.authService
+      .register(registerData)
+      .pipe(this.saveSecretAndWaitForAuthorized());
+  }
 
   /** Attempts to refresh user secret, in case it is not possible logs out current user.. */
   public refreshSecret(): Observable<void> {
-  	const refreshSecretIfPresent$ = this.userSecretStorage.currentSecret$.pipe(
-  		first(),
-  		switchMap(secret => {
-  			if (secret != null) {
-  				return this.authService.refreshSecret(secret);
-  			}
-  			throw new AppError('Unauthorized');
-  		}),
-  		switchMap(newSecret => this.userSecretStorage.saveSecret(newSecret)),
-  	);
-  	return refreshSecretIfPresent$.pipe(
-  		catchError((error: unknown) =>
-  			concat(
-  				this.authService.logout().pipe(ignoreElements()),
-  				throwError(() => error),
-  			)),
-  		map(() => undefined),
-  	);
+    const refreshSecretIfPresent$ = this.userSecretStorage.currentSecret$.pipe(
+      first(),
+      switchMap((secret) => {
+        if (secret != null) {
+          return this.authService.refreshSecret(secret);
+        }
+        throw new AppError('Unauthorized');
+      }),
+      switchMap((newSecret) => this.userSecretStorage.saveSecret(newSecret))
+    );
+    return refreshSecretIfPresent$.pipe(
+      catchError((error: unknown) =>
+        concat(
+          this.authService.logout().pipe(ignoreElements()),
+          throwError(() => error)
+        )
+      ),
+      map(() => undefined)
+    );
   }
 
   private saveSecretAndWaitForAuthorized(): OperatorFunction<UserSecret, void> {
-    return source$ => source$.pipe(
-      switchMap((secret) => {
-        const saveUserSecretSideEffect$ = this.userSecretStorage
-          .saveSecret(secret)
-          .pipe(ignoreElements());
+    return (source$) =>
+      source$.pipe(
+        switchMap((secret) => {
+          const saveUserSecretSideEffect$ = this.userSecretStorage
+            .saveSecret(secret)
+            .pipe(ignoreElements());
 
-        return merge(this.isAuthorized$, saveUserSecretSideEffect$);
-      }),
-      first((isAuthorized) => isAuthorized),
-      map(() => undefined)
-    );
+          return merge(this.isAuthorized$, saveUserSecretSideEffect$);
+        }),
+        first((isAuthorized) => isAuthorized),
+        map(() => undefined)
+      );
   }
 
   private initCurrentUserStream(): Observable<User | null> {
