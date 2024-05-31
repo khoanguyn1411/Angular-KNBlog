@@ -7,7 +7,7 @@ import {
 } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
-import { first, map, switchMap, tap } from 'rxjs/operators';
+import { first, map, switchMap } from 'rxjs/operators';
 
 import { UserSecret } from '../models/user-secret';
 import { UserSecretStorageService } from '../services/api-services/user-secret-storage.service';
@@ -31,7 +31,6 @@ export class AuthInterceptor implements HttpInterceptor {
     if (this.shouldInterceptToken(req.url)) {
       const userSecret$ = this.userSecretStorage.currentSecret$.pipe(first());
       return userSecret$.pipe(
-        tap((s) => console.log({ s })),
         map((userSecret) =>
           userSecret
             ? req.clone({
