@@ -14,10 +14,9 @@ import {
   Observable,
   of,
   OperatorFunction,
-  pipe,
   shareReplay,
   switchMap,
-  throwError,
+  throwError
 } from 'rxjs';
 import { AuthApiService } from './auth-api.service';
 import { UserApiService } from './user-api.service';
@@ -88,7 +87,7 @@ export class UserService {
   }
 
   private saveSecretAndWaitForAuthorized(): OperatorFunction<UserSecret, void> {
-    return pipe(
+    return source$ => source$.pipe(
       switchMap((secret) => {
         const saveUserSecretSideEffect$ = this.userSecretStorage
           .saveSecret(secret)
