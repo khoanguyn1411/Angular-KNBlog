@@ -1,9 +1,12 @@
 import { inject, Injectable } from '@angular/core';
+import { AppError } from '@knb/core/models/app-error';
 import { LoginData } from '@knb/core/models/login-data';
 import { RegisterData } from '@knb/core/models/register-data';
 import { User } from '@knb/core/models/user';
 import { UserSecret } from '@knb/core/models/user-secret';
 import {
+  catchError,
+  concat,
   first,
   ignoreElements,
   map,
@@ -14,6 +17,7 @@ import {
   pipe,
   shareReplay,
   switchMap,
+  throwError,
 } from 'rxjs';
 import { AuthApiService } from './auth-api.service';
 import { UserApiService } from './user-api.service';
@@ -61,27 +65,27 @@ export class UserService {
         .pipe(this.saveSecretAndWaitForAuthorized());
     }
 
-  // /** Attempts to refresh user secret, in case it is not possible logs out current user.. */
-  // public refreshSecret(): Observable<void> {
-  // 	const refreshSecretIfPresent$ = this.userSecretStorage.currentSecret$.pipe(
-  // 		first(),
-  // 		switchMap(secret => {
-  // 			if (secret != null) {
-  // 				return this.authService.refreshSecret(secret);
-  // 			}
-  // 			throw new AppError('Unauthorized');
-  // 		}),
-  // 		switchMap(newSecret => this.userSecretStorage.saveSecret(newSecret)),
-  // 	);
-  // 	return refreshSecretIfPresent$.pipe(
-  // 		catchError((error: unknown) =>
-  // 			concat(
-  // 				this.logout().pipe(ignoreElements()),
-  // 				throwError(() => error),
-  // 			)),
-  // 		map(() => undefined),
-  // 	);
-  // }
+  /** Attempts to refresh user secret, in case it is not possible logs out current user.. */
+  public refreshSecret(): Observable<void> {
+  	const refreshSecretIfPresent$ = this.userSecretStorage.currentSecret$.pipe(
+  		first(),
+  		switchMap(secret => {
+  			if (secret != null) {
+  				return this.authService.refreshSecret(secret);
+  			}
+  			throw new AppError('Unauthorized');
+  		}),
+  		switchMap(newSecret => this.userSecretStorage.saveSecret(newSecret)),
+  	);
+  	return refreshSecretIfPresent$.pipe(
+  		catchError((error: unknown) =>
+  			concat(
+  				this.authService.logout().pipe(ignoreElements()),
+  				throwError(() => error),
+  			)),
+  		map(() => undefined),
+  	);
+  }
 
   private saveSecretAndWaitForAuthorized(): OperatorFunction<UserSecret, void> {
     return pipe(
