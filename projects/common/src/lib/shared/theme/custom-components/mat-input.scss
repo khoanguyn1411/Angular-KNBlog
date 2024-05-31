@@ -1,5 +1,11 @@
 .mat-mdc-form-field-error-wrapper {
 
-  /* Overwrite default padding of error. */
+  // Overwrite default padding of error.
   padding: 0 !important;
+}
+
+.mat-mdc-form-field-infix {
+
+  // To overwrite default 180px width of mat-form-field.
+  width: 100% !important;
 }
