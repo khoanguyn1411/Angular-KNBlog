@@ -12,16 +12,16 @@ export type AuthenticationDialogData = {
   readonly state: 'signIn' | 'signUp';
 };
 
-/** Authentication component. */
+/** Authentication dialog component. */
 @Component({
-  selector: 'knc-authentication',
+  selector: 'knc-authentication-dialog',
   standalone: true,
-  templateUrl: './authentication.component.html',
+  templateUrl: './authentication-dialog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [LoginComponent, RegisterComponent],
-  styleUrls: ['./authentication.component.scss'],
+  styleUrls: ['./authentication-dialog.component.scss'],
 })
-export class AuthenticationComponent {
+export class AuthenticationDialogComponent {
   protected readonly dialogData = inject<AuthenticationDialogData>(MAT_DIALOG_DATA);
 
   protected readonly authState = signal<AuthenticationDialogData>(
