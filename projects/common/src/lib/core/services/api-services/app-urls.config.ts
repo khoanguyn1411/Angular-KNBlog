@@ -13,6 +13,7 @@ export class AppUrlsConfig {
 	/** Auth-related routes. */
 	public readonly auth = {
 		login: this.toApi('auth/login/'),
+		register: this.toApi('auth/register/'),
 		logout: this.toApi('auth/logout/'),
 		refreshSecret: this.toApi('auth/password-reset/'),
 	} as const;

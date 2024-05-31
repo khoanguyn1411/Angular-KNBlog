@@ -8,6 +8,8 @@ import { LoginData } from "@knb/core/models/login-data";
 import { UserSecret } from "@knb/core/models/user-secret";
 import { Observable, map } from "rxjs";
 import { AppUrlsConfig } from "./app-urls.config";
+import { RegisterDataMapper } from "@knb/core/mapper/register-data.mapper";
+import { RegisterData } from "@knb/core/models/register-data";
 
 
 /**
@@ -21,6 +23,8 @@ export class AuthApiService {
 	private readonly apiUrlsConfig = inject(AppUrlsConfig);
 
 	private readonly loginDataMapper = inject(LoginDataMapper);
+
+	private readonly registerDataMapper = inject(RegisterDataMapper);
 
 	private readonly appErrorMapper = inject(AppErrorMapper);
 
@@ -40,6 +44,24 @@ export class AuthApiService {
 				map(secretDto => this.userSecretMapper.fromDto(secretDto)),
 				this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(
 					this.loginDataMapper,
+				),
+			);
+	}
+
+  	/**
+	 * Register user.
+	 * @param RegisterData Register data.
+	 */
+	public register(register: RegisterData): Observable<UserSecret> {
+		return this.httpClient.post<unknown>(
+			this.apiUrlsConfig.auth.register,
+			this.registerDataMapper.toDto(register),
+		)
+			.pipe(
+				map(response => userSecretDtoSchema.parse(response)),
+				map(secretDto => this.userSecretMapper.fromDto(secretDto)),
+				this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(
+					this.registerDataMapper,
 				),
 			);
 	}

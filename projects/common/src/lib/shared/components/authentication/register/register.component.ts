@@ -80,7 +80,7 @@ export class RegisterComponent {
     }
 
     this.authApiService
-      .login(this.registerForm.getRawValue())
+      .register(this.registerForm.getRawValue())
       .pipe(
         toggleExecutionState(this.isLoading.set.bind(this)),
         catchValidationData(this.registerForm),
