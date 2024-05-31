@@ -30,6 +30,9 @@ import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AuthenticationDialogComponent } from '../authentication-dialog.component';
+import { tap } from 'rxjs';
 
 type RegisterFormData = FlatControlsOf<
   RegisterData & {
@@ -63,6 +66,7 @@ export class RegisterComponent {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
+	private readonly dialogRef = inject(MatDialogRef<AuthenticationDialogComponent>);
 
   /** Whether form is loading. */
   protected readonly isLoading = signal(false);
@@ -86,6 +90,7 @@ export class RegisterComponent {
       .register(registerFormValue)
       .pipe(
         toggleExecutionState(this.isLoading.set.bind(this)),
+        tap(() => this.dialogRef.close()),
         catchValidationData(this.registerForm),
         takeUntilDestroyed(this.destroyRef)
       )

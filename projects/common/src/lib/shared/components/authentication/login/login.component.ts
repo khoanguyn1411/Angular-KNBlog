@@ -32,6 +32,8 @@ import { EMPTY, Observable, map, tap } from 'rxjs';
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
+import { MatDialogRef } from '@angular/material/dialog';
+import { AuthenticationDialogComponent } from '../authentication-dialog.component';
 
 type LoginFormData = FlatControlsOf<LoginData>;
 
@@ -58,6 +60,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
 export class LoginComponent implements OnInit {
   public readonly signup = output();
 
+	private readonly dialogRef = inject(MatDialogRef<AuthenticationDialogComponent>);
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
@@ -93,6 +96,7 @@ export class LoginComponent implements OnInit {
       .login(loginFormValue)
       .pipe(
         toggleExecutionState(this.isLoading.set.bind(this)),
+        tap(() => this.dialogRef.close()),
         catchValidationError((error) => {
           this.authenticationError.set(
             error.validationData.nonFieldErrors ?? null
