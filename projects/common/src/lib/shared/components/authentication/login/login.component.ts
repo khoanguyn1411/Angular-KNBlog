@@ -17,8 +17,8 @@ import {
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
-import { LoginData } from '@knb/core/models/login-data';
-import { AuthApiService } from '@knb/core/services/api-services/auth-api.service';
+import { LoginData, loginDataSchema } from '@knb/core/models/login-data';
+import { UserService } from '@knb/core/services/api-services/user.service';
 import {
   catchValidationData,
   catchValidationError,
@@ -59,7 +59,7 @@ export class LoginComponent implements OnInit {
   public readonly signup = output();
 
   private readonly fb = inject(NonNullableFormBuilder);
-  private readonly authApiService = inject(AuthApiService);
+  private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
 
   /** Authentication error. */
@@ -87,8 +87,10 @@ export class LoginComponent implements OnInit {
       return;
     }
 
-    this.authApiService
-      .login(this.loginForm.getRawValue())
+    const loginFormValue = loginDataSchema.parse(this.loginForm.getRawValue());
+
+    this.userService
+      .login(loginFormValue)
       .pipe(
         toggleExecutionState(this.isLoading.set.bind(this)),
         catchValidationError((error) => {

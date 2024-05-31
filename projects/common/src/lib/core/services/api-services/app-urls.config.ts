@@ -18,6 +18,12 @@ export class AppUrlsConfig {
 		refreshSecret: this.toApi('auth/password-reset/'),
 	} as const;
 
+  	/** User routes. */
+	public readonly user = {
+		profile: this.toApi('user/profile/'),
+	} as const;
+
+
 	/**
 	 * Checks whether the url is application-scoped.
 	 * @param url Url to check.
