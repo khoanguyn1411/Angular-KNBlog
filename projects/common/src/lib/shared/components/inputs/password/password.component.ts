@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, computed, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 @Component({
 	selector: 'knc-password',
 	templateUrl: './password.component.html',
-	styleUrl: './password.component.css',
+	styleUrl: './password.component.scss',
 	standalone: true,
 	changeDetection: ChangeDetectionStrategy.Default,
 	imports: [
@@ -31,6 +31,9 @@ export class PasswordComponent extends InputBase {
 
 	/** Password type. */
 	protected readonly type = computed(() => this.isShowPassword() ? 'text' : 'password');
+
+  /** Input name. */
+	public readonly name = input<HTMLInputElement["name"]>('');
 
 	/** Toggle password. */
 	protected togglePassword(): void {

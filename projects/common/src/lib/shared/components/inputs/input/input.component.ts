@@ -3,8 +3,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
-import { InputBase } from '../input-base';
 import { FormControlValidationMessageComponent } from '../../form-control-validation-message/form-control-validation-message.component';
+import { InputBase } from '../input-base';
 
 /** Input component. */
 @Component({
@@ -18,7 +18,10 @@ import { FormControlValidationMessageComponent } from '../../form-control-valida
 export class InputComponent extends InputBase {
 
 	/** Input type. */
-	public readonly type = input('text');
+	public readonly type = input<HTMLInputElement["type"]>('text');
+
+  /** Input name. */
+	public readonly name = input<HTMLInputElement["name"]>('');
 
 	/**
 	 * Handle input change.

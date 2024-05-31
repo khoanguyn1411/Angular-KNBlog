@@ -1,0 +1,53 @@
+@use "variables.scss" as *;
+
+.login-header {
+  text-align: center;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: $default-fields-gap;
+}
+
+.name-wrapper {
+  display: flex;
+  gap: $default-fields-gap;
+}
+
+.submit-button {
+  width: 100%;
+  background-color: var(--primary-color-400);
+}
+
+.footer-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+}
+
+.footer-divider {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  align-items: center;
+}
+
+.footer-divider-item {
+  flex: 1
+}
+
+.footer-sign-up {
+  text-align: center;
+}
+
+.sign-up-text {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.or-text {
+  text-align: center;
+}
+

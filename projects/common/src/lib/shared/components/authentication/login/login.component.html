@@ -6,34 +6,22 @@
     <ng-container slot="body">
       <section>
         @if ( authenticationError() ) {
-          <knc-alert type="error" [text]="authenticationError()"/>
+        <knc-alert type="error" [text]="authenticationError()" />
         }
       </section>
       <section class="content">
         <knc-label label="Email" [isRequired]="true">
-          <knc-input
-            placeholder="abc@gmail.com"
-            formControlName="email"
-          ></knc-input>
+          <knc-input placeholder="abc@gmail.com" formControlName="email" name="email"></knc-input>
         </knc-label>
         <knc-label label="Password" [isRequired]="true">
-          <knc-password
-            placeholder="yourSecretPassword123"
-            formControlName="password"
-          ></knc-password>
+          <knc-password placeholder="yourSecretPassword123" formControlName="password" name="password"></knc-password>
         </knc-label>
       </section>
     </ng-container>
     <ng-container slot="footer">
       <section class="footer-wrapper">
-        <button
-          color="primary"
-          [kncLoading]="isLoading()"
-          mat-raised-button
-          class="submit-button"
-          mat-button
-          type="submit"
-        >
+        <button color="primary" [kncLoading]="isLoading()" mat-raised-button class="submit-button" mat-button
+          type="submit">
           Sign In
         </button>
         <div class="footer-divider">
@@ -41,17 +29,10 @@
           <p>or</p>
           <mat-divider class="footer-divider-item" />
         </div>
-        <asl-google-signin-button
-          type="standard"
-          text="signin_with"
-          size="large"
-          [width]="400"
-        />
+        <asl-google-signin-button type="standard" text="signin_with" size="large" [width]="400" />
         <p class="footer-sign-up">
           Don't have an account?
-          <b class="sign-up-text" role="button" (click)="onNavigateToSignup()"
-            >Signup</b
-          >
+          <b class="sign-up-text" role="button" (click)="onNavigateToSignup()">Sign up</b>
         </p>
       </section>
     </ng-container>

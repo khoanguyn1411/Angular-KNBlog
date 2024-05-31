@@ -1,3 +1,47 @@
-<section>
-  <h1>Register</h1>
-</section>
+<form [formGroup]="registerForm" (submit)="onSubmit()">
+  <knc-dialog-layout>
+    <ng-container slot="header">
+      <h2 class="login-header">Sign up</h2>
+    </ng-container>
+    <ng-container slot="body">
+      <section class="content">
+        <div class="name-wrapper">
+          <knc-label label="First Name" [isRequired]="true">
+            <knc-input placeholder="Your First Name" formControlName="firstName" name="firstName"></knc-input>
+          </knc-label>
+          <knc-label label="Last Name" [isRequired]="true">
+            <knc-input placeholder="Your Last Name" formControlName="lastName" name="lastName"></knc-input>
+          </knc-label>
+        </div>
+        <knc-label label="Email" [isRequired]="true">
+          <knc-input placeholder="abc@gmail.com" formControlName="email" name="email"></knc-input>
+        </knc-label>
+        <knc-label label="Password" [isRequired]="true">
+          <knc-password name="password" placeholder="yourSecretPassword123" formControlName="password"></knc-password>
+        </knc-label>
+        <knc-label label="Confirm Password" [isRequired]="true">
+          <knc-password name="confirm-password" placeholder="yourSecretPassword123"
+            formControlName="password"></knc-password>
+        </knc-label>
+      </section>
+    </ng-container>
+    <ng-container slot="footer">
+      <section class="footer-wrapper">
+        <button color="primary" [kncLoading]="isLoading()" mat-raised-button class="submit-button" mat-button
+          type="submit">
+          Sign Up
+        </button>
+        <div class="footer-divider">
+          <mat-divider class="footer-divider-item" />
+          <p>or</p>
+          <mat-divider class="footer-divider-item" />
+        </div>
+        <asl-google-signin-button type="standard" text="signup_with" size="large" [width]="400" />
+        <p class="footer-sign-up">
+          Already have an account?
+          <b class="sign-up-text" role="button" (click)="onNavigateToSignIn()">Sign In</b>
+        </p>
+      </section>
+    </ng-container>
+  </knc-dialog-layout>
+</form>
