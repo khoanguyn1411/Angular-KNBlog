@@ -1,7 +1,4 @@
 import {
-  GoogleSigninButtonModule
-} from '@abacritt/angularx-social-login';
-import {
   ChangeDetectionStrategy,
   Component,
   DestroyRef,
@@ -43,6 +40,7 @@ import {
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
+import { ResizedGoogleButtonComponent } from '../../resized-google-button/resized-google-button.component';
 import { AuthenticationDialogComponent } from '../authentication-dialog.component';
 
 type LoginFormData = FlatControlsOf<LoginData>;
@@ -62,7 +60,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
     PasswordComponent,
     AlertComponent,
     LoadingDirective,
-    GoogleSigninButtonModule,
+    ResizedGoogleButtonComponent
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./login.component.scss'],

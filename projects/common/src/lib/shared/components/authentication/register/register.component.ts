@@ -1,4 +1,3 @@
-import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -35,6 +34,7 @@ import { MonoTypeOperatorFunction, tap } from 'rxjs';
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
+import { ResizedGoogleButtonComponent } from '../../resized-google-button/resized-google-button.component';
 import { AuthenticationDialogComponent } from '../authentication-dialog.component';
 
 type RegisterFormData = FlatControlsOf<
@@ -59,7 +59,7 @@ type RegisterFormData = FlatControlsOf<
     PasswordComponent,
     AlertComponent,
     LoadingDirective,
-    GoogleSigninButtonModule,
+    ResizedGoogleButtonComponent,
   ],
   styleUrls: ['./register.component.scss'],
 })
