@@ -30,10 +30,12 @@ export class ResizedGoogleButtonComponent implements AfterViewInit {
     const parentElement = this.renderer.parentNode(
       this.elementRef.nativeElement
     );
+
     const newWidth =
       parentElement.offsetWidth > GOOGLE_BUTTON_MAX_WIDTH
         ? GOOGLE_BUTTON_MAX_WIDTH
         : parentElement.offsetWidth;
+
     this.width.set(newWidth);
   }
 }
