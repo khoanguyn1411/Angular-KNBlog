@@ -10,6 +10,7 @@ import {
 } from '@angular/core';
 
 const GOOGLE_BUTTON_MAX_WIDTH = 400;
+const GOOGLE_BUTTON_MIN_WIDTH = 200;
 
 /** Resized-google-button component. */
 @Component({
@@ -30,12 +31,17 @@ export class ResizedGoogleButtonComponent implements AfterViewInit {
     const parentElement = this.renderer.parentNode(
       this.elementRef.nativeElement
     );
-
-    const newWidth =
-      parentElement.offsetWidth > GOOGLE_BUTTON_MAX_WIDTH
-        ? GOOGLE_BUTTON_MAX_WIDTH
-        : parentElement.offsetWidth;
-
+    const newWidth = this.getWidth(parentElement.offsetWidth);
     this.width.set(newWidth);
+  }
+
+  private getWidth(currentWidth: number) {
+    if (this.width() > GOOGLE_BUTTON_MAX_WIDTH) {
+      return GOOGLE_BUTTON_MAX_WIDTH;
+    }
+    if (this.width() < GOOGLE_BUTTON_MIN_WIDTH) {
+      return GOOGLE_BUTTON_MIN_WIDTH;
+    }
+    return currentWidth;
   }
 }
