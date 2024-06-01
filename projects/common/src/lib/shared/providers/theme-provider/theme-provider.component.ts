@@ -32,7 +32,7 @@ export class ThemeProviderComponent implements OnInit {
   protected initializeTheme$(): Observable<void> {
     return this.currentTheme$.pipe(
       first(),
-      switchMap((theme) => this.themeService.setTheme$(theme ?? ThemeValue.blue)),
+      switchMap((theme) => this.themeService.setTheme(theme ?? ThemeValue.blue)),
       map(() => undefined)
     );
   }
