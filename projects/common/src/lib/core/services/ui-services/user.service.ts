@@ -1,9 +1,13 @@
+import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { inject, Injectable } from '@angular/core';
 import { AppError } from '@knb/core/models/app-error';
+import { GoogleAuthData } from '@knb/core/models/google-auth-data';
 import { LoginData } from '@knb/core/models/login-data';
 import { RegisterData } from '@knb/core/models/register-data';
 import { User } from '@knb/core/models/user';
 import { UserSecret } from '@knb/core/models/user-secret';
+import { catchHttpErrorResponse } from '@knb/core/utils/rxjs/catch-http-error-response';
+import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import {
   catchError,
   concat,
@@ -20,6 +24,7 @@ import {
 } from 'rxjs';
 import { AuthApiService } from '../api-services/auth-api.service';
 import { UserApiService } from '../api-services/user-api.service';
+import { SnackbarService } from './snackbar.service';
 import { UserSecretStorageService } from './user-secret-storage.service';
 
 /**
@@ -38,6 +43,8 @@ export class UserService {
   private readonly authService = inject(AuthApiService);
   private readonly userSecretStorage = inject(UserSecretStorageService);
   private readonly userApiService = inject(UserApiService);
+  private readonly socialAuthService = inject(SocialAuthService);
+  private readonly snackbarService = inject(SnackbarService);
 
   public constructor() {
     this.currentUser$ = this.initCurrentUserStream();
@@ -53,6 +60,36 @@ export class UserService {
       .login(loginData)
       .pipe(this.saveSecretAndWaitForAuthorized());
   }
+
+   /**
+   * Login or register a user with Google.
+   * @param data Login data.
+   */
+   public loginWithGoogle(data: GoogleAuthData): Observable<void> {
+    return this.authService
+      .loginWithGoogle(data)
+      .pipe(this.saveSecretAndWaitForAuthorized());
+  }
+
+  public loginWithGoogleFromAuthState(): Observable<void> {
+    return this.socialAuthService.authState.pipe(
+      filterNull(),
+      switchMap((user) => {
+        return this.loginWithGoogle({
+          email: user.email,
+          firstName: user.firstName,
+          lastName: user.lastName,
+          pictureUrl: user.photoUrl,
+          googleTokenId: user.idToken,
+        });
+      }),
+      catchHttpErrorResponse((error) => {
+        this.snackbarService.notify({ type: 'error', text: error.message });
+        return throwError(() => error);
+      })
+    );
+  }
+
 
   /**
    * Register a user.

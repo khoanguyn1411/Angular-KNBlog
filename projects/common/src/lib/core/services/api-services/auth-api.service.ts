@@ -10,6 +10,8 @@ import { Observable, map } from 'rxjs';
 import { AppUrlsConfig } from './app-urls.config';
 import { RegisterDataMapper } from '@knb/core/mapper/register-data.mapper';
 import { RegisterData } from '@knb/core/models/register-data';
+import { GoogleAuthDataMapper } from '@knb/core/mapper/google-auth-data.mapper';
+import { GoogleAuthData } from '@knb/core/models/google-auth-data';
 
 /**
  * Performs CRUD operations for auth-related information.
@@ -27,6 +29,8 @@ export class AuthApiService {
   private readonly appErrorMapper = inject(AppErrorMapper);
 
   private readonly userSecretMapper = inject(UserSecretMapper);
+
+  private readonly googleAuthDataMapper = inject(GoogleAuthDataMapper);
 
   /**
    * Login a user with email and password.
@@ -63,6 +67,24 @@ export class AuthApiService {
         this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(
           this.registerDataMapper
         )
+      );
+  }
+
+  /**
+   * Register or login user by Google.
+   * @param googleAuthData Google auth data.
+   */
+  public loginWithGoogle(
+    googleAuthData: GoogleAuthData
+  ): Observable<UserSecret> {
+    return this.httpClient
+      .post<unknown>(
+        this.apiUrlsConfig.auth.googleLogin,
+        this.googleAuthDataMapper.toDto(googleAuthData)
+      )
+      .pipe(
+        map((response) => userSecretDtoSchema.parse(response)),
+        map((secretDto) => this.userSecretMapper.fromDto(secretDto))
       );
   }
 

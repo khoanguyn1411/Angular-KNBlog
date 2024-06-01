@@ -13,6 +13,7 @@ export class AppUrlsConfig {
 	/** Auth-related routes. */
 	public readonly auth = {
 		login: this.toApi('auth/login/'),
+		googleLogin: this.toApi('auth/google-login/'),
 		register: this.toApi('auth/register/'),
 		logout: this.toApi('auth/logout/'),
 		refreshSecret: this.toApi('auth/password-reset/'),

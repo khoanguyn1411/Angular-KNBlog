@@ -1,4 +1,6 @@
-import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleSigninButtonModule
+} from '@abacritt/angularx-social-login';
 import {
   ChangeDetectionStrategy,
   Component,
@@ -30,7 +32,14 @@ import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
-import { EMPTY, Observable, map, tap } from 'rxjs';
+import {
+  MonoTypeOperatorFunction,
+  Observable,
+  map,
+  merge,
+  tap,
+  throwError
+} from 'rxjs';
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
@@ -83,7 +92,10 @@ export class LoginComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.resetAuthenticationErrorSideEffect$()
+    merge(
+      this.resetAuthenticationErrorSideEffect(),
+      this.userService.loginWithGoogleFromAuthState().pipe(this.handleLoginSuccessfully())
+    )
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe();
   }
@@ -100,18 +112,12 @@ export class LoginComponent implements OnInit {
       .login(loginFormValue)
       .pipe(
         toggleExecutionState(this.isLoading.set.bind(this)),
-        tap(() => {
-          this.dialogRef.close();
-          this.snackbarService.notify({
-            type: 'success',
-            text: 'Sign in successfully.',
-          });
-        }),
+        this.handleLoginSuccessfully(),
         catchValidationError((error) => {
           this.authenticationError.set(
             error.validationData.nonFieldErrors ?? null
           );
-          return EMPTY;
+          return throwError(() => error);
         }),
         catchValidationData(this.loginForm),
         takeUntilDestroyed(this.destroyRef)
@@ -123,7 +129,20 @@ export class LoginComponent implements OnInit {
     this.signup.emit();
   }
 
-  private resetAuthenticationErrorSideEffect$(): Observable<void> {
+  private handleLoginSuccessfully<T>(): MonoTypeOperatorFunction<T> {
+    return (source$) =>
+      source$.pipe(
+        tap(() => {
+          this.dialogRef.close();
+          this.snackbarService.notify({
+            type: 'success',
+            text: 'Sign in successfully.',
+          });
+        })
+      );
+  }
+
+  private resetAuthenticationErrorSideEffect(): Observable<void> {
     return this.loginForm.valueChanges.pipe(
       tap(() => this.authenticationError.set(null)),
       map(() => undefined)
