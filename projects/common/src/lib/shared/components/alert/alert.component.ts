@@ -1,5 +1,11 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
+import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
+
+export type SnackBarData = {
+  readonly text: string | null,
+  readonly type: "error" | "warning" | "info" | "success",
+}
 
 /** Alert component. */
 @Component({
@@ -11,6 +17,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrls: ['./alert.component.scss']
 })
 export class AlertComponent {
-  public text = input<string | null>(null)
-  public type = input<"error" | "warning" | "info">("error")
+
+  private readonly snackbarData = inject<SnackBarData>(MAT_SNACK_BAR_DATA)
+
+  public readonly text = input<SnackBarData["text"]>(this.snackbarData?.text ?? null)
+  public readonly type = input<SnackBarData["type"]>(this.snackbarData?.type ?? "error")
 }

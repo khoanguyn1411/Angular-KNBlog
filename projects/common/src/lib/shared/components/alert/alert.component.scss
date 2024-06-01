@@ -12,7 +12,7 @@
   gap: 12px;
   color: var(--text-color);
   background-color: var(--background-color);
-  border: 1px solid var(--text-color);
+  border: 2px solid var(--text-color);
   border-radius: 4px;
 }
 
@@ -29,4 +29,9 @@
 .info {
   --text-color: #{map-get(mat.$light-blue-palette, 700)};
   --background-color: #{map-get(mat.$light-blue-palette, 100)};
+}
+
+.success {
+  --text-color: #{map-get(mat.$green-palette, 800)};
+  --background-color: #{map-get(mat.$green-palette, 100)};
 }

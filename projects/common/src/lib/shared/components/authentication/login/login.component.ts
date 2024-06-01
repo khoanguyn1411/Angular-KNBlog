@@ -16,8 +16,10 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogRef } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { LoginData, loginDataSchema } from '@knb/core/models/login-data';
+import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import {
   catchValidationData,
@@ -32,7 +34,6 @@ import { EMPTY, Observable, map, tap } from 'rxjs';
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
-import { MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationDialogComponent } from '../authentication-dialog.component';
 
 type LoginFormData = FlatControlsOf<LoginData>;
@@ -60,10 +61,13 @@ type LoginFormData = FlatControlsOf<LoginData>;
 export class LoginComponent implements OnInit {
   public readonly signup = output();
 
-	private readonly dialogRef = inject(MatDialogRef<AuthenticationDialogComponent>);
+  private readonly dialogRef = inject(
+    MatDialogRef<AuthenticationDialogComponent>
+  );
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly snackbarService = inject(SnackbarService);
 
   /** Authentication error. */
   protected readonly authenticationError = signal<null | string>(null);
@@ -96,7 +100,13 @@ export class LoginComponent implements OnInit {
       .login(loginFormValue)
       .pipe(
         toggleExecutionState(this.isLoading.set.bind(this)),
-        tap(() => this.dialogRef.close()),
+        tap(() => {
+          this.dialogRef.close();
+          this.snackbarService.notify({
+            type: 'success',
+            text: 'Sign in successfully.',
+          });
+        }),
         catchValidationError((error) => {
           this.authenticationError.set(
             error.validationData.nonFieldErrors ?? null

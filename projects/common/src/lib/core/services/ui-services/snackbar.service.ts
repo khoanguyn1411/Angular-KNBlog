@@ -1,14 +1,21 @@
 import { Injectable, inject } from '@angular/core';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { AlertComponent } from '@knb/shared/components/alert/alert.component';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import {
+  AlertComponent,
+  SnackBarData,
+} from '@knb/shared/components/alert/alert.component';
 @Injectable({ providedIn: 'root' })
 export class SnackbarService {
-  private snackBar = inject(MatSnackBar);
+  private snackBarRef = inject(MatSnackBar);
 
-  public open() {
-    const snackbarRef = this.snackBar.openFromComponent(AlertComponent);
-     // Retrieve the component instance
-    //  snackbarRef.instance.text = "Test";
-    //  snackbarRef.instance.type = "error";
+  public notify(data: SnackBarData, config?: MatSnackBarConfig<SnackBarData>) {
+    this.snackBarRef.openFromComponent<AlertComponent>(AlertComponent, {
+      data,
+      panelClass: 'custom-notification',
+      horizontalPosition: 'right',
+      verticalPosition: 'top',
+      duration: 2000,
+      ...config,
+    });
   }
 }

@@ -3,6 +3,7 @@
   [class.error]="type() === 'error'"
   [class.warning]="type() === 'warning'"
   [class.info]="type() === 'info'"
+  [class.success]="type() === 'success'"
 >
   @switch (type()) {
     @case ("error") {
@@ -11,6 +12,8 @@
       <mat-icon>info</mat-icon>
     }@case ("warning") {
       <mat-icon>warning</mat-icon>
+    }@case ("success") {
+      <mat-icon>check_circle</mat-icon>
     }@default {
       <mat-icon>error_outline</mat-icon>
     }
