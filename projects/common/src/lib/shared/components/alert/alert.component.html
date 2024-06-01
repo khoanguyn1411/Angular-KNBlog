@@ -4,6 +4,7 @@
   [class.warning]="type() === 'warning'"
   [class.info]="type() === 'info'"
   [class.success]="type() === 'success'"
+  [class.is-called-from-snackbar]="isCalledFromSnackbar()"
 >
   @switch (type()) {
     @case ("error") {

@@ -33,6 +33,7 @@ import { LabelComponent } from '../../label/label.component';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthenticationDialogComponent } from '../authentication-dialog.component';
 import { tap } from 'rxjs';
+import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 
 type RegisterFormData = FlatControlsOf<
   RegisterData & {
@@ -67,6 +68,7 @@ export class RegisterComponent {
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
 	private readonly dialogRef = inject(MatDialogRef<AuthenticationDialogComponent>);
+	private readonly snackbarService = inject(SnackbarService);
 
   /** Whether form is loading. */
   protected readonly isLoading = signal(false);
@@ -90,7 +92,13 @@ export class RegisterComponent {
       .register(registerFormValue)
       .pipe(
         toggleExecutionState(this.isLoading.set.bind(this)),
-        tap(() => this.dialogRef.close()),
+        tap(() => {
+          this.dialogRef.close();
+          this.snackbarService.notify({
+            type: 'success',
+            text: 'Sign in successfully.',
+          });
+        }),
         catchValidationData(this.registerForm),
         takeUntilDestroyed(this.destroyRef)
       )
