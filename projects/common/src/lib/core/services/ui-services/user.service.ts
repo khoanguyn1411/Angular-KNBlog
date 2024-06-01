@@ -12,6 +12,7 @@ import {
   catchError,
   concat,
   first,
+  from,
   ignoreElements,
   map,
   merge,
@@ -71,6 +72,7 @@ export class UserService {
       .pipe(this.saveSecretAndWaitForAuthorized());
   }
 
+  /** Login with google from auth state. */
   public loginWithGoogleFromAuthState(): Observable<void> {
     return this.socialAuthService.authState.pipe(
       filterNull(),
@@ -101,7 +103,7 @@ export class UserService {
       .pipe(this.saveSecretAndWaitForAuthorized());
   }
 
-  /** Attempts to refresh user secret, in case it is not possible logs out current user.. */
+  /** Attempts to refresh user secret, in case it is not possible logs out current user. */
   public refreshSecret(): Observable<void> {
     const refreshSecretIfPresent$ = this.userSecretStorage.currentSecret$.pipe(
       first(),
@@ -126,7 +128,9 @@ export class UserService {
 
   /** Logout current user. */
   public logout(): Observable<void> {
-    const logoutSideEffects$ = merge(this.userSecretStorage.removeSecret());
+    const googleLogoutEffect$ = from(this.socialAuthService.signOut());
+    const removeSecretEffect$ = this.userSecretStorage.removeSecret()
+    const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$);
 
     return this.authService.logout().pipe(
       switchMap(() => logoutSideEffects$),
