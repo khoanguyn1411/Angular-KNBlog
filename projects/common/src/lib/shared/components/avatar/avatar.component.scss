@@ -1,0 +1,34 @@
+:host {
+  --small: 32px;
+  --medium: 40px;
+  --large: 48px;
+
+  --picture-size: var(--medium)
+}
+
+.small {
+  --picture-size: var(--small)
+}
+
+.large {
+  --picture-size: var(--large)
+}
+
+.medium {
+  --picture-size: var(--medium)
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  width: var(--picture-size);
+  aspect-ratio: 1;
+}
+
+.picture {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}

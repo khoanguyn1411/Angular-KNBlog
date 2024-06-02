@@ -18,6 +18,8 @@ export class UserMapper implements MapperFromDto<UserDto, User> {
       lastName: dto.lastName,
       role: dto.role,
       email: dto.email,
+      pictureUrl: dto.pictureUrl,
+      fullName: User.getFullName(dto.firstName, dto.lastName),
     };
   }
 }

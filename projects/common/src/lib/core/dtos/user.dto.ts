@@ -8,6 +8,7 @@ export const userDtoSchema = z
     lastName: z.string(),
     lastLogin: z.string(),
     role: z.string(),
+    pictureUrl: z.string().nullable(),
   })
   .readonly();
 

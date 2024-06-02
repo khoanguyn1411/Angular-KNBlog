@@ -1,6 +1,6 @@
 @use '@angular/material' as mat;
 
-:root {
+:host {
   --text-color: var(--error-color-500);
   --background-color: var(--error-color-100);
 }
