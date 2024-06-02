@@ -1,8 +1,8 @@
 <div [class.small]="size() === 'small'" [class.medium]="size() === 'medium'" [class.large]="size() === 'large'"
   class="wrapper">
   @if (user()?.pictureUrl) {
-  <img class="picture" [alt]="user()?.fullName" [src]="user()?.pictureUrl">
+    <img class="picture" [alt]="user()?.fullName" [src]="user()?.pictureUrl">
   } @else {
-  <span>{{ firstLetterOfName }}</span>
+    <span class="name-picture" [style.background-color]="getRandomColor()" >{{ firstLetterOfName }}</span>
   }
 </div>
