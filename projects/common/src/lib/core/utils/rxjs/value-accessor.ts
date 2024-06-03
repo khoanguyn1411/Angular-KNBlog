@@ -124,7 +124,7 @@ export abstract class BaseValueAccessor<V> implements ControlValueAccessor {
 /**
  * Simple synchronous value accessor implementation. Has a synchronous `controlValue` property that contains a value.
  * Reduces boilerplate needed for implementing custom controls via
- *  Angular's [`ControlValueAccessor`](https://angular.io/api/forms/ControlValueAccessor).
+ * Angular's [`ControlValueAccessor`](https://angular.io/api/forms/ControlValueAccessor).
  * @see ControlValueAccessor.
  */
 // Angular requires some decorator so that DI would get things right, Directive is added to avoid specifying Component's metadata.
@@ -150,7 +150,7 @@ export class SimpleValueAccessor<V> extends BaseValueAccessor<V> {
   /**
    * Used by Angular to write when assigned FormControl is changed.
    * @param value Value passed from the outside of value accessor by Angular's FormControl.
-   *  `null` when form is initialized without initial data.
+   * `null` when form is initialized without initial data.
    */
   public override writeValue(value: V | null): void {
     this._value = value;

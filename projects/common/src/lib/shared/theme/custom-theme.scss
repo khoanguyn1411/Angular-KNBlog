@@ -27,7 +27,8 @@ $white-palette: (
   A200: white,
   A400: white,
   A700: white,
-  contrast: (50: rgba(black, 0.87),
+  contrast: (
+    50: rgba(black, 0.87),
     100: rgba(black, 0.87),
     200: rgba(black, 0.87),
     300: rgba(black, 0.87),
@@ -41,9 +42,8 @@ $white-palette: (
     A200: rgba(black, 0.87),
     A400: rgba(black, 0.87),
     A700: rgba(black, 0.87),
-  )
+  ),
 );
-
 
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
@@ -54,26 +54,41 @@ $app-primary-green: mat.define-palette(mat.$green-palette);
 $app-primary-orange: mat.define-palette(mat.$orange-palette);
 $app-accent: mat.define-palette($white-palette);
 
-$app-theme-blue: mat.define-light-theme((color: (primary: $app-primary-blue,
-        accent: $app-accent,
-      ),
-    ));
+$app-theme-blue: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary-blue,
+      accent: $app-accent,
+    ),
+  )
+);
 
-$app-theme-purple: mat.define-light-theme((color: (primary: $app-primary-purple,
-        accent: $app-accent,
-      ),
-    ));
+$app-theme-purple: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary-purple,
+      accent: $app-accent,
+    ),
+  )
+);
 
-$app-theme-green: mat.define-light-theme((color: (primary: $app-primary-green,
-        accent: $app-accent,
-      ),
-    ));
+$app-theme-green: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary-green,
+      accent: $app-accent,
+    ),
+  )
+);
 
-$app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
-        accent: $app-accent,
-      ),
-    ));
-
+$app-theme-orange: mat.define-light-theme(
+  (
+    color: (
+      primary: $app-primary-orange,
+      accent: $app-accent,
+    ),
+  )
+);
 
 @include mat.all-component-themes($app-theme-blue);
 
@@ -164,7 +179,7 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-800: var(--blue-color-800);
   --primary-color-900: var(--blue-color-900);
 
-  --primary-color: var(--primary-color-500)
+  --primary-color: var(--primary-color-500);
 }
 
 /* Purple Theme */
@@ -182,7 +197,7 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-800: var(--purple-color-800);
   --primary-color-900: var(--purple-color-900);
 
-  --primary-color: var(--primary-color-500)
+  --primary-color: var(--primary-color-500);
 }
 
 /* Green Theme */
@@ -200,7 +215,7 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-800: var(--green-color-800);
   --primary-color-900: var(--green-color-900);
 
-  --primary-color: var(--primary-color-500)
+  --primary-color: var(--primary-color-500);
 }
 
 /* Orange Theme */
@@ -218,5 +233,5 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-800: var(--orange-color-800);
   --primary-color-900: var(--orange-color-900);
 
-  --primary-color: var(--primary-color-500)
+  --primary-color: var(--primary-color-500);
 }

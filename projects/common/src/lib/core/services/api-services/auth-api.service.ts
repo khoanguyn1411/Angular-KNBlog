@@ -53,14 +53,13 @@ export class AuthApiService {
 
   /**
    * Register user.
-   * @param RegisterData Register data.
-   * @param register
+   * @param registerData Register data.
    */
-  public register(register: RegisterData): Observable<UserSecret> {
+  public register(registerData: RegisterData): Observable<UserSecret> {
     return this.httpClient
       .post<unknown>(
         this.apiUrlsConfig.auth.register,
-        this.registerDataMapper.toDto(register),
+        this.registerDataMapper.toDto(registerData),
       )
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),

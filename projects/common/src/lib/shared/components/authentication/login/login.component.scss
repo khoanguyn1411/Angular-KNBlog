@@ -1,5 +1,5 @@
-@use "variables.scss" as *;
-@use "variables.scss" as *;
+@use 'variables.scss' as *;
+@use 'variables.scss' as *;
 
 .login-header {
   text-align: center;
@@ -31,7 +31,7 @@
 }
 
 .footer-divider-item {
-  flex: 1
+  flex: 1;
 }
 
 .footer-sign-up {
@@ -46,4 +46,3 @@
 .or-text {
   text-align: center;
 }
-
