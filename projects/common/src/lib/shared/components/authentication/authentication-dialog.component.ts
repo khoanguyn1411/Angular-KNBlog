@@ -22,10 +22,11 @@ export type AuthenticationDialogData = {
   styleUrls: ['./authentication-dialog.component.scss'],
 })
 export class AuthenticationDialogComponent {
-  protected readonly dialogData = inject<AuthenticationDialogData>(MAT_DIALOG_DATA);
+  protected readonly dialogData =
+    inject<AuthenticationDialogData>(MAT_DIALOG_DATA);
 
   protected readonly authState = signal<AuthenticationDialogData>(
-    this.dialogData
+    this.dialogData,
   );
 
   protected onSignup() {

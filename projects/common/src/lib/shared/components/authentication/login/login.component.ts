@@ -35,7 +35,7 @@ import {
   map,
   merge,
   tap,
-  throwError
+  throwError,
 } from 'rxjs';
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
@@ -60,7 +60,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
     PasswordComponent,
     AlertComponent,
     LoadingDirective,
-    ResizedGoogleButtonComponent
+    ResizedGoogleButtonComponent,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./login.component.scss'],
@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
   public readonly signup = output();
 
   private readonly dialogRef = inject(
-    MatDialogRef<AuthenticationDialogComponent>
+    MatDialogRef<AuthenticationDialogComponent>,
   );
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly userService = inject(UserService);
@@ -92,7 +92,9 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {
     merge(
       this.resetAuthenticationErrorSideEffect(),
-      this.userService.loginWithGoogleFromAuthState().pipe(this.handleLoginSuccessfully())
+      this.userService
+        .loginWithGoogleFromAuthState()
+        .pipe(this.handleLoginSuccessfully()),
     )
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe();
@@ -113,12 +115,12 @@ export class LoginComponent implements OnInit {
         this.handleLoginSuccessfully(),
         catchValidationError((error) => {
           this.authenticationError.set(
-            error.validationData.nonFieldErrors ?? null
+            error.validationData.nonFieldErrors ?? null,
           );
           return throwError(() => error);
         }),
         catchValidationData(this.loginForm),
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }
@@ -136,14 +138,14 @@ export class LoginComponent implements OnInit {
             type: 'success',
             text: 'Sign in successfully.',
           });
-        })
+        }),
       );
   }
 
   private resetAuthenticationErrorSideEffect(): Observable<void> {
     return this.loginForm.valueChanges.pipe(
       tap(() => this.authenticationError.set(null)),
-      map(() => undefined)
+      map(() => undefined),
     );
   }
 

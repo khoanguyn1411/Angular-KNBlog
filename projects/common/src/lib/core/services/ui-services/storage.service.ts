@@ -10,7 +10,7 @@ import {
   merge,
   of,
   shareReplay,
-  startWith
+  startWith,
 } from 'rxjs';
 import { z } from 'zod';
 
@@ -22,7 +22,7 @@ import { WINDOW_TOKEN } from '@knb/core/utils/rxjs/window-token';
 })
 export class StorageService {
   /** Emits the key of the changed value. */
-  private readonly valueChangedSubject$ = new BehaviorSubject<string>("");
+  private readonly valueChangedSubject$ = new BehaviorSubject<string>('');
 
   private readonly localStorage: Storage | null;
 
@@ -56,13 +56,13 @@ export class StorageService {
    */
   public get<T extends z.ZodTypeAny>(
     key: string,
-    schema: T
+    schema: T,
   ): Observable<z.infer<typeof schema> | null> {
     return this.watchStorageChangeByKey(key).pipe(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       map(() => this.obtainFromStorageByKey<T>(key, schema)),
       startWith(this.obtainFromStorageByKey<T>(key, schema)),
-      shareReplay({ refCount: true, bufferSize: 1 })
+      shareReplay({ refCount: true, bufferSize: 1 }),
     );
   }
 
@@ -72,7 +72,7 @@ export class StorageService {
     }
     const otherPageChange$ = fromEvent(this.window, 'storage').pipe(
       filter((event): event is StorageEvent => event instanceof StorageEvent),
-      map((event) => event.key)
+      map((event) => event.key),
     );
 
     // storage event happens only for the other pages of this domain, so we need to handle the local changes manually
@@ -81,13 +81,13 @@ export class StorageService {
 
     return merge(otherPageChange$, currentPageChange$).pipe(
       filter((key) => key === keyToWatch),
-      map(() => undefined)
+      map(() => undefined),
     );
   }
 
   private obtainFromStorageByKey<T extends z.ZodType>(
     key: string,
-    schema: T
+    schema: T,
   ): z.infer<typeof schema> | null {
     if (this.localStorage == null) {
       return null;

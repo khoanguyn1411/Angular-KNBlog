@@ -7,11 +7,11 @@ import { UserSecretMapper } from '@knb/core/mapper/user-secret.mapper';
 import { LoginData } from '@knb/core/models/login-data';
 import { UserSecret } from '@knb/core/models/user-secret';
 import { Observable, map } from 'rxjs';
-import { AppUrlsConfig } from './app-urls.config';
 import { RegisterDataMapper } from '@knb/core/mapper/register-data.mapper';
 import { RegisterData } from '@knb/core/models/register-data';
 import { GoogleAuthDataMapper } from '@knb/core/mapper/google-auth-data.mapper';
 import { GoogleAuthData } from '@knb/core/models/google-auth-data';
+import { AppUrlsConfig } from './app-urls.config';
 
 /**
  * Performs CRUD operations for auth-related information.
@@ -40,33 +40,34 @@ export class AuthApiService {
     return this.httpClient
       .post<unknown>(
         this.apiUrlsConfig.auth.login,
-        this.loginDataMapper.toDto(loginData)
+        this.loginDataMapper.toDto(loginData),
       )
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),
         map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
         this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(
-          this.loginDataMapper
-        )
+          this.loginDataMapper,
+        ),
       );
   }
 
   /**
    * Register user.
    * @param RegisterData Register data.
+   * @param register
    */
   public register(register: RegisterData): Observable<UserSecret> {
     return this.httpClient
       .post<unknown>(
         this.apiUrlsConfig.auth.register,
-        this.registerDataMapper.toDto(register)
+        this.registerDataMapper.toDto(register),
       )
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),
         map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
         this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(
-          this.registerDataMapper
-        )
+          this.registerDataMapper,
+        ),
       );
   }
 
@@ -75,16 +76,16 @@ export class AuthApiService {
    * @param googleAuthData Google auth data.
    */
   public loginWithGoogle(
-    googleAuthData: GoogleAuthData
+    googleAuthData: GoogleAuthData,
   ): Observable<UserSecret> {
     return this.httpClient
       .post<unknown>(
         this.apiUrlsConfig.auth.googleLogin,
-        this.googleAuthDataMapper.toDto(googleAuthData)
+        this.googleAuthDataMapper.toDto(googleAuthData),
       )
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),
-        map((secretDto) => this.userSecretMapper.fromDto(secretDto))
+        map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
       );
   }
 
@@ -96,12 +97,12 @@ export class AuthApiService {
     return this.httpClient
       .post<unknown>(
         this.apiUrlsConfig.auth.refreshSecret,
-        this.userSecretMapper.toDto(secret)
+        this.userSecretMapper.toDto(secret),
       )
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),
         map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
-        this.appErrorMapper.catchHttpErrorToAppError()
+        this.appErrorMapper.catchHttpErrorToAppError(),
       );
   }
 

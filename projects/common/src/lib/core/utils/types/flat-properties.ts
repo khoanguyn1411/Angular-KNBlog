@@ -1,16 +1,16 @@
 /**
  * String object wrapper used here intentionally to correctly work with string enums.
  */
-type IsObject<T> = T extends object ?
- T extends unknown[] | readonly unknown[] ?
-   never :
-   // eslint-disable-next-line @typescript-eslint/ban-types
-   T extends Function ?
-     never :
-     T extends string ?
-       never :
-       T :
- never;
+type IsObject<T> = T extends object
+  ? T extends unknown[] | readonly unknown[]
+    ? never
+    : // eslint-disable-next-line @typescript-eslint/ban-types
+      T extends Function
+      ? never
+      : T extends string
+        ? never
+        : T
+  : never;
 
 type ObjectPropertyKeys<T> = keyof {
   [K in keyof T as IsObject<T[K]> extends never ? never : K]: never;
@@ -41,14 +41,18 @@ type ObjectPropertyKeys<T> = keyof {
  * ```
  */
 /* eslint-disable-next-line @typescript-eslint/no-explicit-any */
-export type FlatProperties<T extends Record<string, any>, S extends string> = keyof T | keyof {
-  [
-   K in Extract<ObjectPropertyKeys<T>, string> as
-   Record<string, unknown> extends T ? never :
-   K extends keyof T ?
-   `${K}${S}${Extract<FlatProperties<T[K], S>, string>}` : never
-  ]: never;
-};
+export type FlatProperties<T extends Record<string, any>, S extends string> =
+  | keyof T
+  | keyof {
+      [K in Extract<ObjectPropertyKeys<T>, string> as Record<
+        string,
+        unknown
+      > extends T
+        ? never
+        : K extends keyof T
+          ? `${K}${S}${Extract<FlatProperties<T[K], S>, string>}`
+          : never]: never;
+    };
 
 /**
  * Parses passed tree and returns all the available paths.
@@ -60,12 +64,16 @@ export function flattifyProperties<T extends object, TSep extends string>(
   separator: TSep,
 ): FlatProperties<T, TSep>[] {
   return Object.entries(object).reduce((acc, [key, entry]) => {
-   if (entry != null && typeof entry === 'object') {
-     return acc.concat(key).concat(flattifyProperties(entry, separator)
-       .filter((property): property is string => typeof property === 'string')
-       .map(property => `${key}${separator}${property}`));
-   }
+    if (entry != null && typeof entry === 'object') {
+      return acc.concat(key).concat(
+        flattifyProperties(entry, separator)
+          .filter(
+            (property): property is string => typeof property === 'string',
+          )
+          .map((property) => `${key}${separator}${property}`),
+      );
+    }
 
-   return acc.concat(key);
- }, [] as string[]) as FlatProperties<T, TSep>[];
+    return acc.concat(key);
+  }, [] as string[]) as FlatProperties<T, TSep>[];
 }

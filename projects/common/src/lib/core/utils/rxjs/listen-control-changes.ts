@@ -22,5 +22,6 @@ export function listenControlChanges<T>(
       startWith(control.value),
       debounceTime(time),
       distinctUntilChanged(compare),
-    ));
+    ),
+  );
 }

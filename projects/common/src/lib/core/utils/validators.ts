@@ -3,7 +3,6 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { ValidationErrorCode } from '../models/validation-error-code';
 
 export namespace AppValidators {
-
   /**
    * Checks whether the current control matches another.
    * @param controlName Control name to check matching with.

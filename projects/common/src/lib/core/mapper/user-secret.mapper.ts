@@ -8,22 +8,23 @@ import { MapperFromDto } from './mappers';
 
 /** User secret mapper. */
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class UserSecretMapper
-implements MapperFromDto<UserSecretDto, UserSecret> {
-	/** @inheritdoc */
-	public toDto(model: UserSecret): UserSecretCreationDto {
-		return {
+  implements MapperFromDto<UserSecretDto, UserSecret>
+{
+  /** @inheritdoc */
+  public toDto(model: UserSecret): UserSecretCreationDto {
+    return {
       refreshToken: model.refreshToken,
-		};
-	}
+    };
+  }
 
-	/** @inheritdoc */
-	public fromDto(dto: UserSecretDto): UserSecret {
-		return {
-			accessToken: dto.accessToken,
-			refreshToken: dto.refreshToken,
-		};
-	}
+  /** @inheritdoc */
+  public fromDto(dto: UserSecretDto): UserSecret {
+    return {
+      accessToken: dto.accessToken,
+      refreshToken: dto.refreshToken,
+    };
+  }
 }

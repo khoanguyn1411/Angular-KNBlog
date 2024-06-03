@@ -70,7 +70,7 @@ export class RegisterComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
   private readonly dialogRef = inject(
-    MatDialogRef<AuthenticationDialogComponent>
+    MatDialogRef<AuthenticationDialogComponent>,
   );
   private readonly snackbarService = inject(SnackbarService);
 
@@ -89,7 +89,7 @@ export class RegisterComponent implements OnInit {
       .loginWithGoogleFromAuthState()
       .pipe(
         this.handleSignupSuccessfully('Sign in successful.'),
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }
@@ -101,7 +101,7 @@ export class RegisterComponent implements OnInit {
     }
 
     const registerFormValue = registerDataSchema.parse(
-      this.registerForm.getRawValue()
+      this.registerForm.getRawValue(),
     );
 
     this.userService
@@ -110,7 +110,7 @@ export class RegisterComponent implements OnInit {
         toggleExecutionState(this.isLoading.set.bind(this)),
         this.handleSignupSuccessfully('Sign up successfully.'),
         catchValidationData(this.registerForm),
-        takeUntilDestroyed(this.destroyRef)
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }
@@ -120,7 +120,7 @@ export class RegisterComponent implements OnInit {
   }
 
   private handleSignupSuccessfully<T>(
-    message: string
+    message: string,
   ): MonoTypeOperatorFunction<T> {
     return (source$) =>
       source$.pipe(
@@ -130,7 +130,7 @@ export class RegisterComponent implements OnInit {
             type: 'success',
             text: message,
           });
-        })
+        }),
       );
   }
 

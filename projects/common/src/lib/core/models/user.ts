@@ -15,7 +15,12 @@ export const userSchema = z
 
 export type User = z.infer<typeof userSchema>;
 export namespace User {
+  /**
+   *
+   * @param firstName
+   * @param lastName
+   */
   export function getFullName(firstName: string, lastName: string) {
-    return `${firstName} ${lastName}`
+    return `${firstName} ${lastName}`;
   }
 }

@@ -41,7 +41,7 @@ export class LabelComponent implements OnInit {
 
   /** Errors. */
   protected readonly errors$ = new BehaviorSubject<ValidationErrors | null>(
-    null
+    null,
   );
 
   /** @inheritDoc */
@@ -66,10 +66,10 @@ export class LabelComponent implements OnInit {
       switchMap((input) =>
         merge(
           input.statusChanges ?? EMPTY,
-          input.control ? listenControlTouched(input.control) : EMPTY
-        ).pipe(map(() => input))
+          input.control ? listenControlTouched(input.control) : EMPTY,
+        ).pipe(map(() => input)),
       ),
-      tap((input) => this.errors$.next(input.errors))
+      tap((input) => this.errors$.next(input.errors)),
     );
   }
 }

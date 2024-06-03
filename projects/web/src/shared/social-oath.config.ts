@@ -9,6 +9,7 @@ const GOOGLE_OAUTH_SCOPES = [
 
 const GOOGLE_CLIENT_ID = import.meta.env.NG_APP_GOOGLE_CLIENT_ID as string;
 
+/** Provide social oauth. */
 export function provideSocialOauth() {
   return {
     provide: 'SocialAuthServiceConfig',

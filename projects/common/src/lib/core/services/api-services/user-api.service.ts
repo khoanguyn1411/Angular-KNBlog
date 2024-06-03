@@ -21,7 +21,7 @@ export class UserApiService {
   public getCurrentUser(): Observable<User> {
     return this.httpClient.get<unknown>(this.apiUrls.user.profile).pipe(
       map((response) => userDtoSchema.parse(response)),
-      map((userDto) => this.userMapper.fromDto(userDto))
+      map((userDto) => this.userMapper.fromDto(userDto)),
     );
   }
 }

@@ -3,7 +3,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogService } from '@knb/core/services/ui-services/dialog.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
-import { AuthenticationDialogComponent, AuthenticationDialogData } from '@knb/shared/components/authentication/authentication-dialog.component';
+import {
+  AuthenticationDialogComponent,
+  AuthenticationDialogData,
+} from '@knb/shared/components/authentication/authentication-dialog.component';
 import { UserOptionsComponent } from './user-options/user-options.component';
 
 /** Header component. */
@@ -22,10 +25,10 @@ export class HeaderComponent {
   protected readonly isAuthorized = toSignal(this.userService.isAuthorized$);
 
   private openAuthenticationDialog(data: AuthenticationDialogData) {
-    this.dialogService.open<AuthenticationDialogComponent, AuthenticationDialogData>(
+    this.dialogService.open<
       AuthenticationDialogComponent,
-      data
-    );
+      AuthenticationDialogData
+    >(AuthenticationDialogComponent, data);
   }
 
   protected onSignIn() {

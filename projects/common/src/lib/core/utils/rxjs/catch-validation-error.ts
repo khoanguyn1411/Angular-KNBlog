@@ -1,13 +1,11 @@
 import { FormArray, FormGroup } from '@angular/forms';
-import {
-  Observable,
-  OperatorFunction,
-  Subject, throwError,
-} from 'rxjs';
+import { Observable, OperatorFunction, Subject, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
 import {
-  AppError, AppValidationError, EntityValidationErrors,
+  AppError,
+  AppValidationError,
+  EntityValidationErrors,
 } from '../../models/app-error';
 import { AppValidators } from '../validators';
 
@@ -17,9 +15,9 @@ import { AppValidators } from '../validators';
  */
 export function catchValidationData<T, R>(
   formOrSubject$: Subject<EntityValidationErrors<T>> | FormGroup,
-// eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
+  // eslint-disable-next-line @typescript-eslint/no-redundant-type-constituents
 ): OperatorFunction<R, R | never> {
-  return source$ =>
+  return (source$) =>
     source$.pipe(
       catchValidationError(({ validationData, message }) => {
         if (formOrSubject$ instanceof FormGroup) {
@@ -43,7 +41,7 @@ function fillFormWithError<T>(
   errors: EntityValidationErrors<T>,
 ): void {
   const controlKeys = Object.keys(form.controls) as (keyof T)[];
-  controlKeys.forEach(key => {
+  controlKeys.forEach((key) => {
     const error = errors[key];
     const control = form.controls[key as string];
     if (error && control) {
@@ -85,7 +83,9 @@ function fillFormArrayWithError<T>(
  * @param selector Selector.
  */
 export function catchValidationError<T, R>(
-  selector: (error: AppValidationError<Record<string, unknown>>) => Observable<R>,
+  selector: (
+    error: AppValidationError<Record<string, unknown>>,
+  ) => Observable<R>,
 ): OperatorFunction<T, T | R> {
   return catchError((error: unknown) => {
     if (error instanceof AppValidationError) {

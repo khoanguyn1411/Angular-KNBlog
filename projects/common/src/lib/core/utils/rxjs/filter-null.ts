@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
 export function filterNull<T>(): OperatorFunction<T, NonNullable<T>> {
   return (source$): Observable<NonNullable<T>> =>
     source$.pipe(
-      filter(val => val != null),
-      map(val => val as NonNullable<T>),
+      filter((val) => val != null),
+      map((val) => val as NonNullable<T>),
     );
 }
