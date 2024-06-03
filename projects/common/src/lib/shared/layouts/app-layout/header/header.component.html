@@ -4,9 +4,8 @@
       <p>KNBLOG</p>
     </section>
     <section class="second-section">
-      @if (isAuthorized() && currentUser() != null) {
-        <knc-avatar [user]="currentUser() ?? null"></knc-avatar>
-        <button (click)="onSignOut()" mat-button color="primary" type="button">Sign out</button>
+      @if (isAuthorized()) {
+        <knc-user-options></knc-user-options>
       }@else {
         <button (click)="onSignIn()" mat-button color="primary" type="button">Sign in</button>
       }

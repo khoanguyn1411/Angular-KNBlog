@@ -13,6 +13,8 @@ export class AvatarComponent {
   public readonly user = input<User | null>(null);
   public readonly size = input<'small' | 'medium' | 'large'>('medium');
 
+  protected readonly randomColor = this.getRandomColor()
+
   protected get firstLetterOfName() {
     const user = this.user();
     if (user == null) {

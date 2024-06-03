@@ -4,9 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { DialogService } from '@knb/core/services/ui-services/dialog.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import { AuthenticationDialogComponent, AuthenticationDialogData } from '@knb/shared/components/authentication/authentication-dialog.component';
-
-import { AvatarComponent } from '@knb/shared/components/avatar/avatar.component';
-import { first } from 'rxjs';
+import { UserOptionsComponent } from './user-options/user-options.component';
 
 /** Header component. */
 @Component({
@@ -15,14 +13,13 @@ import { first } from 'rxjs';
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./header.component.scss'],
-  imports: [MatButtonModule, AvatarComponent],
+  imports: [MatButtonModule, UserOptionsComponent],
 })
 export class HeaderComponent {
   private readonly dialogService = inject(DialogService);
   private readonly userService = inject(UserService);
 
   protected readonly isAuthorized = toSignal(this.userService.isAuthorized$);
-  protected readonly currentUser = toSignal(this.userService.currentUser$);
 
   private openAuthenticationDialog(data: AuthenticationDialogData) {
     this.dialogService.open<AuthenticationDialogComponent, AuthenticationDialogData>(
@@ -33,9 +30,5 @@ export class HeaderComponent {
 
   protected onSignIn() {
     this.openAuthenticationDialog({ state: 'signIn' });
-  }
-
-  protected onSignOut() {
-    this.userService.logout().pipe(first()).subscribe();
   }
 }

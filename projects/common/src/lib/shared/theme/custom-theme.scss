@@ -163,6 +163,8 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-700: var(--blue-color-700);
   --primary-color-800: var(--blue-color-800);
   --primary-color-900: var(--blue-color-900);
+
+  --primary-color: var(--primary-color-500)
 }
 
 /* Purple Theme */
@@ -179,6 +181,8 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-700: var(--purple-color-700);
   --primary-color-800: var(--purple-color-800);
   --primary-color-900: var(--purple-color-900);
+
+  --primary-color: var(--primary-color-500)
 }
 
 /* Green Theme */
@@ -195,6 +199,8 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-700: var(--green-color-700);
   --primary-color-800: var(--green-color-800);
   --primary-color-900: var(--green-color-900);
+
+  --primary-color: var(--primary-color-500)
 }
 
 /* Orange Theme */
@@ -211,4 +217,6 @@ $app-theme-orange: mat.define-light-theme((color: (primary: $app-primary-orange,
   --primary-color-700: var(--orange-color-700);
   --primary-color-800: var(--orange-color-800);
   --primary-color-900: var(--orange-color-900);
+
+  --primary-color: var(--primary-color-500)
 }

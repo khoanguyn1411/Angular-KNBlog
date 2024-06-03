@@ -3,6 +3,6 @@
   @if (user()?.pictureUrl) {
     <img class="picture" [alt]="user()?.fullName" [src]="user()?.pictureUrl">
   } @else {
-    <span class="name-picture" [style.background-color]="getRandomColor()" >{{ firstLetterOfName }}</span>
+    <span class="name-picture" [style.background-color]="randomColor" >{{ firstLetterOfName }}</span>
   }
 </div>

@@ -1,0 +1,25 @@
+@use "variables.scss" as *;
+
+.avatar {
+  cursor: pointer;
+}
+
+.menuItem {
+  min-width: 250px;
+}
+
+.profile {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+}
+
+.profile-fullname {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+.profile-email {
+  font-size: $font-size-14;
+}
