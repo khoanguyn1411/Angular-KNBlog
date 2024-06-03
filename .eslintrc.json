@@ -12,10 +12,29 @@
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
         "plugin:@typescript-eslint/recommended",
-        "plugin:@typescript-eslint/recommended-requiring-type-checking"
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:import/typescript",
+        "plugin:jsdoc/recommended",
+        "plugin:prefer-arrow/recommended",
+        "plugin:prettier/recommended"
       ],
-      "plugins": ["rxjs", "@typescript-eslint"],
+      "plugins": [
+        "rxjs",
+        "@typescript-eslint",
+        "import",
+        "jsdoc",
+        "prefer-arrow",
+        "prettier"
+      ],
       "rules": {
+        "import/order": "error",
+        "jsdoc/check-alignment": "error",
+        "jsdoc/check-indentation": "error",
+        "jsdoc/newline-after-description": "error",
+        "prefer-arrow/prefer-arrow-functions": "error",
+        "prettier/prettier": "error",
         "@typescript-eslint/explicit-member-accessibility": "error",
         "@typescript-eslint/unbound-method": "off",
         "@typescript-eslint/no-namespace": "off",
