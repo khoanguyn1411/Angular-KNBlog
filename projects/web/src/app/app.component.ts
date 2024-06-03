@@ -18,5 +18,5 @@ export class AppComponent {
 
   protected title$ = new Observable();
 
-  protected formControl = new FormControl("")
+  protected formControl = new FormControl('');
 }

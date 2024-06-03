@@ -1,6 +1,5 @@
-import { Injectable, inject } from "@angular/core";
-import { AppConfig } from "../app.config";
-
+import { Injectable, inject } from '@angular/core';
+import { AppConfig } from '../app.config';
 
 /**
  * Urls used within the application.
@@ -8,41 +7,42 @@ import { AppConfig } from "../app.config";
  */
 @Injectable({ providedIn: 'root' })
 export class AppUrlsConfig {
-	private readonly appConfigService = inject(AppConfig);
+  private readonly appConfigService = inject(AppConfig);
 
-	/** Auth-related routes. */
-	public readonly auth = {
-		login: this.toApi('auth/login/'),
-		googleLogin: this.toApi('auth/google-login/'),
-		register: this.toApi('auth/register/'),
-		logout: this.toApi('auth/logout/'),
-		refreshSecret: this.toApi('auth/password-reset/'),
-	} as const;
+  /** Auth-related routes. */
+  public readonly auth = {
+    login: this.toApi('auth/login/'),
+    googleLogin: this.toApi('auth/google-login/'),
+    register: this.toApi('auth/register/'),
+    logout: this.toApi('auth/logout/'),
+    refreshSecret: this.toApi('auth/password-reset/'),
+  } as const;
 
-  	/** User routes. */
-	public readonly user = {
-		profile: this.toApi('user/profile/'),
-	} as const;
+  /** User routes. */
+  public readonly user = {
+    profile: this.toApi('user/profile/'),
+  } as const;
 
+  /**
+   * Checks whether the url is application-scoped.
+   * @param url Url to check.
+   */
+  public isApplicationUrl(url: string): boolean {
+    return url.startsWith(this.appConfigService.apiUrl);
+  }
 
-	/**
-	 * Checks whether the url is application-scoped.
-	 * @param url Url to check.
-	 */
-	public isApplicationUrl(url: string): boolean {
-		return url.startsWith(this.appConfigService.apiUrl);
-	}
+  /**
+   * Checks whether the specified url is calling an auth-related endpoint.
+   * @param url Url to check.
+   */
+  public isAuthUrl(url: string): boolean {
+    return (
+      Object.values(this.auth).find((authUrl) => authUrl.includes(url)) != null
+    );
+  }
 
-	/**
-	 * Checks whether the specified url is calling an auth-related endpoint.
-	 * @param url Url to check.
-	 */
-	public isAuthUrl(url: string): boolean {
-		return Object.values(this.auth).find(authUrl => authUrl.includes(url)) != null;
-	}
-
-	private toApi(...args: readonly string[]): string {
-		const path = args.join('/');
-		return new URL(path, this.appConfigService.apiUrl).toString();
-	}
+  private toApi(...args: readonly string[]): string {
+    const path = args.join('/');
+    return new URL(path, this.appConfigService.apiUrl).toString();
+  }
 }

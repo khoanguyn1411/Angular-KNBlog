@@ -6,7 +6,9 @@ import { baseRoutePaths } from '@knb/core/utils/route-paths/route-paths';
 export const JOB_ID_PARAM = 'jobId';
 
 /** Injection token that provide object with route web app paths. */
-const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object with web route paths');
+const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>(
+  'Provide object with web route paths',
+);
 
 const authRoutePaths = buildRoutePaths({
   auth: {
@@ -21,7 +23,6 @@ const authRoutePaths = buildRoutePaths({
 const homeRoutePaths = buildRoutePaths({
   root: { path: 'home' },
 } as const);
-
 
 /**
  * Web route paths object.
@@ -38,19 +39,19 @@ const homeRoutePaths = buildRoutePaths({
  * ```
  */
 export const webRoutePaths = buildRoutePaths({
-	...baseRoutePaths,
+  ...baseRoutePaths,
   ...authRoutePaths,
-  ...homeRoutePaths
+  ...homeRoutePaths,
 } as const);
 
 type WebRoutePaths = typeof webRoutePaths;
 
 /** Create provider for a web route paths. */
 export function provideWebAppRoutes(): Provider {
-	return {
-		provide: WEB_ROUTE_PATHS_TOKEN,
-		useValue: webRoutePaths,
-	};
+  return {
+    provide: WEB_ROUTE_PATHS_TOKEN,
+    useValue: webRoutePaths,
+  };
 }
 
 /**
@@ -66,5 +67,5 @@ export function provideWebAppRoutes(): Provider {
  * ```
  */
 export function injectWebAppRoutes(): WebRoutePaths {
-	return inject(WEB_ROUTE_PATHS_TOKEN);
+  return inject(WEB_ROUTE_PATHS_TOKEN);
 }

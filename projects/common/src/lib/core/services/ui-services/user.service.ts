@@ -62,11 +62,11 @@ export class UserService {
       .pipe(this.saveSecretAndWaitForAuthorized());
   }
 
-   /**
+  /**
    * Login or register a user with Google.
    * @param data Login data.
    */
-   public loginWithGoogle(data: GoogleAuthData): Observable<void> {
+  public loginWithGoogle(data: GoogleAuthData): Observable<void> {
     return this.authService
       .loginWithGoogle(data)
       .pipe(this.saveSecretAndWaitForAuthorized());
@@ -88,10 +88,9 @@ export class UserService {
       catchHttpErrorResponse((error) => {
         this.snackbarService.notify({ type: 'error', text: error.message });
         return throwError(() => error);
-      })
+      }),
     );
   }
-
 
   /**
    * Register a user.
@@ -113,28 +112,28 @@ export class UserService {
         }
         throw new AppError('Unauthorized');
       }),
-      switchMap((newSecret) => this.userSecretStorage.saveSecret(newSecret))
+      switchMap((newSecret) => this.userSecretStorage.saveSecret(newSecret)),
     );
     return refreshSecretIfPresent$.pipe(
       catchError((error: unknown) =>
         concat(
           this.authService.logout().pipe(ignoreElements()),
-          throwError(() => error)
-        )
+          throwError(() => error),
+        ),
       ),
-      map(() => undefined)
+      map(() => undefined),
     );
   }
 
   /** Logout current user. */
   public logout(): Observable<void> {
     const googleLogoutEffect$ = from(this.socialAuthService.signOut());
-    const removeSecretEffect$ = this.userSecretStorage.removeSecret()
+    const removeSecretEffect$ = this.userSecretStorage.removeSecret();
     const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$);
 
     return this.authService.logout().pipe(
       switchMap(() => logoutSideEffects$),
-      catchError(() => logoutSideEffects$)
+      catchError(() => logoutSideEffects$),
     );
   }
 
@@ -149,16 +148,16 @@ export class UserService {
           return merge(this.isAuthorized$, saveUserSecretSideEffect$);
         }),
         first((isAuthorized) => isAuthorized),
-        map(() => undefined)
+        map(() => undefined),
       );
   }
 
   private initCurrentUserStream(): Observable<User | null> {
     return this.userSecretStorage.currentSecret$.pipe(
       switchMap((secret) =>
-        secret ? this.userApiService.getCurrentUser() : of(null)
+        secret ? this.userApiService.getCurrentUser() : of(null),
       ),
-      shareReplay({ bufferSize: 1, refCount: false })
+      shareReplay({ bufferSize: 1, refCount: false }),
     );
   }
 }

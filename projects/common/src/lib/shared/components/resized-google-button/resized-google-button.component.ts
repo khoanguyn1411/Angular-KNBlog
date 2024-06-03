@@ -1,4 +1,7 @@
-import { GoogleSigninButtonDirective, GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleSigninButtonDirective,
+  GoogleSigninButtonModule,
+} from '@abacritt/angularx-social-login';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
@@ -23,8 +26,9 @@ const GOOGLE_BUTTON_MIN_WIDTH = 200;
   styleUrls: ['./resized-google-button.component.css'],
 })
 export class ResizedGoogleButtonComponent implements AfterViewInit {
-  public readonly type = input<GoogleSigninButtonDirective["type"]>("standard")
-  public readonly text = input<GoogleSigninButtonDirective["text"]>("signin_with")
+  public readonly type = input<GoogleSigninButtonDirective['type']>('standard');
+  public readonly text =
+    input<GoogleSigninButtonDirective['text']>('signin_with');
 
   private renderer = inject(Renderer2);
   private elementRef = inject(ElementRef);
@@ -33,7 +37,7 @@ export class ResizedGoogleButtonComponent implements AfterViewInit {
 
   public ngAfterViewInit(): void {
     const parentElement = this.renderer.parentNode(
-      this.elementRef.nativeElement
+      this.elementRef.nativeElement,
     );
     const newWidth = this.getWidth(parentElement.offsetWidth);
     this.width.set(newWidth);

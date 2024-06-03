@@ -5,6 +5,6 @@ export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: webRoutePaths.root.path
+    redirectTo: webRoutePaths.root.path,
   },
 ];

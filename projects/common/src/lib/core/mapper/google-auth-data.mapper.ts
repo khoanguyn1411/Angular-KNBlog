@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 
-
 import { GoogleAuthDataDto } from '../dtos/google-auth-data.dto';
 import { GoogleAuthData } from '../models/google-auth-data';
 import { MapperToDto } from './mappers';

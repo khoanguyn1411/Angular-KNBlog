@@ -9,8 +9,8 @@ export const DEFAULT_DEBOUNCE_TIME = 300;
  * Immediately starts with default value of the control.
  * Adds delay and emits value only if it was changed.
  * @param control Form control.
- * @param compare Function for distinctUntilChanged.
  * @param time Debounce time.
+ * @param compare Function for distinctUntilChanged.
  */
 export function listenControlChanges<T>(
   control: AbstractControl,
@@ -22,5 +22,6 @@ export function listenControlChanges<T>(
       startWith(control.value),
       debounceTime(time),
       distinctUntilChanged(compare),
-    ));
+    ),
+  );
 }

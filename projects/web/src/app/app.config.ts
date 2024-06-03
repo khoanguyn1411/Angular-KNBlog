@@ -1,7 +1,11 @@
 import { ApplicationConfig, Provider } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import {
+  HTTP_INTERCEPTORS,
+  provideHttpClient,
+  withInterceptorsFromDi,
+} from '@angular/common/http';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
@@ -13,13 +17,13 @@ import { provideWebAppRoutes } from '../shared/web-route-paths';
 import { routes } from './app.routes';
 
 const httpInterceptorProviders: readonly Provider[] = [
-	// The refresh interceptor should be before the auth interceptor, otherwise refreshed bearer would not be updated
-	{
-		provide: HTTP_INTERCEPTORS,
-		useClass: RefreshTokenInterceptor,
-		multi: true,
-	},
-	{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+  // The refresh interceptor should be before the auth interceptor, otherwise refreshed bearer would not be updated
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: RefreshTokenInterceptor,
+    multi: true,
+  },
+  { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 ];
 
 export const appConfig: ApplicationConfig = {
@@ -27,7 +31,7 @@ export const appConfig: ApplicationConfig = {
     ...httpInterceptorProviders,
     provideRouter(routes),
     provideClientHydration(),
-		provideHttpClient(withInterceptorsFromDi()),
+    provideHttpClient(withInterceptorsFromDi()),
     provideAnimations(),
     provideWebAppRoutes(),
     provideSocialOauth(),

@@ -9,11 +9,11 @@ export class DialogService {
   public open<TComponent, TData, TReturn = unknown>(
     component: ComponentType<TComponent>,
     data: TData,
-    config?: MatDialogConfig<TData>
+    config?: MatDialogConfig<TData>,
   ) {
     this.dialogRef.open<TComponent, TData, TReturn>(component, {
       data,
-      width: "450px",
+      width: '450px',
       autoFocus: false,
       ...config,
     });

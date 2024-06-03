@@ -8,32 +8,31 @@ import { Directive, ElementRef, Input, inject } from '@angular/core';
  * ```
  */
 @Directive({
-	selector: '[kncLoading]',
-	standalone: true,
+  selector: '[kncLoading]',
+  standalone: true,
 })
 export class LoadingDirective {
+  private readonly elementRef = inject(ElementRef<HTMLElement>);
 
-	private readonly elementRef = inject(ElementRef<HTMLElement>);
+  /** Loading beacon. */
+  @Input()
+  public set kncLoading(loading: boolean | null) {
+    if (loading) {
+      this.elementRef.nativeElement.classList.add('knc-loading');
+      this.disable();
+    } else {
+      this.elementRef.nativeElement.classList.remove('knc-loading');
+      this.enable();
+    }
+  }
 
-	/** Loading beacon. */
-	@Input()
-	public set kncLoading(loading: boolean | null) {
-		if (loading) {
-			this.elementRef.nativeElement.classList.add('knc-loading');
-			this.disable();
-		} else {
-			this.elementRef.nativeElement.classList.remove('knc-loading');
-			this.enable();
-		}
-	}
+  /** Enable element. */
+  private disable(): void {
+    this.elementRef.nativeElement.setAttribute('disabled', 'true');
+  }
 
-	/** Enable element. */
-	private disable(): void {
-		this.elementRef.nativeElement.setAttribute('disabled', 'true');
-	}
-
-	/** Disable element. */
-	private enable(): void {
-		this.elementRef.nativeElement.removeAttribute('disabled');
-	}
+  /** Disable element. */
+  private enable(): void {
+    this.elementRef.nativeElement.removeAttribute('disabled');
+  }
 }

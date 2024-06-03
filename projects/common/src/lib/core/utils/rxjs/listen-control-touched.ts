@@ -5,13 +5,13 @@ import { Observable } from 'rxjs';
 /**
  * Allows to listen the touched state change.
  * The util is needed until Angular allows to listen for such events.
- * Https://github.com/angular/angular/issues/10887.
+ * @see: https://github.com/angular/angular/issues/10887.
  * @param control Control to listen for.
  */
 export function listenControlTouched(
   control: AbstractControl,
 ): Observable<boolean> {
-  return new Observable<boolean>(observer => {
+  return new Observable<boolean>((observer) => {
     const originalMarkAsTouched = control.markAsTouched;
     const originalReset = control.reset;
 

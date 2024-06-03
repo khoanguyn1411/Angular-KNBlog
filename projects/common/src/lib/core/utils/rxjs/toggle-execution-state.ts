@@ -10,14 +10,14 @@ import { finalize, ignoreElements, shareReplay } from 'rxjs/operators';
  * @example toggleExecutionState(this.isLoading.set.bind(this)),
  */
 export function toggleExecutionState<T>(
-  setSignalCallback: WritableSignal<boolean>["set"],
+  setSignalCallback: WritableSignal<boolean>['set'],
 ): MonoTypeOperatorFunction<T> {
   const startLoadingSideEffect$ = defer(() => {
-    setSignalCallback(true)
+    setSignalCallback(true);
     return EMPTY;
   });
 
-  return source$ => {
+  return (source$) => {
     const sharedSource$ = source$.pipe(
       shareReplay({ refCount: true, bufferSize: 1 }),
     );

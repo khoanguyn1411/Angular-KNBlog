@@ -28,7 +28,7 @@ span.knb-skeleton::before,
 time.knb-skeleton::before,
 a.knb-skeleton::before {
   /* To emulate height of text. */
-  content: ".";
+  content: '.';
   display: inline-block;
   color: transparent;
 }

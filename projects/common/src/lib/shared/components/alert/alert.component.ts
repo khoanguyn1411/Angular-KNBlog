@@ -28,12 +28,12 @@ export class AlertComponent {
   });
 
   public readonly text = input<SnackBarData['text']>(
-    this.snackbarData?.text ?? null
+    this.snackbarData?.text ?? null,
   );
 
   public readonly type = input<SnackBarData['type']>(
-    this.snackbarData?.type ?? 'error'
+    this.snackbarData?.type ?? 'error',
   );
 
-  protected readonly isCalledFromSnackbar = signal(this.snackbarData != null)
+  protected readonly isCalledFromSnackbar = signal(this.snackbarData != null);
 }

@@ -3,7 +3,6 @@ import { EntityValidationErrors } from '../models/app-error';
 
 /** Error returned by API. */
 export interface ApiError<TDto = unknown> {
-
   /** Validation data. May not be present in case the error is not related to provided data. */
   readonly data?: ValidationErrorDto<TDto>;
 
@@ -26,7 +25,6 @@ export type ValidationErrorDto<T> = {
       ? ValidationErrorDto<T[P]> | string[]
       : string[];
 } & {
-
   /**
    * Non field errors.
    */
@@ -42,7 +40,7 @@ export type ValidationErrorDto<T> = {
  * Error message of the first key if error data is error for composite object like City: { id, name }.
  */
 export function extractErrorMessage<T>(
-  errorData: ValidationErrorDto<T> |  string[] | null | undefined,
+  errorData: ValidationErrorDto<T> | string[] | null | undefined,
 ): string | undefined {
   if (errorData == null) {
     return;
@@ -79,12 +77,12 @@ export function extractEntityErrorMessages<T>(
   }
 
   if (Array.isArray(errorData)) {
-    return errorData.map(error => Object
-      .entries(error)
-      .reduce((acc, [key, value]) => {
+    return errorData.map((error) =>
+      Object.entries(error).reduce((acc, [key, value]) => {
         acc[key as keyof T] = value[0] as EntityValidationErrors<T>[keyof T];
         return acc;
-      }, {} as EntityValidationErrors<T>));
+      }, {} as EntityValidationErrors<T>),
+    );
   }
 
   if (typeof errorData === 'object') {

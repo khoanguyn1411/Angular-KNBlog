@@ -6,14 +6,17 @@ import { StorageService } from './storage.service';
 
 @Injectable({ providedIn: 'root' })
 export class ThemeStorageService {
-  private readonly storageService = inject(StorageService)
+  private readonly storageService = inject(StorageService);
   private readonly THEME_STORAGE_KEY = 'theme';
 
   public setTheme(theme: ThemeValue): Observable<void> {
-    return this.storageService.save(this.THEME_STORAGE_KEY, theme)
+    return this.storageService.save(this.THEME_STORAGE_KEY, theme);
   }
 
   public getTheme(): Observable<ThemeValue | null> {
-    return this.storageService.get(this.THEME_STORAGE_KEY, z.nativeEnum(ThemeValue))
+    return this.storageService.get(
+      this.THEME_STORAGE_KEY,
+      z.nativeEnum(ThemeValue),
+    );
   }
 }
