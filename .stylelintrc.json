@@ -10,7 +10,7 @@
     "no-duplicate-at-import-rules": true,
     "no-descending-specificity": null,
     "alpha-value-notation": "number",
-    "number-max-precision": 2,
+    "number-max-precision": 3,
     "declaration-no-important": null,
     "selector-no-qualifying-type": null,
     "no-empty-source": null,
