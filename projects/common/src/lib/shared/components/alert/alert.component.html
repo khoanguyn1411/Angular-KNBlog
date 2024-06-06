@@ -20,4 +20,9 @@
     }
   }
   <p>{{ text() }}</p>
+  @if (isCalledFromSnackbar()) {
+    <button (click)="onDismissAlert()" class="close-button" type="button" mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  }
 </div>

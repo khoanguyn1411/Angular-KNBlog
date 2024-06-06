@@ -18,6 +18,7 @@
 
 .is-called-from-snackbar {
   border: none;
+  padding: 12px;
 }
 
 .error {
@@ -38,4 +39,8 @@
 .success {
   --text-color: #{map-get(mat.$green-palette, 800)};
   --background-color: #{map-get(mat.$green-palette, 100)};
+}
+
+.close-button {
+  margin-left: auto;
 }
