@@ -36,4 +36,8 @@ export class HeaderComponent {
   protected onSignIn() {
     this.openAuthenticationDialog({ state: 'signIn' });
   }
+
+  protected onSignUp() {
+    this.openAuthenticationDialog({ state: 'signUp' });
+  }
 }
