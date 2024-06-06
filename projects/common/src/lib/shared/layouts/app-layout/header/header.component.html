@@ -4,8 +4,8 @@
       <p>KNBLOG</p>
     </section>
     <section class="second-section">
+      <knc-global-search></knc-global-search>
       @if (isAuthorized()) {
-        <knc-global-search></knc-global-search>
         <button mat-button disableRipple type="button">
           <mat-icon matPrefix>create</mat-icon>
           Write
