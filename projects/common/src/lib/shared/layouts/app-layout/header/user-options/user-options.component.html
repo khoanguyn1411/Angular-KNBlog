@@ -1,4 +1,4 @@
-<knc-avatar size="small" role="button" class="avatar" [matMenuTriggerFor]="menu" [user]="currentUser() ?? null"></knc-avatar>
+<knc-avatar role="button" class="avatar" [matMenuTriggerFor]="menu" [user]="currentUser() ?? null"></knc-avatar>
 <mat-menu #menu="matMenu" xPosition="before">
   <div class="profile">
     <p class="profile-fullname">{{ currentUser()?.fullName }}</p>
