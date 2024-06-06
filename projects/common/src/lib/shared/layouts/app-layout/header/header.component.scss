@@ -1,5 +1,9 @@
+@use "variables" as *;
+
 .wrapper {
-  background-color: var(--primary-color-50);
+  border-bottom: 1px solid var(--gray-color-200);
+  padding-inline: $default-padding;
+  padding-block: 8px;
 }
 
 .header-container {
@@ -18,5 +22,6 @@
 .second-section {
   display: flex;
   flex-direction: row;
-  gap: 8px;
+  gap: 12px;
+  align-items: center;
 }

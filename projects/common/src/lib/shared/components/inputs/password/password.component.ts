@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  computed,
-  input,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, input, signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -35,9 +29,7 @@ export class PasswordComponent extends InputBase {
   protected readonly isShowPassword = signal(false);
 
   /** Password type. */
-  protected readonly type = computed(() =>
-    this.isShowPassword() ? 'text' : 'password',
-  );
+  protected readonly type = computed(() => (this.isShowPassword() ? 'text' : 'password'));
 
   /** Input name. */
   public readonly name = input<HTMLInputElement['name']>('');

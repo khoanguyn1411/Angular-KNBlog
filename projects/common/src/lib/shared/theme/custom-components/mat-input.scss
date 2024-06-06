@@ -6,4 +6,7 @@
 .mat-mdc-form-field-infix {
   // To overwrite default 180px width of mat-form-field.
   width: 100% !important;
+  align-items: center;
+  display: flex;
+
 }

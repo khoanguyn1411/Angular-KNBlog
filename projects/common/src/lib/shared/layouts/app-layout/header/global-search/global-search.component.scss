@@ -1,0 +1,8 @@
+@use '@angular/material' as mat;
+
+:host{
+
+  // To decrease height of mat-input.
+  @include mat.form-field-density(-4);
+  width: 280px;
+}

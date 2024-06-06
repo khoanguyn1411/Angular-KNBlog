@@ -3,6 +3,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 
+import { MatIconModule } from '@angular/material/icon';
 import { FormControlValidationMessageComponent } from '../../form-control-validation-message/form-control-validation-message.component';
 import { InputBase } from '../input-base';
 
@@ -18,6 +19,7 @@ import { InputBase } from '../input-base';
     MatFormFieldModule,
     ReactiveFormsModule,
     FormControlValidationMessageComponent,
+    MatIconModule,
   ],
 })
 export class InputComponent extends InputBase {

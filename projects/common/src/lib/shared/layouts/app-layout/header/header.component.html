@@ -1,10 +1,18 @@
 <header class="wrapper">
-  <div class="container header-container">
+  <div class="header-container">
     <section class="first-section">
       <p>KNBLOG</p>
     </section>
     <section class="second-section">
       @if (isAuthorized()) {
+        <knc-global-search></knc-global-search>
+        <button mat-button disableRipple type="button">
+          <mat-icon matPrefix>create</mat-icon>
+          Write
+        </button>
+        <button mat-icon-button type="button">
+          <mat-icon matPrefix>notifications</mat-icon>
+          </button>
         <knc-user-options></knc-user-options>
       }@else {
         <button (click)="onSignIn()" mat-button color="primary" type="button">Sign in</button>

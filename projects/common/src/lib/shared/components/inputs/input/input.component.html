@@ -9,6 +9,9 @@
       [autocomplete]="autocomplete()"
       (change)="onChange($event)"
     />
+    @if (type() === "search") {
+      <mat-icon matPrefix>search</mat-icon>
+    }
     <mat-error>
       <knc-form-control-validation-message [control]="formControl" />
     </mat-error>

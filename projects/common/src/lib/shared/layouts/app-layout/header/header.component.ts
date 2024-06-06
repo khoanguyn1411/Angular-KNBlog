@@ -1,12 +1,14 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { DialogService } from '@knb/core/services/ui-services/dialog.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import {
   AuthenticationDialogComponent,
   AuthenticationDialogData,
 } from '@knb/shared/components/authentication/authentication-dialog.component';
+import { GlobalSearchComponent } from './global-search/global-search.component';
 import { UserOptionsComponent } from './user-options/user-options.component';
 
 /** Header component. */
@@ -16,7 +18,7 @@ import { UserOptionsComponent } from './user-options/user-options.component';
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./header.component.scss'],
-  imports: [MatButtonModule, UserOptionsComponent],
+  imports: [MatButtonModule, UserOptionsComponent, MatIconModule, GlobalSearchComponent],
 })
 export class HeaderComponent {
   private readonly dialogService = inject(DialogService);
@@ -25,10 +27,10 @@ export class HeaderComponent {
   protected readonly isAuthorized = toSignal(this.userService.isAuthorized$);
 
   private openAuthenticationDialog(data: AuthenticationDialogData) {
-    this.dialogService.open<
+    this.dialogService.open<AuthenticationDialogComponent, AuthenticationDialogData>(
       AuthenticationDialogComponent,
-      AuthenticationDialogData
-    >(AuthenticationDialogComponent, data);
+      data,
+    );
   }
 
   protected onSignIn() {
