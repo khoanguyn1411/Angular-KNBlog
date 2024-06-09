@@ -3,7 +3,7 @@
 </button>
 <mat-menu #menu="matMenu" xPosition="before">
   @for (theme of themeValues; track theme) {
-    <button [class.is-active]="theme === currentTheme()" type="button" mat-menu-item>
+    <button (click)="setTheme(theme)" [class.is-active]="theme === currentTheme()" type="button" mat-menu-item>
       <div class="menu-item">
         <div [class]="['theme-indicator', theme]"></div>
         <span>{{ toReadableTheme(theme) }}</span>

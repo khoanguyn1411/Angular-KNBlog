@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
-import { ThemeValue } from '@knb/core/models/theme';
 import { MatRadioModule } from '@angular/material/radio';
+import { ThemeValue } from '@knb/core/models/theme';
 import { ThemeService } from '@knb/core/services/ui-services/theme.service';
-import { toSignal } from '@angular/core/rxjs-interop';
+import { first } from 'rxjs';
 
 /** Theme settings component. */
 @Component({
@@ -24,4 +25,12 @@ export class ThemeSettingsComponent {
   protected readonly currentTheme = toSignal(this.themeService.currentTheme$);
 
   protected toReadableTheme = ThemeValue.toReadable;
+
+  /**
+   * Set theme.
+   * @param theme Theme.
+   */
+  protected setTheme(theme: ThemeValue): void {
+    this.themeService.setTheme(theme).pipe(first()).subscribe();
+  }
 }
