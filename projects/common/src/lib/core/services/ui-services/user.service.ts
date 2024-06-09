@@ -22,6 +22,7 @@ import {
   OperatorFunction,
   shareReplay,
   switchMap,
+  tap,
   throwError,
 } from 'rxjs';
 import { AuthApiService } from '../api-services/auth-api.service';
@@ -154,7 +155,7 @@ export class UserService {
       switchMap((secret) =>
         secret
           ? this.userApiService.getCurrentUser().pipe(toggleExecutionState(this.isUserFetchingSignal.set.bind(this)))
-          : of(null),
+          : of(null).pipe(tap(() => this.isUserFetchingSignal.set(false))),
       ),
       shareReplay({ bufferSize: 1, refCount: false }),
     );

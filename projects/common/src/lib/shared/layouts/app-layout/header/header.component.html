@@ -5,20 +5,20 @@
     </section>
     <section class="second-section">
       <knc-global-search></knc-global-search>
-      <knc-theme-settings></knc-theme-settings>
       @if (!isCurrentUserFetching()) {
         @if (isAuthorized()) {
           <button mat-button disableRipple type="button">
             <mat-icon matPrefix>create</mat-icon>
             Write
-          </button>
+            </button>
+          <knc-theme-settings></knc-theme-settings>
           <button mat-icon-button type="button">
             <mat-icon matPrefix>notifications</mat-icon>
           </button>
           <knc-user-options></knc-user-options>
         } @else {
-          <button (click)="onSignIn()" mat-button color="primary" type="button">Sign in</button>
-          <button (click)="onSignUp()" mat-stroked-button color="primary" type="button">Sign up</button>
+          <button (click)="onSignIn()" mat-button type="button">Sign in</button>
+          <button (click)="onSignUp()" mat-stroked-button type="button">Sign up</button>
         }
       } @else {
         <div class="loading">
