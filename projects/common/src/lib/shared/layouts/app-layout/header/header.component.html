@@ -7,12 +7,12 @@
       <knc-global-search></knc-global-search>
       @if (!isCurrentUserFetching()) {
         @if (isAuthorized()) {
-          <button mat-button disableRipple type="button">
+          <button mat-button type="button">
             <mat-icon matPrefix>create</mat-icon>
             Write
             </button>
           <knc-theme-settings></knc-theme-settings>
-          <button mat-icon-button type="button">
+          <button matTooltip="Notifications" mat-icon-button type="button">
             <mat-icon matPrefix>notifications</mat-icon>
           </button>
           <knc-user-options></knc-user-options>

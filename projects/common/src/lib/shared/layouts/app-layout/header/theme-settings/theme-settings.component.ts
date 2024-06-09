@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { ThemeValue } from '@knb/core/models/theme';
 import { ThemeService } from '@knb/core/services/ui-services/theme.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 /** Theme settings component. */
 @Component({
@@ -15,7 +16,7 @@ import { ThemeService } from '@knb/core/services/ui-services/theme.service';
   templateUrl: './theme-settings.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./theme-settings.component.scss'],
-  imports: [MatIconModule, MatButtonModule, MatMenuModule, MatDividerModule, MatRadioModule],
+  imports: [MatIconModule, MatButtonModule, MatMenuModule, MatDividerModule, MatRadioModule, MatTooltipModule],
 })
 export class ThemeSettingsComponent {
   private readonly themeService = inject(ThemeService);

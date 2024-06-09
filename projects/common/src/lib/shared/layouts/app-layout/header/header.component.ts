@@ -9,6 +9,7 @@ import {
   AuthenticationDialogData,
 } from '@knb/shared/components/authentication/authentication-dialog.component';
 import { SkeletonDirective } from '@knb/shared/directives/skeleton.directive';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { GlobalSearchComponent } from './global-search/global-search.component';
 import { UserOptionsComponent } from './user-options/user-options.component';
 import { ThemeSettingsComponent } from './theme-settings/theme-settings.component';
@@ -27,6 +28,7 @@ import { ThemeSettingsComponent } from './theme-settings/theme-settings.componen
     GlobalSearchComponent,
     SkeletonDirective,
     ThemeSettingsComponent,
+    MatTooltipModule,
   ],
 })
 export class HeaderComponent {

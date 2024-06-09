@@ -33,3 +33,10 @@
 .orange-theme {
   background-color: var(--orange-color-500);
 }
+
+.is-active {
+  background-color: var(--primary-color-50);
+  &:hover {
+    background-color: var(--primary-color-50) !important;
+  }
+}
