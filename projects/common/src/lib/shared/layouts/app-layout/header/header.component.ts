@@ -11,6 +11,7 @@ import {
 import { SkeletonDirective } from '@knb/shared/directives/skeleton.directive';
 import { GlobalSearchComponent } from './global-search/global-search.component';
 import { UserOptionsComponent } from './user-options/user-options.component';
+import { ThemeSettingsComponent } from './theme-settings/theme-settings.component';
 
 /** Header component. */
 @Component({
@@ -19,7 +20,14 @@ import { UserOptionsComponent } from './user-options/user-options.component';
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./header.component.scss'],
-  imports: [MatButtonModule, UserOptionsComponent, MatIconModule, GlobalSearchComponent, SkeletonDirective],
+  imports: [
+    MatButtonModule,
+    UserOptionsComponent,
+    MatIconModule,
+    GlobalSearchComponent,
+    SkeletonDirective,
+    ThemeSettingsComponent,
+  ],
 })
 export class HeaderComponent {
   private readonly dialogService = inject(DialogService);

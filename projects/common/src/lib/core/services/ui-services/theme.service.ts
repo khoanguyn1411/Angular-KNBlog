@@ -1,7 +1,7 @@
 import { Injectable, inject } from '@angular/core';
 import { ThemeValue } from '@knb/core/models/theme';
 import { WINDOW_TOKEN } from '@knb/core/utils/rxjs/window-token';
-import { EMPTY, Observable, defer, merge, of } from 'rxjs';
+import { EMPTY, Observable, defer, map, merge, of } from 'rxjs';
 import { ThemeStorageService } from './theme-storage.service';
 
 @Injectable({
@@ -12,7 +12,13 @@ export class ThemeService {
 
   public readonly currentThemeFromStorage$ = this.themeStorage.getTheme();
 
+  public readonly currentTheme$ = this.getCurrentTheme();
+
   public readonly window = inject(WINDOW_TOKEN);
+
+  private getCurrentTheme() {
+    return this.currentThemeFromStorage$.pipe(map((theme) => theme ?? ThemeValue.blue));
+  }
 
   public setTheme(theme: ThemeValue): Observable<void> {
     const setThemeToClassEffect$ = defer(() => {

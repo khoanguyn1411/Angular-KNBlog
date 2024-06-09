@@ -1,0 +1,35 @@
+@use "./variables" as *;
+@use '@angular/material' as mat;
+
+@include mat.icon-button-density(-2);
+
+.theme-indicator {
+  border-radius: 50%;
+  width: 12px;
+  height: 12px;
+}
+
+.menu-item {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  display: flex;
+  padding-right: 12px;
+  min-width: 150px;
+}
+
+.blue-theme {
+  background-color: var(--blue-color-500);
+}
+
+.purple-theme {
+  background-color: var(--purple-color-500);
+}
+
+.green-theme {
+  background-color: var(--green-color-500);
+}
+
+.orange-theme {
+  background-color: var(--orange-color-500);
+}

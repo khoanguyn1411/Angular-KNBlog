@@ -5,19 +5,19 @@
     <span class="profile-email">{{ currentUser()?.email }}</span>
   </div>
   <mat-divider />
-  <button class="menuItem" type="button" mat-menu-item>
+  <button class="menu-item" type="button" mat-menu-item>
     <mat-icon>person</mat-icon>
     <span>Your profile</span>
   </button>
-  <button class="menuItem" type="button" mat-menu-item>
+  <button class="menu-item" type="button" mat-menu-item>
     <mat-icon>article</mat-icon>
     <span>Your blogs</span>
   </button>
   <mat-divider />
-  <button class="menuItem" type="button" mat-menu-item>
+  <button class="menu-item" type="button" mat-menu-item>
     <mat-icon>settings</mat-icon>
     <span>Settings</span>
   </button>
   <mat-divider/>
-  <button class="menuItem" type="button" mat-menu-item (click)="onSignOut()">Sign out</button>
+  <button class="menu-item" type="button" mat-menu-item (click)="onSignOut()">Sign out</button>
 </mat-menu>

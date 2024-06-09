@@ -1,5 +1,5 @@
 import { AppError } from '@knb/core/models/app-error';
-import { NonNullableProperties } from '../types/non-nullable-properties';
+import { NonNullableProperties } from './types/non-nullable-properties';
 
 /**
  * Type-assertion for non-nullable types.

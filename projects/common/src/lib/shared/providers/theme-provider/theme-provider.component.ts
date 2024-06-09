@@ -15,7 +15,7 @@ export class ThemeProviderComponent implements OnInit {
   private readonly themeService = inject(ThemeService);
   private readonly destroyRef = inject(DestroyRef);
 
-  private readonly currentTheme$ = this.themeService.currentThemeFromStorage$;
+  private readonly currentTheme$ = this.themeService.currentTheme$;
 
   public ngOnInit(): void {
     this.initializeTheme$().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
