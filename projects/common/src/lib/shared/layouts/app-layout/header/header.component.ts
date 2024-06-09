@@ -8,6 +8,7 @@ import {
   AuthenticationDialogComponent,
   AuthenticationDialogData,
 } from '@knb/shared/components/authentication/authentication-dialog.component';
+import { SkeletonDirective } from '@knb/shared/directives/skeleton.directive';
 import { GlobalSearchComponent } from './global-search/global-search.component';
 import { UserOptionsComponent } from './user-options/user-options.component';
 
@@ -18,13 +19,14 @@ import { UserOptionsComponent } from './user-options/user-options.component';
   templateUrl: './header.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./header.component.scss'],
-  imports: [MatButtonModule, UserOptionsComponent, MatIconModule, GlobalSearchComponent],
+  imports: [MatButtonModule, UserOptionsComponent, MatIconModule, GlobalSearchComponent, SkeletonDirective],
 })
 export class HeaderComponent {
   private readonly dialogService = inject(DialogService);
   private readonly userService = inject(UserService);
 
   protected readonly isAuthorized = toSignal(this.userService.isAuthorized$);
+  protected readonly isCurrentUserFetching = this.userService.isUserFetching;
 
   private openAuthenticationDialog(data: AuthenticationDialogData) {
     this.dialogService.open<AuthenticationDialogComponent, AuthenticationDialogData>(

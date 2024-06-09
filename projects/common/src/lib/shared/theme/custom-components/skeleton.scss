@@ -1,4 +1,4 @@
-.knb-skeleton {
+.knc-skeleton {
   border-radius: 3px;
   background: linear-gradient(-45deg, #e7e7e7, #dddddd, #c9c7c7, #c9c7c7);
   background-size: 400% 400%;
@@ -17,16 +17,16 @@
   }
 }
 
-h1.knb-skeleton::before,
-h2.knb-skeleton::before,
-h3.knb-skeleton::before,
-h4.knb-skeleton::before,
-h5.knb-skeleton::before,
-h6.knb-skeleton::before,
-p.knb-skeleton::before,
-span.knb-skeleton::before,
-time.knb-skeleton::before,
-a.knb-skeleton::before {
+h1.knc-skeleton::before,
+h2.knc-skeleton::before,
+h3.knc-skeleton::before,
+h4.knc-skeleton::before,
+h5.knc-skeleton::before,
+h6.knc-skeleton::before,
+p.knc-skeleton::before,
+span.knc-skeleton::before,
+time.knc-skeleton::before,
+a.knc-skeleton::before {
   /* To emulate height of text. */
   content: '.';
   display: inline-block;

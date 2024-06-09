@@ -1,10 +1,13 @@
 import { Routes } from '@angular/router';
-import { webRoutePaths } from '../shared/web-route-paths';
 
 export const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: webRoutePaths.root.path,
+    loadComponent: () => import('./features/user-views/user-views.component').then((x) => x.UserViewsComponent),
+  },
+  {
+    path: '**',
+    redirectTo: '',
   },
 ];

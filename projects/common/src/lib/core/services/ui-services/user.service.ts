@@ -1,5 +1,5 @@
 import { SocialAuthService } from '@abacritt/angularx-social-login';
-import { inject, Injectable } from '@angular/core';
+import { computed, inject, Injectable, signal } from '@angular/core';
 import { AppError } from '@knb/core/models/app-error';
 import { GoogleAuthData } from '@knb/core/models/google-auth-data';
 import { LoginData } from '@knb/core/models/login-data';
@@ -8,6 +8,7 @@ import { User } from '@knb/core/models/user';
 import { UserSecret } from '@knb/core/models/user-secret';
 import { catchHttpErrorResponse } from '@knb/core/utils/rxjs/catch-http-error-response';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
+import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import {
   catchError,
   concat,
@@ -35,22 +36,26 @@ import { UserSecretStorageService } from './user-secret-storage.service';
   providedIn: 'root',
 })
 export class UserService {
+  private readonly authService = inject(AuthApiService);
+  private readonly userSecretStorage = inject(UserSecretStorageService);
+  private readonly userApiService = inject(UserApiService);
+  private readonly socialAuthService = inject(SocialAuthService);
+  private readonly snackbarService = inject(SnackbarService);
+  private readonly isUserFetchingSignal = signal(true);
+
   /** Current user. `null` when a user is not logged in. */
   public readonly currentUser$: Observable<User | null>;
 
   /** Whether the current user is authorized. */
   public readonly isAuthorized$: Observable<boolean>;
 
-  private readonly authService = inject(AuthApiService);
-  private readonly userSecretStorage = inject(UserSecretStorageService);
-  private readonly userApiService = inject(UserApiService);
-  private readonly socialAuthService = inject(SocialAuthService);
-  private readonly snackbarService = inject(SnackbarService);
-
   public constructor() {
     this.currentUser$ = this.initCurrentUserStream();
     this.isAuthorized$ = this.currentUser$.pipe(map((user) => user != null));
   }
+
+  /** Whether current user is fetching. */
+  public isUserFetching = computed(() => this.isUserFetchingSignal());
 
   /**
    * Login a user with email and password.
@@ -146,7 +151,11 @@ export class UserService {
 
   private initCurrentUserStream(): Observable<User | null> {
     return this.userSecretStorage.currentSecret$.pipe(
-      switchMap((secret) => (secret ? this.userApiService.getCurrentUser() : of(null))),
+      switchMap((secret) =>
+        secret
+          ? this.userApiService.getCurrentUser().pipe(toggleExecutionState(this.isUserFetchingSignal.set.bind(this)))
+          : of(null),
+      ),
       shareReplay({ bufferSize: 1, refCount: false }),
     );
   }

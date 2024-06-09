@@ -5,18 +5,26 @@
     </section>
     <section class="second-section">
       <knc-global-search></knc-global-search>
-      @if (isAuthorized()) {
-        <button mat-button disableRipple type="button">
-          <mat-icon matPrefix>create</mat-icon>
-          Write
-        </button>
-        <button mat-icon-button type="button">
-          <mat-icon matPrefix>notifications</mat-icon>
+      @if (!isCurrentUserFetching()) {
+        @if (isAuthorized()) {
+          <button mat-button disableRipple type="button">
+            <mat-icon matPrefix>create</mat-icon>
+            Write
           </button>
-        <knc-user-options></knc-user-options>
-      }@else {
-        <button (click)="onSignIn()" mat-button color="primary" type="button">Sign in</button>
-        <button (click)="onSignUp()" mat-stroked-button color="primary" type="button">Sign up</button>
+          <button mat-icon-button type="button">
+            <mat-icon matPrefix>notifications</mat-icon>
+          </button>
+          <knc-user-options></knc-user-options>
+        } @else {
+          <button (click)="onSignIn()" mat-button color="primary" type="button">Sign in</button>
+          <button (click)="onSignUp()" mat-stroked-button color="primary" type="button">Sign up</button>
+        }
+      } @else {
+        <div class="loading">
+          <p class="loading-text" kncSkeleton></p>
+          <p class="loading-avatar" kncSkeleton [kncSkeletonRounded]="true"></p>
+          <p class="loading-avatar" kncSkeleton [kncSkeletonRounded]="true"></p>
+        </div>
       }
     </section>
   </div>
