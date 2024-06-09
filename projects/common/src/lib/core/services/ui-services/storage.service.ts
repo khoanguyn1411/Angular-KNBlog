@@ -54,10 +54,7 @@ export class StorageService {
    * @param key Key.
    * @param schema Schema to parse unsafe data from the local storage.
    */
-  public get<T extends z.ZodTypeAny>(
-    key: string,
-    schema: T,
-  ): Observable<z.infer<typeof schema> | null> {
+  public get<T extends z.ZodTypeAny>(key: string, schema: T): Observable<z.infer<typeof schema> | null> {
     return this.watchStorageChangeByKey(key).pipe(
       // eslint-disable-next-line @typescript-eslint/no-unsafe-return
       map(() => this.obtainFromStorageByKey<T>(key, schema)),
@@ -85,10 +82,7 @@ export class StorageService {
     );
   }
 
-  private obtainFromStorageByKey<T extends z.ZodType>(
-    key: string,
-    schema: T,
-  ): z.infer<typeof schema> | null {
+  private obtainFromStorageByKey<T extends z.ZodType>(key: string, schema: T): z.infer<typeof schema> | null {
     if (this.localStorage == null) {
       return null;
     }

@@ -6,9 +6,7 @@ import { baseRoutePaths } from '@knb/core/utils/route-paths/route-paths';
 export const JOB_ID_PARAM = 'jobId';
 
 /** Injection token that provide object with route web app paths. */
-const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>(
-  'Provide object with web route paths',
-);
+const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object with web route paths');
 
 const authRoutePaths = buildRoutePaths({
   auth: {

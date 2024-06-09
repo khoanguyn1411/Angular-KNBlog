@@ -1,26 +1,10 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  OnInit,
-  inject,
-  output,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, output, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  FormGroup,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
-import {
-  RegisterData,
-  registerDataSchema,
-} from '@knb/core/models/register-data';
+import { RegisterData, registerDataSchema } from '@knb/core/models/register-data';
 import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import { catchValidationData } from '@knb/core/utils/rxjs/catch-validation-error';
@@ -69,9 +53,7 @@ export class RegisterComponent implements OnInit {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly dialogRef = inject(
-    MatDialogRef<AuthenticationDialogComponent>,
-  );
+  private readonly dialogRef = inject(MatDialogRef<AuthenticationDialogComponent>);
   private readonly snackbarService = inject(SnackbarService);
 
   /** Whether form is loading. */
@@ -87,10 +69,7 @@ export class RegisterComponent implements OnInit {
   public ngOnInit(): void {
     this.userService
       .loginWithGoogleFromAuthState()
-      .pipe(
-        this.handleSignupSuccessfully('Sign in successful.'),
-        takeUntilDestroyed(this.destroyRef),
-      )
+      .pipe(this.handleSignupSuccessfully('Sign in successful.'), takeUntilDestroyed(this.destroyRef))
       .subscribe();
   }
 
@@ -100,9 +79,7 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    const registerFormValue = registerDataSchema.parse(
-      this.registerForm.getRawValue(),
-    );
+    const registerFormValue = registerDataSchema.parse(this.registerForm.getRawValue());
 
     this.userService
       .register(registerFormValue)
@@ -119,9 +96,7 @@ export class RegisterComponent implements OnInit {
     this.signIn.emit();
   }
 
-  private handleSignupSuccessfully<T>(
-    message: string,
-  ): MonoTypeOperatorFunction<T> {
+  private handleSignupSuccessfully<T>(message: string): MonoTypeOperatorFunction<T> {
     return (source$) =>
       source$.pipe(
         tap(() => {
@@ -138,10 +113,7 @@ export class RegisterComponent implements OnInit {
     return this.fb.group<RegisterFormData>({
       email: this.fb.control('', [Validators.required, Validators.email]),
       password: this.fb.control('', Validators.required),
-      confirmPassword: this.fb.control('', [
-        AppValidators.matchControl('password', 'Password'),
-        Validators.required,
-      ]),
+      confirmPassword: this.fb.control('', [AppValidators.matchControl('password', 'Password'), Validators.required]),
       pictureUrl: this.fb.control(null),
       firstName: this.fb.control('', Validators.required),
       lastName: this.fb.control('', Validators.required),

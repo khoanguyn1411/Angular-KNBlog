@@ -18,18 +18,12 @@ export function toggleExecutionState<T>(
   });
 
   return (source$) => {
-    const sharedSource$ = source$.pipe(
-      shareReplay({ refCount: true, bufferSize: 1 }),
-    );
+    const sharedSource$ = source$.pipe(shareReplay({ refCount: true, bufferSize: 1 }));
     const finishLoadingSideEffect$ = sharedSource$.pipe(
       ignoreElements(),
       finalize(() => setSignalCallback(false)),
     );
 
-    return merge(
-      startLoadingSideEffect$,
-      finishLoadingSideEffect$,
-      sharedSource$,
-    );
+    return merge(startLoadingSideEffect$, finishLoadingSideEffect$, sharedSource$);
   };
 }

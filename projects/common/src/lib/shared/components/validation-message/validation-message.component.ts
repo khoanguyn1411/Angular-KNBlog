@@ -15,20 +15,15 @@ const DEFAULT_ERROR_MESSAGE = 'Value is not valid';
 const VALIDATION_ERROR_MESSAGE_FACTORIES = {
   [ValidationErrorCode.Email]: () => 'Email is not valid.',
   [ValidationErrorCode.Required]: () => 'This field is required.',
-  [ValidationErrorCode.Match]: ({ controlTitle }: MatchErrorData) =>
-    `Value does not match with "${controlTitle}."`,
-  [ValidationErrorCode.MinLength]: ({ requiredLength }: LengthErrorData) =>
-    `Minimal length is ${requiredLength}.`,
+  [ValidationErrorCode.Match]: ({ controlTitle }: MatchErrorData) => `Value does not match with "${controlTitle}."`,
+  [ValidationErrorCode.MinLength]: ({ requiredLength }: LengthErrorData) => `Minimal length is ${requiredLength}.`,
   [ValidationErrorCode.MaxLength]: ({ requiredLength }: LengthErrorData) =>
     `Maximum length is ${requiredLength} characters.`,
   [ValidationErrorCode.Pattern]: () => 'Value does not satisfy the pattern.',
   [ValidationErrorCode.AppError]: ({ message }: AppErrorData) => message,
-  [ValidationErrorCode.Min]: ({ min }: MinValueErrorData) =>
-    `Minimum value is ${min}.`,
-  [ValidationErrorCode.Max]: ({ max }: MaxValueErrorData) =>
-    `Maximum value is ${max}.`,
-  [ValidationErrorCode.Greater]: ({ controlTitle }: any) =>
-    `The value should be greater than ${controlTitle}.`,
+  [ValidationErrorCode.Min]: ({ min }: MinValueErrorData) => `Minimum value is ${min}.`,
+  [ValidationErrorCode.Max]: ({ max }: MaxValueErrorData) => `Maximum value is ${max}.`,
+  [ValidationErrorCode.Greater]: ({ controlTitle }: any) => `The value should be greater than ${controlTitle}.`,
 };
 
 /**
@@ -66,10 +61,7 @@ export class ValidationMessageComponent {
    * @param errorData Data of error. See details of HTTP validation errors or implementation of custom.
    * For instance data of minlength error is: { actualLength, requiredLength }.
    */
-  private getErrorMessage(
-    errorCode: ValidationErrorCode,
-    errorData: any,
-  ): string {
+  private getErrorMessage(errorCode: ValidationErrorCode, errorData: any): string {
     const factory = VALIDATION_ERROR_MESSAGE_FACTORIES[errorCode];
     if (factory == null) {
       return DEFAULT_ERROR_MESSAGE;

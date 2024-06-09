@@ -1,10 +1,5 @@
 import { HttpErrorResponse } from '@angular/common/http';
-import {
-  catchError,
-  ObservableInput,
-  ObservedValueOf,
-  OperatorFunction,
-} from 'rxjs';
+import { catchError, ObservableInput, ObservedValueOf, OperatorFunction } from 'rxjs';
 
 /**
  * Catches http response errors on the observable to be handled by returning a new observable or throwing an error.

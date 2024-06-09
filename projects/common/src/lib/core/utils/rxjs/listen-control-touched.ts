@@ -8,9 +8,7 @@ import { Observable } from 'rxjs';
  * @see: https://github.com/angular/angular/issues/10887.
  * @param control Control to listen for.
  */
-export function listenControlTouched(
-  control: AbstractControl,
-): Observable<boolean> {
+export function listenControlTouched(control: AbstractControl): Observable<boolean> {
   return new Observable<boolean>((observer) => {
     const originalMarkAsTouched = control.markAsTouched;
     const originalReset = control.reset;

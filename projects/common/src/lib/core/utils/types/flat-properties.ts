@@ -44,10 +44,7 @@ type ObjectPropertyKeys<T> = keyof {
 export type FlatProperties<T extends Record<string, any>, S extends string> =
   | keyof T
   | keyof {
-      [K in Extract<ObjectPropertyKeys<T>, string> as Record<
-        string,
-        unknown
-      > extends T
+      [K in Extract<ObjectPropertyKeys<T>, string> as Record<string, unknown> extends T
         ? never
         : K extends keyof T
           ? `${K}${S}${Extract<FlatProperties<T[K], S>, string>}`
@@ -67,9 +64,7 @@ export function flattifyProperties<T extends object, TSep extends string>(
     if (entry != null && typeof entry === 'object') {
       return acc.concat(key).concat(
         flattifyProperties(entry, separator)
-          .filter(
-            (property): property is string => typeof property === 'string',
-          )
+          .filter((property): property is string => typeof property === 'string')
           .map((property) => `${key}${separator}${property}`),
       );
     }

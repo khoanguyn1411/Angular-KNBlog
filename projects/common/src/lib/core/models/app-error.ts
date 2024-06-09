@@ -36,10 +36,7 @@ export class AppValidationError<TEntity extends object> extends AppError {
   /** Validation errors for entity fields. */
   public readonly validationData: EntityValidationErrors<TEntity>;
 
-  public constructor(
-    message: string,
-    validationData: EntityValidationErrors<TEntity>,
-  ) {
+  public constructor(message: string, validationData: EntityValidationErrors<TEntity>) {
     super(message);
     this.validationData = validationData;
   }

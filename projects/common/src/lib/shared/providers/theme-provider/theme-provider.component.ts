@@ -1,10 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ThemeValue } from '@knb/core/models/theme';
 import { ThemeService } from '@knb/core/services/ui-services/theme.service';
@@ -24,17 +18,13 @@ export class ThemeProviderComponent implements OnInit {
   private readonly currentTheme$ = this.themeService.currentThemeFromStorage$;
 
   public ngOnInit(): void {
-    this.initializeTheme$()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
+    this.initializeTheme$().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
   protected initializeTheme$(): Observable<void> {
     return this.currentTheme$.pipe(
       first(),
-      switchMap((theme) =>
-        this.themeService.setTheme(theme ?? ThemeValue.blue),
-      ),
+      switchMap((theme) => this.themeService.setTheme(theme ?? ThemeValue.blue)),
       map(() => undefined),
     );
   }

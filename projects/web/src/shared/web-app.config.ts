@@ -15,10 +15,7 @@ export class WebAppConfig extends AppConfig {
    */
   private getAppVersion(): string {
     return this.applySuffixIfPresent(
-      this.applySuffixIfPresent(
-        import.meta.env.NG_APP_VERSION as string,
-        import.meta.env.NG_APP_COMMIT as string,
-      ),
+      this.applySuffixIfPresent(import.meta.env.NG_APP_VERSION as string, import.meta.env.NG_APP_COMMIT as string),
       import.meta.env.NG_APP_ENV as string,
     );
   }

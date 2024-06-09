@@ -14,9 +14,6 @@ export class ThemeStorageService {
   }
 
   public getTheme(): Observable<ThemeValue | null> {
-    return this.storageService.get(
-      this.THEME_STORAGE_KEY,
-      z.nativeEnum(ThemeValue),
-    );
+    return this.storageService.get(this.THEME_STORAGE_KEY, z.nativeEnum(ThemeValue));
   }
 }

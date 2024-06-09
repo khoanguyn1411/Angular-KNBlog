@@ -19,11 +19,8 @@ export type ValidationErrorMapper<TDto, TModel> = {
    * Map validation error DTO to error for domain model.
    * @param errorDto Error DTO.
    */
-  validationErrorFromDto(
-    errorDto: ValidationErrorDto<TDto>,
-  ): EntityValidationErrors<TModel>;
+  validationErrorFromDto(errorDto: ValidationErrorDto<TDto>): EntityValidationErrors<TModel>;
 };
 
 /** Mapper from DTO to domain model and vice versa. */
-export type Mapper<TDto, TModel> = MapperFromDto<TDto, TModel> &
-  MapperToDto<TDto, TModel>;
+export type Mapper<TDto, TModel> = MapperFromDto<TDto, TModel> & MapperToDto<TDto, TModel>;

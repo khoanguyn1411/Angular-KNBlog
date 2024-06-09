@@ -4,9 +4,7 @@ import { SimpleValueAccessor } from '@knb/core/utils/rxjs/value-accessor';
 
 /** Base input. */
 @Directive()
-export abstract class InputBase extends SimpleValueAccessor<
-  string | number | null
-> {
+export abstract class InputBase extends SimpleValueAccessor<string | number | null> {
   /** Input label. */
   public readonly label = input('');
 

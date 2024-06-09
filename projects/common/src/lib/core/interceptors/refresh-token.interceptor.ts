@@ -25,10 +25,7 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
   private readonly apiUrlsConfig = inject(AppUrlsConfig);
 
   /** @inheritdoc */
-  public intercept(
-    req: HttpRequest<unknown>,
-    next: HttpHandler,
-  ): Observable<HttpEvent<unknown>> {
+  public intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (!this.shouldRefreshTokenForUrl(req.url)) {
       return next.handle(req);
     }
@@ -58,9 +55,6 @@ export class RefreshTokenInterceptor implements HttpInterceptor {
   }
 
   private shouldRefreshTokenForUrl(url: string): boolean {
-    return (
-      this.apiUrlsConfig.isApplicationUrl(url) &&
-      !this.apiUrlsConfig.isAuthUrl(url)
-    );
+    return this.apiUrlsConfig.isApplicationUrl(url) && !this.apiUrlsConfig.isAuthUrl(url);
   }
 }

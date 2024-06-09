@@ -1,4 +1,4 @@
-@use "variables" as *;
+@use 'variables' as *;
 @use '@angular/material' as mat;
 
 .wrapper {
@@ -28,4 +28,3 @@
   gap: 12px;
   align-items: center;
 }
-

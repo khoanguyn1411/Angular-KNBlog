@@ -52,10 +52,8 @@ interface DynamicRoutePath<P extends Record<string, string | number>> {
 }
 
 /** Dynamic route path. */
-interface DynamicRoutePathWithChildren<
-  T extends RoutePathsConfig,
-  P extends Record<string, string | number>,
-> extends DynamicRoutePath<P> {
+interface DynamicRoutePathWithChildren<T extends RoutePathsConfig, P extends Record<string, string | number>>
+  extends DynamicRoutePath<P> {
   /** Dynamic children routes. */
   readonly children: (params: P) => RoutePaths<T>;
 }
@@ -69,12 +67,11 @@ interface DynamicRoutePathWithChildren<
  * // type UserPathParams = { id: string | number; }
  * ```
  */
-type PathParams<T extends string> =
-  T extends `${infer _}:${infer Param}/${infer Rest}`
-    ? { [K in Param | keyof PathParams<Rest>]: string | number }
-    : T extends `${infer _}:${infer Param}`
-      ? { [K in Param]: string | number }
-      : unknown;
+type PathParams<T extends string> = T extends `${infer _}:${infer Param}/${infer Rest}`
+  ? { [K in Param | keyof PathParams<Rest>]: string | number }
+  : T extends `${infer _}:${infer Param}`
+    ? { [K in Param]: string | number }
+    : unknown;
 
 type RoutePaths<T extends RoutePathsConfig> = {
   [K in keyof T]: T[K]['children'] extends RoutePathsConfig
@@ -103,10 +100,7 @@ type RoutePaths<T extends RoutePathsConfig> = {
  * @param config Route paths config.
  * @param parentPath Parent route path.
  */
-export function buildRoutePaths<T extends RoutePathsConfig>(
-  config: T,
-  parentPath = '/',
-): RoutePaths<typeof config> {
+export function buildRoutePaths<T extends RoutePathsConfig>(config: T, parentPath = '/'): RoutePaths<typeof config> {
   const result = Object.keys(config).reduce(
     (acc, key: keyof T) => {
       const value = config[key];
@@ -117,14 +111,10 @@ export function buildRoutePaths<T extends RoutePathsConfig>(
           ...acc,
           [key]: {
             path: value.path,
-            url: (params: Record<string, string | number>) =>
-              `${parentPath}${buildNavigateUrl(value.path, params)}`,
+            url: (params: Record<string, string | number>) => `${parentPath}${buildNavigateUrl(value.path, params)}`,
             children: (params: Record<string, string | number>) =>
               value.children
-                ? buildRoutePaths(
-                    value.children,
-                    `${parentPath}${buildNavigateUrl(value.path, params)}/`,
-                  )
+                ? buildRoutePaths(value.children, `${parentPath}${buildNavigateUrl(value.path, params)}/`)
                 : undefined,
           },
         };

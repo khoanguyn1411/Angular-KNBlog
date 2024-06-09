@@ -14,10 +14,7 @@ export class UserSecretStorageService {
   private readonly storageService = inject(StorageService);
 
   public constructor() {
-    this.currentSecret$ = this.storageService.get(
-      USER_SECRET_STORAGE_KEY,
-      userSecretSchema,
-    );
+    this.currentSecret$ = this.storageService.get(USER_SECRET_STORAGE_KEY, userSecretSchema);
   }
 
   /**
@@ -25,9 +22,7 @@ export class UserSecretStorageService {
    * @param secret Secret to save.
    */
   public saveSecret(secret: UserSecret): Observable<UserSecret> {
-    return this.storageService
-      .save(USER_SECRET_STORAGE_KEY, secret)
-      .pipe(map(() => secret));
+    return this.storageService.save(USER_SECRET_STORAGE_KEY, secret).pipe(map(() => secret));
   }
 
   /** Removes current secret. */

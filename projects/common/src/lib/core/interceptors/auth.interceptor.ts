@@ -1,10 +1,4 @@
-import {
-  HttpEvent,
-  HttpHandler,
-  HttpHeaders,
-  HttpInterceptor,
-  HttpRequest,
-} from '@angular/common/http';
+import { HttpEvent, HttpHandler, HttpHeaders, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
@@ -24,20 +18,14 @@ export class AuthInterceptor implements HttpInterceptor {
   private readonly userSecretStorage = inject(UserSecretStorageService);
 
   /** @inheritdoc */
-  public intercept(
-    req: HttpRequest<unknown>,
-    next: HttpHandler,
-  ): Observable<HttpEvent<unknown>> {
+  public intercept(req: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     if (this.shouldInterceptToken(req.url)) {
       const userSecret$ = this.userSecretStorage.currentSecret$.pipe(first());
       return userSecret$.pipe(
         map((userSecret) =>
           userSecret
             ? req.clone({
-                headers: this.appendAuthorizationHeader(
-                  req.headers,
-                  userSecret,
-                ),
+                headers: this.appendAuthorizationHeader(req.headers, userSecret),
               })
             : req,
         ),
@@ -62,13 +50,7 @@ export class AuthInterceptor implements HttpInterceptor {
    * @param headers Headers list.
    * @param userSecret User secret.
    */
-  private appendAuthorizationHeader(
-    headers: HttpHeaders,
-    userSecret: UserSecret,
-  ): HttpHeaders {
-    return headers.set(
-      AUTH_HEADER_KEY,
-      `${AUTH_PREFIX} ${userSecret.accessToken}`,
-    );
+  private appendAuthorizationHeader(headers: HttpHeaders, userSecret: UserSecret): HttpHeaders {
+    return headers.set(AUTH_HEADER_KEY, `${AUTH_PREFIX} ${userSecret.accessToken}`);
   }
 }

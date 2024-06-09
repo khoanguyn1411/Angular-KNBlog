@@ -1,42 +1,19 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  OnInit,
-  inject,
-  output,
-  signal,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, OnInit, inject, output, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import {
-  FormGroup,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogRef } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { LoginData, loginDataSchema } from '@knb/core/models/login-data';
 import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
-import {
-  catchValidationData,
-  catchValidationError,
-} from '@knb/core/utils/rxjs/catch-validation-error';
+import { catchValidationData, catchValidationError } from '@knb/core/utils/rxjs/catch-validation-error';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { DialogLayoutComponent } from '@knb/shared/layouts/dialog-layout/dialog-layout.component';
-import {
-  MonoTypeOperatorFunction,
-  Observable,
-  map,
-  merge,
-  tap,
-  throwError,
-} from 'rxjs';
+import { MonoTypeOperatorFunction, Observable, map, merge, tap, throwError } from 'rxjs';
 import { AlertComponent } from '../../alert/alert.component';
 import { PasswordComponent } from '../../inputs/password/password.component';
 import { LabelComponent } from '../../label/label.component';
@@ -68,9 +45,7 @@ type LoginFormData = FlatControlsOf<LoginData>;
 export class LoginComponent implements OnInit {
   public readonly signup = output();
 
-  private readonly dialogRef = inject(
-    MatDialogRef<AuthenticationDialogComponent>,
-  );
+  private readonly dialogRef = inject(MatDialogRef<AuthenticationDialogComponent>);
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly userService = inject(UserService);
   private readonly destroyRef = inject(DestroyRef);
@@ -92,9 +67,7 @@ export class LoginComponent implements OnInit {
   public ngOnInit(): void {
     merge(
       this.resetAuthenticationErrorSideEffect(),
-      this.userService
-        .loginWithGoogleFromAuthState()
-        .pipe(this.handleLoginSuccessfully()),
+      this.userService.loginWithGoogleFromAuthState().pipe(this.handleLoginSuccessfully()),
     )
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe();
@@ -114,9 +87,7 @@ export class LoginComponent implements OnInit {
         toggleExecutionState(this.isLoading.set.bind(this)),
         this.handleLoginSuccessfully(),
         catchValidationError((error) => {
-          this.authenticationError.set(
-            error.validationData.nonFieldErrors ?? null,
-          );
+          this.authenticationError.set(error.validationData.nonFieldErrors ?? null);
           return throwError(() => error);
         }),
         catchValidationData(this.loginForm),

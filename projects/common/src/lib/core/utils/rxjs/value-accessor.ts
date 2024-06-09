@@ -1,17 +1,5 @@
-import {
-  ChangeDetectorRef,
-  Directive,
-  forwardRef,
-  ForwardRefFn,
-  inject,
-  Input,
-  Provider,
-} from '@angular/core';
-import {
-  ControlValueAccessor,
-  NG_VALIDATORS,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+import { ChangeDetectorRef, Directive, forwardRef, ForwardRefFn, inject, Input, Provider } from '@angular/core';
+import { ControlValueAccessor, NG_VALIDATORS, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 /**
  * Create provider for a control.

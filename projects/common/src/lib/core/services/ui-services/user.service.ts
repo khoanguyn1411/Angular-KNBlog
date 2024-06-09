@@ -57,9 +57,7 @@ export class UserService {
    * @param loginData Login data.
    */
   public login(loginData: LoginData): Observable<void> {
-    return this.authService
-      .login(loginData)
-      .pipe(this.saveSecretAndWaitForAuthorized());
+    return this.authService.login(loginData).pipe(this.saveSecretAndWaitForAuthorized());
   }
 
   /**
@@ -67,9 +65,7 @@ export class UserService {
    * @param data Login data.
    */
   public loginWithGoogle(data: GoogleAuthData): Observable<void> {
-    return this.authService
-      .loginWithGoogle(data)
-      .pipe(this.saveSecretAndWaitForAuthorized());
+    return this.authService.loginWithGoogle(data).pipe(this.saveSecretAndWaitForAuthorized());
   }
 
   /** Login with google from auth state. */
@@ -97,9 +93,7 @@ export class UserService {
    * @param registerData Register data.
    */
   public register(registerData: RegisterData): Observable<void> {
-    return this.authService
-      .register(registerData)
-      .pipe(this.saveSecretAndWaitForAuthorized());
+    return this.authService.register(registerData).pipe(this.saveSecretAndWaitForAuthorized());
   }
 
   /** Attempts to refresh user secret, in case it is not possible logs out current user. */
@@ -141,9 +135,7 @@ export class UserService {
     return (source$) =>
       source$.pipe(
         switchMap((secret) => {
-          const saveUserSecretSideEffect$ = this.userSecretStorage
-            .saveSecret(secret)
-            .pipe(ignoreElements());
+          const saveUserSecretSideEffect$ = this.userSecretStorage.saveSecret(secret).pipe(ignoreElements());
 
           return merge(this.isAuthorized$, saveUserSecretSideEffect$);
         }),
@@ -154,9 +146,7 @@ export class UserService {
 
   private initCurrentUserStream(): Observable<User | null> {
     return this.userSecretStorage.currentSecret$.pipe(
-      switchMap((secret) =>
-        secret ? this.userApiService.getCurrentUser() : of(null),
-      ),
+      switchMap((secret) => (secret ? this.userApiService.getCurrentUser() : of(null))),
       shareReplay({ bufferSize: 1, refCount: false }),
     );
   }

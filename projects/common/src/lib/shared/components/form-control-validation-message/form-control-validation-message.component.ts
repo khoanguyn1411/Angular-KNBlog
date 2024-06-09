@@ -1,13 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  DoCheck,
-  Input,
-  OnInit,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, DoCheck, Input, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { AbstractControl, ControlContainer } from '@angular/forms';
 import { listenControlTouched } from '@knb/core/utils/rxjs/listen-control-touched';
@@ -36,9 +28,7 @@ export class FormControlValidationMessageComponent implements OnInit, DoCheck {
   public control?: AbstractControl;
 
   /** Form control. */
-  protected readonly formControl$ = new BehaviorSubject<
-    AbstractControl | undefined
-  >(undefined);
+  protected readonly formControl$ = new BehaviorSubject<AbstractControl | undefined>(undefined);
 
   private readonly parent = inject(ControlContainer, {
     optional: true,
@@ -58,9 +48,7 @@ export class FormControlValidationMessageComponent implements OnInit, DoCheck {
     // Re-get form control on do check, because parent FormControl could be re-created.
     let formControl = this.control;
     if (this.controlName != null) {
-      formControl = this.parent?.control?.get(this.controlName.toString()) as
-        | AbstractControl
-        | undefined;
+      formControl = this.parent?.control?.get(this.controlName.toString()) as AbstractControl | undefined;
     }
     this.formControl$.next(formControl);
   }
@@ -73,31 +61,20 @@ export class FormControlValidationMessageComponent implements OnInit, DoCheck {
     // Display if a user changed value or value already presented (pre-initialized).
     const hasValue = control.value != null && control.value !== '';
 
-    return (
-      control.touched || control.dirty || (hasValue && control.errors != null)
-    );
+    return control.touched || control.dirty || (hasValue && control.errors != null);
   }
 
   private initErrorSideEffect(): void {
     if (this.control != null && this.controlName != null) {
-      throw new Error(
-        'You can not specify the both: `control` and `controlName`. Use only one of them.',
-      );
+      throw new Error('You can not specify the both: `control` and `controlName`. Use only one of them.');
     }
 
-    const control =
-      this.controlName != null
-        ? this.parent?.control?.get(this.controlName.toString())
-        : this.control;
+    const control = this.controlName != null ? this.parent?.control?.get(this.controlName.toString()) : this.control;
     if (control == null) {
       throw new Error('Cannot find an abstract control with specified name');
     }
 
-    merge(
-      this.parent?.statusChanges ?? EMPTY,
-      listenControlTouched(control),
-      control.statusChanges,
-    )
+    merge(this.parent?.statusChanges ?? EMPTY, listenControlTouched(control), control.statusChanges)
       .pipe(
         tap(() => this.formControl$.next(control)),
         takeUntilDestroyed(this.destroyRef),

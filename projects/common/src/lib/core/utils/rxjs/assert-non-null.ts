@@ -16,9 +16,7 @@ export function assertNonNull<T>(value: T): asserts value is NonNullable<T> {
  * @param value Value to assert.
  */
 // polyfill for assertion return https://github.com/microsoft/TypeScript/issues/40562
-export function assertNonNullWithReturn<T>(
-  value: T | null | undefined,
-): NonNullable<T> {
+export function assertNonNullWithReturn<T>(value: T | null | undefined): NonNullable<T> {
   assertNonNull(value);
   return value;
 }
@@ -41,10 +39,10 @@ export function assertNonNullWithReturn<T>(
  *
  * ```
  */
-export function assertNonNullablePropertiesWithReturn<
-  T extends Record<string, unknown>,
-  K extends keyof T,
->(object: T, ...keys: K[]): NonNullableProperties<T, K> {
+export function assertNonNullablePropertiesWithReturn<T extends Record<string, unknown>, K extends keyof T>(
+  object: T,
+  ...keys: K[]
+): NonNullableProperties<T, K> {
   keys.forEach((key) => assertNonNull(object[key]));
   return object as unknown as NonNullableProperties<T, K>;
 }

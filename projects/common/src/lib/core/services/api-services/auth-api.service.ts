@@ -37,18 +37,11 @@ export class AuthApiService {
    * @param loginData Login data.
    */
   public login(loginData: LoginData): Observable<UserSecret> {
-    return this.httpClient
-      .post<unknown>(
-        this.apiUrlsConfig.auth.login,
-        this.loginDataMapper.toDto(loginData),
-      )
-      .pipe(
-        map((response) => userSecretDtoSchema.parse(response)),
-        map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
-        this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(
-          this.loginDataMapper,
-        ),
-      );
+    return this.httpClient.post<unknown>(this.apiUrlsConfig.auth.login, this.loginDataMapper.toDto(loginData)).pipe(
+      map((response) => userSecretDtoSchema.parse(response)),
+      map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
+      this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(this.loginDataMapper),
+    );
   }
 
   /**
@@ -57,16 +50,11 @@ export class AuthApiService {
    */
   public register(registerData: RegisterData): Observable<UserSecret> {
     return this.httpClient
-      .post<unknown>(
-        this.apiUrlsConfig.auth.register,
-        this.registerDataMapper.toDto(registerData),
-      )
+      .post<unknown>(this.apiUrlsConfig.auth.register, this.registerDataMapper.toDto(registerData))
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),
         map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
-        this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(
-          this.registerDataMapper,
-        ),
+        this.appErrorMapper.catchHttpErrorToAppErrorWithValidationSupport(this.registerDataMapper),
       );
   }
 
@@ -74,14 +62,9 @@ export class AuthApiService {
    * Register or login user by Google.
    * @param googleAuthData Google auth data.
    */
-  public loginWithGoogle(
-    googleAuthData: GoogleAuthData,
-  ): Observable<UserSecret> {
+  public loginWithGoogle(googleAuthData: GoogleAuthData): Observable<UserSecret> {
     return this.httpClient
-      .post<unknown>(
-        this.apiUrlsConfig.auth.googleLogin,
-        this.googleAuthDataMapper.toDto(googleAuthData),
-      )
+      .post<unknown>(this.apiUrlsConfig.auth.googleLogin, this.googleAuthDataMapper.toDto(googleAuthData))
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),
         map((secretDto) => this.userSecretMapper.fromDto(secretDto)),
@@ -94,10 +77,7 @@ export class AuthApiService {
    */
   public refreshSecret(secret: UserSecret): Observable<UserSecret> {
     return this.httpClient
-      .post<unknown>(
-        this.apiUrlsConfig.auth.refreshSecret,
-        this.userSecretMapper.toDto(secret),
-      )
+      .post<unknown>(this.apiUrlsConfig.auth.refreshSecret, this.userSecretMapper.toDto(secret))
       .pipe(
         map((response) => userSecretDtoSchema.parse(response)),
         map((secretDto) => this.userSecretMapper.fromDto(secretDto)),

@@ -8,9 +8,7 @@ import { MapperToDto } from './mappers';
 @Injectable({
   providedIn: 'root',
 })
-export class GoogleAuthDataMapper
-  implements MapperToDto<GoogleAuthDataDto, GoogleAuthData>
-{
+export class GoogleAuthDataMapper implements MapperToDto<GoogleAuthDataDto, GoogleAuthData> {
   /** @inheritdoc */
   public toDto(data: GoogleAuthData): GoogleAuthDataDto {
     return {

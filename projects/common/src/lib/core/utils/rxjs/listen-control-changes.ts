@@ -18,10 +18,6 @@ export function listenControlChanges<T>(
   compare?: (x: T, y: T) => boolean,
 ): Observable<T> {
   return defer(() =>
-    control.valueChanges.pipe(
-      startWith(control.value),
-      debounceTime(time),
-      distinctUntilChanged(compare),
-    ),
+    control.valueChanges.pipe(startWith(control.value), debounceTime(time), distinctUntilChanged(compare)),
   );
 }

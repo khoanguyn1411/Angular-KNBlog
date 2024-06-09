@@ -1,11 +1,6 @@
-import {
-  GoogleLoginProvider,
-  SocialAuthServiceConfig,
-} from '@abacritt/angularx-social-login';
+import { GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 
-const GOOGLE_OAUTH_SCOPES = [
-  'https://www.googleapis.com/auth/userinfo.profile',
-];
+const GOOGLE_OAUTH_SCOPES = ['https://www.googleapis.com/auth/userinfo.profile'];
 
 const GOOGLE_CLIENT_ID = import.meta.env.NG_APP_GOOGLE_CLIENT_ID as string;
 

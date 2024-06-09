@@ -10,9 +10,7 @@ import { MapperFromDto } from './mappers';
 @Injectable({
   providedIn: 'root',
 })
-export class UserSecretMapper
-  implements MapperFromDto<UserSecretDto, UserSecret>
-{
+export class UserSecretMapper implements MapperFromDto<UserSecretDto, UserSecret> {
   /** @inheritdoc */
   public toDto(model: UserSecret): UserSecretCreationDto {
     return {

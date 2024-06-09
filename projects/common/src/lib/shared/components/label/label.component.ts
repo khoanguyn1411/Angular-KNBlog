@@ -1,27 +1,10 @@
 import { AsyncPipe } from '@angular/common';
-import {
-  ChangeDetectionStrategy,
-  Component,
-  ContentChild,
-  DestroyRef,
-  OnInit,
-  inject,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, ContentChild, DestroyRef, OnInit, inject, input } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgControl, ValidationErrors } from '@angular/forms';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { listenControlTouched } from '@knb/core/utils/rxjs/listen-control-touched';
-import {
-  BehaviorSubject,
-  EMPTY,
-  Observable,
-  distinct,
-  map,
-  merge,
-  switchMap,
-  tap,
-} from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, distinct, map, merge, switchMap, tap } from 'rxjs';
 
 /** Label component. */
 @Component({
@@ -40,15 +23,11 @@ export class LabelComponent implements OnInit {
   private readonly destroyRef = inject(DestroyRef);
 
   /** Errors. */
-  protected readonly errors$ = new BehaviorSubject<ValidationErrors | null>(
-    null,
-  );
+  protected readonly errors$ = new BehaviorSubject<ValidationErrors | null>(null);
 
   /** @inheritDoc */
   public ngOnInit(): void {
-    this.initErrorStreamSideEffect()
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe();
+    this.initErrorStreamSideEffect().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
   }
 
   /** Catch inner input by form control directive. */
@@ -64,10 +43,9 @@ export class LabelComponent implements OnInit {
       distinct(),
       filterNull(),
       switchMap((input) =>
-        merge(
-          input.statusChanges ?? EMPTY,
-          input.control ? listenControlTouched(input.control) : EMPTY,
-        ).pipe(map(() => input)),
+        merge(input.statusChanges ?? EMPTY, input.control ? listenControlTouched(input.control) : EMPTY).pipe(
+          map(() => input),
+        ),
       ),
       tap((input) => this.errors$.next(input.errors)),
     );
