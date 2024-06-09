@@ -7,7 +7,6 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { ThemeValue } from '@knb/core/models/theme';
 import { ThemeService } from '@knb/core/services/ui-services/theme.service';
-import { first } from 'rxjs';
 
 /** Theme settings component. */
 @Component({
@@ -31,6 +30,6 @@ export class ThemeSettingsComponent {
    * @param theme Theme.
    */
   protected setTheme(theme: ThemeValue): void {
-    this.themeService.setTheme(theme).pipe(first()).subscribe();
+    this.themeService.setTheme(theme).subscribe();
   }
 }
