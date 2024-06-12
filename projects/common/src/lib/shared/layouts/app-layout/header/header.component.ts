@@ -27,8 +27,8 @@ import { ThemeSettingsComponent } from './theme-settings/theme-settings.componen
     MatIconModule,
     GlobalSearchComponent,
     SkeletonDirective,
-    ThemeSettingsComponent,
     MatTooltipModule,
+    ThemeSettingsComponent,
   ],
 })
 export class HeaderComponent {
