@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { AppLayoutComponent } from '@knb/shared/layouts/app-layout/app-layout.component';
 
-/** User-views component. */
+/** User views component. */
 @Component({
   selector: 'knw-user-views',
   standalone: true,
