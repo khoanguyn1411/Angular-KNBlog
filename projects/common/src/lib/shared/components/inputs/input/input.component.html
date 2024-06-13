@@ -9,7 +9,13 @@
       [autocomplete]="autocomplete()"
       (change)="onChange($event)"
     />
-    @if (type() === "search") {
+    <ng-container matPrefix>
+      <ng-content select="[prefix]"></ng-content>
+    </ng-container>
+    <ng-container matSuffix>
+      <ng-content select="[suffix]"></ng-content>
+    </ng-container>
+    @if (type() === 'search') {
       <mat-icon matPrefix>search</mat-icon>
     }
     <mat-error>
