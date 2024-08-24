@@ -1,4 +1,4 @@
-import { NgxEditorConfig } from 'ngx-editor';
+import { NgxEditorConfig, Toolbar } from 'ngx-editor';
 
 export const NGX_EDITOR_CONFIG: NgxEditorConfig = {
   locals: {
@@ -6,9 +6,9 @@ export const NGX_EDITOR_CONFIG: NgxEditorConfig = {
     bold: 'Bold',
     italic: 'Italic',
     code: 'Code',
-    blockquote: 'Blockquote',
     underline: 'Underline',
     strike: 'Strike',
+    blockquote: 'Blockquote',
     bullet_list: 'Bullet List',
     ordered_list: 'Ordered List',
     heading: 'Heading',
@@ -24,8 +24,19 @@ export const NGX_EDITOR_CONFIG: NgxEditorConfig = {
     align_justify: 'Justify',
     text_color: 'Text Color',
     background_color: 'Background Color',
+    horizontal_rule: 'Horizontal rule',
+    format_clear: 'Clear Formatting',
+    insertLink: 'Insert Link',
+    removeLink: 'Remove Link',
+    insertImage: 'Insert Image',
+    indent: 'Increase Indent',
+    outdent: 'Decrease Indent',
+    superscript: 'Superscript',
+    subscript: 'Subscript',
+    undo: 'Undo',
+    redo: 'Redo',
 
-    // popups, forms, others...
+    // pupups, forms, others...
     url: 'URL',
     text: 'Text',
     openInNewTab: 'Open in new tab',
@@ -36,3 +47,15 @@ export const NGX_EDITOR_CONFIG: NgxEditorConfig = {
     enterValidUrl: 'Please enter a valid URL',
   },
 };
+
+export const NGX_EDITOR_TOOLBAR_CONFIG: Toolbar = [
+  ['bold', 'italic'],
+  ['underline', 'strike'],
+  ['code', 'blockquote'],
+  ['ordered_list', 'bullet_list'],
+  [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+  ['link', 'image'],
+  ['text_color', 'background_color'],
+  ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ['undo', 'redo'],
+];

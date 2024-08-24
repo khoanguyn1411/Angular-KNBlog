@@ -6,7 +6,7 @@ import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { LabelComponent } from '@knb/shared/components/label/label.component';
 import { Editor, NGX_EDITOR_CONFIG_TOKEN, NgxEditorModule, Toolbar } from 'ngx-editor';
-import { NGX_EDITOR_CONFIG } from './ngx-editor.config';
+import { NGX_EDITOR_CONFIG, NGX_EDITOR_TOOLBAR_CONFIG } from './ngx-editor.config';
 
 type BlogCreationForm = FlatControlsOf<{
   readonly title: string;
@@ -27,17 +27,7 @@ export class NewBlogComponent implements OnInit, OnDestroy {
   private readonly fb = inject(NonNullableFormBuilder);
 
   protected editor: Editor | null = null;
-  protected html = '';
-  protected toolbar: Toolbar = [
-    ['bold', 'italic'],
-    ['underline', 'strike'],
-    ['code', 'blockquote'],
-    ['ordered_list', 'bullet_list'],
-    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
-    ['link', 'image'],
-    ['text_color', 'background_color'],
-    ['align_left', 'align_center', 'align_right', 'align_justify'],
-  ];
+  protected toolbar: Toolbar = NGX_EDITOR_TOOLBAR_CONFIG;
 
   protected readonly newBlogForm = this.initializeForm();
 
