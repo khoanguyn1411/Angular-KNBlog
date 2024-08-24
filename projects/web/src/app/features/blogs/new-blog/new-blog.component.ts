@@ -1,10 +1,12 @@
 import { ChangeDetectionStrategy, Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { LabelComponent } from '@knb/shared/components/label/label.component';
-import { Editor, NgxEditorModule } from 'ngx-editor';
+import { Editor, NGX_EDITOR_CONFIG_TOKEN, NgxEditorModule, Toolbar } from 'ngx-editor';
+import { NGX_EDITOR_CONFIG } from './ngx-editor.config';
 
 type BlogCreationForm = FlatControlsOf<{
   readonly title: string;
@@ -16,7 +18,8 @@ type BlogCreationForm = FlatControlsOf<{
   selector: 'knw-new-blog',
   standalone: true,
   templateUrl: './new-blog.component.html',
-  imports: [RouterOutlet, NgxEditorModule, ReactiveFormsModule, LabelComponent, InputComponent],
+  imports: [RouterOutlet, ReactiveFormsModule, LabelComponent, InputComponent, MatButtonModule, NgxEditorModule],
+  providers: [{ provide: NGX_EDITOR_CONFIG_TOKEN, useValue: NGX_EDITOR_CONFIG }],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './new-blog.component.scss',
 })
@@ -25,11 +28,22 @@ export class NewBlogComponent implements OnInit, OnDestroy {
 
   protected editor: Editor | null = null;
   protected html = '';
+  protected toolbar: Toolbar = [
+    ['bold', 'italic'],
+    ['underline', 'strike'],
+    ['code', 'blockquote'],
+    ['ordered_list', 'bullet_list'],
+    [{ heading: ['h1', 'h2', 'h3', 'h4', 'h5', 'h6'] }],
+    ['link', 'image'],
+    ['text_color', 'background_color'],
+    ['align_left', 'align_center', 'align_right', 'align_justify'],
+  ];
+
   protected readonly newBlogForm = this.initializeForm();
 
   /** @inheritdoc */
   public ngOnInit(): void {
-    this.editor = new Editor();
+    this.editor = this.initializeEditor();
   }
 
   /** @inheritdoc */
@@ -40,10 +54,18 @@ export class NewBlogComponent implements OnInit, OnDestroy {
     this.editor.destroy();
   }
 
+  private initializeEditor(): Editor {
+    return new Editor();
+  }
+
   private initializeForm(): FormGroup<BlogCreationForm> {
     return this.fb.group({
       title: this.fb.control('', [Validators.required]),
       content: this.fb.control('', [Validators.required]),
     });
+  }
+
+  protected onSubmit(): void {
+    this.newBlogForm.markAllAsTouched();
   }
 }

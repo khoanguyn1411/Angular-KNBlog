@@ -1,23 +1,24 @@
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, NgIf, NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, ContentChild, DestroyRef, OnInit, inject, input } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { NgControl, ValidationErrors } from '@angular/forms';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { listenControlTouched } from '@knb/core/utils/rxjs/listen-control-touched';
-import { BehaviorSubject, EMPTY, Observable, distinct, map, merge, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, EMPTY, Observable, combineLatest, distinct, map, of, startWith, switchMap, tap } from 'rxjs';
 
 /** Label component. */
 @Component({
   selector: 'knc-label',
   standalone: true,
   templateUrl: './label.component.html',
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, NgIf, NgTemplateOutlet],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./label.component.scss'],
 })
 export class LabelComponent implements OnInit {
   public label = input.required<string>();
   public isRequired = input<boolean>(false);
+  public hasLabel = input<boolean>(true);
 
   private readonly control$ = new BehaviorSubject<NgControl | null>(null);
   private readonly destroyRef = inject(DestroyRef);
@@ -43,11 +44,18 @@ export class LabelComponent implements OnInit {
       distinct(),
       filterNull(),
       switchMap((input) =>
-        merge(input.statusChanges ?? EMPTY, input.control ? listenControlTouched(input.control) : EMPTY).pipe(
-          map(() => input),
-        ),
+        combineLatest([
+          (input.statusChanges ?? EMPTY).pipe(startWith(null)),
+          input.control ? listenControlTouched(input.control) : of(null),
+        ]).pipe(map(([, isControlTouched]) => ({ input, isControlTouched }))),
       ),
-      tap((input) => this.errors$.next(input.errors)),
+      tap(({ input, isControlTouched }) => {
+        if (isControlTouched) {
+          this.errors$.next(input.errors);
+          return;
+        }
+        this.errors$.next(null);
+      }),
     );
   }
 }

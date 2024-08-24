@@ -1,6 +1,24 @@
-<label class="wrapper">
-  <p class="label" [class.is-error]="(errors$ | async) !== null">
-    {{ label() }} @if (isRequired()) {<span class="required-marker">*</span>}
-  </p>
-  <ng-content></ng-content>
+<label *ngIf="hasLabel(); else labelAsDivTemplate" class="wrapper">
+  @if (label() !== null) {
+    <span class="label" [class.is-error]="(errors$ | async) !== null">
+      {{ label() }}
+      @if (isRequired()) {
+        <span class="required-marker">*</span>
+      }
+    </span>
+  }
+  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
 </label>
+
+<ng-template #labelAsDivTemplate>
+  @if (label() !== null && !hasLabel()) {
+    <span class="title-medium">
+      {{ label() }}
+    </span>
+  }
+  <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+</ng-template>
+
+<ng-template #contentTemplate>
+  <ng-content />
+</ng-template>
