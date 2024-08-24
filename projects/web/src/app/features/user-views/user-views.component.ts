@@ -1,6 +1,5 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AppLayoutComponent } from '@knb/shared/layouts/app-layout/app-layout.component';
 
 /** User views component. */
 @Component({
@@ -8,7 +7,7 @@ import { AppLayoutComponent } from '@knb/shared/layouts/app-layout/app-layout.co
   standalone: true,
   templateUrl: './user-views.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, AppLayoutComponent],
+  imports: [RouterOutlet],
   styleUrls: ['./user-views.component.scss'],
 })
 export class UserViewsComponent {}

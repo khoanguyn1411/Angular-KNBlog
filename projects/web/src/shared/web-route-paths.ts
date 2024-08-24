@@ -8,23 +8,17 @@ export const JOB_ID_PARAM = 'jobId';
 /** Injection token that provide object with route web app paths. */
 const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object with web route paths');
 
-const authRoutePaths = buildRoutePaths({
-  auth: {
-    path: 'auth',
-    children: {
-      login: { path: 'login' },
-      register: { path: 'register' },
-    },
-  },
-} as const);
-
 const homeRoutePaths = buildRoutePaths({
   root: { path: 'home' },
 } as const);
 
 const blogsRoutePaths = buildRoutePaths({
-  newBlog: { path: 'new-blog' },
-  blogs: { path: 'blogs' },
+  blogs: {
+    path: 'blogs',
+    children: {
+      newBlog: { path: 'new-blog' },
+    },
+  },
 } as const);
 
 /**
@@ -43,7 +37,6 @@ const blogsRoutePaths = buildRoutePaths({
  */
 export const webRoutePaths = buildRoutePaths({
   ...baseRoutePaths,
-  ...authRoutePaths,
   ...homeRoutePaths,
   ...blogsRoutePaths,
 } as const);

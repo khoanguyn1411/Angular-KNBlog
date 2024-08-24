@@ -57,7 +57,7 @@ export class HeaderComponent {
     this.openAuthenticationDialog({ state: 'signUp' });
   }
 
-  protected async onNewBlogCreate() {
-    await this.router.navigateByUrl(this.routes.newBlog.url);
+  protected onNewBlogCreate() {
+    this.router.navigateByUrl(this.routes.blogs.children.newBlog.url);
   }
 }
