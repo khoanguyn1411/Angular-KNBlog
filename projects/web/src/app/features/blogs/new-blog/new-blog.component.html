@@ -1,1 +1,9 @@
-<h1>This is new blog</h1>
+<form [formGroup]="newBlogForm" class="wrapper">
+  <knc-label label="Title" [isRequired]="true">
+    <knc-input placeholder="Your Title" formControlName="title" name="blog-title"></knc-input>
+  </knc-label>
+  @if (editor) {
+    <ngx-editor-menu [editor]="editor" />
+    <ngx-editor class="editor" [editor]="editor" formControlName="content" [placeholder]="'Type here...'"></ngx-editor>
+  }
+</form>
