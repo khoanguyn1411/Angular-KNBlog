@@ -2,11 +2,7 @@
   <knc-label label="Title" [isRequired]="true">
     <knc-input placeholder="Your Title" formControlName="title" name="blog-title"></knc-input>
   </knc-label>
-  @if (editor) {
-    <ngx-editor-menu [toolbar]="toolbar" [editor]="editor" />
-    <ngx-editor class="editor" [editor]="editor" formControlName="content" placeholder="Your great blog here"></ngx-editor>
-    <ngx-editor-floating-menu [editor]="editor"></ngx-editor-floating-menu>
-  }
+  <knc-editor formControlName="content" />
   <div class="actions">
     <button mat-button type="reset">Reset</button>
     <button mat-raised-button color="primary" type="submit">Create</button>

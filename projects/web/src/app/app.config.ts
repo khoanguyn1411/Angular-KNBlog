@@ -11,7 +11,6 @@ import { provideSocialOauth } from '../shared/social-oath.config';
 import { provideWebAppConfig } from '../shared/web-app.config';
 import { provideWebAppRoutes } from '../shared/web-route-paths';
 import { routes } from './app.routes';
-
 const httpInterceptorProviders: readonly Provider[] = [
   // The refresh interceptor should be before the auth interceptor, otherwise refreshed bearer would not be updated
   {
