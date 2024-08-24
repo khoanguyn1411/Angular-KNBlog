@@ -7,7 +7,7 @@
       <knc-global-search></knc-global-search>
       @if (!isCurrentUserFetching()) {
         @if (isAuthorized()) {
-          <button mat-button type="button">
+          <button (click)="onNewBlogCreate()" mat-button type="button">
             <mat-icon matPrefix>create</mat-icon>
             Write
             </button>

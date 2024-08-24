@@ -4,8 +4,8 @@ import { Observable } from 'rxjs';
 import { first, map, switchMap } from 'rxjs/operators';
 
 import { UserSecret } from '../models/user-secret';
+import { AppUrlsConfig } from '../services/api-services/app-urls.config';
 import { UserSecretStorageService } from '../services/ui-services/user-secret-storage.service';
-import { AppConfig } from '../services/app.config';
 
 const AUTH_HEADER_KEY = 'Authorization';
 const AUTH_PREFIX = 'Token';
@@ -13,7 +13,7 @@ const AUTH_PREFIX = 'Token';
 /** Adds JWT to requests using Authorization HTTP header. */
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  private readonly appConfigService = inject(AppConfig);
+  private readonly apiUrlsConfig = inject(AppUrlsConfig);
 
   private readonly userSecretStorage = inject(UserSecretStorageService);
 
@@ -42,7 +42,7 @@ export class AuthInterceptor implements HttpInterceptor {
    * @param url - Request url.
    */
   private shouldInterceptToken(url: string): boolean {
-    return url.startsWith(this.appConfigService.apiUrl);
+    return this.apiUrlsConfig.isApplicationUrl(url) && !this.apiUrlsConfig.isAuthUrl(url);
   }
 
   /**

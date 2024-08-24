@@ -11,12 +11,6 @@
  * @param path Target path.
  * @param params Parameters.
  */
-export function buildNavigateUrl<P extends string>(
-  path: P,
-  params: Record<string, string | number>,
-): string {
-  return Object.keys(params).reduce(
-    (acc, key) => acc.replace(`:${key}`, params[key].toString()),
-    path,
-  );
+export function buildNavigateUrl<P extends string>(path: P, params: Record<string, string | number>): string {
+  return Object.keys(params).reduce((acc, key) => acc.replace(`:${key}`, params[key].toString()), path);
 }

@@ -2,6 +2,8 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { Router } from '@angular/router';
 import { DialogService } from '@knb/core/services/ui-services/dialog.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import {
@@ -9,10 +11,10 @@ import {
   AuthenticationDialogData,
 } from '@knb/shared/components/authentication/authentication-dialog.component';
 import { SkeletonDirective } from '@knb/shared/directives/skeleton.directive';
-import { MatTooltipModule } from '@angular/material/tooltip';
+import { injectWebAppRoutes } from 'projects/web/src/shared/web-route-paths';
 import { GlobalSearchComponent } from './global-search/global-search.component';
-import { UserOptionsComponent } from './user-options/user-options.component';
 import { ThemeSettingsComponent } from './theme-settings/theme-settings.component';
+import { UserOptionsComponent } from './user-options/user-options.component';
 
 /** Header component. */
 @Component({
@@ -34,6 +36,8 @@ import { ThemeSettingsComponent } from './theme-settings/theme-settings.componen
 export class HeaderComponent {
   private readonly dialogService = inject(DialogService);
   private readonly userService = inject(UserService);
+  private readonly router = inject(Router);
+  private readonly routes = injectWebAppRoutes();
 
   protected readonly isAuthorized = toSignal(this.userService.isAuthorized$);
   protected readonly isCurrentUserFetching = this.userService.isUserFetching;
@@ -51,5 +55,9 @@ export class HeaderComponent {
 
   protected onSignUp() {
     this.openAuthenticationDialog({ state: 'signUp' });
+  }
+
+  protected async onNewBlogCreate() {
+    await this.router.navigateByUrl(this.routes.newBlog.url);
   }
 }

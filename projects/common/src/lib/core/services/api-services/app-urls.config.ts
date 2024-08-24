@@ -15,7 +15,7 @@ export class AppUrlsConfig {
     googleLogin: this.toApi('auth/google-login/'),
     register: this.toApi('auth/register/'),
     logout: this.toApi('auth/logout/'),
-    refreshSecret: this.toApi('auth/password-reset/'),
+    refreshSecret: this.toApi('auth/token/refresh/'),
   } as const;
 
   /** User routes. */

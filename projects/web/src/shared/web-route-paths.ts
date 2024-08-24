@@ -22,6 +22,11 @@ const homeRoutePaths = buildRoutePaths({
   root: { path: 'home' },
 } as const);
 
+const blogsRoutePaths = buildRoutePaths({
+  newBlog: { path: 'new-blog' },
+  blogs: { path: 'blogs' },
+} as const);
+
 /**
  * Web route paths object.
  * It's intended to be used only in Routing modules.
@@ -40,6 +45,7 @@ export const webRoutePaths = buildRoutePaths({
   ...baseRoutePaths,
   ...authRoutePaths,
   ...homeRoutePaths,
+  ...blogsRoutePaths,
 } as const);
 
 type WebRoutePaths = typeof webRoutePaths;
