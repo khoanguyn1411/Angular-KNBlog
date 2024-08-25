@@ -21,7 +21,7 @@ $spinner-size: 12px;
   transition: 0.3s ease;
   border-color: $spinner-color transparent $spinner-color transparent;
   animation: knc-loading-spin 1.2s ease-in-out infinite;
-  z-index: 1;
+  z-index: 2;
 }
 
 .knc-loading::before {
@@ -34,7 +34,7 @@ $spinner-size: 12px;
   animation: fadein 200ms ease-in;
   /* To balance loader positioning on flexbox */
   content: '';
-  z-index: 10;
+  z-index: 1;
 }
 
 @keyframes knc-loading-spin {

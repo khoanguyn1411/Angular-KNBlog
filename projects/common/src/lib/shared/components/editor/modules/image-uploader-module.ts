@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { inject, Injectable, signal } from '@angular/core';
+import { computed, effect, inject, Injectable, signal } from '@angular/core';
 import { UploadApiService } from '@knb/core/services/api-services/upload-api.service';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import QuillType from 'quill';
@@ -12,18 +12,21 @@ export class ImageUploaderModule {
 
   private readonly uploadService = inject(UploadApiService);
 
-  public readonly isUploadingImage = signal(true);
+  public readonly isUploadingImageSignal = signal(false);
 
-  private getPosition(): { index: number } {
+  public readonly isUploadingImage = computed(() => this.isUploadingImageSignal());
+
+  private getPosition(): { index: number } | null {
     if (this.editor == null) {
       throw new Error('No editor appeared.');
     }
-    return this.editor?.getSelection() as { index: number };
+    return this.editor?.getSelection() as { index: number } | null;
   }
 
   private insertToEditor(url: string): Observable<void> {
     return defer(() => {
-      this.editor?.insertEmbed(this.getPosition().index, 'image', url);
+      const position = this.getPosition();
+      this.editor?.insertEmbed(position == null ? 0 : position.index, 'image', url);
       return of(undefined);
     });
   }
@@ -43,12 +46,17 @@ export class ImageUploaderModule {
       this.uploadService
         .uploadImage({ file })
         .pipe(
-          toggleExecutionState(this.isUploadingImage),
+          toggleExecutionState(this.isUploadingImageSignal),
           switchMap((result) => this.insertToEditor(result.viewUrl)),
         )
         .subscribe();
     };
   }
+
+  // Need this effect to trigger loading state. Not sure why.
+  private updateStateImageEffect = effect(() => {
+    this.isUploadingImage();
+  });
 
   public apply(editor: QuillType) {
     this.editor = editor;

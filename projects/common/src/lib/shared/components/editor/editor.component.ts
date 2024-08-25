@@ -1,11 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { assertNonNullWithReturn } from '@knb/core/utils/assert-non-null';
 import { controlProviderFor, SimpleValueAccessor } from '@knb/core/utils/rxjs/value-accessor';
+import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { QuillModule, QuillModules } from 'ngx-quill';
 import Quill from 'quill';
 import ImageResize from 'quill-image-resizor';
-import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { ImageUploaderModule } from './modules/image-uploader-module';
 
 Quill.register('modules/imageResize', ImageResize);
@@ -16,12 +17,13 @@ Quill.register('modules/imageResize', ImageResize);
   standalone: true,
   templateUrl: './editor.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [QuillModule, FormsModule, LoadingDirective],
+  imports: [QuillModule, FormsModule, LoadingDirective, AsyncPipe],
   providers: [controlProviderFor(() => EditorComponent)],
   styleUrl: './editor.component.scss',
 })
 export class EditorComponent extends SimpleValueAccessor<string> {
   protected readonly imageUploaderModule = inject(ImageUploaderModule);
+  private readonly changeDetectionStrategy = inject(ChangeDetectorRef);
 
   protected modules: QuillModules = {};
   private editor: Quill | null = null;
@@ -38,6 +40,7 @@ export class EditorComponent extends SimpleValueAccessor<string> {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const toolbar = nonNullableEditor.getModule('toolbar') as any;
     toolbar.addHandler('image', () => this.imageUploaderModule.apply(nonNullableEditor));
+    this.changeDetectionStrategy.markForCheck();
   }
 
   protected onEditorCreated(quillInstance: Quill) {
