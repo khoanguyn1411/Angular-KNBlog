@@ -2,7 +2,7 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { assertNonNullWithReturn } from '@knb/core/utils/assert-non-null';
 import { controlProviderFor, SimpleValueAccessor } from '@knb/core/utils/rxjs/value-accessor';
-import { EditorChangeContent, EditorChangeSelection, QuillModule } from 'ngx-quill';
+import { QuillModule } from 'ngx-quill';
 import QuillType from 'quill';
 import { ImageUploaderModule } from './modules/image-uploader-module';
 
@@ -21,7 +21,7 @@ export class EditorComponent extends SimpleValueAccessor<string> {
 
   private editor: QuillType | null = null;
 
-  private addAndUpdateModules() {
+  private addModules() {
     const nonNullableEditor = assertNonNullWithReturn(this.editor);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const toolbar = nonNullableEditor.getModule('toolbar') as any;
@@ -30,11 +30,6 @@ export class EditorComponent extends SimpleValueAccessor<string> {
 
   protected onEditorCreated(quillInstance: QuillType) {
     this.editor = quillInstance;
-    this.addAndUpdateModules();
-  }
-
-  protected onEditorChange(event: EditorChangeContent | EditorChangeSelection) {
-    this.editor = event.editor;
-    this.addAndUpdateModules();
+    this.addModules();
   }
 }
