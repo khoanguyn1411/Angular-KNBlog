@@ -6,6 +6,7 @@ import { QuillModule, QuillModules } from 'ngx-quill';
 import Quill from 'quill';
 import ImageResize from 'quill-image-resizor';
 import { ImageUploaderModule } from './modules/image-uploader-module';
+
 Quill.register('modules/imageResize', ImageResize);
 
 /** Editor component. */
