@@ -1,8 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { controlProviderFor, SimpleValueAccessor } from '@knb/core/utils/rxjs/value-accessor';
-import { Editor, NGX_EDITOR_CONFIG_TOKEN, NgxEditorModule, Toolbar } from 'ngx-editor';
-import { NGX_EDITOR_CONFIG, NGX_EDITOR_TOOLBAR_CONFIG } from './ngx-editor.config';
+import { QUILL_CONFIG_TOKEN, QuillModule } from 'ngx-quill';
+import { QUILL_EDITOR_CONFIG } from './editor.config';
 
 /** Editor component. */
 @Component({
@@ -10,31 +10,11 @@ import { NGX_EDITOR_CONFIG, NGX_EDITOR_TOOLBAR_CONFIG } from './ngx-editor.confi
   standalone: true,
   templateUrl: './editor.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [NgxEditorModule, FormsModule],
+  imports: [QuillModule, FormsModule],
   providers: [
-    { provide: NGX_EDITOR_CONFIG_TOKEN, useValue: NGX_EDITOR_CONFIG },
+    { provide: QUILL_CONFIG_TOKEN, useValue: QUILL_EDITOR_CONFIG },
     controlProviderFor(() => EditorComponent),
   ],
-  styleUrl: './editor.component.css',
+  styleUrl: './editor.component.scss',
 })
-export class EditorComponent extends SimpleValueAccessor<string> implements OnInit, OnDestroy {
-  protected editor: Editor | null = null;
-  protected toolbar: Toolbar = NGX_EDITOR_TOOLBAR_CONFIG;
-
-  /** @inheritdoc */
-  public ngOnInit(): void {
-    this.editor = this.initializeEditor();
-  }
-
-  /** @inheritdoc */
-  public ngOnDestroy(): void {
-    if (this.editor == null) {
-      return;
-    }
-    this.editor.destroy();
-  }
-
-  private initializeEditor(): Editor {
-    return new Editor();
-  }
-}
+export class EditorComponent extends SimpleValueAccessor<string> {}

@@ -1,5 +1,1 @@
-@if (editor) {
-  <ngx-editor-menu [toolbar]="toolbar" [editor]="editor" />
-  <ngx-editor class="editor" [editor]="editor" [(ngModel)]="controlValue" placeholder="Your great blog here"></ngx-editor>
-  <ngx-editor-floating-menu [editor]="editor"></ngx-editor-floating-menu>
-}
+<quill-editor class="editor" [(ngModel)]="controlValue"></quill-editor>

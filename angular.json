@@ -43,7 +43,10 @@
             ],
             "styles": [
               "projects/common/src/lib/shared/theme/styles.scss",
-              "projects/web/src/styles.scss"
+              "projects/web/src/styles.scss",
+              "./node_modules/quill/dist/quill.core.css",
+              "./node_modules/quill/dist/quill.bubble.css",
+              "./node_modules/quill/dist/quill.snow.css"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
