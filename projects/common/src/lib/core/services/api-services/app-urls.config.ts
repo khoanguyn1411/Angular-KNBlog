@@ -23,6 +23,11 @@ export class AppUrlsConfig {
     profile: this.toApi('user/profile/'),
   } as const;
 
+  /** Blog routes. */
+  public readonly blog = {
+    createBlog: this.toApi('blogs/'),
+  } as const;
+
   /** Upload routes. */
   public readonly upload = {
     image: this.toApi('upload/image/'),

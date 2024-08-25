@@ -1,0 +1,17 @@
+<div class="wrapper">
+  <mat-form-field class="form-field">
+    <textarea
+      matInput
+      [name]="name()"
+      [formControl]="formControl"
+      [placeholder]="placeholder()"
+      [autocomplete]="autocomplete()"
+      (change)="onChange($event)"
+    ></textarea>
+    <ng-content select="[prefix]"></ng-content>
+    <ng-content select="[suffix]"></ng-content>
+    <mat-error>
+      <knc-form-control-validation-message [control]="formControl" />
+    </mat-error>
+  </mat-form-field>
+</div>

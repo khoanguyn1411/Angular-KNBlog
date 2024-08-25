@@ -2,6 +2,9 @@
   <knc-label label="Title" [isRequired]="true">
     <knc-input placeholder="Your Title" formControlName="title" name="blog-title"></knc-input>
   </knc-label>
+  <knc-label label="Summary" [isRequired]="true">
+    <knc-textarea placeholder="Your Summary" formControlName="summary" name="blog-summary"></knc-textarea>
+  </knc-label>
   <knc-editor formControlName="content" />
   <div class="actions">
     <button mat-button type="reset">Reset</button>
