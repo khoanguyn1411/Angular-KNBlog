@@ -1,1 +1,6 @@
-<quill-editor class="editor" (onEditorCreated)="onEditorCreated($event)" [(ngModel)]="controlValue"></quill-editor>
+<quill-editor
+  class="editor"
+  [modules]="modules"
+  (onEditorCreated)="onEditorCreated($event)"
+  [(ngModel)]="controlValue"
+></quill-editor>

@@ -53,7 +53,9 @@
                 "projects/common/src/lib/shared/theme/"
               ]
             },
-            "scripts": [],
+            "scripts": [
+                "./node_modules/quill/dist/quill.js"
+            ],
             "server": "projects/web/src/main.server.ts",
             "prerender": true,
             "ssr": {

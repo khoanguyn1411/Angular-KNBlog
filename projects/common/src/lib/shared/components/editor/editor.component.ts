@@ -2,9 +2,11 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { assertNonNullWithReturn } from '@knb/core/utils/assert-non-null';
 import { controlProviderFor, SimpleValueAccessor } from '@knb/core/utils/rxjs/value-accessor';
-import { QuillModule } from 'ngx-quill';
-import QuillType from 'quill';
+import { QuillModule, QuillModules } from 'ngx-quill';
+import Quill from 'quill';
+import ImageResize from 'quill-image-resizor';
 import { ImageUploaderModule } from './modules/image-uploader-module';
+Quill.register('modules/imageResize', ImageResize);
 
 /** Editor component. */
 @Component({
@@ -19,7 +21,15 @@ import { ImageUploaderModule } from './modules/image-uploader-module';
 export class EditorComponent extends SimpleValueAccessor<string> {
   private readonly imageUploaderModule = inject(ImageUploaderModule);
 
-  private editor: QuillType | null = null;
+  protected modules: QuillModules = {};
+  private editor: Quill | null = null;
+
+  public constructor() {
+    super();
+    this.modules = {
+      imageResize: {},
+    };
+  }
 
   private addModules() {
     const nonNullableEditor = assertNonNullWithReturn(this.editor);
@@ -28,7 +38,7 @@ export class EditorComponent extends SimpleValueAccessor<string> {
     toolbar.addHandler('image', () => this.imageUploaderModule.apply(nonNullableEditor));
   }
 
-  protected onEditorCreated(quillInstance: QuillType) {
+  protected onEditorCreated(quillInstance: Quill) {
     this.editor = quillInstance;
     this.addModules();
   }
