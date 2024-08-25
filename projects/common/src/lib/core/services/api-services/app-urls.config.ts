@@ -23,6 +23,11 @@ export class AppUrlsConfig {
     profile: this.toApi('user/profile/'),
   } as const;
 
+  /** Upload routes. */
+  public readonly upload = {
+    image: this.toApi('upload/image/'),
+  } as const;
+
   /**
    * Checks whether the url is application-scoped.
    * @param url Url to check.

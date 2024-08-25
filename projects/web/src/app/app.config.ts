@@ -7,6 +7,8 @@ import { provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { AuthInterceptor } from '@knb/core/interceptors/auth.interceptor';
 import { RefreshTokenInterceptor } from '@knb/core/interceptors/refresh-token.interceptor';
+import { provideQuillConfig } from 'ngx-quill';
+import { QUILL_EDITOR_CONFIG } from '@knb/shared/components/editor/editor.config';
 import { provideSocialOauth } from '../shared/social-oath.config';
 import { provideWebAppConfig } from '../shared/web-app.config';
 import { provideWebAppRoutes } from '../shared/web-route-paths';
@@ -24,6 +26,7 @@ const httpInterceptorProviders: readonly Provider[] = [
 export const appConfig: ApplicationConfig = {
   providers: [
     ...httpInterceptorProviders,
+    provideQuillConfig(QUILL_EDITOR_CONFIG),
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(withInterceptorsFromDi(), withFetch()),
