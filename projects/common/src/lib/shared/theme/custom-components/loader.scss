@@ -34,6 +34,7 @@ $spinner-size: 12px;
   animation: fadein 200ms ease-in;
   /* To balance loader positioning on flexbox */
   content: '';
+  z-index: 10;
 }
 
 @keyframes knc-loading-spin {

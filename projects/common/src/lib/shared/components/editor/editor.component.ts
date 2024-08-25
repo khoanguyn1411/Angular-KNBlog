@@ -5,6 +5,7 @@ import { controlProviderFor, SimpleValueAccessor } from '@knb/core/utils/rxjs/va
 import { QuillModule, QuillModules } from 'ngx-quill';
 import Quill from 'quill';
 import ImageResize from 'quill-image-resizor';
+import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { ImageUploaderModule } from './modules/image-uploader-module';
 
 Quill.register('modules/imageResize', ImageResize);
@@ -15,12 +16,12 @@ Quill.register('modules/imageResize', ImageResize);
   standalone: true,
   templateUrl: './editor.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [QuillModule, FormsModule],
+  imports: [QuillModule, FormsModule, LoadingDirective],
   providers: [controlProviderFor(() => EditorComponent)],
   styleUrl: './editor.component.scss',
 })
 export class EditorComponent extends SimpleValueAccessor<string> {
-  private readonly imageUploaderModule = inject(ImageUploaderModule);
+  protected readonly imageUploaderModule = inject(ImageUploaderModule);
 
   protected modules: QuillModules = {};
   private editor: Quill | null = null;

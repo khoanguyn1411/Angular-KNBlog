@@ -3,4 +3,7 @@
   [modules]="modules"
   (onEditorCreated)="onEditorCreated($event)"
   [(ngModel)]="controlValue"
+  [kncLoading]="imageUploaderModule.isUploadingImage()"
 ></quill-editor>
+
+{{imageUploaderModule.isUploadingImage()}}

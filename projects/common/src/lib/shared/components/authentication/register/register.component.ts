@@ -84,7 +84,7 @@ export class RegisterComponent implements OnInit {
     this.userService
       .register(registerFormValue)
       .pipe(
-        toggleExecutionState(this.isLoading.set.bind(this)),
+        toggleExecutionState(this.isLoading),
         this.handleSignupSuccessfully('Sign up successfully.'),
         catchValidationData(this.registerForm),
         takeUntilDestroyed(this.destroyRef),

@@ -161,7 +161,7 @@ export class UserService {
     return this.userSecretStorage.currentSecret$.pipe(
       switchMap((secret) =>
         secret
-          ? this.userApiService.getCurrentUser().pipe(toggleExecutionState(this.isUserFetchingSignal.set.bind(this)))
+          ? this.userApiService.getCurrentUser().pipe(toggleExecutionState(this.isUserFetchingSignal))
           : of(null).pipe(tap(() => this.isUserFetchingSignal.set(false))),
       ),
       shareReplay({ bufferSize: 1, refCount: false }),

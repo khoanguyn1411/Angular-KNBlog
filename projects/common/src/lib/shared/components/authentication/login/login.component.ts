@@ -84,7 +84,7 @@ export class LoginComponent implements OnInit {
     this.userService
       .login(loginFormValue)
       .pipe(
-        toggleExecutionState(this.isLoading.set.bind(this)),
+        toggleExecutionState(this.isLoading),
         this.handleLoginSuccessfully(),
         catchValidationError((error) => {
           this.authenticationError.set(error.validationData.nonFieldErrors ?? null);

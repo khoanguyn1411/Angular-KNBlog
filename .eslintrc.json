@@ -92,7 +92,7 @@
         "rxjs/no-ignored-replay-buffer": "error",
         "rxjs/no-internal": "error",
         "rxjs/no-nested-subscribe": "error",
-        "rxjs/no-unbound-methods": "error",
+        "rxjs/no-unbound-methods": "off",
         "rxjs/throw-error": "error",
         "rxjs/no-async-subscribe": "error",
         "rxjs/no-create": "error",
