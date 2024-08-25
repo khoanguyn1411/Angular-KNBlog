@@ -4,12 +4,15 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { BlogCreation } from '@knb/core/models/blog';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
+import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
 import { EditorComponent } from '@knb/shared/components/editor/editor.component';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { TextareaComponent } from '@knb/shared/components/inputs/textarea/textarea.component';
 import { LabelComponent } from '@knb/shared/components/label/label.component';
+import { LoadingDirective } from '@knb/shared/directives/loading.directive';
+import { tap } from 'rxjs';
 
 type BlogCreationForm = FlatControlsOf<BlogCreation>;
 
@@ -26,6 +29,7 @@ type BlogCreationForm = FlatControlsOf<BlogCreation>;
     MatButtonModule,
     EditorComponent,
     TextareaComponent,
+    LoadingDirective,
   ],
 
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -34,6 +38,7 @@ type BlogCreationForm = FlatControlsOf<BlogCreation>;
 export class NewBlogComponent {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly blogsApiService = inject(BlogsApiService);
+  private readonly snackbarService = inject(SnackbarService);
 
   protected readonly isCreatingPost = signal(false);
 
@@ -52,7 +57,10 @@ export class NewBlogComponent {
     this.newBlogForm.markAllAsTouched();
     this.blogsApiService
       .createBlog(this.newBlogForm.getRawValue())
-      .pipe(toggleExecutionState(this.isCreatingPost))
+      .pipe(
+        toggleExecutionState(this.isCreatingPost),
+        tap(() => this.snackbarService.notify({ type: 'success', text: 'Created new blog successfully.' })),
+      )
       .subscribe();
   }
 }

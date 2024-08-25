@@ -8,6 +8,6 @@
   <knc-editor formControlName="content" />
   <div class="actions">
     <button mat-button type="reset">Reset</button>
-    <button mat-raised-button color="primary" type="submit">Create</button>
+    <button [kncLoading]="isCreatingPost()" mat-raised-button color="primary" type="submit">Create</button>
   </div>
 </form>

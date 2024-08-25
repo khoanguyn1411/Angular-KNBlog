@@ -1,9 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
-import {
-  AlertComponent,
-  SnackBarData,
-} from '@knb/shared/components/alert/alert.component';
+import { AlertComponent, SnackBarData } from '@knb/shared/components/alert/alert.component';
 @Injectable({ providedIn: 'root' })
 export class SnackbarService {
   private snackBarRef = inject(MatSnackBar);
