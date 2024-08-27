@@ -26,6 +26,7 @@ export class AppUrlsConfig {
   /** Blog routes. */
   public readonly blog = {
     createBlog: this.toApi('blogs/'),
+    list: this.toApi('blogs/'),
   } as const;
 
   /** Upload routes. */
