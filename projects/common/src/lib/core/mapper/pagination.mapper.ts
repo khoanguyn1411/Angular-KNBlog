@@ -15,8 +15,6 @@ export class PaginationMapper {
    * Map pagination from dto.
    * @param page Dto page.
    * @param mapper Mapper for the items.
-   * @param mapperForExtraData Mapper for extra data from pagination.
-   * @param extraDataDtoSchema Extra data schema.
    */
   public fromDto<TDto, TDomain extends RecordAny>(
     page: PaginationDto<TDto>,
@@ -26,8 +24,8 @@ export class PaginationMapper {
     return new Pagination({
       items: page.results.map(mapperFn),
       totalCount: page.count,
-      hasNext: false,
-      hasPrev: false,
+      hasNext: page.hasNext,
+      hasPrev: page.hasPrev,
     });
   }
 }

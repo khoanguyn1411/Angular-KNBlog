@@ -11,6 +11,8 @@ export function createPaginationDtoSchema<T extends z.ZodTypeAny>(itemSchema: T)
       offset: z.number(),
       limit: z.number(),
       count: z.number(),
+      hasNext: z.boolean(),
+      hasPrev: z.boolean(),
       results: z.array(itemSchema),
     })
     .strict();
