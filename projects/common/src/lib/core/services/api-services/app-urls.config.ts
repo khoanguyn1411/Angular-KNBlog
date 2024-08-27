@@ -46,7 +46,7 @@ export class AppUrlsConfig {
    * @param url Url to check.
    */
   public isAuthUrl(url: string): boolean {
-    return Object.values(this.auth).find((authUrl) => authUrl.includes(url)) != null;
+    return Object.values(this.auth).find((authUrl) => authUrl.includes(url) && authUrl !== this.auth.logout) != null;
   }
 
   private toApi(...args: readonly string[]): string {

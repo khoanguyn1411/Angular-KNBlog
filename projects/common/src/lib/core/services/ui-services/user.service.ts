@@ -134,12 +134,14 @@ export class UserService {
   public logout(): Observable<void> {
     const googleLogoutEffect$ = from(this.socialAuthService.signOut());
     const removeSecretEffect$ = this.userSecretStorage.removeSecret();
-    const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$);
+    const navigateToHomepageEffect$ = from(this.router.navigateByUrl(this.routePaths.root.url)).pipe(
+      map(() => undefined),
+    );
+    const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$, navigateToHomepageEffect$);
 
     return this.currentUser$.pipe(
       switchMap((user) => (user != null ? this.authService.logout() : of(null))),
       switchMap(() => logoutSideEffects$),
-      tap(() => this.router.navigateByUrl(this.routePaths.root.url)),
       catchError(() => logoutSideEffects$),
     );
   }

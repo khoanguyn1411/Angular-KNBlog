@@ -1,8 +1,8 @@
-<form [formGroup]="newBlogForm" class="wrapper" (submit)="onSubmit()">
+<form [formGroup]="newBlogForm" class="wrapper container" (submit)="onSubmit()">
   <knc-label label="Title" [isRequired]="true">
     <knc-input placeholder="Your Title" formControlName="title" name="blog-title"></knc-input>
   </knc-label>
-  <knc-label label="Summary" [isRequired]="true">
+  <knc-label label="Summary">
     <knc-textarea placeholder="Your Summary" formControlName="summary" name="blog-summary"></knc-textarea>
   </knc-label>
   <knc-editor formControlName="content" />

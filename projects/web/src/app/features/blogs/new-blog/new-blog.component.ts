@@ -48,7 +48,7 @@ export class NewBlogComponent {
     return this.fb.group<BlogCreationForm>({
       title: this.fb.control('', [Validators.required]),
       content: this.fb.control('', [Validators.required]),
-      summary: this.fb.control('', [Validators.required]),
+      summary: this.fb.control(''),
       bannerUrl: this.fb.control(null),
     });
   }
