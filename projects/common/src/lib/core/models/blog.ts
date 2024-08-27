@@ -1,8 +1,9 @@
 import { z } from 'zod';
+import { userSchema } from './user';
 
 export const blogSchema = z.object({
   id: z.string(),
-  writtenByUserId: z.string(),
+  writtenByUser: userSchema,
   title: z.string(),
   content: z.string(),
   summary: z.string(),

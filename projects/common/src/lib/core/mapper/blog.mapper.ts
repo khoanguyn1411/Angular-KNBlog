@@ -4,6 +4,7 @@ import { BlogCreationDto, BlogDto } from '../dtos/blog.dto';
 import { Blog, BlogCreation } from '../models/blog';
 import { DateMapper } from './date.mapper';
 import { MapperFromDto } from './mappers';
+import { UserMapper } from './user.mapper';
 
 /** Blog mapper. */
 @Injectable({
@@ -11,12 +12,13 @@ import { MapperFromDto } from './mappers';
 })
 export class BlogMapper implements MapperFromDto<BlogDto, Blog> {
   private readonly dateMapper = inject(DateMapper);
+  private readonly userMapper = inject(UserMapper);
 
   /** @inheritdoc */
   public fromDto(dto: BlogDto): Blog {
     return {
       id: dto._id,
-      writtenByUserId: dto.writtenBy._id,
+      writtenByUser: this.userMapper.fromDto(dto.writtenBy),
       title: dto.title,
       content: dto.content,
       summary: dto.summary,
