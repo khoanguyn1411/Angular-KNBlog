@@ -1,3 +1,9 @@
 <div class="container">
   <h1>For you</h1>
+
+  @if ({ page: blogsPage$ | async }; as data) {
+    @for (blog of data.page?.items; track blog.id) {
+      <div>{{ blog }}</div>
+    }
+  }
 </div>
