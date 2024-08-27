@@ -15,4 +15,9 @@ export class BlogsApiService {
     const blogDto = this.blogMapper.toCreationDto(blog);
     return this.httpClient.post(this.appUrlsConfig.blog.createBlog, blogDto).pipe(map(() => undefined));
   }
+
+  public getBlogs(blog: BlogCreation): Observable<void> {
+    const blogDto = this.blogMapper.toCreationDto(blog);
+    return this.httpClient.post(this.appUrlsConfig.blog.createBlog, blogDto).pipe(map(() => undefined));
+  }
 }
