@@ -1,0 +1,28 @@
+@use "variables" as *;
+
+.wrapper {
+  display: flex;
+  gap: 50px;
+  flex-direction: row;
+}
+
+.blogs {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 70%;
+  gap: 20px;
+}
+
+.right-section {
+  position: sticky;
+  top: 0;
+  height: 100%;
+  padding-inline: 20px;
+  border-left: 1px solid $border-color;
+}

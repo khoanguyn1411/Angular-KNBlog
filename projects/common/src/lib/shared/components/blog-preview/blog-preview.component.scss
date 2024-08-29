@@ -1,0 +1,38 @@
+
+@use "variables" as *;
+
+:host:not(:last-child) {
+  border-bottom: 1px solid $border-color;
+}
+
+.wrapper {
+  display: flex;
+  padding-block: 20px;
+  row-gap: 12px;
+  column-gap: 24px;
+  justify-content: space-between;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.left-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.blog-image {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.right-section {
+  min-width: 150px;
+  max-width: 150px;
+  aspect-ratio: 1;
+}

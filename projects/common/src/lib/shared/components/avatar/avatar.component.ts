@@ -11,7 +11,7 @@ import { User } from '@knb/core/models/user';
 })
 export class AvatarComponent {
   public readonly user = input<User | null>(null);
-  public readonly size = input<'small' | 'medium' | 'large'>('medium');
+  public readonly size = input<'super-small' | 'small' | 'medium' | 'large'>('medium');
 
   protected readonly randomColor = this.getRandomColor();
 

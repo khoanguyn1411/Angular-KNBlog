@@ -2,7 +2,6 @@
   class="editor"
   [modules]="modules"
   (onEditorCreated)="onEditorCreated($event)"
-  (onEditorChanged)="onEditorChanged($event)"
   [(ngModel)]="controlValue"
   [kncLoading]="imageUploaderModule.isUploadingImage()"
 ></quill-editor>

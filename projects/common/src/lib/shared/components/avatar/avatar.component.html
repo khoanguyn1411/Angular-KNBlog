@@ -1,8 +1,13 @@
-<div [class.small]="size() === 'small'" [class.medium]="size() === 'medium'" [class.large]="size() === 'large'"
-  class="wrapper">
+<div
+  [class.small]="size() === 'small'"
+  [class.medium]="size() === 'medium'"
+  [class.large]="size() === 'large'"
+  [class.super-small]="size() === 'super-small'"
+  class="wrapper"
+>
   @if (user()?.pictureUrl) {
-    <img class="picture" [alt]="user()?.fullName" [src]="user()?.pictureUrl">
+    <img class="picture" [alt]="user()?.fullName" [src]="user()?.pictureUrl" />
   } @else {
-    <span class="name-picture" [style.background-color]="randomColor" >{{ firstLetterOfName }}</span>
+    <span class="name-picture" [style.background-color]="randomColor">{{ firstLetterOfName }}</span>
   }
 </div>

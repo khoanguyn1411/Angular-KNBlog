@@ -1,0 +1,21 @@
+@if ({ blog: blog() }; as data) {
+  <article class="wrapper">
+    <div class="left-section">
+      <div class="user-info">
+        <knc-avatar size="super-small" [user]="data.blog.writtenByUser" />
+        <p>{{ data.blog.writtenByUser.fullName }}</p>
+      </div>
+
+      <h2>{{ data.blog.title }}</h2>
+      <p class="truncate-2">{{ data.blog.summary }}</p>
+    </div>
+
+    <div class="right-section">
+      @if (data.blog.bannerUrl) {
+        <img class="blog-image" [src]="data.blog.bannerUrl" [alt]="data.blog.title" />
+      } @else {
+        <img class="blog-image" src="assets/image-placeholder.svg" [alt]="data.blog.title" />
+      }
+    </div>
+  </article>
+}

@@ -6,6 +6,7 @@ import { Blog } from '@knb/core/models/blog';
 import { Pagination } from '@knb/core/models/pagination';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
+import { BlogPreviewComponent } from '@knb/shared/components/blog-preview/blog-preview.component';
 import { Observable } from 'rxjs';
 
 /** User views component. */
@@ -14,7 +15,7 @@ import { Observable } from 'rxjs';
   standalone: true,
   templateUrl: './user-views.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, AsyncPipe],
+  imports: [RouterOutlet, AsyncPipe, BlogPreviewComponent],
   styleUrls: ['./user-views.component.scss'],
 })
 export class UserViewsComponent {

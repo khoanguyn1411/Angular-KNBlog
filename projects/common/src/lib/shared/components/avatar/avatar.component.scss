@@ -1,5 +1,6 @@
 :host {
   --small: 32px;
+  --super-small: 24px;
   --medium: 40px;
   --large: 48px;
 
@@ -16,6 +17,10 @@
 
 .medium {
   --picture-size: var(--medium);
+}
+
+.super-small {
+  --picture-size: var(--super-small);
 }
 
 .wrapper {
@@ -42,3 +47,4 @@
   border-radius: 50%;
   color: white;
 }
+
