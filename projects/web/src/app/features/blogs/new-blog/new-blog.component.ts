@@ -73,6 +73,7 @@ export class NewBlogComponent {
 
   protected onSubmit(): void {
     this.newBlogForm.markAllAsTouched();
+    console.log(this.newBlogForm.getRawValue());
     if (this.newBlogForm.invalid) {
       return;
     }

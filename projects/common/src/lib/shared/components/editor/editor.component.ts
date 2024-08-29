@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { assertNonNullWithReturn } from '@knb/core/utils/assert-non-null';
 import { controlProviderFor, SimpleValueAccessor } from '@knb/core/utils/rxjs/value-accessor';
 import { LoadingDirective } from '@knb/shared/directives/loading.directive';
-import { QuillModule, QuillModules } from 'ngx-quill';
+import { EditorChangeContent, EditorChangeSelection, QuillModule, QuillModules } from 'ngx-quill';
 import Quill from 'quill';
 import ImageResize from 'quill-image-resizor';
 import { ImageUploaderModule } from './modules/image-uploader-module';
@@ -46,5 +46,11 @@ export class EditorComponent extends SimpleValueAccessor<string> {
   protected onEditorCreated(quillInstance: Quill) {
     this.editor = quillInstance;
     this.addModules();
+  }
+
+  protected onEditorChanged(changeContentEvent: EditorChangeContent | EditorChangeSelection) {
+    if (changeContentEvent.event === 'text-change') {
+      this.controlValue = changeContentEvent.html;
+    }
   }
 }
