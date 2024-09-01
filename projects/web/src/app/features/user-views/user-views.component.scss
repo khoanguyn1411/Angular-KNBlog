@@ -16,13 +16,22 @@
   display: flex;
   flex-direction: column;
   flex-basis: 70%;
-  gap: 20px;
 }
 
 .right-section {
   position: sticky;
   top: 0;
   height: 100%;
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
   padding-inline: 20px;
   border-left: 1px solid $border-color;
+  padding-block: 20px;
+}
+
+.users {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }

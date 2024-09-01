@@ -11,6 +11,13 @@
   </section>
 
   <section class="right-section">
-    <p>Filter section</p>
+    <h1>Recommended Bloggers</h1>
+    <div class="users">
+      @if ({ page: usersPage$ | async }; as data) {
+        @for (user of data.page?.items; track user.id) {
+            <knc-user-preview [user]="user" />
+        }
+      }
+    </div>
   </section>
 </div>

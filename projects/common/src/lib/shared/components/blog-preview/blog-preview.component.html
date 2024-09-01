@@ -1,10 +1,7 @@
 @if ({ blog: blog() }; as data) {
   <article class="wrapper">
     <div class="left-section">
-      <div class="user-info">
-        <knc-avatar size="super-small" [user]="data.blog.writtenByUser" />
-        <p>{{ data.blog.writtenByUser.fullName }}</p>
-      </div>
+      <knc-user-preview [user]="data.blog.writtenByUser" />
 
       <h2>{{ data.blog.title }}</h2>
       <p class="truncate-2">{{ data.blog.summary }}</p>

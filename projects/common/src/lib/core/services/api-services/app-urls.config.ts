@@ -20,7 +20,8 @@ export class AppUrlsConfig {
 
   /** User routes. */
   public readonly user = {
-    profile: this.toApi('user/profile/'),
+    list: this.toApi('users/'),
+    profile: this.toApi('users/profile/'),
   } as const;
 
   /** Blog routes. */
