@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { assertNonNullWithReturn } from '@knb/core/utils/assert-non-null';
 import { controlProviderFor, SimpleValueAccessor } from '@knb/core/utils/rxjs/value-accessor';
@@ -23,7 +23,6 @@ Quill.register('modules/imageResize', ImageResize);
 })
 export class EditorComponent extends SimpleValueAccessor<string> {
   protected readonly imageUploaderModule = inject(ImageUploaderModule);
-  private readonly changeDetectionStrategy = inject(ChangeDetectorRef);
 
   protected modules: QuillModules = {};
   private editor: Quill | null = null;
