@@ -5,7 +5,9 @@
   <knc-label label="Summary">
     <knc-textarea placeholder="Your Summary" formControlName="summary" name="blog-summary"></knc-textarea>
   </knc-label>
-  <knc-editor formControlName="content" />
+  <knc-label label="Content" [isRequired]="true" [isErrorShown]="true">
+    <knc-editor formControlName="content" />
+  </knc-label>
   <div class="actions">
     <button mat-button type="reset">Reset</button>
     <button [kncLoading]="isCreatingPost()" mat-raised-button color="primary" type="submit">Publish</button>

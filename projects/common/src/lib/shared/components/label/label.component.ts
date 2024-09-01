@@ -5,20 +5,22 @@ import { NgControl, ValidationErrors } from '@angular/forms';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { listenControlTouched } from '@knb/core/utils/rxjs/listen-control-touched';
 import { BehaviorSubject, EMPTY, Observable, combineLatest, distinct, map, of, startWith, switchMap, tap } from 'rxjs';
+import { ValidationMessageComponent } from '../validation-message/validation-message.component';
 
 /** Label component. */
 @Component({
   selector: 'knc-label',
   standalone: true,
   templateUrl: './label.component.html',
-  imports: [AsyncPipe, NgIf, NgTemplateOutlet],
+  imports: [AsyncPipe, NgIf, NgTemplateOutlet, ValidationMessageComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrls: ['./label.component.scss'],
 })
 export class LabelComponent implements OnInit {
-  public label = input.required<string>();
+  public label = input<string>('');
   public isRequired = input<boolean>(false);
   public hasLabel = input<boolean>(true);
+  public isErrorShown = input<boolean>(false);
 
   private readonly control$ = new BehaviorSubject<NgControl | null>(null);
   private readonly destroyRef = inject(DestroyRef);
