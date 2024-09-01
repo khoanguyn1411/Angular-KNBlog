@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { computed, effect, inject, Injectable, signal } from '@angular/core';
+import { computed, inject, Injectable, NgZone, signal } from '@angular/core';
 import { UploadApiService } from '@knb/core/services/api-services/upload-api.service';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import QuillType from 'quill';
-import { defer, Observable, of, switchMap } from 'rxjs';
+import { defer, Observable, Observer, of, switchMap } from 'rxjs';
 
 // Reference: https://github.com/KillerCodeMonkey/ngx-quill/issues/89
 @Injectable({ providedIn: 'root' })
@@ -11,6 +11,7 @@ export class ImageUploaderModule {
   private editor: QuillType | null = null;
 
   private readonly uploadService = inject(UploadApiService);
+  private readonly ngZone = inject(NgZone);
 
   public readonly isUploadingImageSignal = signal(false);
 
@@ -31,7 +32,7 @@ export class ImageUploaderModule {
     });
   }
 
-  private selectLocalImage(): void {
+  private selectLocalImage(observer: Observer<string | null>): void {
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/webp');
@@ -41,6 +42,8 @@ export class ImageUploaderModule {
     input.onchange = () => {
       const file = input.files?.[0];
       if (file == null) {
+        observer.next(null);
+        observer.complete();
         return;
       }
       this.uploadService
@@ -49,17 +52,19 @@ export class ImageUploaderModule {
           toggleExecutionState(this.isUploadingImageSignal),
           switchMap((result) => this.insertToEditor(result.viewUrl)),
         )
-        .subscribe();
+        .subscribe({
+          next: () => {
+            observer.next(this.editor?.getSemanticHTML() ?? null);
+            observer.complete();
+          },
+        });
     };
   }
 
-  // Need this effect to trigger loading state. Not sure why.
-  private updateStateImageEffect = effect(() => {
-    this.isUploadingImage();
-  });
-
   public apply(editor: QuillType) {
     this.editor = editor;
-    this.selectLocalImage();
+    return new Observable<string | null>((observer) => {
+      this.ngZone.run(() => this.selectLocalImage(observer));
+    });
   }
 }

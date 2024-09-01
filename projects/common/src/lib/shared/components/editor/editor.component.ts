@@ -39,8 +39,11 @@ export class EditorComponent extends SimpleValueAccessor<string> {
     const nonNullableEditor = assertNonNullWithReturn(this.editor);
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const toolbar = nonNullableEditor.getModule('toolbar') as any;
-    toolbar.addHandler('image', () => this.imageUploaderModule.apply(nonNullableEditor));
-    this.changeDetectionStrategy.markForCheck();
+    toolbar.addHandler('image', () => {
+      this.imageUploaderModule.apply(nonNullableEditor).subscribe((html: string | null) => {
+        this.controlValue = html;
+      });
+    });
   }
 
   protected onEditorCreated(quillInstance: Quill) {
