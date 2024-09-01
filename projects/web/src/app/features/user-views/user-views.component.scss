@@ -1,9 +1,8 @@
 @use "variables" as *;
 
 .wrapper {
-  display: flex;
-  gap: 50px;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: minmax(300px, 2.5fr) minmax(100px, 1fr);
 }
 
 .blogs {
@@ -14,8 +13,8 @@
 
 .left-section {
   display: flex;
+  padding: $container-padding;
   flex-direction: column;
-  flex-basis: 70%;
 }
 
 .right-section {
@@ -25,9 +24,9 @@
   display: flex;
   gap: 20px;
   flex-direction: column;
-  padding-inline: 20px;
+  padding: $container-padding;
   border-left: 1px solid $border-color;
-  padding-block: 20px;
+  max-height: 100vh;
 }
 
 .users {
@@ -39,4 +38,15 @@
 .load-more {
   width: fit-content;
   margin: auto;
+}
+
+.slogan {
+  display: flex;
+  gap: 12px;
+  flex-direction: column;
+  margin-top: auto;
+}
+
+.sub-slogan {
+  font-size: $font-size-14;
 }
