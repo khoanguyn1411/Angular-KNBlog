@@ -1,13 +1,16 @@
 <div class="container wrapper">
   <section class="left-section">
     <h1>For you</h1>
-    <div class="blogs">
-      @if ({ page: blogsPage$ | async }; as data) {
+    @if ({ page: blogsPage$ | async }; as data) {
+      <div class="blogs">
         @for (blog of data.page?.items; track blog.id) {
           <knc-blog-preview [blog]="blog"></knc-blog-preview>
         }
+      </div>
+      @if (data.page?.hasNext) {
+        <button (click)="onLoadMoreClick()" class="load-more" mat-raised-button color="primary" type="button">Load more</button>
       }
-    </div>
+    }
   </section>
 
   <section class="right-section">
@@ -15,7 +18,7 @@
     <div class="users">
       @if ({ page: usersPage$ | async }; as data) {
         @for (user of data.page?.items; track user.id) {
-            <knc-user-preview [user]="user" />
+          <knc-user-preview [user]="user" />
         }
       }
     </div>
