@@ -1,13 +1,11 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
-import { toObservable } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute } from '@angular/router';
-import { DEFAULT_PAGINATION_OPTIONS } from '@knb/core/constants/pagination';
 import { Blog } from '@knb/core/models/blog';
 import { Pagination } from '@knb/core/models/pagination';
 import { User } from '@knb/core/models/user';
-import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
+import { AccumulativeBlogsPageService } from '@knb/core/services/ui-services/accumulative-blogs-page.service';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { accumulativePagination } from '@knb/core/utils/rxjs/paginate';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
@@ -24,42 +22,24 @@ import { map, Observable, of, shareReplay } from 'rxjs';
   imports: [AsyncPipe, BlogPreviewComponent, MatButtonModule],
   styleUrl: './user-blogs.component.scss',
 })
-export class UserBlogsComponent {
-  private readonly route = inject(ActivatedRoute);
-  private readonly blogsApiService = inject(BlogsApiService);
-
-  protected readonly blogsPage$: Observable<Pagination<Blog>>;
-  protected readonly isLoading = signal(false);
-  protected readonly currentPageSignal = signal(DEFAULT_PAGINATION_OPTIONS.pageNumber);
-
-  private readonly userId$ = this.createUserIdStream();
-  private readonly currentPage$ = toObservable(this.currentPageSignal);
-
-  public constructor() {
-    this.blogsPage$ = this.initializeBlogsPage();
-  }
-
+export class UserBlogsComponent extends AccumulativeBlogsPageService {
   private createUserIdStream(): Observable<User['id'] | null> {
-    return this.route.paramMap.pipe(
+    const route = inject(ActivatedRoute);
+    return route.paramMap.pipe(
       map((params) => params.get(USER_ID_PARAM)),
       shareReplay({ refCount: true, bufferSize: 1 }),
     );
   }
 
-  private initializeBlogsPage(): Observable<Pagination<Blog>> {
+  protected override initializeBlogsPage(): Observable<Pagination<Blog>> {
+    const userId$ = this.createUserIdStream();
     return accumulativePagination(
       // Using `debounceTime(0)` here to make the filter emits only 1 time after all changes has synchronously emitted.
       // eslint-disable-next-line rxjs/finnish
-      { currentPage: this.currentPage$, userId: this.userId$ },
-      ({ currentPage, userId }) =>
-        this.blogsApiService
-          .getBlogs({ ...DEFAULT_PAGINATION_OPTIONS, userId, pageNumber: currentPage, search: '' })
-          .pipe(toggleExecutionState(this.isLoading)),
+      { filters: this.filters$, userId: userId$ },
+      ({ filters, userId }) =>
+        this.blogsApiService.getBlogs({ ...filters, userId }).pipe(toggleExecutionState(this.isLoading)),
       of(null),
     ).pipe(filterNull(), shareReplay({ refCount: true, bufferSize: 1 }));
-  }
-
-  protected onLoadMoreClick() {
-    this.currentPageSignal.update((currentPage) => currentPage + 1);
   }
 }

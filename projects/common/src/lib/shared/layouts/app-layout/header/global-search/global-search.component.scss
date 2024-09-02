@@ -1,7 +1,63 @@
 @use '@angular/material' as mat;
+@use "variables" as *;
 
 :host {
   // To decrease height of mat-input.
   @include mat.form-field-density(-4);
   width: 280px;
+}
+
+.wrapper {
+  position: relative;
+}
+
+.search-result {
+  position: absolute;
+  padding-block: 16px;
+  background-color: var(--background-color);
+  width: 150%;
+  max-height: 200px;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  z-index: 2;
+  box-shadow: $box-shadow;
+  border-radius: $border-radius;
+}
+
+.item {
+  padding: 16px;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  :not(:last-child) {
+    border-bottom: 1px solid $border-color;
+  }
+}
+
+.item-with-hover:hover {
+  background: var(--gray-color-100);
+  transition: all 0.2s ease;
+}
+
+.image-wrapper {
+  height: 30px;
+  aspect-ratio: 1;
+}
+
+.items-loading {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-inline: 16px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

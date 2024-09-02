@@ -1,1 +1,34 @@
-<knc-input type="search" placeholder="Search here ..." [formControl]="control"/>
+<div class="wrapper">
+  <knc-input
+    (focus)="onFocus()"
+    (blur)="onBlur()"
+    type="search"
+    placeholder="Search here ..."
+    [formControl]="searchControl"
+  />
+  @if (isSearchResultsOpen() && searchControl.value) {
+    <div class="search-result">
+      @for (blog of (blogsPage$ | async)?.items; track blog.id) {
+        <button type="button" class="item item-with-hover">
+          <p class="truncate-1">{{ blog.title }}</p>
+          <div class="image-wrapper">
+            <img class="image" [alt]="blog.title" [src]="blog.bannerUrl" />
+          </div>
+        </button>
+      } @empty {
+        @if (isLoading()) {
+          <div class="items-loading">
+            <p class="item-loading" kncSkeleton></p>
+            <p class="item-loading" kncSkeleton></p>
+            <p class="item-loading" kncSkeleton></p>
+          </div>
+        } @else {
+          <p class="item">There is no result match your criteria.</p>
+        }
+      }
+      @if ((blogsPage$ | async)?.hasNext) {
+        <button (click)="onLoadMoreClick()" type="button" class="item item-with-hover">View more</button>
+      }
+    </div>
+  }
+</div>

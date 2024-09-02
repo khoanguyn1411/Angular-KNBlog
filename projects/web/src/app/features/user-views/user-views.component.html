@@ -1,14 +1,22 @@
 <div class="container wrapper">
   <section class="left-section">
     <h1>For you</h1>
-    @if ({ page: blogsPage$ | async }; as data) {
+    @if ({ page: accumulativeBlogsPageService.blogsPage$ | async }; as data) {
       <div class="blogs">
         @for (blog of data.page?.items; track blog.id) {
           <knc-blog-preview [blog]="blog"></knc-blog-preview>
         }
       </div>
       @if (data.page?.hasNext) {
-        <button (click)="onLoadMoreClick()" class="load-more" mat-raised-button color="primary" type="button">Load more</button>
+        <button
+          (click)="accumulativeBlogsPageService.onLoadMoreClick()"
+          class="load-more"
+          mat-raised-button
+          color="primary"
+          type="button"
+        >
+          Load more
+        </button>
       }
     }
   </section>
@@ -27,6 +35,5 @@
       <p>Write your dream with <b>KNBLOG</b></p>
       <p class="sub-slogan">This is a self-edu project. No commercial purpose.</p>
     </div>
-
   </section>
 </div>

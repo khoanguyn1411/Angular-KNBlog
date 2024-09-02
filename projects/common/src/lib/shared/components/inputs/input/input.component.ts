@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, input, output } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
@@ -28,6 +28,17 @@ export class InputComponent extends InputBase {
 
   /** Input name. */
   public readonly name = input<HTMLInputElement['name']>('');
+
+  public readonly focus = output();
+  public readonly blur = output();
+
+  public onFocus() {
+    this.focus.emit();
+  }
+
+  public onBlur() {
+    this.blur.emit();
+  }
 
   /**
    * Handle input change.

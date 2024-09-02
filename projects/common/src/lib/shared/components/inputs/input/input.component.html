@@ -2,6 +2,8 @@
   <mat-form-field class="form-field">
     <input
       matInput
+      (focus)="onFocus()"
+      (blur)="onBlur()"
       [type]="type()"
       [name]="name()"
       [formControl]="formControl"
