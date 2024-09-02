@@ -11,14 +11,14 @@ export const userSchema = z.object({
   pictureUrl: z.string().nullable(),
 });
 
-export const userCreationSchema = userSchema.pick({
+export const userUpdateSchema = userSchema.pick({
   firstName: true,
   lastName: true,
   pictureUrl: true,
 });
 
 export type User = z.infer<typeof userSchema>;
-export type UserCreation = z.infer<typeof userCreationSchema>;
+export type UserUpdate = z.infer<typeof userUpdateSchema>;
 
 export namespace User {
   /**

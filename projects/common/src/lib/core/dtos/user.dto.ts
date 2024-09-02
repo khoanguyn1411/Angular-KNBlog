@@ -10,11 +10,11 @@ export const userDtoSchema = z.object({
   pictureUrl: z.string().nullable(),
 });
 
-export const userCreationDtoSchema = userDtoSchema.pick({
+export const userUpdateDtoSchema = userDtoSchema.pick({
   firstName: true,
   lastName: true,
   pictureUrl: true,
 });
 
 export type UserDto = z.infer<typeof userDtoSchema>;
-export type UserCreationDto = z.infer<typeof userCreationDtoSchema>;
+export type UserUpdateDto = z.infer<typeof userUpdateDtoSchema>;

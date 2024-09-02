@@ -1,10 +1,11 @@
 .user-info {
   display: flex;
   align-items: center;
+  width: fit-content;
   gap: 8px;
   cursor: pointer;
 }
 
-.user-info:hover {
+.full-name:hover {
   text-decoration: underline;
 }

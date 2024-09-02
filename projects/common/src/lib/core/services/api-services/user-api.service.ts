@@ -6,7 +6,7 @@ import { PaginationMapper } from '@knb/core/mapper/pagination.mapper';
 import { UserMapper } from '@knb/core/mapper/user.mapper';
 import { UsersFilterParamsMapper } from '@knb/core/mapper/users-filter-params.mapper';
 import { Pagination } from '@knb/core/models/pagination';
-import { User } from '@knb/core/models/user';
+import { User, UserUpdate } from '@knb/core/models/user';
 import { UsersFilterParams } from '@knb/core/models/users-filter-params';
 import { safeParse } from '@knb/core/utils/safe-parse';
 import { Observable, map } from 'rxjs';
@@ -42,6 +42,19 @@ export class UserApiService {
     return this.httpClient.get<unknown>(this.apiUrls.user.list, { params: filtersDto }).pipe(
       map((response) => safeParse(createPaginationDtoSchema(userDtoSchema), response)),
       map((pagination) => this.paginationMapper.fromDto(pagination, (userDto) => this.userMapper.fromDto(userDto))),
+    );
+  }
+
+  /**
+   * Update user.
+   * @param id User ID.
+   * @param userUpdate User update data.
+   */
+  public updateUser(id: User['id'], userUpdate: UserUpdate): Observable<User> {
+    const userUpdateDto = this.userMapper.toCreationDto(userUpdate);
+    return this.httpClient.post<unknown>(this.apiUrls.user.updateUser(id), userUpdateDto).pipe(
+      map((response) => userDtoSchema.parse(response)),
+      map((userDto) => this.userMapper.fromDto(userDto)),
     );
   }
 }

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { UserCreationDto, UserDto } from '../dtos/user.dto';
-import { User, UserCreation } from '../models/user';
+import { UserDto, UserUpdateDto } from '../dtos/user.dto';
+import { User, UserUpdate } from '../models/user';
 import { MapperFromDto } from './mappers';
 
 /** User mapper. */
@@ -24,7 +24,7 @@ export class UserMapper implements MapperFromDto<UserDto, User> {
   }
 
   /** @inheritdoc */
-  public toCreationDto(model: UserCreation): UserCreationDto {
+  public toCreationDto(model: UserUpdate): UserUpdateDto {
     return {
       firstName: model.firstName,
       lastName: model.lastName,
