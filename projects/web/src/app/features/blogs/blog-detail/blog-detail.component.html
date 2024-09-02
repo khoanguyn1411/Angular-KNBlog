@@ -1,1 +1,18 @@
-<div class="container-sm wrapper">Detail route</div>
+@if ({ blog: blogDetail$ | async }; as data) {
+  <div class="container-sm wrapper">
+    <h1>{{ data.blog?.title }}</h1>
+    <p>{{ data.blog?.summary }}</p>
+
+    <div class="user-preview-section">
+      @if (data.blog?.writtenByUser) {
+        <knc-user-preview [user]="data.blog!.writtenByUser" />
+      }
+    </div>
+
+    <div class="publish-section">
+      <p><b>Published at: </b>{{ data.blog?.createdAt | date }}</p>
+    </div>
+
+    <article [innerHTML]="data.blog?.content"></article>
+  </div>
+}

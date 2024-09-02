@@ -32,4 +32,11 @@ export class BlogsApiService {
       map((pagination) => this.paginationMapper.fromDto(pagination, (blogDto) => this.blogMapper.fromDto(blogDto))),
     );
   }
+
+  public getBlogById(id: Blog['id']): Observable<Blog> {
+    return this.httpClient.get<unknown>(this.appUrlsConfig.blog.detail(id)).pipe(
+      map((response) => safeParse(blogDtoSchema, response)),
+      map((response) => this.blogMapper.fromDto(response)),
+    );
+  }
 }

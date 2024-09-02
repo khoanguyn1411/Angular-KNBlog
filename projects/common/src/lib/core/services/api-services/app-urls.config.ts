@@ -1,4 +1,5 @@
 import { Injectable, inject } from '@angular/core';
+import { Blog } from '@knb/core/models/blog';
 import { AppConfig } from '../app.config';
 
 /**
@@ -28,6 +29,7 @@ export class AppUrlsConfig {
   public readonly blog = {
     createBlog: this.toApi('blogs/'),
     list: this.toApi('blogs/'),
+    detail: (id: Blog['id']) => this.toApi(`blogs/${id}`),
   } as const;
 
   /** Upload routes. */

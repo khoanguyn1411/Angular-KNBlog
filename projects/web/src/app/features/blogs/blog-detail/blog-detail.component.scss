@@ -2,4 +2,7 @@
 
 .wrapper {
   padding: $container-padding;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }
