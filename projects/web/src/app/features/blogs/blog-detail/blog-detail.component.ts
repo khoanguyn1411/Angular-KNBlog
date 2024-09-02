@@ -21,11 +21,11 @@ import { map, Observable, shareReplay, switchMap } from 'rxjs';
 export class BlogDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly blogsApiService = inject(BlogsApiService);
-  private readonly blogId$ = this.createJobIdStream();
+  private readonly blogId$ = this.createBlogIdStream();
 
   protected readonly blogDetail$ = this.initializeBlogDetail();
 
-  private createJobIdStream(): Observable<Blog['id'] | null> {
+  private createBlogIdStream(): Observable<Blog['id'] | null> {
     return this.route.paramMap.pipe(
       map((params) => params.get(BLOG_ID_PARAM)),
       shareReplay({ refCount: true, bufferSize: 1 }),

@@ -1,0 +1,17 @@
+@use "variables.scss" as *;
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: $container-padding;
+  gap: 12px;
+}
+
+.load-more-button {
+  align-self: center;
+}
+
+.blogs {
+  display: flex;
+  flex-direction: column;
+}

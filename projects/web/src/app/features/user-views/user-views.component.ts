@@ -1,6 +1,6 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, DestroyRef, inject, signal } from '@angular/core';
-import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { toObservable } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { DEFAULT_PAGINATION_OPTIONS } from '@knb/core/constants/pagination';
@@ -28,7 +28,6 @@ import { Observable, of, shareReplay } from 'rxjs';
 export class UserViewsComponent {
   private readonly blogsApiService = inject(BlogsApiService);
   private readonly userApiService = inject(UserApiService);
-  private readonly destroyRef = inject(DestroyRef);
 
   protected readonly blogsPage$: Observable<Pagination<Blog>>;
   protected readonly usersPage$: Observable<Pagination<User>>;
@@ -49,7 +48,7 @@ export class UserViewsComponent {
       { currentPage: this.currentPage$ },
       ({ currentPage }) =>
         this.blogsApiService
-          .getBlogs({ ...DEFAULT_PAGINATION_OPTIONS, pageNumber: currentPage })
+          .getBlogs({ ...DEFAULT_PAGINATION_OPTIONS, userId: null, pageNumber: currentPage })
           .pipe(toggleExecutionState(this.isLoading)),
       of(null),
     ).pipe(filterNull(), shareReplay({ refCount: true, bufferSize: 1 }));
@@ -58,11 +57,7 @@ export class UserViewsComponent {
   private initializeUsersPage(): Observable<Pagination<User>> {
     return this.userApiService
       .getUsers({ ...DEFAULT_PAGINATION_OPTIONS, pageSize: 5 })
-      .pipe(
-        toggleExecutionState(this.isLoading),
-        shareReplay({ refCount: true, bufferSize: 1 }),
-        takeUntilDestroyed(this.destroyRef),
-      );
+      .pipe(toggleExecutionState(this.isLoading), shareReplay({ refCount: true, bufferSize: 1 }));
   }
 
   protected onLoadMoreClick() {

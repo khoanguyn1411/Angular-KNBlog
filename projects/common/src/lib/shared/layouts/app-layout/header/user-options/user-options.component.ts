@@ -24,7 +24,7 @@ export class UserOptionsComponent {
 
   protected readonly currentUser = toSignal(this.userService.currentUser$);
 
-  protected readonly profileUrl = computed(() => {
+  protected readonly yourBlogsUrl = computed(() => {
     const currentUserId = this.currentUser()?.id;
     if (currentUserId == null) {
       return '';

@@ -8,6 +8,7 @@ import { PaginationMapper } from '@knb/core/mapper/pagination.mapper';
 import { Blog, BlogCreation } from '@knb/core/models/blog';
 import { BlogsFilterParams } from '@knb/core/models/blogs-filter-params';
 import { Pagination } from '@knb/core/models/pagination';
+import { composeHttpParams } from '@knb/core/utils/compose-http-params';
 import { safeParse } from '@knb/core/utils/safe-parse';
 import { map, Observable } from 'rxjs';
 import { AppUrlsConfig } from './app-urls.config';
@@ -26,7 +27,7 @@ export class BlogsApiService {
   }
 
   public getBlogs(filters: BlogsFilterParams): Observable<Pagination<Blog>> {
-    const filtersDto = this.blogsFilterParamsMapper.toDto(filters);
+    const filtersDto = composeHttpParams(this.blogsFilterParamsMapper.toDto(filters));
     return this.httpClient.get<unknown>(this.appUrlsConfig.blog.list, { params: filtersDto }).pipe(
       map((response) => safeParse(createPaginationDtoSchema(blogDtoSchema), response)),
       map((pagination) => this.paginationMapper.fromDto(pagination, (blogDto) => this.blogMapper.fromDto(blogDto))),
