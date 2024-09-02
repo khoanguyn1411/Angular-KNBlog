@@ -48,7 +48,7 @@ export class UserViewsComponent {
       { currentPage: this.currentPage$ },
       ({ currentPage }) =>
         this.blogsApiService
-          .getBlogs({ ...DEFAULT_PAGINATION_OPTIONS, userId: null, pageNumber: currentPage })
+          .getBlogs({ ...DEFAULT_PAGINATION_OPTIONS, userId: null, search: '', pageNumber: currentPage })
           .pipe(toggleExecutionState(this.isLoading)),
       of(null),
     ).pipe(filterNull(), shareReplay({ refCount: true, bufferSize: 1 }));

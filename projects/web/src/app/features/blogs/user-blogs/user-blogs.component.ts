@@ -53,7 +53,7 @@ export class UserBlogsComponent {
       { currentPage: this.currentPage$, userId: this.userId$ },
       ({ currentPage, userId }) =>
         this.blogsApiService
-          .getBlogs({ ...DEFAULT_PAGINATION_OPTIONS, userId, pageNumber: currentPage })
+          .getBlogs({ ...DEFAULT_PAGINATION_OPTIONS, userId, pageNumber: currentPage, search: '' })
           .pipe(toggleExecutionState(this.isLoading)),
       of(null),
     ).pipe(filterNull(), shareReplay({ refCount: true, bufferSize: 1 }));

@@ -15,6 +15,7 @@ export class BlogsFilterParamsMapper implements MapperToDto<BlogsFilterParamsDto
   public toDto(data: BlogsFilterParams): BlogsFilterParamsDto {
     return {
       ...this.baseFilterParamsMapper.mapPaginationOptionsToDto(data),
+      ...this.baseFilterParamsMapper.mapSearchOptionsToDto(data),
       userId: data.userId ?? undefined,
     };
   }
