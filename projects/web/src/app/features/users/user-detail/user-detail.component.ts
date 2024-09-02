@@ -3,10 +3,13 @@ import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute } from '@angular/router';
+import { UploadResult } from '@knb/core/models/upload-result';
 import { User, UserUpdate } from '@knb/core/models/user';
+import { UploadApiService } from '@knb/core/services/api-services/upload-api.service';
 import { UserApiService } from '@knb/core/services/api-services/user-api.service';
 import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
+import { assertNonNull } from '@knb/core/utils/assert-non-null';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
@@ -15,9 +18,13 @@ import { InputComponent } from '@knb/shared/components/inputs/input/input.compon
 import { LabelComponent } from '@knb/shared/components/label/label.component';
 import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { USER_ID_PARAM } from 'projects/web/src/shared/web-route-paths';
-import { BehaviorSubject, combineLatestWith, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, combineLatestWith, iif, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
 
-type UserUpdateForm = FlatControlsOf<UserUpdate>;
+type InitUserUpdateForm = Pick<UserUpdate, 'firstName' | 'lastName'> & {
+  readonly imageFile: File | null;
+};
+
+type UserUpdateForm = FlatControlsOf<InitUserUpdateForm>;
 
 /** User detail component. */
 @Component({
@@ -42,6 +49,8 @@ export class UserDetailComponent {
   private readonly destroyRef = inject(DestroyRef);
   private readonly snackbarService = inject(SnackbarService);
   private readonly route = inject(ActivatedRoute);
+  private readonly uploadApiService = inject(UploadApiService);
+
   private readonly refreshUserProfileIndicator$ = new BehaviorSubject({});
   private readonly userId$ = this.createUserIdStream();
 
@@ -63,8 +72,8 @@ export class UserDetailComponent {
     if (userDetail == null) {
       return;
     }
-    this.userApiService
-      .updateUser(userDetail.id, formValue)
+    const apiSources$ = this.createUpdateUserInfoSources(formValue, userDetail);
+    apiSources$
       .pipe(
         tap(() => {
           if (this.currentUser()?.id === userDetail.id) {
@@ -77,6 +86,31 @@ export class UserDetailComponent {
         takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
+  }
+
+  private createUpdateUserInfoSources(formValue: InitUserUpdateForm, userDetail: User): Observable<void> {
+    return iif(
+      () => formValue.imageFile != null,
+      this.uploadImage(formValue.imageFile).pipe(
+        switchMap((uploadResult) =>
+          this.userApiService.updateUser(userDetail.id, {
+            firstName: formValue.firstName,
+            lastName: formValue.lastName,
+            pictureUrl: uploadResult.viewUrl,
+          }),
+        ),
+      ),
+      this.userApiService.updateUser(userDetail.id, {
+        firstName: formValue.firstName,
+        lastName: formValue.lastName,
+        pictureUrl: null,
+      }),
+    ).pipe(map(() => undefined));
+  }
+
+  private uploadImage(file: File | null): Observable<UploadResult> {
+    assertNonNull(file);
+    return this.uploadApiService.uploadImage({ file });
   }
 
   private refreshPage() {
@@ -103,7 +137,7 @@ export class UserDetailComponent {
     return this.fb.group<UserUpdateForm>({
       firstName: this.fb.control('', [Validators.required]),
       lastName: this.fb.control('', [Validators.required]),
-      pictureUrl: this.fb.control(''),
+      imageFile: this.fb.control(null),
     });
   }
 
@@ -111,7 +145,7 @@ export class UserDetailComponent {
     this.userForm.patchValue({
       firstName: this.userDetail()?.firstName,
       lastName: this.userDetail()?.lastName,
-      pictureUrl: this.userDetail()?.pictureUrl,
+      imageFile: null,
     });
   });
 }

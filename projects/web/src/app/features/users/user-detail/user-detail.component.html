@@ -1,7 +1,7 @@
 <form [formGroup]="userForm" (submit)="onSubmit()" class="container-sm wrapper">
   @if (userDetail(); as user) {
     <div class="base-info">
-      <knc-avatar-uploader formControlName="pictureUrl" size="large" [user]="user" />
+      <knc-avatar-uploader formControlName="imageFile" size="large" [user]="user" />
       <div class="info">
         <p class="email"><b>Full Name: </b>{{ user.fullName }}</p>
         <p class="email"><b>Email: </b>{{ user.email }}</p>
