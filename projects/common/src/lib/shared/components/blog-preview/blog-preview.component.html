@@ -1,5 +1,5 @@
 @if ({ blog: blog() }; as data) {
-  <article class="wrapper">
+  <article [routerLink]="detailUrl()" class="wrapper">
     <div class="left-section">
       <knc-user-preview [user]="data.blog.writtenByUser" />
 
