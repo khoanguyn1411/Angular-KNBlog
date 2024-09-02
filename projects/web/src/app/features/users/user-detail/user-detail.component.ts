@@ -18,7 +18,7 @@ import { InputComponent } from '@knb/shared/components/inputs/input/input.compon
 import { LabelComponent } from '@knb/shared/components/label/label.component';
 import { LoadingDirective } from '@knb/shared/directives/loading.directive';
 import { USER_ID_PARAM } from 'projects/web/src/shared/web-route-paths';
-import { BehaviorSubject, combineLatestWith, iif, map, Observable, shareReplay, switchMap, tap } from 'rxjs';
+import { BehaviorSubject, combineLatestWith, map, Observable, of, shareReplay, switchMap, tap } from 'rxjs';
 
 type InitUserUpdateForm = Pick<UserUpdate, 'firstName' | 'lastName'> & {
   readonly imageFile: File | null;
@@ -88,23 +88,27 @@ export class UserDetailComponent {
   }
 
   private createUpdateUserInfoSources(formValue: InitUserUpdateForm, userDetail: User): Observable<void> {
-    return iif(
-      () => formValue.imageFile != null,
-      this.uploadImage(formValue.imageFile).pipe(
-        switchMap((uploadResult) =>
-          this.userApiService.updateUser(userDetail.id, {
-            firstName: formValue.firstName,
-            lastName: formValue.lastName,
-            pictureUrl: uploadResult.viewUrl,
-          }),
-        ),
-      ),
-      this.userApiService.updateUser(userDetail.id, {
-        firstName: formValue.firstName,
-        lastName: formValue.lastName,
-        pictureUrl: null,
+    return of(formValue.imageFile).pipe(
+      switchMap((imageFile) => {
+        if (imageFile != null) {
+          return this.uploadImage(formValue.imageFile).pipe(
+            switchMap((uploadResult) =>
+              this.userApiService.updateUser(userDetail.id, {
+                firstName: formValue.firstName,
+                lastName: formValue.lastName,
+                pictureUrl: uploadResult.viewUrl,
+              }),
+            ),
+          );
+        }
+        return this.userApiService.updateUser(userDetail.id, {
+          firstName: formValue.firstName,
+          lastName: formValue.lastName,
+          pictureUrl: this.userDetail()?.pictureUrl ?? null,
+        });
       }),
-    ).pipe(map(() => undefined));
+      map(() => undefined),
+    );
   }
 
   private uploadImage(file: File | null): Observable<UploadResult> {
