@@ -36,13 +36,13 @@ export class UserDetailComponent {
   private readonly snackbarService = inject(SnackbarService);
   private readonly route = inject(ActivatedRoute);
   private readonly refreshUserProfileIndicator$ = new BehaviorSubject({});
+  private readonly userId$ = this.createUserIdStream();
 
   protected readonly currentUser = toSignal(this.userService.currentUser$);
   protected readonly isUpdatingUser = signal(false);
   protected readonly userForm = this.initializeForm();
   protected readonly userFormSignal = toSignal(this.userForm.valueChanges);
 
-  private readonly userId$ = this.createUserIdStream();
   protected readonly userDetail$ = this.initializeUserDetail();
   protected readonly userDetail = toSignal(this.userDetail$);
 
