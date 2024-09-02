@@ -12,6 +12,10 @@ export const routes: Routes = [
     loadChildren: () => import('./features/blogs/blogs.routes').then((r) => r.blogsRoutes),
   },
   {
+    path: webRoutePaths.users.path,
+    loadChildren: () => import('./features/users/users.routes').then((r) => r.usersRoutes),
+  },
+  {
     path: '**',
     redirectTo: '',
   },

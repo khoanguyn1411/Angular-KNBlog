@@ -12,6 +12,15 @@ const homeRoutePaths = buildRoutePaths({
   root: { path: 'home' },
 } as const);
 
+const usersRoutePaths = buildRoutePaths({
+  users: {
+    path: 'users',
+    children: {
+      detail: { path: `:${USER_ID_PARAM}` },
+    },
+  },
+} as const);
+
 const blogsRoutePaths = buildRoutePaths({
   blogs: {
     path: 'blogs',
@@ -40,6 +49,7 @@ const blogsRoutePaths = buildRoutePaths({
 export const webRoutePaths = {
   ...baseRoutePaths,
   ...homeRoutePaths,
+  ...usersRoutePaths,
   ...blogsRoutePaths,
 };
 
