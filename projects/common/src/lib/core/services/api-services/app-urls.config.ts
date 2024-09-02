@@ -24,6 +24,7 @@ export class AppUrlsConfig {
     list: this.toApi('users/'),
     profile: this.toApi('users/profile/'),
     updateUser: (userId: string) => this.toApi(`users/${userId}/`),
+    detail: (userId: string) => this.toApi(`users/${userId}/`),
   } as const;
 
   /** Blog routes. */

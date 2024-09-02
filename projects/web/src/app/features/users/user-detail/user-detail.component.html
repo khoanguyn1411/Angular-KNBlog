@@ -1,5 +1,5 @@
 <form [formGroup]="userForm" (submit)="onSubmit()" class="container-sm wrapper">
-  @if (currentUser(); as user) {
+  @if (userDetail(); as user) {
     <knc-avatar size="large" [user]="user" />
 
     <p class="email"><b>Email: </b>{{ user.email }}</p>

@@ -46,6 +46,17 @@ export class UserApiService {
   }
 
   /**
+   * Get user by ID.
+   * @param id User ID.
+   */
+  public getUserById(id: User['id']): Observable<User> {
+    return this.httpClient.get<unknown>(this.apiUrls.user.detail(id)).pipe(
+      map((response) => safeParse(userDtoSchema, response)),
+      map((userDto) => this.userMapper.fromDto(userDto)),
+    );
+  }
+
+  /**
    * Update user.
    * @param id User ID.
    * @param userUpdate User update data.

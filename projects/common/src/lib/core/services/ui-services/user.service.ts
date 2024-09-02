@@ -12,7 +12,9 @@ import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { injectWebAppRoutes } from 'projects/web/src/shared/web-route-paths';
 import {
+  BehaviorSubject,
   catchError,
+  combineLatestWith,
   concat,
   first,
   from,
@@ -47,6 +49,7 @@ export class UserService {
   private readonly router = inject(Router);
   private readonly routePaths = injectWebAppRoutes();
 
+  private readonly refreshProfileIndicator$ = new BehaviorSubject({});
   private readonly isUserFetchingSignal = signal(true);
 
   /** Current user. `null` when a user is not logged in. */
@@ -77,6 +80,11 @@ export class UserService {
    */
   public loginWithGoogle(data: GoogleAuthData): Observable<void> {
     return this.authService.loginWithGoogle(data).pipe(this.saveSecretAndWaitForAuthorized());
+  }
+
+  /** Refresh user profile. */
+  public refreshUserProfile() {
+    this.refreshProfileIndicator$.next({});
   }
 
   /** Login with google from auth state. */
@@ -161,7 +169,8 @@ export class UserService {
 
   private initCurrentUserStream(): Observable<User | null> {
     return this.userSecretStorage.currentSecret$.pipe(
-      switchMap((secret) =>
+      combineLatestWith(this.refreshProfileIndicator$),
+      switchMap(([secret]) =>
         secret
           ? this.userApiService.getCurrentUser().pipe(toggleExecutionState(this.isUserFetchingSignal))
           : of(null).pipe(tap(() => this.isUserFetchingSignal.set(false))),
