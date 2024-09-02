@@ -22,3 +22,7 @@
 	text-overflow: ellipsis;
 	word-break: break-all;
 }
+
+.blog-content * {
+  overflow: auto !important;
+}
