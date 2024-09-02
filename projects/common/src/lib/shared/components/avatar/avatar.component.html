@@ -5,8 +5,8 @@
   [class.super-small]="size() === 'super-small'"
   class="wrapper"
 >
-  @if (user()?.pictureUrl) {
-    <img class="picture" [alt]="user()?.fullName" [src]="user()?.pictureUrl" />
+  @if (user()?.pictureUrl || previewImageUrl()) {
+    <img class="picture" [alt]="user()?.fullName" [src]="previewImageUrl() ?? user()?.pictureUrl" />
   } @else {
     <span class="name-picture" [style.background-color]="randomColor">{{ firstLetterOfName }}</span>
   }

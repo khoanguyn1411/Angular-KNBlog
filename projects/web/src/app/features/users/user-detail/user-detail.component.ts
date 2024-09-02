@@ -10,7 +10,7 @@ import { UserService } from '@knb/core/services/ui-services/user.service';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
-import { AvatarComponent } from '@knb/shared/components/avatar/avatar.component';
+import { AvatarUploaderComponent } from '@knb/shared/components/avatar-uploader/avatar-uploader.component';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { LabelComponent } from '@knb/shared/components/label/label.component';
 import { LoadingDirective } from '@knb/shared/directives/loading.directive';
@@ -25,7 +25,14 @@ type UserUpdateForm = FlatControlsOf<UserUpdate>;
   standalone: true,
   templateUrl: './user-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AvatarComponent, InputComponent, ReactiveFormsModule, LabelComponent, MatButtonModule, LoadingDirective],
+  imports: [
+    AvatarUploaderComponent,
+    InputComponent,
+    ReactiveFormsModule,
+    LabelComponent,
+    MatButtonModule,
+    LoadingDirective,
+  ],
   styleUrl: './user-detail.component.scss',
 })
 export class UserDetailComponent {

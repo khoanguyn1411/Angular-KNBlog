@@ -2,7 +2,7 @@
   --small: 32px;
   --super-small: 24px;
   --medium: 40px;
-  --large: 48px;
+  --large: 120px;
 
   --picture-size: var(--medium);
 }
@@ -43,6 +43,7 @@
   align-items: center;
   justify-content: center;
   width: 100%;
+  font-size: calc(var(--picture-size) / 2);
   height: 100%;
   border-radius: 50%;
   color: white;
