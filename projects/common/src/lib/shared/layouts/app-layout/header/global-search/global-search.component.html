@@ -9,7 +9,7 @@
   @if (isSearchResultsOpen() && searchControl.value) {
     <div class="search-result">
       @for (blog of (blogsPage$ | async)?.items; track blog.id) {
-        <button type="button" class="item item-with-hover">
+        <button [routerLink]="getBlogDetailLink(blog)" type="button" class="item item-with-hover">
           <p class="truncate-1">{{ blog.title }}</p>
           <div class="image-wrapper">
             <img class="image" [alt]="blog.title" [src]="blog.bannerUrl" />

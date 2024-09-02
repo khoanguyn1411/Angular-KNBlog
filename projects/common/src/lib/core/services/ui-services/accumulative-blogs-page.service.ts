@@ -8,7 +8,7 @@ import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { accumulativePagination } from '@knb/core/utils/rxjs/paginate';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { isEqual } from 'lodash';
-import { delay, distinctUntilChanged, map, Observable, shareReplay, startWith } from 'rxjs';
+import { distinctUntilChanged, map, Observable, shareReplay, startWith } from 'rxjs';
 import { BlogsApiService } from '../api-services/blogs-api.service';
 
 @Injectable()
@@ -46,7 +46,7 @@ export class AccumulativeBlogsPageService {
       { filters: this.filters$ },
       ({ filters }) => this.blogsApiService.getBlogs(filters).pipe(toggleExecutionState(this.isLoading)),
       onClear$,
-    ).pipe(filterNull(), delay(5000), shareReplay({ refCount: true, bufferSize: 1 }));
+    ).pipe(filterNull(), shareReplay({ refCount: true, bufferSize: 1 }));
   }
 
   public setFilters(newFilters: Partial<BlogsFilterParams>) {

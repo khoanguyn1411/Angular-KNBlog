@@ -3,9 +3,12 @@ import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@ang
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { RouterModule } from '@angular/router';
+import { Blog } from '@knb/core/models/blog';
 import { AccumulativeBlogsPageService } from '@knb/core/services/ui-services/accumulative-blogs-page.service';
 import { InputComponent } from '@knb/shared/components/inputs/input/input.component';
 import { SkeletonDirective } from '@knb/shared/directives/skeleton.directive';
+import { injectWebAppRoutes } from 'projects/web/src/shared/web-route-paths';
 
 /** Global search component. */
 @Component({
@@ -13,7 +16,7 @@ import { SkeletonDirective } from '@knb/shared/directives/skeleton.directive';
   standalone: true,
   templateUrl: './global-search.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [InputComponent, ReactiveFormsModule, MatIconModule, AsyncPipe, SkeletonDirective],
+  imports: [InputComponent, ReactiveFormsModule, MatIconModule, AsyncPipe, SkeletonDirective, RouterModule],
   styleUrls: ['./global-search.component.scss'],
 })
 export class GlobalSearchComponent extends AccumulativeBlogsPageService {
@@ -22,7 +25,8 @@ export class GlobalSearchComponent extends AccumulativeBlogsPageService {
   protected readonly fb = inject(NonNullableFormBuilder);
   protected readonly searchControl = this.fb.control('');
 
-  private searchControlSignal = toSignal(this.searchControl.valueChanges);
+  private readonly searchControlSignal = toSignal(this.searchControl.valueChanges);
+  private readonly routePaths = injectWebAppRoutes();
 
   protected onFocus() {
     this.isSearchResultsOpen.set(true);
@@ -32,9 +36,13 @@ export class GlobalSearchComponent extends AccumulativeBlogsPageService {
     // this.isSearchResultsOpen.set(false);
   }
 
+  protected getBlogDetailLink(blog: Blog) {
+    return this.routePaths.blogs.children.detail.url({ blogId: blog.id });
+  }
+
   private searchChangeEffect = effect(
     () => {
-      this.setFilters({ search: this.searchControlSignal() });
+      this.setFilters({ search: this.searchControlSignal()?.trim() });
     },
     { allowSignalWrites: true },
   );
