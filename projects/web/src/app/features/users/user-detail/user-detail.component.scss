@@ -1,0 +1,17 @@
+@use "variables" as *;
+
+.wrapper {
+  padding: $container-padding;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.email {
+  display: flex;
+  justify-content: space-between;
+}
+
+.submit-button {
+  align-self: flex-end;
+}

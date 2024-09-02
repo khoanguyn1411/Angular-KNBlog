@@ -32,6 +32,14 @@ export class UserOptionsComponent {
     return this.routePaths.blogs.children.user.url({ userId: currentUserId });
   });
 
+  protected readonly profileUrl = computed(() => {
+    const currentUserId = this.currentUser()?.id;
+    if (currentUserId == null) {
+      return '';
+    }
+    return this.routePaths.users.children.detail.url({ userId: currentUserId });
+  });
+
   protected onSignOut() {
     this.userService.logout().pipe(first()).subscribe();
   }
