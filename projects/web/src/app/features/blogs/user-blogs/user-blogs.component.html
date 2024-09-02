@@ -1,8 +1,11 @@
 @if ({ blogPage: blogsPage$ | async }; as data) {
   <section class="container-sm wrapper">
+    <p class="total-blog"><b>Total Blogs:</b> {{ data.blogPage?.totalCount }}</p>
     <div class="blogs">
       @for (blog of data.blogPage?.items; track blog.id) {
         <knc-blog-preview [blog]="blog" />
+      } @empty {
+        <p>There are currently no blogs for this user.</p>
       }
     </div>
     @if (data.blogPage?.hasNext) {

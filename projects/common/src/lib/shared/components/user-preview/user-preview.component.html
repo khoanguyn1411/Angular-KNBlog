@@ -1,4 +1,4 @@
-<div class="user-info">
+<div class="user-info" [routerLink]="userBlogsUrl()" (click)="onUserInfoClick($event)">
   <knc-avatar size="super-small" [user]="user()" />
-  <p>{{ user().fullName }}</p>
+  <p class="full-name">{{ user().fullName }}</p>
 </div>
