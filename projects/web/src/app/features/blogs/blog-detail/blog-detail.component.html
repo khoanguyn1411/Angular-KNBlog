@@ -3,6 +3,8 @@
     <h1>{{ data.blog?.title }}</h1>
     <p>{{ data.blog?.summary }}</p>
 
+    <mat-divider/>
+
     <div class="user-preview-section">
       @if (data.blog?.writtenByUser) {
         <knc-user-preview [user]="data.blog!.writtenByUser" />
@@ -12,6 +14,8 @@
     <div class="publish-section">
       <p><b>Published at: </b>{{ data.blog?.createdAt | date }}</p>
     </div>
+
+    <mat-divider/>
 
     <article [innerHTML]="data.blog?.content"></article>
   </div>

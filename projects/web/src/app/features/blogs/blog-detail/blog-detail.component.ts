@@ -1,5 +1,6 @@
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { MatDividerModule } from '@angular/material/divider';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from '@knb/core/models/blog';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
@@ -14,7 +15,7 @@ import { map, Observable, shareReplay, switchMap } from 'rxjs';
   standalone: true,
   templateUrl: './blog-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe, UserPreviewComponent, DatePipe],
+  imports: [AsyncPipe, UserPreviewComponent, DatePipe, MatDividerModule],
   styleUrl: './blog-detail.component.scss',
 })
 export class BlogDetailComponent {
