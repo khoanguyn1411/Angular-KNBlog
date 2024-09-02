@@ -72,8 +72,7 @@ export class UserDetailComponent {
     if (userDetail == null) {
       return;
     }
-    const apiSources$ = this.createUpdateUserInfoSources(formValue, userDetail);
-    apiSources$
+    this.createUpdateUserInfoSources(formValue, userDetail)
       .pipe(
         tap(() => {
           if (this.currentUser()?.id === userDetail.id) {
