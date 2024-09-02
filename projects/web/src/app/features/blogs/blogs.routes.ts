@@ -14,6 +14,10 @@ export const blogsRoutes: Routes = [
         canMatch: [authGuard({ isAuthorized: true })],
       },
       {
+        path: webRoutePaths.blogs.children.user.path,
+        loadComponent: () => import('./user-blogs/user-blogs.component').then((c) => c.UserBlogsComponent),
+      },
+      {
         path: webRoutePaths.blogs.children.detail.path,
         loadComponent: () => import('./blog-detail/blog-detail.component').then((c) => c.BlogDetailComponent),
       },

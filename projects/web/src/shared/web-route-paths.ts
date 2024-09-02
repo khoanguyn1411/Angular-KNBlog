@@ -2,8 +2,8 @@ import { inject, InjectionToken, Provider } from '@angular/core';
 import { buildRoutePaths } from '@knb/core/utils/route-paths/build-route-paths';
 import { baseRoutePaths } from '@knb/core/utils/route-paths/route-paths';
 
-/** Blog ID param. */
 export const BLOG_ID_PARAM = 'blogId';
+export const USER_ID_PARAM = 'userId';
 
 /** Injection token that provide object with route web app paths. */
 const WEB_ROUTE_PATHS_TOKEN = new InjectionToken<WebRoutePaths>('Provide object with web route paths');
@@ -18,6 +18,7 @@ const blogsRoutePaths = buildRoutePaths({
     children: {
       newBlog: { path: 'new-blog' },
       detail: { path: `:${BLOG_ID_PARAM}` },
+      user: { path: `user/:${USER_ID_PARAM}` },
     },
   },
 } as const);

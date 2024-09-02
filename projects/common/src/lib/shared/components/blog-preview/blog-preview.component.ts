@@ -19,7 +19,5 @@ export class BlogPreviewComponent {
 
   protected readonly routePaths = injectWebAppRoutes();
 
-  protected readonly detailUrl = computed(() =>
-    this.routePaths.blogs.children.detail.dynamicUrl({ blogId: this.blog().id }),
-  );
+  protected readonly detailUrl = computed(() => this.routePaths.blogs.children.detail.url({ blogId: this.blog().id }));
 }
