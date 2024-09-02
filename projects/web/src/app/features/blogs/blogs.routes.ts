@@ -1,22 +1,21 @@
 import { Routes } from '@angular/router';
+import { authGuard } from '@knb/core/guards/auth-guard';
 import { webRoutePaths } from 'projects/web/src/shared/web-route-paths';
-import { BlogDetailComponent } from './blog-detail/blog-detail.component';
-import { BlogsComponent } from './blogs.component';
-import { NewBlogComponent } from './new-blog/new-blog.component';
 
 /** Blogs routes. */
 export const blogsRoutes: Routes = [
   {
     path: '',
-    component: BlogsComponent,
+    loadComponent: () => import('./blogs.component').then((c) => c.BlogsComponent),
     children: [
       {
         path: webRoutePaths.blogs.children.newBlog.path,
-        component: NewBlogComponent,
+        loadComponent: () => import('./new-blog/new-blog.component').then((c) => c.NewBlogComponent),
+        canMatch: [authGuard({ isAuthorized: true })],
       },
       {
         path: webRoutePaths.blogs.children.detail.path,
-        component: BlogDetailComponent,
+        loadComponent: () => import('./blog-detail/blog-detail.component').then((c) => c.BlogDetailComponent),
       },
     ],
   },
