@@ -1,5 +1,5 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, effect, ElementRef, HostListener, inject, signal } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NonNullableFormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
@@ -23,17 +23,29 @@ export class GlobalSearchComponent extends AccumulativeBlogsPageService {
   protected readonly isSearchResultsOpen = signal(false);
 
   protected readonly fb = inject(NonNullableFormBuilder);
+  private elementRef = inject(ElementRef);
+  private readonly routePaths = injectWebAppRoutes();
+
   protected readonly searchControl = this.fb.control('');
 
   private readonly searchControlSignal = toSignal(this.searchControl.valueChanges);
-  private readonly routePaths = injectWebAppRoutes();
+
+  @HostListener('document:click', ['$event'])
+  private onClickOutside(event: Event) {
+    if (!this.elementRef.nativeElement.contains(event.target)) {
+      this.closeSearchPanel();
+    }
+  }
 
   protected onFocus() {
     this.isSearchResultsOpen.set(true);
   }
 
-  protected onBlur() {
-    // this.isSearchResultsOpen.set(false);
+  protected closeSearchPanel(event?: MouseEvent) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.isSearchResultsOpen.set(false);
   }
 
   protected getBlogDetailLink(blog: Blog) {

@@ -1,7 +1,6 @@
 <div class="wrapper">
   <knc-input
     (focus)="onFocus()"
-    (blur)="onBlur()"
     type="search"
     placeholder="Search here ..."
     [formControl]="searchControl"
@@ -9,12 +8,12 @@
   @if (isSearchResultsOpen() && searchControl.value) {
     <div class="search-result">
       @for (blog of (blogsPage$ | async)?.items; track blog.id) {
-        <button [routerLink]="getBlogDetailLink(blog)" type="button" class="item item-with-hover">
+        <a (click)="closeSearchPanel($event)" [routerLink]="getBlogDetailLink(blog)" type="button" class="item item-with-hover">
           <p class="truncate-1">{{ blog.title }}</p>
           <div class="image-wrapper">
             <img class="image" [alt]="blog.title" [src]="blog.bannerUrl" />
           </div>
-        </button>
+        </a>
       } @empty {
         @if (isLoading()) {
           <div class="items-loading">
