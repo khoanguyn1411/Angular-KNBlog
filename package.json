@@ -8,7 +8,7 @@
     "build": "npm run build:prod",
     "build:dev": "NG_APP_ENV=development ng build --configuration development --project web",
     "build:prod": "NG_APP_ENV=production ng build --configuration production --project web",
-    "watch": "ng build --watch --configuration development",
+    "watch:dev": "NG_APP_ENV=development ng build --watch --configuration development --project web",
     "test": "ng test",
     "lint": "ng lint --cache && npm run stylelint && npm run prettier",
     "lint:fix": "ng lint --cache --fix && npm run stylelint:fix && npm run prettier:fix",
