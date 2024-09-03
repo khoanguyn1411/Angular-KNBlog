@@ -21,13 +21,21 @@
 }
 
 .blog-image {
-  height: 100%;
-  width: 100%;
+  min-width: 175px;
+  max-width: 175px;
+  height: 175px;
   object-fit: cover;
 }
 
 .right-section {
-  min-width: 150px;
-  max-width: 150px;
+  display: flex;
+  align-items: flex-end;
   aspect-ratio: 1;
+}
+
+.emoticon-section {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  justify-content: space-between;
 }

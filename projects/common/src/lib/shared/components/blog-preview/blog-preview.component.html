@@ -5,6 +5,11 @@
 
       <h2>{{ data.blog.title }}</h2>
       <p class="truncate-2">{{ data.blog.summary }}</p>
+
+      <div class="emoticon-section">
+        <button type="button" mat-stroked-button>{{ data.blog.emoticonCount }} Likes</button>
+        <p>{{ data.blog.createdAt | date }}</p>
+      </div>
     </div>
 
     <div class="right-section">

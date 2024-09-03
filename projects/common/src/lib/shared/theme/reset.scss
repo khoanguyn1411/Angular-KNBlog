@@ -2,11 +2,26 @@ html * {
   box-sizing: border-box;
 }
 
+
 html {
   min-width: 1200px;
 }
 
 p,
+span {
+  line-height: 28px;
+}
+
+h1 {
+  line-height: 42px;
+}
+
+h2 {
+  line-height: 32px;
+}
+
+p,
+span,
 h1,
 h2,
 h3,

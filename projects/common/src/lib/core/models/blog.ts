@@ -8,6 +8,7 @@ export const blogSchema = z.object({
   summary: z.string(),
   createdAt: z.date(),
   updatedAt: z.date(),
+  emoticonCount: z.number(),
   bannerUrl: z.string().nullable(),
 });
 
