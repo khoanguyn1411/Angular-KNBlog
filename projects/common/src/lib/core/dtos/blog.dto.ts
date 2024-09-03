@@ -5,14 +5,17 @@ export const blogDtoSchema = z.object({
   _id: z.string(),
   writtenBy: userDtoSchema,
   title: z.string(),
-  content: z.string(),
   summary: z.string(),
   createdAt: z.string(),
   updatedAt: z.string(),
   bannerUrl: z.string().nullable(),
 });
 
-export const blogCreationSchemaDto = blogDtoSchema.pick({
+export const blogDetailDtoSchema = blogDtoSchema.extend({
+  content: z.string(),
+});
+
+export const blogCreationSchemaDto = blogDetailDtoSchema.pick({
   title: true,
   content: true,
   bannerUrl: true,
@@ -21,3 +24,4 @@ export const blogCreationSchemaDto = blogDtoSchema.pick({
 
 export type BlogCreationDto = z.infer<typeof blogCreationSchemaDto>;
 export type BlogDto = z.infer<typeof blogDtoSchema>;
+export type BlogDetailDto = z.infer<typeof blogDetailDtoSchema>;

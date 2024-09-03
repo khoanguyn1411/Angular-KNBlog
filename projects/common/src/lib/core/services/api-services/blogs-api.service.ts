@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
-import { blogDtoSchema } from '@knb/core/dtos/blog.dto';
+import { blogDetailDtoSchema, blogDtoSchema } from '@knb/core/dtos/blog.dto';
 import { createPaginationDtoSchema } from '@knb/core/dtos/pagination.dto';
 import { BlogMapper } from '@knb/core/mapper/blog.mapper';
 import { BlogsFilterParamsMapper } from '@knb/core/mapper/blogs-filter-params.mapper';
 import { PaginationMapper } from '@knb/core/mapper/pagination.mapper';
-import { Blog, BlogCreation } from '@knb/core/models/blog';
+import { Blog, BlogCreation, BlogDetail } from '@knb/core/models/blog';
 import { BlogsFilterParams } from '@knb/core/models/blogs-filter-params';
 import { Pagination } from '@knb/core/models/pagination';
 import { composeHttpParams } from '@knb/core/utils/compose-http-params';
@@ -34,10 +34,10 @@ export class BlogsApiService {
     );
   }
 
-  public getBlogById(id: Blog['id']): Observable<Blog> {
+  public getBlogById(id: BlogDetail['id']): Observable<BlogDetail> {
     return this.httpClient.get<unknown>(this.appUrlsConfig.blog.detail(id)).pipe(
-      map((response) => safeParse(blogDtoSchema, response)),
-      map((response) => this.blogMapper.fromDto(response)),
+      map((response) => safeParse(blogDetailDtoSchema, response)),
+      map((response) => this.blogMapper.fromDetailDto(response)),
     );
   }
 }
