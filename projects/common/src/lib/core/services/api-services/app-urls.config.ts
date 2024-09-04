@@ -34,6 +34,12 @@ export class AppUrlsConfig {
     detail: (id: Blog['id']) => this.toApi(`blogs/${id}`),
   } as const;
 
+  /** Emoticon routes. */
+  public readonly emoticon = {
+    add: this.toApi('blog-emoticon/'),
+    remove: (id: Blog['id']) => this.toApi(`blog-emoticon/${id}`),
+  } as const;
+
   /** Upload routes. */
   public readonly upload = {
     image: this.toApi('upload/image/'),
