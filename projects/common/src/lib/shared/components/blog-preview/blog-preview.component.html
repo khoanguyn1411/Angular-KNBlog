@@ -7,15 +7,7 @@
       <p class="truncate-2">{{ data.blog.summary }}</p>
 
       <div class="emoticon-section">
-        @if (!isBlogLiked()) {
-          <button (click)="onLikeClicked($event)" type="button" mat-button>
-            <mat-icon>thumb_up</mat-icon> {{ totalLike() }} Likes
-           </button>
-        } @else {
-          <button (click)="onUnlikeClicked($event)" type="button" mat-button color="primary">
-            <mat-icon>thumb_up</mat-icon> {{ totalLike() }} Likes
-           </button>
-        }
+        <knc-emoticon-button [blogId]="data.blog.id" [totalBlogLike]="data.blog.emoticonCount"></knc-emoticon-button>
         <p>{{ data.blog.createdAt | date }}</p>
       </div>
     </div>
