@@ -3,7 +3,7 @@
     <div class="left-section">
       <knc-user-preview [user]="data.blog.writtenByUser" />
 
-      <h2>{{ data.blog.title }}</h2>
+      <h2 class="truncate-2" [title]="data.blog.title">{{ data.blog.title }}</h2>
       <p class="truncate-2">{{ data.blog.summary }}</p>
 
       <div class="emoticon-section">
