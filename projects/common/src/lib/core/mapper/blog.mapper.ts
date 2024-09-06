@@ -22,6 +22,7 @@ export class BlogMapper implements MapperFromDto<BlogDto, Blog> {
       title: dto.title,
       emoticonCount: dto.emoticonCount,
       summary: dto.summary,
+      isUserLiked: dto.isUserLiked,
       bannerUrl: dto.bannerUrl,
       createdAt: this.dateMapper.fromDto(dto.createdAt),
       updatedAt: this.dateMapper.fromDto(dto.updatedAt),

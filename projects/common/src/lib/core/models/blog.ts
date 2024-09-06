@@ -10,6 +10,7 @@ export const blogSchema = z.object({
   updatedAt: z.date(),
   emoticonCount: z.number(),
   bannerUrl: z.string().nullable(),
+  isUserLiked: z.boolean(),
 });
 
 export const blogDetailSchema = blogSchema.extend({

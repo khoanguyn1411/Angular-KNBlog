@@ -1,9 +1,10 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Blog } from '@knb/core/models/blog';
 import { EmoticonApiService } from '@knb/core/services/api-services/emoticon-api.service';
+import { UserService } from '@knb/core/services/ui-services/user.service';
 
 /** Emoticon button component. */
 @Component({
@@ -15,11 +16,13 @@ import { EmoticonApiService } from '@knb/core/services/api-services/emoticon-api
   styleUrl: './emoticon-button.component.scss',
 })
 export class EmoticonButtonComponent {
-  public readonly totalBlogLike = input.required<number>();
-  public readonly blogId = input.required<Blog['id']>();
+  public readonly blog = input.required<Blog>();
 
   private readonly emoticonApiService = inject(EmoticonApiService);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly userService = inject(UserService);
+
+  private readonly currentUser = toSignal(this.userService.currentUser$);
 
   protected readonly totalLike = signal(0);
   protected readonly isBlogLiked = signal(false);
@@ -31,7 +34,7 @@ export class EmoticonButtonComponent {
   protected onLikeClicked(event: MouseEvent) {
     event.stopPropagation();
     this.emoticonApiService
-      .addEmoticon({ blogId: this.blogId() })
+      .addEmoticon({ blogId: this.blog().id })
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe();
     this.isBlogLiked.set(true);
@@ -44,21 +47,21 @@ export class EmoticonButtonComponent {
    */
   protected onUnlikeClicked(event: MouseEvent) {
     event.stopPropagation();
-    this.emoticonApiService.removeEmoticon(this.blogId()).pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
+    this.emoticonApiService.removeEmoticon(this.blog().id).pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
     this.isBlogLiked.set(false);
     this.totalLike.update((likeCount) => likeCount - 1);
   }
 
   private setIsPostLikedEffect = effect(
     () => {
-      // this.isBlogLiked.set(true);
+      this.isBlogLiked.set(this.blog().isUserLiked);
     },
     { allowSignalWrites: true },
   );
 
   private setTotalLikeEffect = effect(
     () => {
-      this.totalLike.set(this.totalBlogLike());
+      this.totalLike.set(this.blog().emoticonCount);
     },
     { allowSignalWrites: true },
   );

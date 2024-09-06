@@ -7,7 +7,7 @@
       <p class="truncate-2">{{ data.blog.summary }}</p>
 
       <div class="emoticon-section">
-        <knc-emoticon-button [blogId]="data.blog.id" [totalBlogLike]="data.blog.emoticonCount"></knc-emoticon-button>
+        <knc-emoticon-button [blog]="data.blog"></knc-emoticon-button>
         <p>{{ data.blog.createdAt | date }}</p>
       </div>
     </div>
