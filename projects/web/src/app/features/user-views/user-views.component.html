@@ -21,19 +21,21 @@
     }
   </section>
 
-  <section class="right-section">
-    <h1>Recommended Bloggers</h1>
-    <div class="users">
-      @if ({ page: usersPage$ | async }; as data) {
-        @for (user of data.page?.items; track user.id) {
-          <knc-user-preview [user]="user" />
+  @if (isBrowser) {
+    <section class="right-section">
+      <h1>Recommended Bloggers</h1>
+      <div class="users">
+        @if ({ page: userPage }; as data) {
+          @for (user of data.page?.items; track user.id) {
+            <knc-user-preview [user]="user" />
+          }
         }
-      }
-    </div>
+      </div>
 
-    <div class="slogan">
-      <p>Write your dream with <b>KNBLOG</b></p>
-      <p class="sub-slogan">This is a self-edu project. No commercial purpose.</p>
-    </div>
-  </section>
+      <div class="slogan">
+        <p>Write your dream with <b>KNBLOG</b></p>
+        <p class="sub-slogan">This is a self-edu project. No commercial purpose.</p>
+      </div>
+    </section>
+  }
 </div>
