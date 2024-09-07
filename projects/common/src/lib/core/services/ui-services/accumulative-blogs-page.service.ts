@@ -8,12 +8,14 @@ import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { accumulativePagination } from '@knb/core/utils/rxjs/paginate';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { isEqual } from 'lodash';
-import { distinctUntilChanged, map, Observable, shareReplay, startWith } from 'rxjs';
+import { combineLatestWith, distinctUntilChanged, map, Observable, shareReplay, startWith } from 'rxjs';
 import { BlogsApiService } from '../api-services/blogs-api.service';
+import { UserService } from './user.service';
 
 @Injectable()
 export class AccumulativeBlogsPageService {
   protected readonly blogsApiService = inject(BlogsApiService);
+  protected readonly userService = inject(UserService);
 
   public readonly blogsPage$: Observable<Pagination<Blog>>;
   public readonly isLoading = signal(false);
@@ -36,14 +38,15 @@ export class AccumulativeBlogsPageService {
   protected initializeBlogsPage(): Observable<Pagination<Blog>> {
     const onClear$ = this.filters$.pipe(
       startWith(this.getDefaultFilters()),
-      map((filters) => [filters.pageSize, filters.userId, filters.search]),
+      combineLatestWith(this.userService.currentUser$),
+      map(([filters, currentUser]) => [filters.pageSize, filters.userId, filters.search, currentUser]),
       distinctUntilChanged((prev, next) => isEqual(prev, next)),
     );
 
     return accumulativePagination(
       // Using `debounceTime(0)` here to make the filter emits only 1 time after all changes has synchronously emitted.
       // eslint-disable-next-line rxjs/finnish
-      { filters: this.filters$ },
+      { filters: this.filters$, currentUser: this.userService.currentUser$ },
       ({ filters }) => this.blogsApiService.getBlogs(filters).pipe(toggleExecutionState(this.isLoading)),
       onClear$,
     ).pipe(filterNull(), shareReplay({ refCount: true, bufferSize: 1 }));

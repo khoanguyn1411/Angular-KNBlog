@@ -67,6 +67,25 @@ export class UserService {
   public isUserFetching = computed(() => this.isUserFetchingSignal());
 
   /**
+   * Require authorized to perform action.
+   * @param callback Callback to perform.
+   */
+  public requireAuthorizedToPerformAction(callback: () => void): void {
+    this.isAuthorized$
+      .pipe(
+        first(),
+        tap((isAuthorized) => {
+          if (isAuthorized) {
+            callback();
+            return;
+          }
+          this.snackbarService.notify({ type: 'error', text: 'You have to login to perform this action.' });
+        }),
+      )
+      .subscribe();
+  }
+
+  /**
    * Login a user with email and password.
    * @param loginData Login data.
    */
