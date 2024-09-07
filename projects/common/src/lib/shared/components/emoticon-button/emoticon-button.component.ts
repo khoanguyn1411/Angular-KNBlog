@@ -1,10 +1,9 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, input, signal } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { Blog } from '@knb/core/models/blog';
 import { EmoticonApiService } from '@knb/core/services/api-services/emoticon-api.service';
-import { UserService } from '@knb/core/services/ui-services/user.service';
 
 /** Emoticon button component. */
 @Component({
@@ -20,9 +19,6 @@ export class EmoticonButtonComponent {
 
   private readonly emoticonApiService = inject(EmoticonApiService);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly userService = inject(UserService);
-
-  private readonly currentUser = toSignal(this.userService.currentUser$);
 
   protected readonly totalLike = signal(0);
   protected readonly isBlogLiked = signal(false);
