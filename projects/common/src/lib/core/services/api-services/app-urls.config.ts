@@ -32,6 +32,7 @@ export class AppUrlsConfig {
     createBlog: this.toApi('blogs/'),
     list: this.toApi('blogs/'),
     detail: (id: Blog['id']) => this.toApi(`blogs/${id}`),
+    blogsHaveEmoticons: this.toApi('blogs-have-emoticons'),
   } as const;
 
   /** Emoticon routes. */

@@ -1,0 +1,7 @@
+@if (isBrowserOnly) {
+  @if ({ blog: blogDetail$ | async }; as data) {
+    @if (data.blog) {
+      <knc-emoticon-button [blog]="data.blog" />
+    }
+  }
+}

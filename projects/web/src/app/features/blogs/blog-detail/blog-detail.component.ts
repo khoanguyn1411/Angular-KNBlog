@@ -5,9 +5,11 @@ import { ActivatedRoute } from '@angular/router';
 import { Blog } from '@knb/core/models/blog';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
+import { EmoticonButtonComponent } from '@knb/shared/components/emoticon-button/emoticon-button.component';
 import { UserPreviewComponent } from '@knb/shared/components/user-preview/user-preview.component';
 import { BLOG_ID_PARAM } from 'projects/web/src/shared/web-route-paths';
 import { map, Observable, shareReplay, switchMap } from 'rxjs';
+import { BlogDetailEmoticonComponent } from './components/blog-detail-emoticon/blog-detail-emoticon.component';
 
 /** Blog detail component. */
 @Component({
@@ -15,14 +17,21 @@ import { map, Observable, shareReplay, switchMap } from 'rxjs';
   standalone: true,
   templateUrl: './blog-detail.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [AsyncPipe, UserPreviewComponent, DatePipe, MatDividerModule],
+  imports: [
+    AsyncPipe,
+    UserPreviewComponent,
+    DatePipe,
+    MatDividerModule,
+    EmoticonButtonComponent,
+    BlogDetailEmoticonComponent,
+  ],
   styleUrl: './blog-detail.component.scss',
 })
 export class BlogDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly blogsApiService = inject(BlogsApiService);
-  private readonly blogId$ = this.createBlogIdStream();
 
+  protected readonly blogId$ = this.createBlogIdStream();
   protected readonly blogDetail$ = this.initializeBlogDetail();
 
   private createBlogIdStream(): Observable<Blog['id'] | null> {

@@ -1,21 +1,28 @@
-@if ({ blog: blogDetail$ | async }; as data) {
+@if ({ blog: blogDetail$ | async, blogId: blogId$ | async }; as data) {
   <div class="container-sm wrapper">
     <h1>{{ data.blog?.title }}</h1>
     <p>{{ data.blog?.summary }}</p>
 
-    <mat-divider/>
+    <mat-divider />
 
     <div class="user-preview-section">
       @if (data.blog?.writtenByUser) {
         <knc-user-preview [user]="data.blog!.writtenByUser" />
       }
+      <div class="publish-section">
+        <p><b>Published at: </b>{{ data.blog?.createdAt | date }}</p>
+      </div>
     </div>
 
-    <div class="publish-section">
-      <p><b>Published at: </b>{{ data.blog?.createdAt | date }}</p>
-    </div>
+    <mat-divider />
 
-    <mat-divider/>
+    @if (data.blogId) {
+      <div>
+        <knw-blog-detail-emoticon [blogId]="data.blogId" />
+      </div>
+    }
+
+    <mat-divider />
 
     <article class="blog-content" [innerHTML]="data.blog?.content"></article>
   </div>
