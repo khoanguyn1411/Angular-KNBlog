@@ -4,11 +4,12 @@ import { MatDividerModule } from '@angular/material/divider';
 import { ActivatedRoute } from '@angular/router';
 import { Blog, BlogDetail } from '@knb/core/models/blog';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
+import { UserService } from '@knb/core/services/ui-services/user.service';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { EmoticonButtonComponent } from '@knb/shared/components/emoticon-button/emoticon-button.component';
 import { UserPreviewComponent } from '@knb/shared/components/user-preview/user-preview.component';
 import { BLOG_ID_PARAM } from 'projects/web/src/shared/web-route-paths';
-import { map, Observable, shareReplay, switchMap } from 'rxjs';
+import { filter, map, Observable, shareReplay, switchMap } from 'rxjs';
 
 /** Blog detail component. */
 @Component({
@@ -30,6 +31,7 @@ export class BlogDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly blogsApiService = inject(BlogsApiService);
   private readonly platformId = inject(PLATFORM_ID);
+  private readonly userService = inject(UserService);
 
   protected readonly blogId$ = this.createBlogIdStream();
   protected readonly blogDetail$ = this.initializeBlogDetail();
@@ -54,10 +56,15 @@ export class BlogDetailComponent {
   }
 
   private initializeIsUserLikeBlog(): Observable<boolean> {
-    return this.blogId$.pipe(
-      filterNull(),
-      switchMap((blogId) => this.blogsApiService.getBlogsWithEmoticons({ blogIds: [blogId] })),
-      map((result) => result.length > 0),
+    return this.userService.isAuthorized$.pipe(
+      filter(Boolean),
+      switchMap(() => {
+        return this.blogId$.pipe(
+          filterNull(),
+          switchMap((blogId) => this.blogsApiService.getBlogsWithEmoticons({ blogIds: [blogId] })),
+          map((result) => result.length > 0),
+        );
+      }),
     );
   }
 }
