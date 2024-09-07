@@ -1,5 +1,6 @@
 import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatButtonModule } from '@angular/material/button';
 import { ActivatedRoute } from '@angular/router';
 import { Blog } from '@knb/core/models/blog';
@@ -29,6 +30,7 @@ export class UserBlogsComponent extends AccumulativeBlogsPageService implements 
   private readonly seoService = inject(SeoService);
   private readonly userApiService = inject(UserApiService);
   private readonly activatedRoute = inject(ActivatedRoute);
+  private readonly destroyRef = inject(DestroyRef);
 
   protected readonly isBrowserOnly = inject(PlatformService).isBrowserOnly;
 
@@ -41,6 +43,7 @@ export class UserBlogsComponent extends AccumulativeBlogsPageService implements 
           this.seoService.addTitle(user.fullName);
           this.seoService.addTags({ description: user.fullName, imageUrl: user.pictureUrl ?? '' });
         }),
+        takeUntilDestroyed(this.destroyRef),
       )
       .subscribe();
   }
