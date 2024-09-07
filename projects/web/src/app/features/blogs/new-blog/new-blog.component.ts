@@ -1,9 +1,10 @@
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { Router, RouterOutlet } from '@angular/router';
 import { BlogCreation } from '@knb/core/models/blog';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
+import { SeoService } from '@knb/core/services/ui-services/seo.service';
 import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { FlatControlsOf } from '@knb/core/utils/types/controls-of';
@@ -36,16 +37,22 @@ type BlogCreationForm = FlatControlsOf<BlogCreation>;
   changeDetection: ChangeDetectionStrategy.OnPush,
   styleUrl: './new-blog.component.scss',
 })
-export class NewBlogComponent {
+export class NewBlogComponent implements OnInit {
   private readonly fb = inject(NonNullableFormBuilder);
   private readonly blogsApiService = inject(BlogsApiService);
   private readonly snackbarService = inject(SnackbarService);
   private readonly router = inject(Router);
+  private readonly seoService = inject(SeoService);
   private readonly routePaths = injectWebAppRoutes();
 
   protected readonly isCreatingPost = signal(false);
 
   protected readonly newBlogForm = this.initializeForm();
+
+  public ngOnInit(): void {
+    this.seoService.addTitle('Write Blog');
+    this.seoService.addTags({ shouldIndexPage: false });
+  }
 
   private initializeForm(): FormGroup<BlogCreationForm> {
     return this.fb.group<BlogCreationForm>({

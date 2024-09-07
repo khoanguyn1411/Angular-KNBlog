@@ -41,6 +41,7 @@ export class SeoService {
     const concatTitle = `${APP_NAME} | ${title}`;
     this.titleService.setTitle(concatTitle);
     this.metaService.addTag({ property: 'og:title', content: concatTitle });
+    this.addCanonicalUrl(this.document.location.hostname);
   }
 
   public addJsonLdScript(renderer: Renderer2, scriptConfig: JsonLdScript): void {
@@ -67,8 +68,6 @@ export class SeoService {
     const url = mainMetaTags.url ?? this.document.location.href;
     const shouldIndexPage = mainMetaTags.shouldIndexPage ?? true;
     const description = mainMetaTags.description ?? APP_SUMMARY;
-
-    this.addCanonicalUrl(url);
 
     this.metaService.addTags([
       { name: 'description', content: description },
