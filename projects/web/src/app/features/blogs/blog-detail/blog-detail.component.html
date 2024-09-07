@@ -24,7 +24,7 @@
 
     @if (data.blog && isPlatformBrowser) {
       <div>
-        <knc-emoticon-button [isBlogBeenLiked]="data.isUserLikeBlog ?? false" [blog]="data.blog" />
+        <knc-emoticon-button [isUserLikeBlogInitial]="data.isUserLikeBlog ?? false" [blog]="data.blog" />
       </div>
     }
 

@@ -16,7 +16,7 @@ import { EmoticonApiService } from '@knb/core/services/api-services/emoticon-api
 })
 export class EmoticonButtonComponent {
   public readonly blog = input.required<Blog>();
-  public readonly isBlogBeenLiked = input<boolean>(false);
+  public readonly isUserLikeBlogInitial = input<boolean>(false);
 
   private readonly emoticonApiService = inject(EmoticonApiService);
   private readonly destroyRef = inject(DestroyRef);
@@ -51,7 +51,7 @@ export class EmoticonButtonComponent {
 
   private setIsPostLikedEffect = effect(
     () => {
-      this.isBlogLiked.set(this.isBlogBeenLiked() ?? this.blog().isUserLiked);
+      this.isBlogLiked.set(this.isUserLikeBlogInitial() ?? this.blog().isUserLiked);
     },
     { allowSignalWrites: true },
   );
