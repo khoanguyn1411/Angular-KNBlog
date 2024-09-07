@@ -6,10 +6,19 @@ import { HttpParams } from '@angular/common/http';
  */
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function composeHttpParams<T extends Record<string, any>>(paramValues: T): HttpParams {
-  return Object.entries(paramValues).reduce((params, [key, value]) => {
-    if (value != null && value !== '') {
-      return params.set(key, value);
+  let httpParams = new HttpParams();
+  Object.keys(paramValues).forEach((key) => {
+    const value = paramValues[key];
+    if (Array.isArray(value)) {
+      value.forEach((v) => {
+        httpParams = httpParams.append(`${key}[]`, v);
+      });
+      return;
     }
-    return params;
-  }, new HttpParams());
+    if (value != null && value !== '') {
+      httpParams = httpParams.append(key, value);
+      return;
+    }
+  });
+  return httpParams;
 }
