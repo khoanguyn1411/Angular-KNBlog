@@ -161,10 +161,8 @@ export class UserService {
   public logout(): Observable<void> {
     const googleLogoutEffect$ = from(this.socialAuthService.signOut());
     const removeSecretEffect$ = this.userSecretStorage.removeSecret();
-    const navigateToHomepageEffect$ = from(this.router.navigateByUrl(this.routePaths.root.url)).pipe(
-      map(() => undefined),
-    );
-    const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$, navigateToHomepageEffect$);
+
+    const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$);
 
     return this.currentUser$.pipe(
       switchMap((user) => (user != null ? this.authService.logout() : of(null))),

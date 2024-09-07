@@ -9,7 +9,7 @@ import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { EmoticonButtonComponent } from '@knb/shared/components/emoticon-button/emoticon-button.component';
 import { UserPreviewComponent } from '@knb/shared/components/user-preview/user-preview.component';
 import { BLOG_ID_PARAM } from 'projects/web/src/shared/web-route-paths';
-import { filter, map, Observable, shareReplay, switchMap } from 'rxjs';
+import { map, Observable, of, shareReplay, switchMap } from 'rxjs';
 
 /** Blog detail component. */
 @Component({
@@ -57,8 +57,10 @@ export class BlogDetailComponent {
 
   private initializeIsUserLikeBlog(): Observable<boolean> {
     return this.userService.isAuthorized$.pipe(
-      filter(Boolean),
-      switchMap(() => {
+      switchMap((isAuthorized) => {
+        if (!isAuthorized) {
+          return of(false);
+        }
         return this.blogId$.pipe(
           filterNull(),
           switchMap((blogId) => this.blogsApiService.getBlogsWithEmoticons({ blogIds: [blogId] })),
