@@ -1,39 +1,41 @@
-<div class="container wrapper">
-  <section class="left-section">
-    <h1>For you</h1>
-    @if ({ page: accumulativeBlogsPageService.blogsPage$ | async }; as data) {
-      <div class="blogs">
-        @for (blog of data.page?.items; track blog.id) {
-          <knc-blog-preview [blog]="blog"></knc-blog-preview>
+@if (isBrowserOnly) {
+  <div class="container wrapper">
+    <section class="left-section">
+      <h1>For you</h1>
+      @if ({ page: accumulativeBlogsPageService.blogsPage$ | async }; as data) {
+        <div class="blogs">
+          @for (blog of data.page?.items; track blog.id) {
+            <knc-blog-preview [blog]="blog"></knc-blog-preview>
+          }
+        </div>
+        @if (data.page?.hasNext) {
+          <button
+            (click)="accumulativeBlogsPageService.onLoadMoreClick()"
+            class="load-more"
+            mat-raised-button
+            color="primary"
+            type="button"
+          >
+            Load more
+          </button>
+        }
+      }
+    </section>
+
+    <section class="right-section">
+      <h1>Recommended Bloggers</h1>
+      <div class="users">
+        @if ({ page: usersPage$ | async }; as data) {
+          @for (user of data.page?.items; track user.id) {
+            <knc-user-preview [user]="user" />
+          }
         }
       </div>
-      @if (data.page?.hasNext) {
-        <button
-          (click)="accumulativeBlogsPageService.onLoadMoreClick()"
-          class="load-more"
-          mat-raised-button
-          color="primary"
-          type="button"
-        >
-          Load more
-        </button>
-      }
-    }
-  </section>
 
-  <section class="right-section">
-    <h1>Recommended Bloggers</h1>
-    <div class="users">
-      @if ({ page: usersPage$ | async }; as data) {
-        @for (user of data.page?.items; track user.id) {
-          <knc-user-preview [user]="user" />
-        }
-      }
-    </div>
-
-    <div class="slogan">
-      <p>Write your dream with <b>KNBLOG</b></p>
-      <p class="sub-slogan">This is a self-edu project. No commercial purpose.</p>
-    </div>
-  </section>
-</div>
+      <div class="slogan">
+        <p>Write your dream with <b>KNBLOG</b></p>
+        <p class="sub-slogan">This is a self-edu project. No commercial purpose.</p>
+      </div>
+    </section>
+  </div>
+}

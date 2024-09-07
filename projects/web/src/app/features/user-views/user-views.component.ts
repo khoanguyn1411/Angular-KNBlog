@@ -1,5 +1,5 @@
-import { AsyncPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { AsyncPipe, isPlatformBrowser } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, PLATFORM_ID, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { DEFAULT_PAGINATION_OPTIONS } from '@knb/core/constants/pagination';
@@ -24,13 +24,19 @@ import { Observable, shareReplay } from 'rxjs';
 })
 export class UserViewsComponent {
   private readonly userApiService = inject(UserApiService);
+  private readonly platformId = inject(PLATFORM_ID);
+  protected readonly accumulativeBlogsPageService = inject(AccumulativeBlogsPageService);
+
   private readonly isUsersPageLoading = signal(false);
 
-  protected readonly accumulativeBlogsPageService = inject(AccumulativeBlogsPageService);
   protected readonly usersPage$: Observable<Pagination<User>>;
 
   public constructor() {
     this.usersPage$ = this.initializeUsersPage();
+  }
+
+  public get isBrowserOnly(): boolean {
+    return isPlatformBrowser(this.platformId);
   }
 
   private initializeUsersPage(): Observable<Pagination<User>> {
