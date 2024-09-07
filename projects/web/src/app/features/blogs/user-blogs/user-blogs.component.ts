@@ -6,6 +6,7 @@ import { Blog } from '@knb/core/models/blog';
 import { Pagination } from '@knb/core/models/pagination';
 import { User } from '@knb/core/models/user';
 import { AccumulativeBlogsPageService } from '@knb/core/services/ui-services/accumulative-blogs-page.service';
+import { PlatformService } from '@knb/core/services/ui-services/platform.service';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { accumulativePagination } from '@knb/core/utils/rxjs/paginate';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
@@ -23,6 +24,8 @@ import { map, Observable, of, shareReplay } from 'rxjs';
   styleUrl: './user-blogs.component.scss',
 })
 export class UserBlogsComponent extends AccumulativeBlogsPageService {
+  protected readonly isBrowserOnly = inject(PlatformService).isBrowserOnly;
+
   private createUserIdStream(): Observable<User['id'] | null> {
     const route = inject(ActivatedRoute);
     return route.paramMap.pipe(
