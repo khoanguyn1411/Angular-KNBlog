@@ -16,7 +16,7 @@ import { EmoticonApiService } from '@knb/core/services/api-services/emoticon-api
 })
 export class EmoticonButtonComponent {
   public readonly blog = input.required<Blog>();
-  public readonly isUserLikeBlogInitial = input<boolean>(false);
+  public readonly isUserLikeBlogInitial = input<boolean>();
 
   private readonly emoticonApiService = inject(EmoticonApiService);
   private readonly destroyRef = inject(DestroyRef);
