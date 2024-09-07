@@ -1,21 +1,25 @@
-<form [formGroup]="userForm" (submit)="onSubmit()" class="container-sm wrapper">
-  @if (userDetail(); as user) {
-    <div class="base-info">
-      <knc-avatar-uploader formControlName="imageFile" size="large" [user]="user" />
-      <div class="info">
-        <p class="email"><b>Full Name: </b>{{ user.fullName }}</p>
-        <p class="email"><b>Email: </b>{{ user.email }}</p>
+@if (isPlatformBrowser) {
+  <form [formGroup]="userForm" (submit)="onSubmit()" class="container-sm wrapper">
+    @if (userDetail(); as user) {
+      <div class="base-info">
+        <knc-avatar-uploader formControlName="imageFile" size="large" [user]="user" />
+        <div class="info">
+          <p class="email"><b>Full Name: </b>{{ user.fullName }}</p>
+          <p class="email"><b>Email: </b>{{ user.email }}</p>
+        </div>
       </div>
-    </div>
 
-    <knc-label label="First Name" [isRequired]="true">
-      <knc-input placeholder="First Name" formControlName="firstName" name="first-name"></knc-input>
-    </knc-label>
+      <knc-label label="First Name" [isRequired]="true">
+        <knc-input placeholder="First Name" formControlName="firstName" name="first-name"></knc-input>
+      </knc-label>
 
-    <knc-label label="Last Name" [isRequired]="true">
-      <knc-input placeholder="Last Name" formControlName="lastName" name="last-name"></knc-input>
-    </knc-label>
+      <knc-label label="Last Name" [isRequired]="true">
+        <knc-input placeholder="Last Name" formControlName="lastName" name="last-name"></knc-input>
+      </knc-label>
 
-    <button [kncLoading]="isUpdatingUser()" class="submit-button" type="submit" mat-raised-button color="primary">Update</button>
-  }
-</form>
+      @if (isSelf()) {
+        <button [kncLoading]="isUpdatingUser()" class="submit-button" type="submit" mat-raised-button color="primary">Update</button>
+      }
+    }
+  </form>
+}

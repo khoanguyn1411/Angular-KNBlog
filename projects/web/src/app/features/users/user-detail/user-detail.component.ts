@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, effect, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -7,6 +7,7 @@ import { UploadResult } from '@knb/core/models/upload-result';
 import { User, UserUpdate } from '@knb/core/models/user';
 import { UploadApiService } from '@knb/core/services/api-services/upload-api.service';
 import { UserApiService } from '@knb/core/services/api-services/user-api.service';
+import { PlatformService } from '@knb/core/services/ui-services/platform.service';
 import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import { assertNonNull } from '@knb/core/utils/assert-non-null';
@@ -58,9 +59,14 @@ export class UserDetailComponent {
   protected readonly isUpdatingUser = signal(false);
   protected readonly userForm = this.initializeForm();
   protected readonly userFormSignal = toSignal(this.userForm.valueChanges);
+  protected readonly isPlatformBrowser = inject(PlatformService).isBrowserOnly;
 
   protected readonly userDetail$ = this.initializeUserDetail();
   protected readonly userDetail = toSignal(this.userDetail$);
+
+  protected readonly isSelf = computed(() => {
+    return this.currentUser()?.id === this.userDetail()?.id;
+  });
 
   protected onSubmit(): void {
     this.userForm.markAllAsTouched();
@@ -150,5 +156,11 @@ export class UserDetailComponent {
       lastName: this.userDetail()?.lastName,
       imageFile: null,
     });
+  });
+
+  private setDisabledStateEffect = effect(() => {
+    if (!this.isSelf()) {
+      this.userForm.disable();
+    }
   });
 }

@@ -1,5 +1,5 @@
-import { AsyncPipe, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, PLATFORM_ID, signal } from '@angular/core';
+import { AsyncPipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
 import { DEFAULT_PAGINATION_OPTIONS } from '@knb/core/constants/pagination';
@@ -7,6 +7,7 @@ import { Pagination } from '@knb/core/models/pagination';
 import { User } from '@knb/core/models/user';
 import { UserApiService } from '@knb/core/services/api-services/user-api.service';
 import { AccumulativeBlogsPageService } from '@knb/core/services/ui-services/accumulative-blogs-page.service';
+import { PlatformService } from '@knb/core/services/ui-services/platform.service';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { BlogPreviewComponent } from '@knb/shared/components/blog-preview/blog-preview.component';
 import { UserPreviewComponent } from '@knb/shared/components/user-preview/user-preview.component';
@@ -24,19 +25,15 @@ import { Observable, shareReplay } from 'rxjs';
 })
 export class UserViewsComponent {
   private readonly userApiService = inject(UserApiService);
-  private readonly platformId = inject(PLATFORM_ID);
   protected readonly accumulativeBlogsPageService = inject(AccumulativeBlogsPageService);
 
   private readonly isUsersPageLoading = signal(false);
 
   protected readonly usersPage$: Observable<Pagination<User>>;
+  protected readonly isBrowserOnly = inject(PlatformService).isBrowserOnly;
 
   public constructor() {
     this.usersPage$ = this.initializeUsersPage();
-  }
-
-  public get isBrowserOnly(): boolean {
-    return isPlatformBrowser(this.platformId);
   }
 
   private initializeUsersPage(): Observable<Pagination<User>> {

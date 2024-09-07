@@ -1,9 +1,10 @@
-import { AsyncPipe, DatePipe, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, PLATFORM_ID } from '@angular/core';
+import { AsyncPipe, DatePipe } from '@angular/common';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatDividerModule } from '@angular/material/divider';
 import { ActivatedRoute } from '@angular/router';
 import { Blog, BlogDetail } from '@knb/core/models/blog';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
+import { PlatformService } from '@knb/core/services/ui-services/platform.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { EmoticonButtonComponent } from '@knb/shared/components/emoticon-button/emoticon-button.component';
@@ -30,16 +31,12 @@ import { map, Observable, of, shareReplay, switchMap } from 'rxjs';
 export class BlogDetailComponent {
   private readonly route = inject(ActivatedRoute);
   private readonly blogsApiService = inject(BlogsApiService);
-  private readonly platformId = inject(PLATFORM_ID);
   private readonly userService = inject(UserService);
 
   protected readonly blogId$ = this.createBlogIdStream();
   protected readonly blogDetail$ = this.initializeBlogDetail();
   protected readonly isUserLikeBlog$ = this.initializeIsUserLikeBlog();
-
-  protected get isPlatformBrowser() {
-    return isPlatformBrowser(this.platformId);
-  }
+  protected readonly isPlatformBrowser = inject(PlatformService).isBrowserOnly;
 
   private createBlogIdStream(): Observable<Blog['id'] | null> {
     return this.route.paramMap.pipe(

@@ -23,6 +23,10 @@ export class AvatarUploaderComponent extends SimpleValueAccessor<File | null> {
   private readonly zone = inject(NgZone);
 
   protected onClick() {
+    if (this.disabled) {
+      return;
+    }
+
     const input = document.createElement('input');
     input.setAttribute('type', 'file');
     input.setAttribute('accept', 'image/png, image/gif, image/jpeg, image/webp');
