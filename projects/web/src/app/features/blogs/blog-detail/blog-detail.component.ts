@@ -1,10 +1,12 @@
 import { AsyncPipe, DatePipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, OnInit, Renderer2 } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { MatDividerModule } from '@angular/material/divider';
 import { ActivatedRoute } from '@angular/router';
 import { Blog, BlogDetail } from '@knb/core/models/blog';
 import { BlogsApiService } from '@knb/core/services/api-services/blogs-api.service';
 import { PlatformService } from '@knb/core/services/ui-services/platform.service';
+import { SeoService } from '@knb/core/services/ui-services/seo.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { EmoticonButtonComponent } from '@knb/shared/components/emoticon-button/emoticon-button.component';
@@ -28,15 +30,46 @@ import { map, Observable, of, shareReplay, switchMap } from 'rxjs';
   ],
   styleUrl: './blog-detail.component.scss',
 })
-export class BlogDetailComponent {
+export class BlogDetailComponent implements OnInit {
   private readonly route = inject(ActivatedRoute);
   private readonly blogsApiService = inject(BlogsApiService);
   private readonly userService = inject(UserService);
+  private readonly seoService = inject(SeoService);
+  private readonly renderer = inject(Renderer2);
 
   protected readonly blogId$ = this.createBlogIdStream();
   protected readonly blogDetail$ = this.initializeBlogDetail();
   protected readonly isUserLikeBlog$ = this.initializeIsUserLikeBlog();
   protected readonly isPlatformBrowser = inject(PlatformService).isBrowserOnly;
+
+  private readonly blogDetail = toSignal(this.blogDetail$);
+
+  public ngOnInit(): void {
+    this.addMetaTags();
+  }
+
+  private addMetaTags() {
+    const blogDetail = this.blogDetail();
+    if (blogDetail == null) {
+      return;
+    }
+
+    // Set the title
+    this.seoService.addTitle(blogDetail.title);
+
+    // Add meta tags
+    this.seoService.addTags({
+      description: blogDetail.summary,
+    });
+
+    // Add meta tags
+    this.seoService.addJsonLdScript(this.renderer, {
+      title: blogDetail.title,
+      imageUrl: blogDetail.bannerUrl ?? '',
+      author: blogDetail.title,
+      datePublished: blogDetail.createdAt,
+    });
+  }
 
   private createBlogIdStream(): Observable<Blog['id'] | null> {
     return this.route.paramMap.pipe(
