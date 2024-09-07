@@ -161,6 +161,8 @@ export class UserDetailComponent {
   private setDisabledStateEffect = effect(() => {
     if (!this.isSelf()) {
       this.userForm.disable();
+    } else {
+      this.userForm.enable();
     }
   });
 }
