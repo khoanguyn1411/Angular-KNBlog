@@ -1,6 +1,6 @@
 import { AsyncPipe, DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, inject, OnInit, Renderer2 } from '@angular/core';
-import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDividerModule } from '@angular/material/divider';
 import { ActivatedRoute } from '@angular/router';
 import { Blog, BlogDetail } from '@knb/core/models/blog';
@@ -42,8 +42,6 @@ export class BlogDetailComponent implements OnInit {
   protected readonly blogDetail$ = this.initializeBlogDetail();
   protected readonly isUserLikeBlog$ = this.initializeIsUserLikeBlog();
   protected readonly isPlatformBrowser = inject(PlatformService).isBrowserOnly;
-
-  private readonly blogDetail = toSignal(this.blogDetail$);
 
   public ngOnInit(): void {
     this.addMetaTagsEffect().pipe(takeUntilDestroyed(this.destroyRef)).subscribe();
