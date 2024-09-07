@@ -4,6 +4,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { Router, RouterLink } from '@angular/router';
+import { APP_NAME } from '@knb/core/constants/app-info';
 import { DialogService } from '@knb/core/services/ui-services/dialog.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import {
@@ -40,6 +41,7 @@ export class HeaderComponent {
   private readonly router = inject(Router);
 
   protected readonly routes = injectWebAppRoutes();
+  protected readonly appName = APP_NAME;
 
   protected readonly isAuthorized = toSignal(this.userService.isAuthorized$);
   protected readonly isCurrentUserFetching = this.userService.isUserFetching;

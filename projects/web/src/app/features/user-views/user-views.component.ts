@@ -2,7 +2,7 @@ import { AsyncPipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject, OnInit, signal } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterOutlet } from '@angular/router';
-import { APP_SUMMARY } from '@knb/core/constants/app-info';
+import { APP_NAME, APP_SUMMARY } from '@knb/core/constants/app-info';
 import { DEFAULT_PAGINATION_OPTIONS } from '@knb/core/constants/pagination';
 import { Pagination } from '@knb/core/models/pagination';
 import { User } from '@knb/core/models/user';
@@ -35,6 +35,7 @@ export class UserViewsComponent implements OnInit {
 
   protected readonly usersPage$: Observable<Pagination<User>>;
   protected readonly isBrowserOnly = inject(PlatformService).isBrowserOnly;
+  protected readonly appName = APP_NAME;
 
   public constructor() {
     this.usersPage$ = this.initializeUsersPage();

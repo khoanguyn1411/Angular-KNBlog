@@ -1,7 +1,7 @@
 <header class="wrapper">
   <div class="header-container">
     <section class="first-section">
-      <a [routerLink]="[routes.root.url]">KNBLOG</a>
+      <a [routerLink]="[routes.root.url]">{{ appName.toUpperCase() }}</a>
     </section>
     <section class="second-section">
       <knc-global-search></knc-global-search>
@@ -10,7 +10,7 @@
           <button (click)="onNewBlogCreate()" mat-button type="button">
             <mat-icon matPrefix>create</mat-icon>
             Write
-            </button>
+          </button>
           <knc-theme-settings></knc-theme-settings>
           <button matTooltip="Notifications" mat-icon-button type="button">
             <mat-icon matPrefix>notifications</mat-icon>
