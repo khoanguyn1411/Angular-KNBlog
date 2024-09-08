@@ -1,0 +1,7 @@
+<knc-alert [type]="type()" [text]="text()" [isCalledFromSnackbar]="isCalledFromSnackbar()">
+  @if (isCalledFromSnackbar()) {
+    <button (click)="onDismissAlert()" class="close-button" type="button" mat-icon-button>
+      <mat-icon>close</mat-icon>
+    </button>
+  }
+</knc-alert>
