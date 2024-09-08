@@ -8,7 +8,7 @@ import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { accumulativePagination } from '@knb/core/utils/rxjs/paginate';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
 import { isEqual } from 'lodash';
-import { combineLatestWith, distinctUntilChanged, map, Observable, shareReplay, startWith } from 'rxjs';
+import { combineLatestWith, distinctUntilChanged, map, Observable, shareReplay, startWith, tap } from 'rxjs';
 import { BlogsApiService } from '../api-services/blogs-api.service';
 import { UserService } from './user.service';
 
@@ -41,6 +41,7 @@ export class AccumulativeBlogsPageService {
       combineLatestWith(this.userService.currentUser$),
       map(([filters, currentUser]) => [filters.pageSize, filters.userId, filters.search, currentUser]),
       distinctUntilChanged((prev, next) => isEqual(prev, next)),
+      tap(() => this.setFilters({ pageNumber: 0 })),
     );
 
     return accumulativePagination(
