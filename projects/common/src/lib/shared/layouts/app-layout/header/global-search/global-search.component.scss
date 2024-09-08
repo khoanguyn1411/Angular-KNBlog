@@ -33,10 +33,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
 
-  :not(:last-child) {
-    border-bottom: 1px solid $border-color;
-  }
+.item:not(:last-child) {
+  border-bottom: 1px solid $border-color;
 }
 
 .item-with-hover:hover {
