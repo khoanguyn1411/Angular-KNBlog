@@ -83,7 +83,7 @@ export class UserDetailComponent implements OnInit {
     this.userDetail$
       .pipe(
         tap((userDetail) => {
-          this.seoService.addTitle(userDetail.fullName);
+          this.seoService.addTitle(`Profile | ${userDetail.fullName}`);
         }),
         takeUntilDestroyed(this.destroyRef),
       )
