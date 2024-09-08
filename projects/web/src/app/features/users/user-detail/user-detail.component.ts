@@ -1,4 +1,13 @@
-import { ChangeDetectionStrategy, Component, computed, DestroyRef, effect, inject, signal } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  DestroyRef,
+  effect,
+  inject,
+  OnInit,
+  signal,
+} from '@angular/core';
 import { takeUntilDestroyed, toSignal } from '@angular/core/rxjs-interop';
 import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
@@ -8,6 +17,7 @@ import { User, UserUpdate } from '@knb/core/models/user';
 import { UploadApiService } from '@knb/core/services/api-services/upload-api.service';
 import { UserApiService } from '@knb/core/services/api-services/user-api.service';
 import { PlatformService } from '@knb/core/services/ui-services/platform.service';
+import { SeoService } from '@knb/core/services/ui-services/seo.service';
 import { SnackbarService } from '@knb/core/services/ui-services/snackbar.service';
 import { UserService } from '@knb/core/services/ui-services/user.service';
 import { assertNonNull } from '@knb/core/utils/assert-non-null';
@@ -43,7 +53,7 @@ type UserUpdateForm = FlatControlsOf<InitUserUpdateForm>;
   ],
   styleUrl: './user-detail.component.scss',
 })
-export class UserDetailComponent {
+export class UserDetailComponent implements OnInit {
   private readonly userService = inject(UserService);
   private readonly userApiService = inject(UserApiService);
   private readonly fb = inject(NonNullableFormBuilder);
@@ -51,6 +61,7 @@ export class UserDetailComponent {
   private readonly snackbarService = inject(SnackbarService);
   private readonly route = inject(ActivatedRoute);
   private readonly uploadApiService = inject(UploadApiService);
+  private readonly seoService = inject(SeoService);
 
   private readonly refreshUserProfileIndicator$ = new BehaviorSubject({});
   private readonly userId$ = this.createUserIdStream();
@@ -67,6 +78,17 @@ export class UserDetailComponent {
   protected readonly isSelf = computed(() => {
     return this.currentUser()?.id === this.userDetail()?.id;
   });
+
+  public ngOnInit(): void {
+    this.userDetail$
+      .pipe(
+        tap((userDetail) => {
+          this.seoService.addTitle(userDetail.fullName);
+        }),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe();
+  }
 
   protected onSubmit(): void {
     this.userForm.markAllAsTouched();
