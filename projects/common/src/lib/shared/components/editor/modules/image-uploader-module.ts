@@ -27,7 +27,9 @@ export class ImageUploaderModule {
   private insertToEditor(url: string): Observable<void> {
     return defer(() => {
       const position = this.getPosition();
-      this.editor?.insertEmbed(position == null ? 0 : position.index, 'image', url);
+      const index = position == null ? 0 : position.index;
+      this.editor?.insertEmbed(index, 'image', url);
+      this.editor?.formatText(index, index + 1, 'width', '100%');
       return of(undefined);
     });
   }
