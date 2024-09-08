@@ -11,7 +11,7 @@
         <a (click)="closeSearchPanel($event)" [routerLink]="getBlogDetailLink(blog)" type="button" class="item item-with-hover">
           <p class="truncate-1">{{ blog.title }}</p>
           <div class="image-wrapper">
-            <img class="image" [alt]="blog.title" [src]="blog.bannerUrl" />
+            <img class="image" [alt]="blog.title" [src]="blog.bannerUrl ? blog.bannerUrl : 'assets/image-placeholder.svg'" />
           </div>
         </a>
       } @empty {
