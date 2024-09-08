@@ -41,7 +41,7 @@ export class AccumulativeBlogsPageService {
       combineLatestWith(this.userService.currentUser$),
       map(([filters, currentUser]) => [filters.pageSize, filters.userId, filters.search, currentUser]),
       distinctUntilChanged((prev, next) => isEqual(prev, next)),
-      tap(() => this.setFilters({ pageNumber: 0 })),
+      tap(() => this.setFilters({ pageNumber: DEFAULT_PAGINATION_OPTIONS.pageNumber })),
     );
 
     return accumulativePagination(
