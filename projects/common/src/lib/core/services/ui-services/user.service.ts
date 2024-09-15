@@ -1,5 +1,6 @@
 import { SocialAuthService } from '@abacritt/angularx-social-login';
 import { computed, inject, Injectable, signal } from '@angular/core';
+import { Router } from '@angular/router';
 import { AppError } from '@knb/core/models/app-error';
 import { GoogleAuthData } from '@knb/core/models/google-auth-data';
 import { LoginData } from '@knb/core/models/login-data';
@@ -9,6 +10,7 @@ import { UserSecret } from '@knb/core/models/user-secret';
 import { catchHttpErrorResponse } from '@knb/core/utils/rxjs/catch-http-error-response';
 import { filterNull } from '@knb/core/utils/rxjs/filter-null';
 import { toggleExecutionState } from '@knb/core/utils/rxjs/toggle-execution-state';
+import { injectWebAppRoutes } from 'projects/web/src/shared/web-route-paths';
 import {
   BehaviorSubject,
   catchError,
@@ -44,6 +46,8 @@ export class UserService {
   private readonly userApiService = inject(UserApiService);
   private readonly socialAuthService = inject(SocialAuthService);
   private readonly snackbarService = inject(SnackbarService);
+  private readonly router = inject(Router);
+  private readonly routePaths = injectWebAppRoutes();
 
   private readonly refreshProfileIndicator$ = new BehaviorSubject({});
   private readonly isUserFetchingSignal = signal(true);
@@ -157,8 +161,11 @@ export class UserService {
   public logout(): Observable<void> {
     const googleLogoutEffect$ = from(this.socialAuthService.signOut());
     const removeSecretEffect$ = this.userSecretStorage.removeSecret();
+    const navigateToHomepageEffect$ = from(this.router.navigateByUrl(this.routePaths.root.url)).pipe(
+      map(() => undefined),
+    );
 
-    const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$);
+    const logoutSideEffects$ = merge(removeSecretEffect$, googleLogoutEffect$, navigateToHomepageEffect$);
 
     return this.currentUser$.pipe(
       switchMap((user) => (user != null ? this.authService.logout() : of(null))),
